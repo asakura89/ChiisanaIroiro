@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using ChiisanaIroiro.Ayumi.Data;
 
-namespace ChiisanaIroiro.Ayumi
+namespace ChiisanaIroiro.Ayumi.Extension
 {
-    public static class Extensions
+    public static class ExtendedCommonList
     {
         public static void BindToICommonList<T>(this ICommonList commonList, IEnumerable<T> dataList, Func<T, String> nameSelector, Func<T, String> valueSelector) where T : class
         {
@@ -13,9 +13,7 @@ namespace ChiisanaIroiro.Ayumi
         }
         public static void BindToICommonList<T>(this ICommonList commonList, IEnumerable<T> dataList, Func<T, String> nameSelector, Func<T, String> valueSelector, Boolean isOrdered) where T : class
         {
-            IList<NameValueItem> nviList = dataList
-                .Select(item => new NameValueItem(nameSelector(item), valueSelector(item)))
-                .ToList();
+            IList<NameValueItem> nviList = Enumerable.ToList(Enumerable.Select(dataList, item => new NameValueItem(nameSelector(item), valueSelector(item))));
             nviList.Insert(0, new NameValueItem(String.Empty, String.Empty));
 
             RawBindToICommonList(commonList, nviList, isOrdered);
@@ -27,7 +25,7 @@ namespace ChiisanaIroiro.Ayumi
         }
         public static void BindToICommonList(this ICommonList commonList, IEnumerable<NameValueItem> dataList, Boolean isOrdered)
         {
-            IList<NameValueItem> nviList = dataList as IList<NameValueItem> ?? dataList.ToList();
+            IList<NameValueItem> nviList = dataList as IList<NameValueItem> ?? Enumerable.ToList(dataList);
             nviList.Insert(0, new NameValueItem(String.Empty, String.Empty));
 
             RawBindToICommonList(commonList, nviList, isOrdered);
@@ -43,9 +41,7 @@ namespace ChiisanaIroiro.Ayumi
 
             if (isOrdered)
             {
-                IEnumerable<NameValueItem> orderedList = dataList
-                    .Select(item => new NameValueItem(nameSelector(item), valueSelector(item)))
-                    .OrderBy(nvi => nvi.Name);
+                IEnumerable<NameValueItem> orderedList = Enumerable.OrderBy(Enumerable.Select(dataList, item => new NameValueItem(nameSelector(item), valueSelector(item))), nvi => nvi.Name);
                 commonList.AddRange(orderedList);
             }
             else
@@ -62,7 +58,7 @@ namespace ChiisanaIroiro.Ayumi
         public static void RawBindToICommonList(this ICommonList commonList, IEnumerable<NameValueItem> dataList, Boolean isOrdered)
         {
             commonList.Clear();
-            commonList.AddRange(isOrdered ? dataList.OrderBy(nvi => nvi.Name) : dataList);
+            commonList.AddRange(isOrdered ? Enumerable.OrderBy(dataList, nvi => nvi.Name) : dataList);
         }
     }
 }

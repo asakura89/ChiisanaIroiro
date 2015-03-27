@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using ChiisanaIroiro.Ayumi;
 using ChiisanaIroiro.Ayumi.Data;
+using ChiisanaIroiro.Ayumi.Extension;
 using ChiisanaIroiro.Constant;
 using ChiisanaIroiro.Service;
 using ChiisanaIroiro.ViewModel;

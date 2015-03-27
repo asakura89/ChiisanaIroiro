@@ -55,7 +55,11 @@
     <Compile Include="Ayumi\Desktop\IValueReturnable.cs" />
     <Compile Include="Ayumi\Desktop\ListControlExtensions.cs" />
     <Compile Include="Ayumi\Desktop\WindowManager.cs" />
-    <Compile Include="Ayumi\Extensions.cs" />
+    <Compile Include="Ayumi\Extension\ExtendedCommonList.cs" />
+    <Compile Include="Ayumi\Extension\ExtendedCollection.cs" />
+    <Compile Include="Ayumi\Extension\ExtendedDataTable.cs" />
+    <Compile Include="Ayumi\Extension\ExtendedDateTime.cs" />
+    <Compile Include="Ayumi\Extension\ExtendedString.cs" />
     <Compile Include="Ayumi\Logger\Class1.cs" />
     <Compile Include="Ayumi\Logger\IAction.cs" />
     <Compile Include="Ayumi\Logger\IExceptionCapture.cs" />
