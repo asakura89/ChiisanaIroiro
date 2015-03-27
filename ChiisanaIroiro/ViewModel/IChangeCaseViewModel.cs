@@ -1,5 +1,5 @@
 ﻿using System;
-using ChiisanaIroiro.Ayumi.Data;
+using Ayumi.Data;
 
 namespace ChiisanaIroiro.ViewModel
 {

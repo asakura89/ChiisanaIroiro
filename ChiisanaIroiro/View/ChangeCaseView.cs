@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
-using ChiisanaIroiro.Ayumi.Core;
-using ChiisanaIroiro.Ayumi.Data;
-using ChiisanaIroiro.Ayumi.Desktop;
+using Ayumi.Core;
+using Ayumi.Data;
+using Ayumi.Desktop;
 using ChiisanaIroiro.Presenter;
 using ChiisanaIroiro.Service;
 using ChiisanaIroiro.ViewModel;
@@ -11,7 +11,7 @@ namespace ChiisanaIroiro.View
 {
     public partial class ChangeCaseView : UserControl, IChangeCaseViewModel
     {
-        private readonly IChangeCasePresenter Presenter;
+        private readonly IChangeCasePresenter presenter;
 
         public ChangeCaseView()
         {
@@ -19,8 +19,8 @@ namespace ChiisanaIroiro.View
 
             var registry = new ObjectRegistry();
             IChangeCaseService service = registry.GetRegisteredObject<IChangeCaseService>();
-            Presenter = registry.GetRegisteredObject<IChangeCasePresenter>(this, service);
-            Presenter.Initialize();
+            presenter = registry.GetRegisteredObject<IChangeCasePresenter>(this, service);
+            presenter.Initialize();
         }
 
         public ICommonList CaseType
@@ -38,11 +38,12 @@ namespace ChiisanaIroiro.View
         {
             try
             {
-                Presenter.ChangeCaseAction();
+                presenter.ChangeCaseAction();
+                presenter.CaptureAction("Change Case", "Change case has been done.");
             }
             catch (Exception ex)
             {
-                Presenter.OnException(ex);
+                presenter.CaptureException(ex);
             }
         }
     }

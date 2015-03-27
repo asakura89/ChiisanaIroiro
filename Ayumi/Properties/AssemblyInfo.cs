@@ -1,14 +1,15 @@
 ﻿using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("ちいさな色々")]
-[assembly: AssemblyDescription("ちいさな色々 - ちいさないろいろ")]
+[assembly: AssemblyTitle("Ayumi")]
+[assembly: AssemblyDescription("Mini many helper code as library")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("ASMNetworkLab")]
-[assembly: AssemblyProduct("ちいさな色々")]
+[assembly: AssemblyProduct("Ayumi")]
 [assembly: AssemblyCopyright("Copyright © ASMNetworkLab 2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -19,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("e1377593-00bd-4b43-867a-e201e28983f5")]
+[assembly: Guid("9d3e2ff7-efef-4ace-9815-fba450602196")]
 
 // Version information for an assembly consists of the following four values:
 //

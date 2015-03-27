@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using ChiisanaIroiro.Ayumi.Data;
-using ChiisanaIroiro.Ayumi.Extension;
+using Ayumi.Data;
+using Ayumi.Extension;
 using ChiisanaIroiro.Constant;
 using ChiisanaIroiro.Service;
 using ChiisanaIroiro.ViewModel;
@@ -25,7 +25,7 @@ namespace ChiisanaIroiro.Presenter.Impl
 
         public void Initialize()
         {
-            viewModel.CaseType.BindToICommonList(GetChangeCaseTypeList(), nvi => nvi.Name, nvi => nvi.Value);
+            viewModel.CaseType.BindToICommonList(GetChangeCaseTypeList());
         }
 
         private IEnumerable<NameValueItem> GetChangeCaseTypeList()
@@ -52,12 +52,12 @@ namespace ChiisanaIroiro.Presenter.Impl
             }
         }
 
-        public void OnException(Exception ex)
+        public void CaptureException(Exception ex)
         {
 
         }
 
-        public void OnAction(string action, string actionDesc)
+        public void CaptureAction(String action, String description)
         {
 
         }

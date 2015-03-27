@@ -31,17 +31,19 @@ namespace ChiisanaIroiro
         private void InitializeComponent()
         {
             this.mainTabControl = new System.Windows.Forms.TabControl();
-            this.textCaseTab = new System.Windows.Forms.TabPage();
+            this.changeCaseTab = new System.Windows.Forms.TabPage();
+            this.labelMakerTab = new System.Windows.Forms.TabPage();
             this.changeCaseView = new ChiisanaIroiro.View.ChangeCaseView();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.labelMakerView1 = new ChiisanaIroiro.View.LabelMakerView();
             this.mainTabControl.SuspendLayout();
-            this.textCaseTab.SuspendLayout();
+            this.changeCaseTab.SuspendLayout();
+            this.labelMakerTab.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainTabControl
             // 
-            this.mainTabControl.Controls.Add(this.textCaseTab);
-            this.mainTabControl.Controls.Add(this.tabPage2);
+            this.mainTabControl.Controls.Add(this.changeCaseTab);
+            this.mainTabControl.Controls.Add(this.labelMakerTab);
             this.mainTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainTabControl.Location = new System.Drawing.Point(0, 0);
             this.mainTabControl.Name = "mainTabControl";
@@ -49,16 +51,27 @@ namespace ChiisanaIroiro
             this.mainTabControl.Size = new System.Drawing.Size(329, 337);
             this.mainTabControl.TabIndex = 0;
             // 
-            // textCaseTab
+            // changeCaseTab
             // 
-            this.textCaseTab.Controls.Add(this.changeCaseView);
-            this.textCaseTab.Location = new System.Drawing.Point(4, 27);
-            this.textCaseTab.Name = "textCaseTab";
-            this.textCaseTab.Padding = new System.Windows.Forms.Padding(3);
-            this.textCaseTab.Size = new System.Drawing.Size(321, 306);
-            this.textCaseTab.TabIndex = 0;
-            this.textCaseTab.Text = "Text Case";
-            this.textCaseTab.UseVisualStyleBackColor = true;
+            this.changeCaseTab.Controls.Add(this.changeCaseView);
+            this.changeCaseTab.Location = new System.Drawing.Point(4, 27);
+            this.changeCaseTab.Name = "changeCaseTab";
+            this.changeCaseTab.Padding = new System.Windows.Forms.Padding(3);
+            this.changeCaseTab.Size = new System.Drawing.Size(321, 306);
+            this.changeCaseTab.TabIndex = 0;
+            this.changeCaseTab.Text = "Text Case";
+            this.changeCaseTab.UseVisualStyleBackColor = true;
+            // 
+            // labelMakerTab
+            // 
+            this.labelMakerTab.Controls.Add(this.labelMakerView1);
+            this.labelMakerTab.Location = new System.Drawing.Point(4, 27);
+            this.labelMakerTab.Name = "labelMakerTab";
+            this.labelMakerTab.Padding = new System.Windows.Forms.Padding(3);
+            this.labelMakerTab.Size = new System.Drawing.Size(321, 306);
+            this.labelMakerTab.TabIndex = 1;
+            this.labelMakerTab.Text = "Label Maker";
+            this.labelMakerTab.UseVisualStyleBackColor = true;
             // 
             // changeCaseView
             // 
@@ -72,15 +85,17 @@ namespace ChiisanaIroiro
             this.changeCaseView.Size = new System.Drawing.Size(315, 300);
             this.changeCaseView.TabIndex = 0;
             // 
-            // tabPage2
+            // labelMakerView1
             // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 27);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(321, 306);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.labelMakerView1.BackColor = System.Drawing.Color.Transparent;
+            this.labelMakerView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelMakerView1.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelMakerView1.Location = new System.Drawing.Point(3, 3);
+            this.labelMakerView1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.labelMakerView1.Name = "labelMakerView1";
+            this.labelMakerView1.ProcessedString = "";
+            this.labelMakerView1.Size = new System.Drawing.Size(315, 305);
+            this.labelMakerView1.TabIndex = 0;
             // 
             // MainForm
             // 
@@ -89,13 +104,15 @@ namespace ChiisanaIroiro
             this.ClientSize = new System.Drawing.Size(329, 337);
             this.Controls.Add(this.mainTabControl);
             this.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ちいさな色々";
             this.mainTabControl.ResumeLayout(false);
-            this.textCaseTab.ResumeLayout(false);
+            this.changeCaseTab.ResumeLayout(false);
+            this.labelMakerTab.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -103,9 +120,10 @@ namespace ChiisanaIroiro
         #endregion
 
         private System.Windows.Forms.TabControl mainTabControl;
-        private System.Windows.Forms.TabPage textCaseTab;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage changeCaseTab;
+        private System.Windows.Forms.TabPage labelMakerTab;
         private View.ChangeCaseView changeCaseView;
+        private LabelMakerView labelMakerView1;
     }
 }
 

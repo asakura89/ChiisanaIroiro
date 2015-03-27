@@ -1,4 +1,4 @@
-﻿using ChiisanaIroiro.Ayumi.Core;
+﻿using Ayumi.Logger;
 
 namespace ChiisanaIroiro.Presenter
 {
