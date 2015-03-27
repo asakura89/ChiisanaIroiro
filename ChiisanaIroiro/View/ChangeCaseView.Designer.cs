@@ -1,0 +1,97 @@
+﻿namespace ChiisanaIroiro.View
+{
+    partial class ChangeCaseView
+    {
+        /// <summary> 
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary> 
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Component Designer generated code
+
+        /// <summary> 
+        /// Required method for Designer support - do not modify 
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.txtTextCaseOutput = new System.Windows.Forms.TextBox();
+            this.btnChangeCase = new System.Windows.Forms.Button();
+            this.txtTextCaseInput = new System.Windows.Forms.TextBox();
+            this.cmbAvailableCase = new System.Windows.Forms.ComboBox();
+            this.SuspendLayout();
+            // 
+            // txtTextCaseOutput
+            // 
+            this.txtTextCaseOutput.Location = new System.Drawing.Point(3, 152);
+            this.txtTextCaseOutput.Multiline = true;
+            this.txtTextCaseOutput.Name = "txtTextCaseOutput";
+            this.txtTextCaseOutput.Size = new System.Drawing.Size(309, 67);
+            this.txtTextCaseOutput.TabIndex = 7;
+            // 
+            // btnChangeCase
+            // 
+            this.btnChangeCase.Location = new System.Drawing.Point(3, 108);
+            this.btnChangeCase.Name = "btnChangeCase";
+            this.btnChangeCase.Size = new System.Drawing.Size(309, 38);
+            this.btnChangeCase.TabIndex = 6;
+            this.btnChangeCase.Text = "Change Case";
+            this.btnChangeCase.UseVisualStyleBackColor = true;
+            this.btnChangeCase.Click += new System.EventHandler(this.btnChangeCase_Click);
+            // 
+            // txtTextCaseInput
+            // 
+            this.txtTextCaseInput.Location = new System.Drawing.Point(3, 35);
+            this.txtTextCaseInput.Multiline = true;
+            this.txtTextCaseInput.Name = "txtTextCaseInput";
+            this.txtTextCaseInput.Size = new System.Drawing.Size(309, 67);
+            this.txtTextCaseInput.TabIndex = 5;
+            // 
+            // cmbAvailableCase
+            // 
+            this.cmbAvailableCase.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbAvailableCase.FormattingEnabled = true;
+            this.cmbAvailableCase.Location = new System.Drawing.Point(3, 3);
+            this.cmbAvailableCase.Name = "cmbAvailableCase";
+            this.cmbAvailableCase.Size = new System.Drawing.Size(309, 26);
+            this.cmbAvailableCase.TabIndex = 4;
+            // 
+            // ChangeCaseView
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 18F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Transparent;
+            this.Controls.Add(this.txtTextCaseOutput);
+            this.Controls.Add(this.btnChangeCase);
+            this.Controls.Add(this.txtTextCaseInput);
+            this.Controls.Add(this.cmbAvailableCase);
+            this.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Name = "ChangeCaseView";
+            this.Size = new System.Drawing.Size(315, 300);
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.TextBox txtTextCaseOutput;
+        private System.Windows.Forms.Button btnChangeCase;
+        private System.Windows.Forms.TextBox txtTextCaseInput;
+        private System.Windows.Forms.ComboBox cmbAvailableCase;
+    }
+}
