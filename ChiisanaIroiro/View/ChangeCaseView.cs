@@ -17,9 +17,8 @@ namespace ChiisanaIroiro.View
         {
             InitializeComponent();
 
-            var registry = new ObjectRegistry();
-            IChangeCaseService service = registry.GetRegisteredObject<IChangeCaseService>();
-            presenter = registry.GetRegisteredObject<IChangeCasePresenter>(this, service);
+            IChangeCaseService service = ObjectRegistry.GetRegisteredObject<IChangeCaseService>();
+            presenter = ObjectRegistry.GetRegisteredObject<IChangeCasePresenter>(this, service);
             presenter.Initialize();
         }
 
@@ -30,8 +29,8 @@ namespace ChiisanaIroiro.View
 
         public String ProcessedString
         {
-            get { return txtTextCaseInput.Text; }
-            set { txtTextCaseOutput.Text = value; }
+            get { return txtInput.Text; }
+            set { txtOutput.Text = value; }
         }
 
         private void btnChangeCase_Click(object sender, EventArgs e)
@@ -40,6 +39,24 @@ namespace ChiisanaIroiro.View
             {
                 presenter.ChangeCaseAction();
                 presenter.CaptureAction("Change Case", "Change case has been done.");
+            }
+            catch (Exception ex)
+            {
+                presenter.CaptureException(ex);
+            }
+        }
+
+        private void btnClipboard_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtInput.Text != String.Empty)
+                {
+                    Clipboard.Clear();
+                    Clipboard.SetText(txtOutput.Text);
+
+                    MessageBox.Show("Text has been copied to clipboard.");
+                }
             }
             catch (Exception ex)
             {

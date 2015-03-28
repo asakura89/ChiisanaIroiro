@@ -25,11 +25,10 @@ namespace ChiisanaIroiro
 
         private static void InitializeObjectRegistry()
         {
-            IObjectRegistry registry = new ObjectRegistry();
-            registry.RegisterObject<IChangeCasePresenter, ChangeCasePresenter>();
-            registry.RegisterObject<IChangeCaseService, ChangeCaseService>();
-            registry.RegisterObject<IMakeLabelPresenter, MakeLabelPresenter>();
-            registry.RegisterObject<IMakeLabelService, MakeLabelService>();
+            ObjectRegistry.RegisterObject<IChangeCasePresenter, ChangeCasePresenter>();
+            ObjectRegistry.RegisterObject<IChangeCaseService, ChangeCaseService>();
+            ObjectRegistry.RegisterObject<IMakeLabelPresenter, MakeLabelPresenter>();
+            ObjectRegistry.RegisterObject<IMakeLabelService, MakeLabelService>();
         }
     }
 }

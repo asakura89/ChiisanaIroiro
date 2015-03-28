@@ -31,6 +31,7 @@
             this.txtOutput = new System.Windows.Forms.TextBox();
             this.btnMakeLabel = new System.Windows.Forms.Button();
             this.txtInput = new System.Windows.Forms.TextBox();
+            this.btnClipboard = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtOutput
@@ -59,11 +60,22 @@
             this.txtInput.Size = new System.Drawing.Size(309, 67);
             this.txtInput.TabIndex = 5;
             // 
+            // btnClipboard
+            // 
+            this.btnClipboard.Location = new System.Drawing.Point(3, 225);
+            this.btnClipboard.Name = "btnClipboard";
+            this.btnClipboard.Size = new System.Drawing.Size(309, 38);
+            this.btnClipboard.TabIndex = 9;
+            this.btnClipboard.Text = "Copy to Clipboard";
+            this.btnClipboard.UseVisualStyleBackColor = true;
+            this.btnClipboard.Click += new System.EventHandler(this.btnClipboard_Click);
+            // 
             // LabelMakerView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
+            this.Controls.Add(this.btnClipboard);
             this.Controls.Add(this.txtOutput);
             this.Controls.Add(this.btnMakeLabel);
             this.Controls.Add(this.txtInput);
@@ -81,5 +93,6 @@
         private System.Windows.Forms.TextBox txtOutput;
         private System.Windows.Forms.Button btnMakeLabel;
         private System.Windows.Forms.TextBox txtInput;
+        private System.Windows.Forms.Button btnClipboard;
     }
 }

@@ -28,19 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtTextCaseOutput = new System.Windows.Forms.TextBox();
+            this.txtOutput = new System.Windows.Forms.TextBox();
             this.btnChangeCase = new System.Windows.Forms.Button();
-            this.txtTextCaseInput = new System.Windows.Forms.TextBox();
+            this.txtInput = new System.Windows.Forms.TextBox();
             this.cmbAvailableCase = new System.Windows.Forms.ComboBox();
+            this.btnClipboard = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtTextCaseOutput
             // 
-            this.txtTextCaseOutput.Location = new System.Drawing.Point(3, 152);
-            this.txtTextCaseOutput.Multiline = true;
-            this.txtTextCaseOutput.Name = "txtTextCaseOutput";
-            this.txtTextCaseOutput.Size = new System.Drawing.Size(309, 67);
-            this.txtTextCaseOutput.TabIndex = 7;
+            this.txtOutput.Location = new System.Drawing.Point(3, 152);
+            this.txtOutput.Multiline = true;
+            this.txtOutput.Name = "txtOutput";
+            this.txtOutput.Size = new System.Drawing.Size(309, 67);
+            this.txtOutput.TabIndex = 7;
             // 
             // btnChangeCase
             // 
@@ -54,11 +55,11 @@
             // 
             // txtTextCaseInput
             // 
-            this.txtTextCaseInput.Location = new System.Drawing.Point(3, 35);
-            this.txtTextCaseInput.Multiline = true;
-            this.txtTextCaseInput.Name = "txtTextCaseInput";
-            this.txtTextCaseInput.Size = new System.Drawing.Size(309, 67);
-            this.txtTextCaseInput.TabIndex = 5;
+            this.txtInput.Location = new System.Drawing.Point(3, 35);
+            this.txtInput.Multiline = true;
+            this.txtInput.Name = "txtInput";
+            this.txtInput.Size = new System.Drawing.Size(309, 67);
+            this.txtInput.TabIndex = 5;
             // 
             // cmbAvailableCase
             // 
@@ -69,14 +70,25 @@
             this.cmbAvailableCase.Size = new System.Drawing.Size(309, 26);
             this.cmbAvailableCase.TabIndex = 4;
             // 
+            // btnClipboard
+            // 
+            this.btnClipboard.Location = new System.Drawing.Point(3, 225);
+            this.btnClipboard.Name = "btnClipboard";
+            this.btnClipboard.Size = new System.Drawing.Size(309, 38);
+            this.btnClipboard.TabIndex = 8;
+            this.btnClipboard.Text = "Copy to Clipboard";
+            this.btnClipboard.UseVisualStyleBackColor = true;
+            this.btnClipboard.Click += new System.EventHandler(this.btnClipboard_Click);
+            // 
             // ChangeCaseView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
-            this.Controls.Add(this.txtTextCaseOutput);
+            this.Controls.Add(this.btnClipboard);
+            this.Controls.Add(this.txtOutput);
             this.Controls.Add(this.btnChangeCase);
-            this.Controls.Add(this.txtTextCaseInput);
+            this.Controls.Add(this.txtInput);
             this.Controls.Add(this.cmbAvailableCase);
             this.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -89,9 +101,10 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox txtTextCaseOutput;
+        private System.Windows.Forms.TextBox txtOutput;
         private System.Windows.Forms.Button btnChangeCase;
-        private System.Windows.Forms.TextBox txtTextCaseInput;
+        private System.Windows.Forms.TextBox txtInput;
         private System.Windows.Forms.ComboBox cmbAvailableCase;
+        private System.Windows.Forms.Button btnClipboard;
     }
 }

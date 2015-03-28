@@ -15,9 +15,8 @@ namespace ChiisanaIroiro.View
         {
             InitializeComponent();
 
-            var registry = new ObjectRegistry();
-            IMakeLabelService service = registry.GetRegisteredObject<IMakeLabelService>();
-            presenter = registry.GetRegisteredObject<IMakeLabelPresenter>(this, service);
+            IMakeLabelService service = ObjectRegistry.GetRegisteredObject<IMakeLabelService>();
+            presenter = ObjectRegistry.GetRegisteredObject<IMakeLabelPresenter>(this, service);
         }
 
         public string ProcessedString
@@ -32,6 +31,24 @@ namespace ChiisanaIroiro.View
             {
                 presenter.MakeLabelAction();
                 presenter.CaptureAction("Make Label", "Make label has been done.");
+            }
+            catch (Exception ex)
+            {
+                presenter.CaptureException(ex);
+            }
+        }
+
+        private void btnClipboard_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtInput.Text != String.Empty)
+                {
+                    Clipboard.Clear();
+                    Clipboard.SetText(txtOutput.Text);
+
+                    MessageBox.Show("Text has been copied to clipboard.");
+                }
             }
             catch (Exception ex)
             {
