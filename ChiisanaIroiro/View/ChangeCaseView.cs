@@ -27,9 +27,15 @@ namespace ChiisanaIroiro.View
             get { return new DesktopDropdownList(cmbAvailableCase); }
         }
 
-        public String ProcessedString
+        public String InputString
         {
             get { return txtInput.Text; }
+            set { txtInput.Text = value; }
+        }
+
+        public String OutputString
+        {
+            get { return txtOutput.Text; }
             set { txtOutput.Text = value; }
         }
 
@@ -50,10 +56,10 @@ namespace ChiisanaIroiro.View
         {
             try
             {
-                if (txtInput.Text != String.Empty)
+                if (OutputString != String.Empty)
                 {
                     Clipboard.Clear();
-                    Clipboard.SetText(txtOutput.Text);
+                    Clipboard.SetText(OutputString);
 
                     MessageBox.Show("Text has been copied to clipboard.");
                 }

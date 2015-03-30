@@ -29,6 +29,8 @@ namespace ChiisanaIroiro
             ObjectRegistry.RegisterObject<IChangeCaseService, ChangeCaseService>();
             ObjectRegistry.RegisterObject<IMakeLabelPresenter, MakeLabelPresenter>();
             ObjectRegistry.RegisterObject<IMakeLabelService, MakeLabelService>();
+            ObjectRegistry.RegisterObject<IMakeHeaderPresenter, MakeHeaderPresenter>();
+            ObjectRegistry.RegisterObject<IMakeHeaderService, MakeHeaderService>();
         }
     }
 }

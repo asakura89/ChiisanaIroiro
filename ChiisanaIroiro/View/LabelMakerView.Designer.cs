@@ -39,6 +39,7 @@
             this.txtOutput.Location = new System.Drawing.Point(3, 152);
             this.txtOutput.Multiline = true;
             this.txtOutput.Name = "txtOutput";
+            this.txtOutput.ReadOnly = true;
             this.txtOutput.Size = new System.Drawing.Size(309, 67);
             this.txtOutput.TabIndex = 7;
             // 

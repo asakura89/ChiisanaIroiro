@@ -40,6 +40,7 @@
     <Compile Include="Core\IObjectRegistry.cs" />
     <Compile Include="Core\ObjectRegistry.cs" />
     <Compile Include="Data\ICommonList.cs" />
+    <Compile Include="Data\Is.cs" />
     <Compile Include="Data\NameValueCollection.cs" />
     <Compile Include="Data\NameValueItem.cs" />
     <Compile Include="Desktop\DesktopDropdownList.cs" />

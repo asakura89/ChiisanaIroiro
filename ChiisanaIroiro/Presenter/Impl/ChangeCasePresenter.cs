@@ -41,13 +41,13 @@ namespace ChiisanaIroiro.Presenter.Impl
             switch (selectedCaseType.Value)
             {
                 case ChangeCaseType.LowerCase:
-                    viewModel.ProcessedString = service.ToLowerCase(viewModel.ProcessedString);
+                    viewModel.OutputString = service.ToLowerCase(viewModel.InputString);
                     break;
                 case ChangeCaseType.UpperCase:
-                    viewModel.ProcessedString = service.ToUpperCase(viewModel.ProcessedString);
+                    viewModel.OutputString = service.ToUpperCase(viewModel.InputString);
                     break;
                 case ChangeCaseType.TitleCase:
-                    viewModel.ProcessedString = service.ToTitleCase(viewModel.ProcessedString);
+                    viewModel.OutputString = service.ToTitleCase(viewModel.InputString);
                     break;
             }
         }

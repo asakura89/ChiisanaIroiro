@@ -2,9 +2,9 @@
 
 namespace ChiisanaIroiro.ViewModel
 {
-    public interface IMakeLabelViewModel
+    public interface IMakeHeaderViewModel
     {
         String InputString { get; set; }
-        String OutputString { get; set; } 
+        String OutputString { get; set; }  
     }
 }

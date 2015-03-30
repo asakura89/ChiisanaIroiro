@@ -33,17 +33,21 @@ namespace ChiisanaIroiro
             this.mainTabControl = new System.Windows.Forms.TabControl();
             this.changeCaseTab = new System.Windows.Forms.TabPage();
             this.labelMakerTab = new System.Windows.Forms.TabPage();
-            this.changeCaseView = new ChiisanaIroiro.View.ChangeCaseView();
-            this.labelMakerView1 = new ChiisanaIroiro.View.LabelMakerView();
+            this.headerMakerTab = new System.Windows.Forms.TabPage();
+            this.changeCaseView = new ChangeCaseView();
+            this.labelMakerView = new LabelMakerView();
+            this.headerMakerView = new SourceHeaderTextView();
             this.mainTabControl.SuspendLayout();
             this.changeCaseTab.SuspendLayout();
             this.labelMakerTab.SuspendLayout();
+            this.headerMakerTab.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainTabControl
             // 
             this.mainTabControl.Controls.Add(this.changeCaseTab);
             this.mainTabControl.Controls.Add(this.labelMakerTab);
+            this.mainTabControl.Controls.Add(this.headerMakerTab);
             this.mainTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainTabControl.Location = new System.Drawing.Point(0, 0);
             this.mainTabControl.Name = "mainTabControl";
@@ -64,7 +68,7 @@ namespace ChiisanaIroiro
             // 
             // labelMakerTab
             // 
-            this.labelMakerTab.Controls.Add(this.labelMakerView1);
+            this.labelMakerTab.Controls.Add(this.labelMakerView);
             this.labelMakerTab.Location = new System.Drawing.Point(4, 27);
             this.labelMakerTab.Name = "labelMakerTab";
             this.labelMakerTab.Padding = new System.Windows.Forms.Padding(3);
@@ -72,6 +76,17 @@ namespace ChiisanaIroiro
             this.labelMakerTab.TabIndex = 1;
             this.labelMakerTab.Text = "Label Maker";
             this.labelMakerTab.UseVisualStyleBackColor = true;
+            // 
+            // headerMakerTab
+            // 
+            this.headerMakerTab.Controls.Add(this.headerMakerView);
+            this.headerMakerTab.Location = new System.Drawing.Point(4, 27);
+            this.headerMakerTab.Name = "headerMakerTab";
+            this.headerMakerTab.Padding = new System.Windows.Forms.Padding(3);
+            this.headerMakerTab.Size = new System.Drawing.Size(321, 306);
+            this.headerMakerTab.TabIndex = 2;
+            this.headerMakerTab.Text = "Header Maker";
+            this.headerMakerTab.UseVisualStyleBackColor = true;
             // 
             // changeCaseView
             // 
@@ -81,21 +96,33 @@ namespace ChiisanaIroiro
             this.changeCaseView.Location = new System.Drawing.Point(3, 3);
             this.changeCaseView.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.changeCaseView.Name = "changeCaseView";
-            this.changeCaseView.ProcessedString = "";
+            this.changeCaseView.InputString = "";
             this.changeCaseView.Size = new System.Drawing.Size(315, 300);
             this.changeCaseView.TabIndex = 0;
             // 
-            // labelMakerView1
+            // labelMakerView
             // 
-            this.labelMakerView1.BackColor = System.Drawing.Color.Transparent;
-            this.labelMakerView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelMakerView1.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelMakerView1.Location = new System.Drawing.Point(3, 3);
-            this.labelMakerView1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.labelMakerView1.Name = "labelMakerView1";
-            this.labelMakerView1.ProcessedString = "";
-            this.labelMakerView1.Size = new System.Drawing.Size(315, 305);
-            this.labelMakerView1.TabIndex = 0;
+            this.labelMakerView.BackColor = System.Drawing.Color.Transparent;
+            this.labelMakerView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelMakerView.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelMakerView.Location = new System.Drawing.Point(3, 3);
+            this.labelMakerView.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.labelMakerView.Name = "labelMakerView";
+            this.labelMakerView.InputString = "";
+            this.labelMakerView.Size = new System.Drawing.Size(315, 305);
+            this.labelMakerView.TabIndex = 0;
+            // 
+            // headerMakerView
+            // 
+            this.headerMakerView.BackColor = System.Drawing.Color.Transparent;
+            this.headerMakerView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.headerMakerView.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.headerMakerView.Location = new System.Drawing.Point(3, 3);
+            this.headerMakerView.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.headerMakerView.Name = "headerMakerView";
+            this.headerMakerView.InputString = "";
+            this.headerMakerView.Size = new System.Drawing.Size(315, 305);
+            this.headerMakerView.TabIndex = 0;
             // 
             // MainForm
             // 
@@ -113,6 +140,7 @@ namespace ChiisanaIroiro
             this.mainTabControl.ResumeLayout(false);
             this.changeCaseTab.ResumeLayout(false);
             this.labelMakerTab.ResumeLayout(false);
+            this.headerMakerTab.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -122,8 +150,10 @@ namespace ChiisanaIroiro
         private System.Windows.Forms.TabControl mainTabControl;
         private System.Windows.Forms.TabPage changeCaseTab;
         private System.Windows.Forms.TabPage labelMakerTab;
-        private View.ChangeCaseView changeCaseView;
-        private LabelMakerView labelMakerView1;
+        private System.Windows.Forms.TabPage headerMakerTab;
+        private ChangeCaseView changeCaseView;
+        private LabelMakerView labelMakerView;
+        private SourceHeaderTextView headerMakerView;
     }
 }
 

@@ -1,22 +1,17 @@
 ﻿using System;
 using System.Windows.Forms;
-using Ayumi.Core;
 using ChiisanaIroiro.Presenter;
-using ChiisanaIroiro.Service;
 using ChiisanaIroiro.ViewModel;
 
 namespace ChiisanaIroiro.View
 {
-    public partial class LabelMakerView : UserControl, IMakeLabelViewModel
+    public partial class SourceHeaderTextView : UserControl, IMakeHeaderViewModel
     {
-        private readonly IMakeLabelPresenter presenter;
+        private readonly IMakeHeaderPresenter presenter;
 
-        public LabelMakerView()
+        public SourceHeaderTextView()
         {
             InitializeComponent();
-
-            IMakeLabelService service = ObjectRegistry.GetRegisteredObject<IMakeLabelService>();
-            presenter = ObjectRegistry.GetRegisteredObject<IMakeLabelPresenter>(this, service);
         }
 
         public String InputString
@@ -31,12 +26,12 @@ namespace ChiisanaIroiro.View
             set { txtOutput.Text = value; }
         }
 
-        private void btnMakeLabel_Click(object sender, EventArgs e)
+        private void btnMakeHeader_Click(object sender, EventArgs e)
         {
             try
             {
-                presenter.MakeLabelAction();
-                presenter.CaptureAction("Make Label", "Make label has been done.");
+                presenter.MakeHeaderAction();
+                presenter.CaptureAction("Make Header", "Make header has been done.");
             }
             catch (Exception ex)
             {

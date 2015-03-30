@@ -6,6 +6,7 @@ namespace ChiisanaIroiro.ViewModel
     public interface IChangeCaseViewModel
     {
         ICommonList CaseType { get; }
-        String ProcessedString { get; set; }
+        String InputString { get; set; }
+        String OutputString { get; set; } 
     }
 }

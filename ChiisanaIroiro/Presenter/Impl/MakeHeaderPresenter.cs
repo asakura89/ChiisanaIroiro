@@ -4,12 +4,12 @@ using ChiisanaIroiro.ViewModel;
 
 namespace ChiisanaIroiro.Presenter.Impl
 {
-    public class MakeLabelPresenter : IMakeLabelPresenter
+    public class MakeHeaderPresenter : IMakeHeaderPresenter
     {
-        private readonly IMakeLabelViewModel viewModel;
-        private readonly IMakeLabelService service;
+        private readonly IMakeHeaderViewModel viewModel;
+        private readonly IMakeHeaderService service;
 
-        public MakeLabelPresenter(IMakeLabelViewModel viewModel, IMakeLabelService service)
+        public MakeHeaderPresenter(IMakeHeaderViewModel viewModel, IMakeHeaderService service)
         {
             if (viewModel == null)
                 throw new ArgumentNullException("viewModel");
@@ -20,19 +20,19 @@ namespace ChiisanaIroiro.Presenter.Impl
             this.service = service;
         }
 
-        public void MakeLabelAction()
-        {
-            viewModel.OutputString = service.MakeLabel(viewModel.InputString);
-        }
-
         public void CaptureException(Exception ex)
         {
-            
+
         }
 
         public void CaptureAction(String action, String description)
         {
 
+        }
+
+        public void MakeHeaderAction()
+        {
+            viewModel.OutputString = service.MakeHeader(viewModel.InputString);
         }
     }
 }
