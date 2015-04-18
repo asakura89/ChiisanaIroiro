@@ -5,7 +5,16 @@ namespace ChiisanaIroiro.Service.Impl
 {
     public class MakeLabelService : IMakeLabelService
     {
-        public String MakeLabel(String labelText)
+        String IMakeLabelService.MakeLabel(String labelText)
+        {
+            var labelBuilder = new StringBuilder();
+            labelBuilder.Append(MakeLabel(labelText + ": begin") + "\r\n");
+            labelBuilder.Append(MakeLabel(labelText + ": end"));
+
+            return labelBuilder.ToString();
+        }
+
+        private String MakeLabel(String labelText)
         {
             const Int16 MaxFinalLabelLength = 80;
             const Int16 AdditionalCharLength = 8; // NOTE: additionalChar is Opening and Closing Chars + 2 space before and after label
@@ -26,6 +35,29 @@ namespace ChiisanaIroiro.Service.Impl
             labelBuilder.Append(ClosingChar);
 
             String finalLabel = labelBuilder.ToString();
+
+            return finalLabel;
+        }
+
+        String IMakeLabelService.MakeRegionLabel(String labelText)
+        {
+            var regionLabelBuilder = new StringBuilder();
+            regionLabelBuilder.Append("#region " + MakeRegionLabel(labelText) + "\r\n");
+            regionLabelBuilder.Append("#endregion");
+
+            return regionLabelBuilder.ToString();
+        }
+
+        private String MakeRegionLabel(String labelText)
+        {
+            const String OpeningChar = ": ";
+            const String ClosingChar = " :";
+
+            var regionLabelBuilder = new StringBuilder();
+            regionLabelBuilder.Append(OpeningChar);
+            regionLabelBuilder.Append(labelText);
+            regionLabelBuilder.Append(ClosingChar);
+            String finalLabel = regionLabelBuilder.ToString();
 
             return finalLabel;
         }

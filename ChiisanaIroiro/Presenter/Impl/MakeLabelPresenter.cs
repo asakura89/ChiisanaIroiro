@@ -1,4 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using Ayumi.Data;
+using Ayumi.Extension;
+using ChiisanaIroiro.Constant;
 using ChiisanaIroiro.Service;
 using ChiisanaIroiro.ViewModel;
 
@@ -20,9 +24,29 @@ namespace ChiisanaIroiro.Presenter.Impl
             this.service = service;
         }
 
+        public void Initialize()
+        {
+            viewModel.LabelType.BindToICommonList(GetLabelTypeList());
+        }
+
+        private IEnumerable<NameValueItem> GetLabelTypeList()
+        {
+            yield return new NameValueItem("Normal label", LabelType.NormalLabel);
+            yield return new NameValueItem("Region label", LabelType.RegionLabel);
+        }
+
         public void MakeLabelAction()
         {
-            viewModel.OutputString = service.MakeLabel(viewModel.InputString);
+            NameValueItem selectedLabelType = viewModel.LabelType.SelectedItem;
+            switch (selectedLabelType.Value)
+            {
+                case LabelType.NormalLabel:
+                    viewModel.OutputString = service.MakeLabel(viewModel.InputString);
+                    break;
+                case LabelType.RegionLabel:
+                    viewModel.OutputString = service.MakeRegionLabel(viewModel.InputString);
+                    break;
+            }
         }
 
         public void CaptureException(Exception ex)

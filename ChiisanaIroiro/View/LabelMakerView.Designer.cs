@@ -31,6 +31,7 @@
             this.txtOutput = new System.Windows.Forms.TextBox();
             this.btnMakeLabel = new System.Windows.Forms.Button();
             this.txtInput = new System.Windows.Forms.TextBox();
+            this.cmbLabelType = new System.Windows.Forms.ComboBox();
             this.btnClipboard = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -61,6 +62,15 @@
             this.txtInput.Size = new System.Drawing.Size(309, 67);
             this.txtInput.TabIndex = 5;
             // 
+            // cmbLabelType
+            // 
+            this.cmbLabelType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbLabelType.FormattingEnabled = true;
+            this.cmbLabelType.Location = new System.Drawing.Point(3, 3);
+            this.cmbLabelType.Name = "cmbAvailableCase";
+            this.cmbLabelType.Size = new System.Drawing.Size(309, 26);
+            this.cmbLabelType.TabIndex = 4;
+            // 
             // btnClipboard
             // 
             this.btnClipboard.Location = new System.Drawing.Point(3, 225);
@@ -80,6 +90,7 @@
             this.Controls.Add(this.txtOutput);
             this.Controls.Add(this.btnMakeLabel);
             this.Controls.Add(this.txtInput);
+            this.Controls.Add(this.cmbLabelType);
             this.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "LabelMakerView";
@@ -94,6 +105,7 @@
         private System.Windows.Forms.TextBox txtOutput;
         private System.Windows.Forms.Button btnMakeLabel;
         private System.Windows.Forms.TextBox txtInput;
+        private System.Windows.Forms.ComboBox cmbLabelType;
         private System.Windows.Forms.Button btnClipboard;
     }
 }

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
 using Ayumi.Core;
+using Ayumi.Data;
+using Ayumi.Desktop;
 using ChiisanaIroiro.Presenter;
 using ChiisanaIroiro.Service;
 using ChiisanaIroiro.ViewModel;
@@ -17,6 +19,11 @@ namespace ChiisanaIroiro.View
 
             IMakeLabelService service = ObjectRegistry.GetRegisteredObject<IMakeLabelService>();
             presenter = ObjectRegistry.GetRegisteredObject<IMakeLabelPresenter>(this, service);
+            presenter.Initialize();
+        }
+        public ICommonList LabelType
+        {
+            get { return new DesktopDropdownList(cmbLabelType); }
         }
 
         public String InputString
