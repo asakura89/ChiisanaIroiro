@@ -5,41 +5,30 @@ using Ayumi.Extension;
 using ChiisanaIroiro.Constant;
 using ChiisanaIroiro.Service;
 using ChiisanaIroiro.ViewModel;
+using Nvy;
 
-namespace ChiisanaIroiro.Presenter.Impl
-{
-    public class MakeLabelPresenter : IMakeLabelPresenter
-    {
-        private readonly IMakeLabelViewModel viewModel;
-        private readonly IMakeLabelService service;
+namespace ChiisanaIroiro.Presenter.Impl {
+    public class MakeLabelPresenter : IMakeLabelPresenter {
+        readonly IMakeLabelService service;
+        readonly IMakeLabelViewModel viewModel;
 
-        public MakeLabelPresenter(IMakeLabelViewModel viewModel, IMakeLabelService service)
-        {
+        public MakeLabelPresenter(IMakeLabelViewModel viewModel, IMakeLabelService service) {
             if (viewModel == null)
-                throw new ArgumentNullException("viewModel");
+                throw new ArgumentNullException(nameof(viewModel));
             if (service == null)
-                throw new ArgumentNullException("service");
+                throw new ArgumentNullException(nameof(service));
 
             this.viewModel = viewModel;
             this.service = service;
         }
 
-        public void Initialize()
-        {
+        public void Initialize() {
             viewModel.LabelType.BindToICommonList(GetLabelTypeList());
         }
 
-        private IEnumerable<NameValueItem> GetLabelTypeList()
-        {
-            yield return new NameValueItem("Normal label", LabelType.NormalLabel);
-            yield return new NameValueItem("Region label", LabelType.RegionLabel);
-        }
-
-        public void MakeLabelAction()
-        {
+        public void MakeLabelAction() {
             NameValueItem selectedLabelType = viewModel.LabelType.SelectedItem;
-            switch (selectedLabelType.Value)
-            {
+            switch (selectedLabelType.Value) {
                 case LabelType.NormalLabel:
                     viewModel.OutputString = service.MakeLabel(viewModel.InputString);
                     break;
@@ -49,14 +38,13 @@ namespace ChiisanaIroiro.Presenter.Impl
             }
         }
 
-        public void CaptureException(Exception ex)
-        {
-            
-        }
+        public void CaptureException(Exception ex) { }
 
-        public void CaptureAction(String action, String description)
-        {
+        public void CaptureAction(String action, String description) { }
 
+        IEnumerable<NameValueItem> GetLabelTypeList() {
+            yield return new NameValueItem("Normal label", LabelType.NormalLabel);
+            yield return new NameValueItem("Region label", LabelType.RegionLabel);
         }
     }
 }

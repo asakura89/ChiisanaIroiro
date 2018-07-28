@@ -1,14 +1,12 @@
 ﻿using System;
 
-namespace Ayumi.Logger
-{
+namespace Ayumi.Logger {
     /// <summary>
-    /// Defines basic user action capture functionality.
+    ///     Defines basic user action capture functionality.
     /// </summary>
-    public interface IActionCapture
-    {
+    public interface IActionCapture {
         /// <summary>
-        /// Capture current performed user action.
+        ///     Capture current performed user action.
         /// </summary>
         /// <param name="action">Performed user action.</param>
         /// <param name="description">Action description.</param>

@@ -1,7 +1,5 @@
-﻿namespace Ayumi.Logger
-{
-    public enum LogLevel
-    {
+﻿namespace Ayumi.Logger {
+    public enum LogLevel {
         All,
         Debug,
         Info,

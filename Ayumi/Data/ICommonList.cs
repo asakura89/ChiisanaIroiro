@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using Nvy;
 
-namespace Ayumi.Data
-{
-    public interface ICommonList
-    {
+namespace Ayumi.Data {
+    public interface ICommonList {
         Int32 SelectedIndex { get; set; }
         NameValueItem SelectedItem { get; set; }
         NameValueItem this[Int32 index] { get; set; }

@@ -7,7 +7,7 @@ namespace ChiisanaIroiro
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        System.ComponentModel.IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -22,138 +22,162 @@ namespace ChiisanaIroiro
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
-
         /// <summary>
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
+        void InitializeComponent()
         {
-            this.mainTabControl = new System.Windows.Forms.TabControl();
-            this.changeCaseTab = new System.Windows.Forms.TabPage();
-            this.labelMakerTab = new System.Windows.Forms.TabPage();
-            this.headerMakerTab = new System.Windows.Forms.TabPage();
-            this.changeCaseView = new ChangeCaseView();
-            this.labelMakerView = new LabelMakerView();
-            this.headerMakerView = new SourceHeaderTextView();
-            this.mainTabControl.SuspendLayout();
-            this.changeCaseTab.SuspendLayout();
-            this.labelMakerTab.SuspendLayout();
-            this.headerMakerTab.SuspendLayout();
-            this.SuspendLayout();
+            mainTabControl = new System.Windows.Forms.TabControl();
+            changeCaseTab = new System.Windows.Forms.TabPage();
+            labelMakerTab = new System.Windows.Forms.TabPage();
+            headerMakerTab = new System.Windows.Forms.TabPage();
+            generateTemplateTab = new System.Windows.Forms.TabPage();
+            changeCaseView = new ChangeCaseView();
+            labelMakerView = new LabelMakerView();
+            headerMakerView = new SourceHeaderTextView();
+            generateTemplateView = new GenerateSqlTemplateView();
+            mainTabControl.SuspendLayout();
+            changeCaseTab.SuspendLayout();
+            labelMakerTab.SuspendLayout();
+            headerMakerTab.SuspendLayout();
+            generateTemplateTab.SuspendLayout();
+            SuspendLayout();
             // 
             // mainTabControl
             // 
-            this.mainTabControl.Controls.Add(this.changeCaseTab);
-            this.mainTabControl.Controls.Add(this.labelMakerTab);
-            this.mainTabControl.Controls.Add(this.headerMakerTab);
-            this.mainTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mainTabControl.Location = new System.Drawing.Point(0, 0);
-            this.mainTabControl.Name = "mainTabControl";
-            this.mainTabControl.SelectedIndex = 0;
-            this.mainTabControl.Size = new System.Drawing.Size(329, 337);
-            this.mainTabControl.TabIndex = 0;
+            mainTabControl.Controls.Add(changeCaseTab);
+            mainTabControl.Controls.Add(labelMakerTab);
+            mainTabControl.Controls.Add(headerMakerTab);
+            mainTabControl.Controls.Add(generateTemplateTab);
+            mainTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            mainTabControl.Location = new System.Drawing.Point(0, 0);
+            mainTabControl.Name = "mainTabControl";
+            mainTabControl.SelectedIndex = 0;
+            mainTabControl.Size = new System.Drawing.Size(329, 337);
+            mainTabControl.TabIndex = 0;
             // 
             // changeCaseTab
             // 
-            this.changeCaseTab.Controls.Add(this.changeCaseView);
-            this.changeCaseTab.Location = new System.Drawing.Point(4, 27);
-            this.changeCaseTab.Name = "changeCaseTab";
-            this.changeCaseTab.Padding = new System.Windows.Forms.Padding(3);
-            this.changeCaseTab.Size = new System.Drawing.Size(321, 306);
-            this.changeCaseTab.TabIndex = 0;
-            this.changeCaseTab.Text = "Text Case";
-            this.changeCaseTab.UseVisualStyleBackColor = true;
+            changeCaseTab.Controls.Add(changeCaseView);
+            changeCaseTab.Location = new System.Drawing.Point(4, 27);
+            changeCaseTab.Name = "changeCaseTab";
+            changeCaseTab.Padding = new System.Windows.Forms.Padding(3);
+            changeCaseTab.Size = new System.Drawing.Size(321, 306);
+            changeCaseTab.TabIndex = 0;
+            changeCaseTab.Text = "Text Case";
+            changeCaseTab.UseVisualStyleBackColor = true;
             // 
             // labelMakerTab
             // 
-            this.labelMakerTab.Controls.Add(this.labelMakerView);
-            this.labelMakerTab.Location = new System.Drawing.Point(4, 27);
-            this.labelMakerTab.Name = "labelMakerTab";
-            this.labelMakerTab.Padding = new System.Windows.Forms.Padding(3);
-            this.labelMakerTab.Size = new System.Drawing.Size(321, 306);
-            this.labelMakerTab.TabIndex = 1;
-            this.labelMakerTab.Text = "Label Maker";
-            this.labelMakerTab.UseVisualStyleBackColor = true;
+            labelMakerTab.Controls.Add(labelMakerView);
+            labelMakerTab.Location = new System.Drawing.Point(4, 27);
+            labelMakerTab.Name = "labelMakerTab";
+            labelMakerTab.Padding = new System.Windows.Forms.Padding(3);
+            labelMakerTab.Size = new System.Drawing.Size(321, 306);
+            labelMakerTab.TabIndex = 1;
+            labelMakerTab.Text = "Label Maker";
+            labelMakerTab.UseVisualStyleBackColor = true;
             // 
             // headerMakerTab
             // 
-            this.headerMakerTab.Controls.Add(this.headerMakerView);
-            this.headerMakerTab.Location = new System.Drawing.Point(4, 27);
-            this.headerMakerTab.Name = "headerMakerTab";
-            this.headerMakerTab.Padding = new System.Windows.Forms.Padding(3);
-            this.headerMakerTab.Size = new System.Drawing.Size(321, 306);
-            this.headerMakerTab.TabIndex = 2;
-            this.headerMakerTab.Text = "Header Maker";
-            this.headerMakerTab.UseVisualStyleBackColor = true;
+            headerMakerTab.Controls.Add(headerMakerView);
+            headerMakerTab.Location = new System.Drawing.Point(4, 27);
+            headerMakerTab.Name = "headerMakerTab";
+            headerMakerTab.Padding = new System.Windows.Forms.Padding(3);
+            headerMakerTab.Size = new System.Drawing.Size(321, 306);
+            headerMakerTab.TabIndex = 2;
+            headerMakerTab.Text = "Header Maker";
+            headerMakerTab.UseVisualStyleBackColor = true;
+            // 
+            // generateTemplateTab
+            // 
+            generateTemplateTab.Controls.Add(generateTemplateView);
+            generateTemplateTab.Location = new System.Drawing.Point(4, 27);
+            generateTemplateTab.Name = "generateTemplateTab";
+            generateTemplateTab.Padding = new System.Windows.Forms.Padding(3);
+            generateTemplateTab.Size = new System.Drawing.Size(321, 306);
+            generateTemplateTab.TabIndex = 2;
+            generateTemplateTab.Text = "Generate Sql Template";
+            generateTemplateTab.UseVisualStyleBackColor = true;
             // 
             // changeCaseView
             // 
-            this.changeCaseView.BackColor = System.Drawing.Color.Transparent;
-            this.changeCaseView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.changeCaseView.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.changeCaseView.Location = new System.Drawing.Point(3, 3);
-            this.changeCaseView.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.changeCaseView.Name = "changeCaseView";
-            this.changeCaseView.InputString = "";
-            this.changeCaseView.Size = new System.Drawing.Size(315, 300);
-            this.changeCaseView.TabIndex = 0;
+            changeCaseView.BackColor = System.Drawing.Color.Transparent;
+            changeCaseView.Dock = System.Windows.Forms.DockStyle.Fill;
+            changeCaseView.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            changeCaseView.Location = new System.Drawing.Point(3, 3);
+            changeCaseView.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            changeCaseView.Name = "changeCaseView";
+            changeCaseView.InputString = "";
+            changeCaseView.Size = new System.Drawing.Size(315, 300);
+            changeCaseView.TabIndex = 0;
             // 
             // labelMakerView
             // 
-            this.labelMakerView.BackColor = System.Drawing.Color.Transparent;
-            this.labelMakerView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelMakerView.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelMakerView.Location = new System.Drawing.Point(3, 3);
-            this.labelMakerView.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.labelMakerView.Name = "labelMakerView";
-            this.labelMakerView.InputString = "";
-            this.labelMakerView.Size = new System.Drawing.Size(315, 305);
-            this.labelMakerView.TabIndex = 0;
+            labelMakerView.BackColor = System.Drawing.Color.Transparent;
+            labelMakerView.Dock = System.Windows.Forms.DockStyle.Fill;
+            labelMakerView.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            labelMakerView.Location = new System.Drawing.Point(3, 3);
+            labelMakerView.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            labelMakerView.Name = "labelMakerView";
+            labelMakerView.InputString = "";
+            labelMakerView.Size = new System.Drawing.Size(315, 305);
+            labelMakerView.TabIndex = 0;
             // 
             // headerMakerView
             // 
-            this.headerMakerView.BackColor = System.Drawing.Color.Transparent;
-            this.headerMakerView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.headerMakerView.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.headerMakerView.Location = new System.Drawing.Point(3, 3);
-            this.headerMakerView.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.headerMakerView.Name = "headerMakerView";
-            this.headerMakerView.InputString = "";
-            this.headerMakerView.Size = new System.Drawing.Size(315, 305);
-            this.headerMakerView.TabIndex = 0;
+            headerMakerView.BackColor = System.Drawing.Color.Transparent;
+            headerMakerView.Dock = System.Windows.Forms.DockStyle.Fill;
+            headerMakerView.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            headerMakerView.Location = new System.Drawing.Point(3, 3);
+            headerMakerView.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            headerMakerView.Name = "headerMakerView";
+            headerMakerView.InputString = "";
+            headerMakerView.Size = new System.Drawing.Size(315, 305);
+            headerMakerView.TabIndex = 0;
+            // 
+            // generateTemplateView
+            // 
+            generateTemplateView.BackColor = System.Drawing.Color.Transparent;
+            generateTemplateView.Dock = System.Windows.Forms.DockStyle.Fill;
+            generateTemplateView.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            generateTemplateView.Location = new System.Drawing.Point(3, 3);
+            generateTemplateView.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            generateTemplateView.Name = "generateTemplateView";
+            generateTemplateView.Size = new System.Drawing.Size(315, 305);
+            generateTemplateView.TabIndex = 0;
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 18F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(329, 337);
-            this.Controls.Add(this.mainTabControl);
-            this.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.MaximizeBox = false;
-            this.Name = "MainForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "ちいさな色々";
-            this.mainTabControl.ResumeLayout(false);
-            this.changeCaseTab.ResumeLayout(false);
-            this.labelMakerTab.ResumeLayout(false);
-            this.headerMakerTab.ResumeLayout(false);
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 18F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(329, 337);
+            Controls.Add(mainTabControl);
+            Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            MaximizeBox = false;
+            Name = "MainForm";
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            Text = "ちいさな色々";
+            mainTabControl.ResumeLayout(false);
+            changeCaseTab.ResumeLayout(false);
+            labelMakerTab.ResumeLayout(false);
+            headerMakerTab.ResumeLayout(false);
+            generateTemplateTab.ResumeLayout(false);
+            ResumeLayout(false);
         }
 
-        #endregion
-
-        private System.Windows.Forms.TabControl mainTabControl;
-        private System.Windows.Forms.TabPage changeCaseTab;
-        private System.Windows.Forms.TabPage labelMakerTab;
-        private System.Windows.Forms.TabPage headerMakerTab;
-        private ChangeCaseView changeCaseView;
-        private LabelMakerView labelMakerView;
-        private SourceHeaderTextView headerMakerView;
+        System.Windows.Forms.TabControl mainTabControl;
+        System.Windows.Forms.TabPage changeCaseTab;
+        System.Windows.Forms.TabPage labelMakerTab;
+        System.Windows.Forms.TabPage headerMakerTab;
+        System.Windows.Forms.TabPage generateTemplateTab;
+        ChangeCaseView changeCaseView;
+        LabelMakerView labelMakerView;
+        SourceHeaderTextView headerMakerView;
+        GenerateSqlTemplateView generateTemplateView;
     }
 }
 

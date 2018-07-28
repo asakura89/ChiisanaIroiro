@@ -7,64 +7,50 @@ using ChiisanaIroiro.Presenter;
 using ChiisanaIroiro.Service;
 using ChiisanaIroiro.ViewModel;
 
-namespace ChiisanaIroiro.View
-{
-    public partial class LabelMakerView : UserControl, IMakeLabelViewModel
-    {
-        private readonly IMakeLabelPresenter presenter;
+namespace ChiisanaIroiro.View {
+    public partial class LabelMakerView : UserControl, IMakeLabelViewModel {
+        readonly IMakeLabelPresenter presenter;
 
-        public LabelMakerView()
-        {
+        public LabelMakerView() {
             InitializeComponent();
 
             IMakeLabelService service = ObjectRegistry.GetRegisteredObject<IMakeLabelService>();
             presenter = ObjectRegistry.GetRegisteredObject<IMakeLabelPresenter>(this, service);
             presenter.Initialize();
         }
-        public ICommonList LabelType
-        {
-            get { return new DesktopDropdownList(cmbLabelType); }
-        }
 
-        public String InputString
-        {
+        public ICommonList LabelType => new DesktopDropdownList(cmbLabelType);
+
+        public String InputString {
             get { return txtInput.Text; }
             set { txtInput.Text = value; }
         }
 
-        public String OutputString
-        {
+        public String OutputString {
             get { return txtOutput.Text; }
             set { txtOutput.Text = value; }
         }
 
-        private void btnMakeLabel_Click(object sender, EventArgs e)
-        {
-            try
-            {
+        void btnMakeLabel_Click(object sender, EventArgs e) {
+            try {
                 presenter.MakeLabelAction();
                 presenter.CaptureAction("Make Label", "Make label has been done.");
             }
-            catch (Exception ex)
-            {
+            catch (Exception ex) {
                 presenter.CaptureException(ex);
             }
         }
 
-        private void btnClipboard_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (OutputString != String.Empty)
-                {
+        void btnClipboard_Click(object sender, EventArgs e) {
+            try {
+                if (OutputString != String.Empty) {
                     Clipboard.Clear();
                     Clipboard.SetText(OutputString);
 
                     MessageBox.Show("Text has been copied to clipboard.");
                 }
             }
-            catch (Exception ex)
-            {
+            catch (Exception ex) {
                 presenter.CaptureException(ex);
             }
         }

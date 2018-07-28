@@ -4,10 +4,8 @@ using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
 
-namespace Ayumi.Desktop
-{
-    public static class ListControlExtensions
-    {
+namespace Ayumi.Desktop {
+    public static class ListControlExtensions {
         /*private static void ClearItemList(this ListControl listControl)
         {
             if (listControl is ComboBox)
@@ -20,36 +18,34 @@ namespace Ayumi.Desktop
             listControl.DataSource = null;
         }*/
 
-        private static void SetItemList(this ListControl listControl, IEnumerable dataList, String display, String value)
-        {
+        static void SetItemList(this ListControl listControl, IEnumerable dataList, String display, String value) {
             listControl.DisplayMember = display;
             listControl.ValueMember = value;
             listControl.DataSource = dataList;
         }
 
-        private static void SetItemList(this ListControl listControl, DataTable dataTable, String display, String value)
-        {
+        static void SetItemList(this ListControl listControl, DataTable dataTable, String display, String value) {
             listControl.DisplayMember = display;
             listControl.ValueMember = value;
             listControl.DataSource = dataTable;
         }
 
-        public static void PopulateWithRawDataList<T>(this ListControl listControl, IList<T> dataList, String display, String value)
-        {
+        public static void PopulateWithRawDataList<T>(this ListControl listControl, IList<T> dataList, String display,
+            String value) {
             //ClearItemList(listControl);
             listControl.DataSource = null;
             SetItemList(listControl, dataList, display, value);
         }
 
-        public static void PopulateWithRawDataList(this ListControl listControl, DataTable dataTable, String display, String value)
-        {
+        public static void PopulateWithRawDataList(this ListControl listControl, DataTable dataTable, String display,
+            String value) {
             //ClearItemList(listControl);
             listControl.DataSource = null;
             SetItemList(listControl, dataTable, display, value);
         }
 
-        public static void PopulateWithDataList<T>(this ListControl listControl, IList<T> dataList, String display, String value)
-        {
+        public static void PopulateWithDataList<T>(this ListControl listControl, IList<T> dataList, String display,
+            String value) {
             var newT = Activator.CreateInstance<T>();
             dataList.Insert(0, newT);
             //ClearItemList(listControl);
@@ -57,15 +53,13 @@ namespace Ayumi.Desktop
             SetItemList(listControl, dataList, display, value);
         }
 
-        public static void PopulateWithDataList(this ListControl listControl, DataTable dataTable, String display, String value)
-        {
+        public static void PopulateWithDataList(this ListControl listControl, DataTable dataTable, String display,
+            String value) {
             DataRow emptyRow = dataTable.NewRow();
             Int32 colCount = dataTable.Columns.Count;
-            for (int i = 0; i < colCount; i++)
-            {
+            for (int i = 0; i < colCount; i++) {
                 String currentColumnType = dataTable.Columns[i].DataType.Name;
-                switch (currentColumnType)
-                {
+                switch (currentColumnType) {
                     case "Boolean":
                         emptyRow[i] = false;
                         break;
@@ -103,6 +97,6 @@ namespace Ayumi.Desktop
             //ClearItemList(listControl);
             listControl.DataSource = null;
             SetItemList(listControl, dataTable, display, value);
-        } 
+        }
     }
 }

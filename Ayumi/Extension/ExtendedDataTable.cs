@@ -3,20 +3,15 @@ using System.Collections.Generic;
 using System.Data;
 using System.Reflection;
 
-namespace Ayumi.Extension
-{
-    public static class ExtendedDataTable
-    {
-        public static IEnumerable<TResult> MapToIEnumerableProperty<TResult>(this DataTable dt)
-        {
-            foreach (DataRow dataRow in dt.Rows)
-            {
+namespace Ayumi.Extension {
+    public static class ExtendedDataTable {
+        public static IEnumerable<TResult> MapToIEnumerableProperty<TResult>(this DataTable dt) {
+            foreach (DataRow dataRow in dt.Rows) {
                 var t = Activator.CreateInstance<TResult>();
                 Type tType = typeof(TResult);
                 PropertyInfo[] tProperties = tType.GetProperties();
 
-                foreach (PropertyInfo property in tProperties)
-                {
+                foreach (PropertyInfo property in tProperties) {
                     Type propertyType = property.PropertyType;
 
                     if (dataRow[property.Name] != DBNull.Value)
@@ -27,16 +22,13 @@ namespace Ayumi.Extension
             }
         }
 
-        public static IEnumerable<TResult> MapToIEnumerableField<TResult>(this DataTable dt)
-        {
-            foreach (DataRow dataRow in dt.Rows)
-            {
+        public static IEnumerable<TResult> MapToIEnumerableField<TResult>(this DataTable dt) {
+            foreach (DataRow dataRow in dt.Rows) {
                 var t = Activator.CreateInstance<TResult>();
                 Type tType = typeof(TResult);
                 FieldInfo[] tFields = tType.GetFields();
 
-                foreach (FieldInfo field in tFields)
-                {
+                foreach (FieldInfo field in tFields) {
                     Type fieldType = field.FieldType;
 
                     if (dataRow[field.Name] != DBNull.Value)
@@ -45,6 +37,6 @@ namespace Ayumi.Extension
 
                 yield return t;
             }
-        } 
+        }
     }
 }

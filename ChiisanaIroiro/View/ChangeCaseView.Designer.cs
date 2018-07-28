@@ -1,11 +1,13 @@
-﻿namespace ChiisanaIroiro.View
+﻿using FastColoredTextBoxNS;
+
+namespace ChiisanaIroiro.View
 {
     partial class ChangeCaseView
     {
         /// <summary> 
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        System.ComponentModel.IContainer components = null;
 
         /// <summary> 
         /// Clean up any resources being used.
@@ -20,92 +22,85 @@
             base.Dispose(disposing);
         }
 
-        #region Component Designer generated code
-
         /// <summary> 
         /// Required method for Designer support - do not modify 
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
-        {
-            this.txtOutput = new System.Windows.Forms.TextBox();
-            this.btnChangeCase = new System.Windows.Forms.Button();
-            this.txtInput = new System.Windows.Forms.TextBox();
-            this.cmbAvailableCase = new System.Windows.Forms.ComboBox();
-            this.btnClipboard = new System.Windows.Forms.Button();
-            this.SuspendLayout();
+        void InitializeComponent() {
+            txtOutput = TextEditorHelper.Initialize();
+            btnChangeCase = new System.Windows.Forms.Button();
+            txtInput = TextEditorHelper.Initialize();
+            cmbAvailableCase = new System.Windows.Forms.ComboBox();
+            btnClipboard = new System.Windows.Forms.Button();
+            SuspendLayout();
             // 
             // txtOutput
             // 
-            this.txtOutput.Location = new System.Drawing.Point(3, 152);
-            this.txtOutput.Multiline = true;
-            this.txtOutput.Name = "txtOutput";
-            this.txtOutput.ReadOnly = true;
-            this.txtOutput.Size = new System.Drawing.Size(309, 67);
-            this.txtOutput.TabIndex = 7;
+            txtOutput.Location = new System.Drawing.Point(3, 152);
+            txtOutput.Name = "txtOutput";
+            txtOutput.ReadOnly = true;
+            txtOutput.Size = new System.Drawing.Size(309, 67);
+            txtOutput.TabIndex = 7;
             // 
             // btnChangeCase
             // 
-            this.btnChangeCase.Location = new System.Drawing.Point(3, 108);
-            this.btnChangeCase.Name = "btnChangeCase";
-            this.btnChangeCase.Size = new System.Drawing.Size(309, 38);
-            this.btnChangeCase.TabIndex = 6;
-            this.btnChangeCase.Text = "Change Case";
-            this.btnChangeCase.UseVisualStyleBackColor = true;
-            this.btnChangeCase.Click += new System.EventHandler(this.btnChangeCase_Click);
+            btnChangeCase.Location = new System.Drawing.Point(3, 108);
+            btnChangeCase.Name = "btnChangeCase";
+            btnChangeCase.Size = new System.Drawing.Size(309, 38);
+            btnChangeCase.TabIndex = 6;
+            btnChangeCase.Text = "Change Case";
+            btnChangeCase.UseVisualStyleBackColor = true;
+            btnChangeCase.Click += new System.EventHandler(btnChangeCase_Click);
             // 
             // txtInput
             // 
-            this.txtInput.Location = new System.Drawing.Point(3, 35);
-            this.txtInput.Multiline = true;
-            this.txtInput.Name = "txtInput";
-            this.txtInput.Size = new System.Drawing.Size(309, 67);
-            this.txtInput.TabIndex = 5;
+            txtInput.Location = new System.Drawing.Point(3, 35);
+            txtInput.Name = "txtInput";
+            txtInput.Size = new System.Drawing.Size(309, 67);
+            txtInput.TabIndex = 5;
             // 
             // cmbAvailableCase
             // 
-            this.cmbAvailableCase.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbAvailableCase.FormattingEnabled = true;
-            this.cmbAvailableCase.Location = new System.Drawing.Point(3, 3);
-            this.cmbAvailableCase.Name = "cmbAvailableCase";
-            this.cmbAvailableCase.Size = new System.Drawing.Size(309, 26);
-            this.cmbAvailableCase.TabIndex = 4;
+            cmbAvailableCase.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            cmbAvailableCase.FormattingEnabled = true;
+            cmbAvailableCase.Location = new System.Drawing.Point(3, 3);
+            cmbAvailableCase.Name = "cmbAvailableCase";
+            cmbAvailableCase.Size = new System.Drawing.Size(309, 26);
+            cmbAvailableCase.TabIndex = 4;
             // 
             // btnClipboard
             // 
-            this.btnClipboard.Location = new System.Drawing.Point(3, 225);
-            this.btnClipboard.Name = "btnClipboard";
-            this.btnClipboard.Size = new System.Drawing.Size(309, 38);
-            this.btnClipboard.TabIndex = 8;
-            this.btnClipboard.Text = "Copy to Clipboard";
-            this.btnClipboard.UseVisualStyleBackColor = true;
-            this.btnClipboard.Click += new System.EventHandler(this.btnClipboard_Click);
+            btnClipboard.Location = new System.Drawing.Point(3, 225);
+            btnClipboard.Name = "btnClipboard";
+            btnClipboard.Size = new System.Drawing.Size(309, 38);
+            btnClipboard.TabIndex = 8;
+            btnClipboard.Text = "Copy to Clipboard";
+            btnClipboard.UseVisualStyleBackColor = true;
+            btnClipboard.Click += new System.EventHandler(btnClipboard_Click);
             // 
             // ChangeCaseView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 18F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Transparent;
-            this.Controls.Add(this.btnClipboard);
-            this.Controls.Add(this.txtOutput);
-            this.Controls.Add(this.btnChangeCase);
-            this.Controls.Add(this.txtInput);
-            this.Controls.Add(this.cmbAvailableCase);
-            this.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "ChangeCaseView";
-            this.Size = new System.Drawing.Size(315, 300);
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 18F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            BackColor = System.Drawing.Color.Transparent;
+            Controls.Add(btnClipboard);
+            Controls.Add(txtOutput);
+            Controls.Add(btnChangeCase);
+            Controls.Add(txtInput);
+            Controls.Add(cmbAvailableCase);
+            Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            Name = "ChangeCaseView";
+            Size = new System.Drawing.Size(315, 300);
+            ResumeLayout(false);
+            PerformLayout();
 
         }
 
-        #endregion
-
-        private System.Windows.Forms.TextBox txtOutput;
-        private System.Windows.Forms.Button btnChangeCase;
-        private System.Windows.Forms.TextBox txtInput;
-        private System.Windows.Forms.ComboBox cmbAvailableCase;
-        private System.Windows.Forms.Button btnClipboard;
+        FastColoredTextBox txtOutput;
+        System.Windows.Forms.Button btnChangeCase;
+        FastColoredTextBox txtInput;
+        System.Windows.Forms.ComboBox cmbAvailableCase;
+        System.Windows.Forms.Button btnClipboard;
     }
 }

@@ -5,7 +5,7 @@
         /// <summary> 
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        System.ComponentModel.IContainer components = null;
 
         /// <summary> 
         /// Clean up any resources being used.
@@ -20,79 +20,75 @@
             base.Dispose(disposing);
         }
 
-        #region Component Designer generated code
-
         /// <summary> 
         /// Required method for Designer support - do not modify 
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
+        void InitializeComponent()
         {
-            this.txtOutput = new System.Windows.Forms.TextBox();
-            this.btnMakeHeader = new System.Windows.Forms.Button();
-            this.txtInput = new System.Windows.Forms.TextBox();
-            this.btnClipboard = new System.Windows.Forms.Button();
-            this.SuspendLayout();
+            txtOutput = new System.Windows.Forms.TextBox();
+            btnMakeHeader = new System.Windows.Forms.Button();
+            txtInput = new System.Windows.Forms.TextBox();
+            btnClipboard = new System.Windows.Forms.Button();
+            SuspendLayout();
             // 
             // txtOutput
             // 
-            this.txtOutput.Location = new System.Drawing.Point(3, 152);
-            this.txtOutput.Multiline = true;
-            this.txtOutput.Name = "txtOutput";
-            this.txtOutput.ReadOnly = true;
-            this.txtOutput.Size = new System.Drawing.Size(309, 67);
-            this.txtOutput.TabIndex = 7;
+            txtOutput.Location = new System.Drawing.Point(3, 152);
+            txtOutput.Multiline = true;
+            txtOutput.Name = "txtOutput";
+            txtOutput.ReadOnly = true;
+            txtOutput.Size = new System.Drawing.Size(309, 67);
+            txtOutput.TabIndex = 7;
             // 
             // btnMakeHeader
             // 
-            this.btnMakeHeader.Location = new System.Drawing.Point(3, 108);
-            this.btnMakeHeader.Name = "btnMakeHeader";
-            this.btnMakeHeader.Size = new System.Drawing.Size(309, 38);
-            this.btnMakeHeader.TabIndex = 6;
-            this.btnMakeHeader.Text = "Make Label";
-            this.btnMakeHeader.UseVisualStyleBackColor = true;
-            this.btnMakeHeader.Click += new System.EventHandler(this.btnMakeHeader_Click);
+            btnMakeHeader.Location = new System.Drawing.Point(3, 108);
+            btnMakeHeader.Name = "btnMakeHeader";
+            btnMakeHeader.Size = new System.Drawing.Size(309, 38);
+            btnMakeHeader.TabIndex = 6;
+            btnMakeHeader.Text = "Make Label";
+            btnMakeHeader.UseVisualStyleBackColor = true;
+            btnMakeHeader.Click += new System.EventHandler(btnMakeHeader_Click);
             // 
             // txtInput
             // 
-            this.txtInput.Location = new System.Drawing.Point(3, 35);
-            this.txtInput.Multiline = true;
-            this.txtInput.Name = "txtInput";
-            this.txtInput.Size = new System.Drawing.Size(309, 67);
-            this.txtInput.TabIndex = 5;
+            txtInput.Location = new System.Drawing.Point(3, 35);
+            txtInput.Multiline = true;
+            txtInput.Name = "txtInput";
+            txtInput.Size = new System.Drawing.Size(309, 67);
+            txtInput.TabIndex = 5;
             // 
             // btnClipboard
             // 
-            this.btnClipboard.Location = new System.Drawing.Point(3, 225);
-            this.btnClipboard.Name = "btnClipboard";
-            this.btnClipboard.Size = new System.Drawing.Size(309, 38);
-            this.btnClipboard.TabIndex = 9;
-            this.btnClipboard.Text = "Copy to Clipboard";
-            this.btnClipboard.UseVisualStyleBackColor = true;
-            this.btnClipboard.Click += new System.EventHandler(this.btnClipboard_Click);
+            btnClipboard.Location = new System.Drawing.Point(3, 225);
+            btnClipboard.Name = "btnClipboard";
+            btnClipboard.Size = new System.Drawing.Size(309, 38);
+            btnClipboard.TabIndex = 9;
+            btnClipboard.Text = "Copy to Clipboard";
+            btnClipboard.UseVisualStyleBackColor = true;
+            btnClipboard.Click += new System.EventHandler(btnClipboard_Click);
             // 
             // SourceHeaderTextView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 18F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Transparent;
-            this.Controls.Add(this.btnClipboard);
-            this.Controls.Add(this.txtOutput);
-            this.Controls.Add(this.btnMakeHeader);
-            this.Controls.Add(this.txtInput);
-            this.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "SourceHeaderTextView";
-            this.Size = new System.Drawing.Size(315, 300);
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 18F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            BackColor = System.Drawing.Color.Transparent;
+            Controls.Add(btnClipboard);
+            Controls.Add(txtOutput);
+            Controls.Add(btnMakeHeader);
+            Controls.Add(txtInput);
+            Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            Name = "SourceHeaderTextView";
+            Size = new System.Drawing.Size(315, 300);
+            ResumeLayout(false);
+            PerformLayout();
         }
 
-        #endregion
-
-        private System.Windows.Forms.TextBox txtOutput;
-        private System.Windows.Forms.Button btnMakeHeader;
-        private System.Windows.Forms.TextBox txtInput;
-        private System.Windows.Forms.Button btnClipboard;
+        System.Windows.Forms.TextBox txtOutput;
+        System.Windows.Forms.Button btnMakeHeader;
+        System.Windows.Forms.TextBox txtInput;
+        System.Windows.Forms.Button btnClipboard;
     }
 }

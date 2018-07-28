@@ -6,16 +6,10 @@ using ChiisanaIroiro.Presenter.Impl;
 using ChiisanaIroiro.Service;
 using ChiisanaIroiro.Service.Impl;
 
-namespace ChiisanaIroiro
-{
-    static class Program
-    {
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
+namespace ChiisanaIroiro {
+    internal static class Program {
         [STAThread]
-        static void Main()
-        {
+        static void Main() {
             InitializeObjectRegistry();
 
             Application.EnableVisualStyles();
@@ -23,14 +17,15 @@ namespace ChiisanaIroiro
             Application.Run(new MainForm());
         }
 
-        private static void InitializeObjectRegistry()
-        {
+        static void InitializeObjectRegistry() {
             ObjectRegistry.RegisterObject<IChangeCasePresenter, ChangeCasePresenter>();
             ObjectRegistry.RegisterObject<IChangeCaseService, ChangeCaseService>();
             ObjectRegistry.RegisterObject<IMakeLabelPresenter, MakeLabelPresenter>();
             ObjectRegistry.RegisterObject<IMakeLabelService, MakeLabelService>();
             ObjectRegistry.RegisterObject<IMakeHeaderPresenter, MakeHeaderPresenter>();
             ObjectRegistry.RegisterObject<IMakeHeaderService, MakeHeaderService>();
+            ObjectRegistry.RegisterObject<IGenerateSqlTemplateService, GenerateSqlTemplateService>();
+            ObjectRegistry.RegisterObject<IGenerateSqlTemplatePresenter, GenerateSqlTemplatePresenter>();
         }
     }
 }

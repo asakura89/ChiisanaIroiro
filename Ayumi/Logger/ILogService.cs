@@ -1,9 +1,7 @@
 ﻿using System;
 
-namespace Ayumi.Logger
-{
-    public interface ILogService
-    {
+namespace Ayumi.Logger {
+    public interface ILogService {
         void Debug(Object message);
         void Debug(Object message, Exception exception);
         void Info(Object message);
