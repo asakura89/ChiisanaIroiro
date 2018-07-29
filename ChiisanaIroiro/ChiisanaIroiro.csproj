@@ -51,6 +51,12 @@
       <HintPath>..\packages\FCTB.2.16.21.0\lib\FastColoredTextBox.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Keywielder, Version=2.0.2017.4509, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Keywielder.2.0.2017.4509\lib\net40\Keywielder.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="Nvy, Version=1.0.2017.1906, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Nvy.1.0.2017.1906\lib\net40\Nvy.dll</HintPath>
     </Reference>
@@ -66,6 +72,7 @@
     <Compile Include="Constant\LabelType.cs" />
     <Compile Include="Constant\GenerateSqlTemplateType.cs" />
     <EmbeddedResource Include="Embedded\ActionSqlTemplate.eqx" />
+    <Compile Include="Constant\NumberType.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -73,19 +80,28 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Presenter\IChangeCasePresenter.cs" />
+    <Compile Include="Presenter\IGenerateNumberPresenter.cs" />
     <Compile Include="Presenter\IGenerateSqlTemplatePresenter.cs" />
     <Compile Include="Presenter\IMakeHeaderPresenter.cs" />
     <Compile Include="Presenter\IMakeLabelPresenter.cs" />
+    <Compile Include="Presenter\Impl\GenerateNumberPresenter.cs" />
     <Compile Include="Presenter\Impl\GenerateSqlTemplatePresenter.cs" />
     <Compile Include="Presenter\Impl\MakeHeaderPresenter.cs" />
     <Compile Include="Presenter\Impl\MakeLabelPresenter.cs" />
+    <Compile Include="Service\IGenerateNumberService.cs" />
     <Compile Include="Service\IGenerateSqlTemplateService.cs" />
     <Compile Include="Service\IMakeHeaderService.cs" />
     <Compile Include="Service\IMakeLabelService.cs" />
+    <Compile Include="Service\Impl\GenerateNumberConfig.cs" />
+    <Compile Include="Service\Impl\GenerateNumberService.cs" />
     <Compile Include="Service\Impl\GenerateSqlTemplateService.cs" />
     <Compile Include="Service\Impl\MakeHeaderService.cs" />
     <Compile Include="Service\Impl\MakeLabelService.cs" />
-    <Compile Include="TextEditorHelper.cs" />
+    <Compile Include="Utility\ISessionStore.cs" />
+    <Compile Include="Utility\SessionStore.cs" />
+    <Compile Include="Utility\TextEditorHelper.cs" />
+    <Compile Include="ViewModel\IExceptionOccuredViewModel.cs" />
+    <Compile Include="ViewModel\IGenerateNumberViewModel.cs" />
     <Compile Include="ViewModel\IGenerateSqlTemplateViewModel.cs" />
     <Compile Include="ViewModel\IMakeHeaderViewModel.cs" />
     <Compile Include="ViewModel\IMakeLabelViewModel.cs" />
@@ -95,6 +111,12 @@
     <Compile Include="Service\IChangeCaseService.cs" />
     <Compile Include="Service\Impl\ChangeCaseService.cs" />
     <Compile Include="ViewModel\IChangeCaseViewModel.cs" />
+    <Compile Include="View\GenerateNumberView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\GenerateNumberView.Designer.cs">
+      <DependentUpon>GenerateNumberView.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\GenerateSqlTemplateView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -132,6 +154,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="View\GenerateNumberView.resx">
+      <DependentUpon>GenerateNumberView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\GenerateSqlTemplateView.resx">
       <DependentUpon>GenerateSqlTemplateView.cs</DependentUpon>
     </EmbeddedResource>
@@ -141,7 +166,6 @@
     <EmbeddedResource Include="View\LabelMakerView.resx">
       <DependentUpon>LabelMakerView.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="App.config" />
     <EmbeddedResource Include="Embedded\RetrieveSqlTemplate.eqx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -176,9 +200,7 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Utility\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Ayumi\Ayumi.csproj">
       <Project>{351ec624-0510-413a-9868-cced2f009db1}</Project>

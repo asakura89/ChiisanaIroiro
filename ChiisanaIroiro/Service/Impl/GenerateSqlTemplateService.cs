@@ -16,8 +16,9 @@ namespace ChiisanaIroiro.Service.Impl {
 
         String GetEmbeddedTemplate(String filename) {
             using (Stream stream = asm.GetManifestResourceStream(filename))
-                using (StreamReader reader = new StreamReader(stream))
-                    return reader.ReadToEnd();
+            using (StreamReader reader = new StreamReader(stream)) {
+                return reader.ReadToEnd();
+            }
         }
     }
 }

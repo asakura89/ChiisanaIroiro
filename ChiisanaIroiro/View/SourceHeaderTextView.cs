@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Windows.Forms;
+using Ayumi.Core;
 using ChiisanaIroiro.Presenter;
+using ChiisanaIroiro.Service;
+using ChiisanaIroiro.Utility;
 using ChiisanaIroiro.ViewModel;
 
 namespace ChiisanaIroiro.View {
@@ -9,6 +12,10 @@ namespace ChiisanaIroiro.View {
 
         public SourceHeaderTextView() {
             InitializeComponent();
+
+            IMakeHeaderService service = ObjectRegistry.GetRegisteredObject<IMakeHeaderService>();
+            presenter = ObjectRegistry.GetRegisteredObject<IMakeHeaderPresenter>(this, service);
+            //presenter.Initialize();
         }
 
         public String InputString {
@@ -19,6 +26,16 @@ namespace ChiisanaIroiro.View {
         public String OutputString {
             get { return txtOutput.Text; }
             set { txtOutput.Text = value; }
+        }
+
+        const String ErrorSessName = "makeheaderview.session.errormessage";
+
+        public String ErrorMessage {
+            get { return Convert.ToString(SessionStore.Get(ErrorSessName)); }
+            set {
+                SessionStore.Add(ErrorSessName, value);
+                MessageBox.Show(this, value);
+            }
         }
 
         void btnMakeHeader_Click(object sender, EventArgs e) {

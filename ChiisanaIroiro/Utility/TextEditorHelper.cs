@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using FastColoredTextBoxNS;
 
-namespace ChiisanaIroiro {
+namespace ChiisanaIroiro.Utility {
     public static class TextEditorHelper {
         public static FastColoredTextBox Initialize() {
             return new FastColoredTextBox {

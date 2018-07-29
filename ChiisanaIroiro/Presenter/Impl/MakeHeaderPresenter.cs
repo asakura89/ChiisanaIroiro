@@ -17,7 +17,9 @@ namespace ChiisanaIroiro.Presenter.Impl {
             this.service = service;
         }
 
-        public void CaptureException(Exception ex) { }
+        public void CaptureException(Exception ex) {
+            viewModel.ErrorMessage = ex.Message;
+        }
 
         public void CaptureAction(String action, String description) { }
 

@@ -26,6 +26,8 @@ namespace ChiisanaIroiro {
             ObjectRegistry.RegisterObject<IMakeHeaderService, MakeHeaderService>();
             ObjectRegistry.RegisterObject<IGenerateSqlTemplateService, GenerateSqlTemplateService>();
             ObjectRegistry.RegisterObject<IGenerateSqlTemplatePresenter, GenerateSqlTemplatePresenter>();
+            ObjectRegistry.RegisterObject<IGenerateNumberPresenter, GenerateNumberPresenter>();
+            ObjectRegistry.RegisterObject<IGenerateNumberService, GenerateNumberService>();
         }
     }
 }

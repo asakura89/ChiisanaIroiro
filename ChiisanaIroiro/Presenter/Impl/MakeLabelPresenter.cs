@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Ayumi.Data;
 using Ayumi.Extension;
 using ChiisanaIroiro.Constant;
 using ChiisanaIroiro.Service;
@@ -38,7 +37,9 @@ namespace ChiisanaIroiro.Presenter.Impl {
             }
         }
 
-        public void CaptureException(Exception ex) { }
+        public void CaptureException(Exception ex) {
+            viewModel.ErrorMessage = ex.Message;
+        }
 
         public void CaptureAction(String action, String description) { }
 

@@ -1,30 +1,34 @@
-﻿using FastColoredTextBoxNS;
+﻿using ChiisanaIroiro.Utility;
+using FastColoredTextBoxNS;
 
-namespace ChiisanaIroiro.View
-{
-    partial class ChangeCaseView
-    {
-        /// <summary> 
-        /// Required designer variable.
+namespace ChiisanaIroiro.View {
+    partial class ChangeCaseView {
+        System.Windows.Forms.Button btnChangeCase;
+        System.Windows.Forms.Button btnClipboard;
+        System.Windows.Forms.ComboBox cmbAvailableCase;
+
+        /// <summary>
+        ///     Required designer variable.
         /// </summary>
         System.ComponentModel.IContainer components = null;
 
-        /// <summary> 
-        /// Clean up any resources being used.
+        FastColoredTextBox txtInput;
+
+        FastColoredTextBox txtOutput;
+
+        /// <summary>
+        ///     Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (components != null))
-            {
+        protected override void Dispose(bool disposing) {
+            if (disposing && components != null)
                 components.Dispose();
-            }
             base.Dispose(disposing);
         }
 
-        /// <summary> 
-        /// Required method for Designer support - do not modify 
-        /// the contents of this method with the code editor.
+        /// <summary>
+        ///     Required method for Designer support - do not modify
+        ///     the contents of this method with the code editor.
         /// </summary>
         void InitializeComponent() {
             txtOutput = TextEditorHelper.Initialize();
@@ -50,7 +54,7 @@ namespace ChiisanaIroiro.View
             btnChangeCase.TabIndex = 6;
             btnChangeCase.Text = "Change Case";
             btnChangeCase.UseVisualStyleBackColor = true;
-            btnChangeCase.Click += new System.EventHandler(btnChangeCase_Click);
+            btnChangeCase.Click += btnChangeCase_Click;
             // 
             // txtInput
             // 
@@ -76,7 +80,7 @@ namespace ChiisanaIroiro.View
             btnClipboard.TabIndex = 8;
             btnClipboard.Text = "Copy to Clipboard";
             btnClipboard.UseVisualStyleBackColor = true;
-            btnClipboard.Click += new System.EventHandler(btnClipboard_Click);
+            btnClipboard.Click += btnClipboard_Click;
             // 
             // ChangeCaseView
             // 
@@ -88,19 +92,13 @@ namespace ChiisanaIroiro.View
             Controls.Add(btnChangeCase);
             Controls.Add(txtInput);
             Controls.Add(cmbAvailableCase);
-            Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular,
+                System.Drawing.GraphicsUnit.Point, 0);
             Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             Name = "ChangeCaseView";
             Size = new System.Drawing.Size(315, 300);
             ResumeLayout(false);
             PerformLayout();
-
         }
-
-        FastColoredTextBox txtOutput;
-        System.Windows.Forms.Button btnChangeCase;
-        FastColoredTextBox txtInput;
-        System.Windows.Forms.ComboBox cmbAvailableCase;
-        System.Windows.Forms.Button btnClipboard;
     }
 }

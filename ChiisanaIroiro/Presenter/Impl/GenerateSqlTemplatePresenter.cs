@@ -11,8 +11,8 @@ namespace ChiisanaIroiro.Presenter.Impl {
         readonly IGenerateSqlTemplateService service;
         readonly IGenerateSqlTemplateViewModel viewModel;
 
-        public GenerateSqlTemplatePresenter(IGenerateSqlTemplateViewModel viewModel, IGenerateSqlTemplateService service)
-        {
+        public GenerateSqlTemplatePresenter(IGenerateSqlTemplateViewModel viewModel,
+            IGenerateSqlTemplateService service) {
             if (viewModel == null)
                 throw new ArgumentNullException(nameof(viewModel));
             if (service == null)
@@ -22,16 +22,13 @@ namespace ChiisanaIroiro.Presenter.Impl {
             this.service = service;
         }
 
-        public void Initialize()
-        {
+        public void Initialize() {
             viewModel.TemplateType.BindToICommonList(GetTemplateTypeList());
         }
 
-        public void GenerateAction()
-        {
+        public void GenerateAction() {
             NameValueItem selectedCaseType = viewModel.TemplateType.SelectedItem;
-            switch (selectedCaseType.Value)
-            {
+            switch (selectedCaseType.Value) {
                 case GenerateSqlTemplateType.ActionTemplate:
                     viewModel.OutputString = service.GenerateActionTemplate();
                     break;
@@ -41,12 +38,13 @@ namespace ChiisanaIroiro.Presenter.Impl {
             }
         }
 
-        public void CaptureException(Exception ex) { }
+        public void CaptureException(Exception ex) {
+            viewModel.ErrorMessage = ex.Message;
+        }
 
         public void CaptureAction(String action, String description) { }
 
-        IEnumerable<NameValueItem> GetTemplateTypeList()
-        {
+        IEnumerable<NameValueItem> GetTemplateTypeList() {
             yield return new NameValueItem("Action Template", GenerateSqlTemplateType.ActionTemplate);
             yield return new NameValueItem("Retrieve Template", GenerateSqlTemplateType.RetrieveTemplate);
         }

@@ -2,9 +2,9 @@
 using Ayumi.Data;
 
 namespace ChiisanaIroiro.ViewModel {
-    public interface IGenerateSqlTemplateViewModel : IExceptionOccuredViewModel
+    public interface IGenerateNumberViewModel : IExceptionOccuredViewModel
     {
-        ICommonList TemplateType { get; }
+        ICommonList NumberType { get; }
         String InputString { get; set; }
         String OutputString { get; set; }
     }

@@ -9,18 +9,18 @@ using ChiisanaIroiro.Utility;
 using ChiisanaIroiro.ViewModel;
 
 namespace ChiisanaIroiro.View {
-    public partial class GenerateSqlTemplateView : UserControl, IGenerateSqlTemplateViewModel {
-        readonly IGenerateSqlTemplatePresenter presenter;
+    public partial class GenerateNumberView : UserControl, IGenerateNumberViewModel {
+        readonly IGenerateNumberPresenter presenter;
 
-        public GenerateSqlTemplateView() {
+        public GenerateNumberView() {
             InitializeComponent();
 
-            IGenerateSqlTemplateService service = ObjectRegistry.GetRegisteredObject<IGenerateSqlTemplateService>();
-            presenter = ObjectRegistry.GetRegisteredObject<IGenerateSqlTemplatePresenter>(this, service);
+            IGenerateNumberService service = ObjectRegistry.GetRegisteredObject<IGenerateNumberService>();
+            presenter = ObjectRegistry.GetRegisteredObject<IGenerateNumberPresenter>(this, service);
             presenter.Initialize();
         }
 
-        public ICommonList TemplateType => new DesktopDropdownList(cmbAvailableTemplate);
+        public ICommonList NumberType => new DesktopDropdownList(cmbAvailableType);
 
         public String InputString {
             get { return txtInput.Text; }
@@ -32,7 +32,7 @@ namespace ChiisanaIroiro.View {
             set { txtOutput.Text = value; }
         }
 
-        const String ErrorSessName = "generatesqltemplateview.session.errormessage";
+        const String ErrorSessName = "generatenumberview.session.errormessage";
 
         public String ErrorMessage {
             get { return Convert.ToString(SessionStore.Get(ErrorSessName)); }
@@ -45,7 +45,7 @@ namespace ChiisanaIroiro.View {
         void btnGenerate_Click(object sender, EventArgs e) {
             try {
                 presenter.GenerateAction();
-                presenter.CaptureAction("Generate Sql Template", "Generate has been done.");
+                presenter.CaptureAction("Generate Number", "Generate has been done.");
             }
             catch (Exception ex) {
                 presenter.CaptureException(ex);
@@ -61,6 +61,13 @@ namespace ChiisanaIroiro.View {
                     MessageBox.Show("Text has been copied to clipboard.");
                 }
             }
+            catch (Exception ex) {
+                presenter.CaptureException(ex);
+            }
+        }
+
+        void cmbAvailableTypeOnSelectedIndexChanged(object sender, EventArgs eventArgs) {
+            try { }
             catch (Exception ex) {
                 presenter.CaptureException(ex);
             }

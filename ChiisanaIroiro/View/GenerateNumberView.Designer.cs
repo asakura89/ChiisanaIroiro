@@ -2,10 +2,10 @@
 using FastColoredTextBoxNS;
 
 namespace ChiisanaIroiro.View {
-    partial class GenerateSqlTemplateView {
+    partial class GenerateNumberView {
         System.Windows.Forms.Button btnClipboard;
         System.Windows.Forms.Button btnGenerate;
-        System.Windows.Forms.ComboBox cmbAvailableTemplate;
+        System.Windows.Forms.ComboBox cmbAvailableType;
 
         /// <summary>
         ///     Required designer variable.
@@ -34,7 +34,7 @@ namespace ChiisanaIroiro.View {
             txtOutput = TextEditorHelper.Initialize();
             btnGenerate = new System.Windows.Forms.Button();
             txtInput = TextEditorHelper.Initialize();
-            cmbAvailableTemplate = new System.Windows.Forms.ComboBox();
+            cmbAvailableType = new System.Windows.Forms.ComboBox();
             btnClipboard = new System.Windows.Forms.Button();
             SuspendLayout();
             // 
@@ -64,12 +64,13 @@ namespace ChiisanaIroiro.View {
             // 
             // cmbAvailableCase
             // 
-            cmbAvailableTemplate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            cmbAvailableTemplate.FormattingEnabled = true;
-            cmbAvailableTemplate.Location = new System.Drawing.Point(3, 3);
-            cmbAvailableTemplate.Name = "cmbAvailableTemplate";
-            cmbAvailableTemplate.Size = new System.Drawing.Size(309, 26);
-            cmbAvailableTemplate.TabIndex = 4;
+            cmbAvailableType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            cmbAvailableType.FormattingEnabled = true;
+            cmbAvailableType.Location = new System.Drawing.Point(3, 3);
+            cmbAvailableType.Name = "cmbAvailableType";
+            cmbAvailableType.Size = new System.Drawing.Size(309, 26);
+            cmbAvailableType.TabIndex = 4;
+            cmbAvailableType.SelectedIndexChanged += cmbAvailableTypeOnSelectedIndexChanged;
             // 
             // btnClipboard
             // 
@@ -90,11 +91,11 @@ namespace ChiisanaIroiro.View {
             Controls.Add(txtOutput);
             Controls.Add(btnGenerate);
             Controls.Add(txtInput);
-            Controls.Add(cmbAvailableTemplate);
+            Controls.Add(cmbAvailableType);
             Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular,
                 System.Drawing.GraphicsUnit.Point, 0);
             Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            Name = "GenerateSqlTemplateView";
+            Name = "GenerateNumberView";
             Size = new System.Drawing.Size(315, 300);
             ResumeLayout(false);
             PerformLayout();

@@ -5,6 +5,7 @@ using Ayumi.Data;
 using Ayumi.Desktop;
 using ChiisanaIroiro.Presenter;
 using ChiisanaIroiro.Service;
+using ChiisanaIroiro.Utility;
 using ChiisanaIroiro.ViewModel;
 
 namespace ChiisanaIroiro.View {
@@ -29,6 +30,16 @@ namespace ChiisanaIroiro.View {
         public String OutputString {
             get { return txtOutput.Text; }
             set { txtOutput.Text = value; }
+        }
+
+        const String ErrorSessName = "labelmakerview.session.errormessage";
+
+        public String ErrorMessage {
+            get { return Convert.ToString(SessionStore.Get(ErrorSessName)); }
+            set {
+                SessionStore.Add(ErrorSessName, value);
+                MessageBox.Show(this, value);
+            }
         }
 
         void btnMakeLabel_Click(object sender, EventArgs e) {
