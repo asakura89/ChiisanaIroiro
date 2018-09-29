@@ -7,11 +7,11 @@ using ChiisanaIroiro.ViewModel;
 using Nvy;
 
 namespace ChiisanaIroiro.Presenter.Impl {
-    public class GenerateSqlTemplatePresenter : IGenerateSqlTemplatePresenter {
-        readonly IGenerateSqlTemplateService service;
-        readonly IGenerateSqlTemplateViewModel viewModel;
+    public class GenerateTemplatePresenter : IGenerateTemplatePresenter {
+        readonly IGenerateTemplateService service;
+        readonly IGenerateTemplateViewModel viewModel;
 
-        public GenerateSqlTemplatePresenter(IGenerateSqlTemplateViewModel viewModel, IGenerateSqlTemplateService service)
+        public GenerateTemplatePresenter(IGenerateTemplateViewModel viewModel, IGenerateTemplateService service)
         {
             if (viewModel == null)
                 throw new ArgumentNullException(nameof(viewModel));
@@ -24,12 +24,12 @@ namespace ChiisanaIroiro.Presenter.Impl {
 
         public void Initialize()
         {
-            viewModel.TemplateType.BindToICommonList(GetTemplateTypeList());
+            viewModel.ViewActions.BindToICommonList(GetTemplateTypeList());
         }
 
         public void GenerateAction()
         {
-            NameValueItem selectedCaseType = viewModel.TemplateType.SelectedItem;
+            NameValueItem selectedCaseType = viewModel.ViewActions.SelectedItem;
             switch (selectedCaseType.Value)
             {
                 case GenerateSqlTemplateType.ActionTemplate:

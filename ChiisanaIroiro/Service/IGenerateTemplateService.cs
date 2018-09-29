@@ -1,8 +1,7 @@
 ﻿using System;
 
 namespace ChiisanaIroiro.Service {
-    public interface IGenerateSqlTemplateService
-    {
+    public interface IGenerateTemplateService {
         String GenerateActionTemplate();
         String GenerateRetrieveTemplate();
     }

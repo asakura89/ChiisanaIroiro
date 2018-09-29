@@ -21,9 +21,7 @@ namespace ChiisanaIroiro.Service.Impl {
 
         String MakeLabel(String labelText) {
             const Int16 MaxFinalLabelLength = 80;
-            const Int16
-                AdditionalCharLength =
-                    8; // NOTE: additionalChar is Opening and Closing Chars + 2 space before and after label
+            const Int16 AdditionalCharLength = 8; // NOTE: additionalChar is Opening and Closing Chars + 2 space before and after label
             const String OpeningChar = "/* ";
             const String ClosingChar = " */";
 

@@ -22,11 +22,11 @@ namespace ChiisanaIroiro.Presenter.Impl {
         }
 
         public void Initialize() {
-            viewModel.CaseType.BindToICommonList(GetChangeCaseTypeList());
+            viewModel.ViewActions.BindToICommonList(GetChangeCaseTypeList());
         }
 
         public void ChangeCaseAction() {
-            NameValueItem selectedCaseType = viewModel.CaseType.SelectedItem;
+            NameValueItem selectedCaseType = viewModel.ViewActions.SelectedItem;
             switch (selectedCaseType.Value) {
                 case ChangeCaseType.LowerCase:
                     viewModel.OutputString = service.ToLowerCase(viewModel.InputString);

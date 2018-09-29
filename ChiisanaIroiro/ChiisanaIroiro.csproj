@@ -36,6 +36,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>6</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -73,21 +74,21 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Presenter\IChangeCasePresenter.cs" />
-    <Compile Include="Presenter\IGenerateSqlTemplatePresenter.cs" />
-    <Compile Include="Presenter\IMakeHeaderPresenter.cs" />
+    <Compile Include="Presenter\IGenerateTemplatePresenter.cs" />
+    <Compile Include="Presenter\IMainFormPresenter.cs" />
     <Compile Include="Presenter\IMakeLabelPresenter.cs" />
-    <Compile Include="Presenter\Impl\GenerateSqlTemplatePresenter.cs" />
-    <Compile Include="Presenter\Impl\MakeHeaderPresenter.cs" />
+    <Compile Include="Presenter\Impl\GenerateTemplatePresenter.cs" />
+    <Compile Include="Presenter\Impl\MainFormPresenter.cs" />
     <Compile Include="Presenter\Impl\MakeLabelPresenter.cs" />
-    <Compile Include="Service\IGenerateSqlTemplateService.cs" />
-    <Compile Include="Service\IMakeHeaderService.cs" />
+    <Compile Include="Service\IGenerateTemplateService.cs" />
+    <Compile Include="Service\IMainFormService.cs" />
     <Compile Include="Service\IMakeLabelService.cs" />
-    <Compile Include="Service\Impl\GenerateSqlTemplateService.cs" />
-    <Compile Include="Service\Impl\MakeHeaderService.cs" />
+    <Compile Include="Service\Impl\GenerateTemplateService.cs" />
+    <Compile Include="Service\Impl\MainFormService.cs" />
     <Compile Include="Service\Impl\MakeLabelService.cs" />
     <Compile Include="TextEditorHelper.cs" />
-    <Compile Include="ViewModel\IGenerateSqlTemplateViewModel.cs" />
-    <Compile Include="ViewModel\IMakeHeaderViewModel.cs" />
+    <Compile Include="ViewModel\IGenerateTemplateViewModel.cs" />
+    <Compile Include="ViewModel\IMainFormViewModel.cs" />
     <Compile Include="ViewModel\IMakeLabelViewModel.cs" />
     <Compile Include="Presenter\Impl\ChangeCasePresenter.cs" />
     <Compile Include="Program.cs" />
@@ -95,11 +96,12 @@
     <Compile Include="Service\IChangeCaseService.cs" />
     <Compile Include="Service\Impl\ChangeCaseService.cs" />
     <Compile Include="ViewModel\IChangeCaseViewModel.cs" />
-    <Compile Include="View\GenerateSqlTemplateView.cs">
+    <Compile Include="ViewModel\IViewModel.cs" />
+    <Compile Include="View\GenerateTemplateView.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="View\GenerateSqlTemplateView.Designer.cs">
-      <DependentUpon>GenerateSqlTemplateView.cs</DependentUpon>
+    <Compile Include="View\GenerateTemplateView.Designer.cs">
+      <DependentUpon>GenerateTemplateView.cs</DependentUpon>
     </Compile>
     <Compile Include="View\ChangeCaseView.cs">
       <SubType>UserControl</SubType>
@@ -112,12 +114,6 @@
     </Compile>
     <Compile Include="View\LabelMakerView.Designer.cs">
       <DependentUpon>LabelMakerView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\SourceHeaderTextView.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="View\SourceHeaderTextView.Designer.cs">
-      <DependentUpon>SourceHeaderTextView.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -132,8 +128,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="View\GenerateSqlTemplateView.resx">
-      <DependentUpon>GenerateSqlTemplateView.cs</DependentUpon>
+    <EmbeddedResource Include="View\GenerateTemplateView.resx">
+      <DependentUpon>GenerateTemplateView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\ChangeCaseView.resx">
       <DependentUpon>ChangeCaseView.cs</DependentUpon>
@@ -176,9 +172,7 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Utility\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Ayumi\Ayumi.csproj">
       <Project>{351ec624-0510-413a-9868-cced2f009db1}</Project>

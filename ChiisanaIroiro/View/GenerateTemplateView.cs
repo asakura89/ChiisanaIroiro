@@ -8,23 +8,21 @@ using ChiisanaIroiro.Service;
 using ChiisanaIroiro.ViewModel;
 
 namespace ChiisanaIroiro.View {
-    public partial class GenerateSqlTemplateView : UserControl, IGenerateSqlTemplateViewModel {
-        readonly IGenerateSqlTemplatePresenter presenter;
+    public partial class GenerateTemplateView : UserControl, IGenerateTemplateViewModel {
+        readonly IGenerateTemplatePresenter presenter;
 
-        public GenerateSqlTemplateView() {
+        public GenerateTemplateView() {
             InitializeComponent();
 
-            IGenerateSqlTemplateService service = ObjectRegistry.GetRegisteredObject<IGenerateSqlTemplateService>();
-            presenter = ObjectRegistry.GetRegisteredObject<IGenerateSqlTemplatePresenter>(this, service);
+            IGenerateTemplateService service = ObjectRegistry.GetRegisteredObject<IGenerateTemplateService>();
+            presenter = ObjectRegistry.GetRegisteredObject<IGenerateTemplatePresenter>(this, service);
             presenter.Initialize();
         }
 
-        public ICommonList TemplateType => new DesktopDropdownList(cmbAvailableTemplate);
-
-        public String InputString {
-            get { return txtInput.Text; }
-            set { txtInput.Text = value; }
-        }
+        static readonly InMemoryCommonList templateActions = new InMemoryCommonList();
+        public ICommonList ViewActions => templateActions;
+        public String ViewName => "Generate Template";
+        public String ViewDesc => "";
 
         public String OutputString {
             get { return txtOutput.Text; }
@@ -34,7 +32,7 @@ namespace ChiisanaIroiro.View {
         void btnGenerate_Click(object sender, EventArgs e) {
             try {
                 presenter.GenerateAction();
-                presenter.CaptureAction("Generate Sql Template", "Generate has been done.");
+                presenter.CaptureAction(ViewName, "Generate has been done.");
             }
             catch (Exception ex) {
                 presenter.CaptureException(ex);
@@ -47,7 +45,7 @@ namespace ChiisanaIroiro.View {
                     Clipboard.Clear();
                     Clipboard.SetText(OutputString);
 
-                    MessageBox.Show("Text has been copied to clipboard.");
+                    presenter.CaptureAction(ViewName, "Text has been copied to clipboard.");
                 }
             }
             catch (Exception ex) {

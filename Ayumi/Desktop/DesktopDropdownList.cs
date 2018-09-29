@@ -16,15 +16,17 @@ namespace Ayumi.Desktop {
             internalList = listControl;
         }
 
+        public IEnumerable<NameValueItem> Items {
+            get { return internalList.DataSource as List<NameValueItem> ?? new List<NameValueItem>(); }
+            set { internalList.PopulateWithRawDataList(value.ToList(), NameValueItem.NameProperty, NameValueItem.ValueProperty); }
+        }
+
         public Int32 SelectedIndex {
             get { return internalList.SelectedIndex; }
             set { internalList.SelectedIndex = value; }
         }
 
-        public NameValueItem SelectedItem {
-            get { return this[internalList.SelectedIndex]; }
-            set { this[internalList.SelectedIndex] = value; }
-        }
+        public NameValueItem SelectedItem => this[internalList.SelectedIndex];
 
         public NameValueItem this[Int32 index] {
             get {

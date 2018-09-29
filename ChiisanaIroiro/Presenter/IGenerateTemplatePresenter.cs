@@ -1,7 +1,7 @@
 ﻿using Ayumi.Logger;
 
 namespace ChiisanaIroiro.Presenter {
-    public interface IGenerateSqlTemplatePresenter : IExceptionCapture, IActionCapture {
+    public interface IGenerateTemplatePresenter : IExceptionCapture, IActionCapture {
         void Initialize();
         void GenerateAction();
     }

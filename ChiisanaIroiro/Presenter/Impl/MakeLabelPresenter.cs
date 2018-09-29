@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Ayumi.Data;
 using Ayumi.Extension;
 using ChiisanaIroiro.Constant;
 using ChiisanaIroiro.Service;
@@ -23,11 +22,11 @@ namespace ChiisanaIroiro.Presenter.Impl {
         }
 
         public void Initialize() {
-            viewModel.LabelType.BindToICommonList(GetLabelTypeList());
+            viewModel.ViewActions.BindToICommonList(GetLabelTypeList());
         }
 
         public void MakeLabelAction() {
-            NameValueItem selectedLabelType = viewModel.LabelType.SelectedItem;
+            NameValueItem selectedLabelType = viewModel.ViewActions.SelectedItem;
             switch (selectedLabelType.Value) {
                 case LabelType.NormalLabel:
                     viewModel.OutputString = service.MakeLabel(viewModel.InputString);

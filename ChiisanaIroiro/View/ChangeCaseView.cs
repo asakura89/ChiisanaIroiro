@@ -19,7 +19,10 @@ namespace ChiisanaIroiro.View {
             presenter.Initialize();
         }
 
-        public ICommonList CaseType => new DesktopDropdownList(cmbAvailableCase);
+        static readonly InMemoryCommonList actions = new InMemoryCommonList();
+        public ICommonList ViewActions => actions;
+        public String ViewName => "Change Case";
+        public String ViewDesc => "";
 
         public String InputString {
             get { return txtInput.Text; }
@@ -34,7 +37,7 @@ namespace ChiisanaIroiro.View {
         void btnChangeCase_Click(object sender, EventArgs e) {
             try {
                 presenter.ChangeCaseAction();
-                presenter.CaptureAction("Change Case", "Change case has been done.");
+                presenter.CaptureAction(ViewName, "Change case has been done.");
             }
             catch (Exception ex) {
                 presenter.CaptureException(ex);
@@ -47,7 +50,7 @@ namespace ChiisanaIroiro.View {
                     Clipboard.Clear();
                     Clipboard.SetText(OutputString);
 
-                    MessageBox.Show("Text has been copied to clipboard.");
+                    presenter.CaptureAction(ViewName, "Text has been copied to clipboard.");
                 }
             }
             catch (Exception ex) {

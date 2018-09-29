@@ -3,7 +3,7 @@ using System.IO;
 using System.Reflection;
 
 namespace ChiisanaIroiro.Service.Impl {
-    public class GenerateSqlTemplateService : IGenerateSqlTemplateService {
+    public class GenerateTemplateService : IGenerateTemplateService {
         readonly Assembly asm = Assembly.GetExecutingAssembly();
 
         public String GenerateActionTemplate() {
