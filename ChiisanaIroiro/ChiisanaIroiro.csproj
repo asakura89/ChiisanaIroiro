@@ -67,6 +67,7 @@
     <Compile Include="Constant\GenerateTemplateType.cs" />
     <Compile Include="Constant\LabelType.cs" />
     <EmbeddedResource Include="Embedded\template.type.sqlaction" />
+    <EmbeddedResource Include="Embedded\template.type.jstimer" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -173,6 +174,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Embedded\template.type.jsajax" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Ayumi\Ayumi.csproj">
       <Project>{351ec624-0510-413a-9868-cced2f009db1}</Project>

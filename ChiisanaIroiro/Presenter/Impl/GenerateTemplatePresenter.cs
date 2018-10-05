@@ -30,15 +30,7 @@ namespace ChiisanaIroiro.Presenter.Impl {
         public void GenerateAction()
         {
             NameValueItem selectedCaseType = viewModel.ViewActions.SelectedItem;
-            switch (selectedCaseType.Value)
-            {
-                case GenerateSqlTemplateType.ActionTemplate:
-                    viewModel.OutputString = service.GenerateActionTemplate();
-                    break;
-                case GenerateSqlTemplateType.RetrieveTemplate:
-                    viewModel.OutputString = service.GenerateRetrieveTemplate();
-                    break;
-            }
+            viewModel.OutputString = service.GenerateTemplate(selectedCaseType.Value);
         }
 
         public void CaptureException(Exception ex) { }
@@ -47,8 +39,10 @@ namespace ChiisanaIroiro.Presenter.Impl {
 
         IEnumerable<NameValueItem> GetTemplateTypeList()
         {
-            yield return new NameValueItem("Action Template", GenerateSqlTemplateType.ActionTemplate);
-            yield return new NameValueItem("Retrieve Template", GenerateSqlTemplateType.RetrieveTemplate);
+            yield return new NameValueItem("Sql Action Template", GenerateTemplateType.SqlAction);
+            yield return new NameValueItem("Sql Retrieve Template", GenerateTemplateType.SqlRetrieve);
+            yield return new NameValueItem("Javascript Ajax Template", GenerateTemplateType.JsAjax);
+            yield return new NameValueItem("Javascript Timer Template", GenerateTemplateType.JsTimer);
         }
     }
 }

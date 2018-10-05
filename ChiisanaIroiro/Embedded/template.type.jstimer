@@ -1,0 +1,5 @@
+﻿var mandatoryTimer = setTimeout(function () {
+    jQuery("#txt-username").removeClass("mandatory-empty");
+    jQuery("#txt-email").removeClass("mandatory-empty");
+    clearTimeout(mandatoryTimer);
+}, 10000);
