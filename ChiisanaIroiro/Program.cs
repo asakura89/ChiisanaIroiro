@@ -24,6 +24,8 @@ namespace ChiisanaIroiro {
             ObjectRegistry.RegisterObject<IMakeLabelPresenter, MakeLabelPresenter>();
             ObjectRegistry.RegisterObject<IGenerateTemplateService, GenerateTemplateService>();
             ObjectRegistry.RegisterObject<IGenerateTemplatePresenter, GenerateTemplatePresenter>();
+            ObjectRegistry.RegisterObject<IObjectCreateService, ObjectCreateService>();
+            ObjectRegistry.RegisterObject<IObjectCreatePresenter, ObjectCreatePresenter>();
             ObjectRegistry.RegisterObject<IMainFormService, MainFormService>();
             ObjectRegistry.RegisterObject<IMainFormPresenter, MainFormPresenter>();
         }

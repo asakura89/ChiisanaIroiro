@@ -1,0 +1,11 @@
+﻿using System.ComponentModel;
+
+public class NotifiedViewModel : INotifyPropertyChanged {
+    public event PropertyChangedEventHandler PropertyChanged;
+
+    protected void RaisePropertyChanged(String propertyName) {
+        PropertyChangedEventHandler handler = PropertyChanged;
+        if (handler != null)
+            handler(this, new PropertyChangedEventArgs(propertyName));
+    }
+}
