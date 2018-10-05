@@ -22,7 +22,7 @@ namespace ChiisanaIroiro.Presenter.Impl {
         }
 
         public void Initialize() {
-            viewModel.NumberType.BindToICommonList(GetNumberTypeList());
+            viewModel.ViewActions.BindToICommonList(GetNumberTypeList());
 
             viewModel.InputString = @"{
     ""Start"": 3,
@@ -35,7 +35,7 @@ namespace ChiisanaIroiro.Presenter.Impl {
         }
 
         public void GenerateAction() {
-            NameValueItem selectedCaseType = viewModel.NumberType.SelectedItem;
+            NameValueItem selectedCaseType = viewModel.ViewActions.SelectedItem;
             switch (selectedCaseType.Value) {
                 case NumberType.ProcessId:
                     viewModel.OutputString = service.GenerateProcessId(viewModel.InputString);

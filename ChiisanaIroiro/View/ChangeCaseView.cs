@@ -2,7 +2,6 @@
 using System.Windows.Forms;
 using Ayumi.Core;
 using Ayumi.Data;
-using Ayumi.Desktop;
 using ChiisanaIroiro.Presenter;
 using ChiisanaIroiro.Service;
 using ChiisanaIroiro.Utility;
@@ -10,6 +9,9 @@ using ChiisanaIroiro.ViewModel;
 
 namespace ChiisanaIroiro.View {
     public partial class ChangeCaseView : UserControl, IChangeCaseViewModel {
+        const String ErrorSessName = "changecaseview.session.errormessage";
+
+        static readonly InMemoryCommonList actions = new InMemoryCommonList();
         readonly IChangeCasePresenter presenter;
 
         public ChangeCaseView() {
@@ -20,7 +22,17 @@ namespace ChiisanaIroiro.View {
             presenter.Initialize();
         }
 
-        public ICommonList CaseType => new DesktopDropdownList(cmbAvailableCase);
+        public String ErrorMessage {
+            get { return Convert.ToString(SessionStore.Get(ErrorSessName)); }
+            set {
+                SessionStore.Add(ErrorSessName, value);
+                MessageBox.Show(this, value);
+            }
+        }
+
+        public ICommonList ViewActions => actions;
+        public String ViewName => "Change Case";
+        public String ViewDesc => "";
 
         public String InputString {
             get { return txtInput.Text; }
@@ -32,19 +44,10 @@ namespace ChiisanaIroiro.View {
             set { txtOutput.Text = value; }
         }
 
-        const String ErrorSessName = "changecaseview.session.errormessage";
-        public String ErrorMessage {
-            get { return Convert.ToString(SessionStore.Get(ErrorSessName)); }
-            set {
-                SessionStore.Add(ErrorSessName, value);
-                MessageBox.Show(this, value);
-            }
-        }
-
         void btnChangeCase_Click(object sender, EventArgs e) {
             try {
                 presenter.ChangeCaseAction();
-                presenter.CaptureAction("Change Case", "Change case has been done.");
+                presenter.CaptureAction(ViewName, "Change case has been done.");
             }
             catch (Exception ex) {
                 presenter.CaptureException(ex);
@@ -57,7 +60,7 @@ namespace ChiisanaIroiro.View {
                     Clipboard.Clear();
                     Clipboard.SetText(OutputString);
 
-                    MessageBox.Show("Text has been copied to clipboard.");
+                    presenter.CaptureAction(ViewName, "Text has been copied to clipboard.");
                 }
             }
             catch (Exception ex) {

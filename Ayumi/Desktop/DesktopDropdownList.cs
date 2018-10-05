@@ -7,58 +7,62 @@ using Nvy;
 
 namespace Ayumi.Desktop {
     public class DesktopDropdownList : ICommonList {
-        readonly ListControl internalList;
+        readonly ListControl internalL;
 
-        public DesktopDropdownList(ListControl listControl) {
-            if (listControl == null)
-                throw new ArgumentNullException(nameof(listControl));
+        public DesktopDropdownList(ListControl controlL) {
+            if (controlL == null)
+                throw new ArgumentNullException(nameof(controlL));
 
-            internalList = listControl;
+            internalL = controlL;
+        }
+
+        public IEnumerable<NameValueItem> Items {
+            get { return internalL.DataSource as List<NameValueItem> ?? new List<NameValueItem>(); }
+            set {
+                internalL.PopulateWithRawDataList(value.ToList(), NameValueItem.NameProperty, NameValueItem.ValueProperty);
+            }
         }
 
         public Int32 SelectedIndex {
-            get { return internalList.SelectedIndex; }
-            set { internalList.SelectedIndex = value; }
+            get { return internalL.SelectedIndex; }
+            set { internalL.SelectedIndex = value; }
         }
 
-        public NameValueItem SelectedItem {
-            get { return this[internalList.SelectedIndex]; }
-            set { this[internalList.SelectedIndex] = value; }
-        }
+        public NameValueItem SelectedItem => this[internalL.SelectedIndex];
 
         public NameValueItem this[Int32 index] {
             get {
-                var dataSource = internalList.DataSource as List<NameValueItem>;
+                var dataSource = internalL.DataSource as List<NameValueItem>;
                 if (dataSource == null)
                     return null;
 
                 return dataSource[index];
             }
             set {
-                var dataSource = internalList.DataSource as List<NameValueItem> ?? new List<NameValueItem>();
+                var dataSource = internalL.DataSource as List<NameValueItem> ?? new List<NameValueItem>();
                 if (!dataSource.Any())
                     dataSource.Add(value);
                 else
                     dataSource[index] = value;
 
-                internalList.DataSource = dataSource;
+                internalL.DataSource = dataSource;
             }
         }
 
         public void Add(NameValueItem nvi) {
-            var dataSource = internalList.DataSource as List<NameValueItem> ?? new List<NameValueItem>();
+            var dataSource = internalL.DataSource as List<NameValueItem> ?? new List<NameValueItem>();
             dataSource.Add(nvi);
-            internalList.PopulateWithRawDataList(dataSource, NameValueItem.NameProperty, NameValueItem.ValueProperty);
+            internalL.PopulateWithRawDataList(dataSource, NameValueItem.NameProperty, NameValueItem.ValueProperty);
         }
 
         public void AddRange(IEnumerable<NameValueItem> nviList) {
-            var dataSource = internalList.DataSource as List<NameValueItem> ?? new List<NameValueItem>();
+            var dataSource = internalL.DataSource as List<NameValueItem> ?? new List<NameValueItem>();
             dataSource.AddRange(nviList);
-            internalList.PopulateWithRawDataList(dataSource, NameValueItem.NameProperty, NameValueItem.ValueProperty);
+            internalL.PopulateWithRawDataList(dataSource, NameValueItem.NameProperty, NameValueItem.ValueProperty);
         }
 
         public void Clear() {
-            internalList.DataSource = null;
+            internalL.DataSource = null;
         }
     }
 }

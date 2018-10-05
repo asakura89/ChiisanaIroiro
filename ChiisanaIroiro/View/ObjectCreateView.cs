@@ -2,25 +2,29 @@
 using System.Windows.Forms;
 using Ayumi.Core;
 using Ayumi.Data;
-using Ayumi.Desktop;
 using ChiisanaIroiro.Presenter;
 using ChiisanaIroiro.Service;
 using ChiisanaIroiro.Utility;
 using ChiisanaIroiro.ViewModel;
 
 namespace ChiisanaIroiro.View {
-    public partial class GenerateSqlTemplateView : UserControl, IGenerateSqlTemplateViewModel {
-        readonly IGenerateSqlTemplatePresenter presenter;
+    public partial class ObjectCreateView : UserControl, IObjectCreateViewModel {
+        const String ErrorSessName = "generatenumberview.session.errormessage";
 
-        public GenerateSqlTemplateView() {
+        static readonly InMemoryCommonList actions = new InMemoryCommonList();
+        readonly IObjectCreatePresenter presenter;
+
+        public ObjectCreateView() {
             InitializeComponent();
 
-            IGenerateSqlTemplateService service = ObjectRegistry.GetRegisteredObject<IGenerateSqlTemplateService>();
-            presenter = ObjectRegistry.GetRegisteredObject<IGenerateSqlTemplatePresenter>(this, service);
+            IObjectCreateService service = ObjectRegistry.GetRegisteredObject<IObjectCreateService>();
+            presenter = ObjectRegistry.GetRegisteredObject<IObjectCreatePresenter>(this, service);
             presenter.Initialize();
         }
 
-        public ICommonList TemplateType => new DesktopDropdownList(cmbAvailableTemplate);
+        public ICommonList ViewActions => actions;
+        public String ViewName => "Object Create";
+        public String ViewDesc => "";
 
         public String InputString {
             get { return txtInput.Text; }
@@ -32,8 +36,6 @@ namespace ChiisanaIroiro.View {
             set { txtOutput.Text = value; }
         }
 
-        const String ErrorSessName = "generatesqltemplateview.session.errormessage";
-
         public String ErrorMessage {
             get { return Convert.ToString(SessionStore.Get(ErrorSessName)); }
             set {
@@ -42,10 +44,10 @@ namespace ChiisanaIroiro.View {
             }
         }
 
-        void btnGenerate_Click(object sender, EventArgs e) {
+        void btnObjectCreate_Click(object sender, EventArgs e) {
             try {
-                presenter.GenerateAction();
-                presenter.CaptureAction("Generate Sql Template", "Generate has been done.");
+                presenter.CreateObjectAction();
+                presenter.CaptureAction(ViewName, "Object create has been done.");
             }
             catch (Exception ex) {
                 presenter.CaptureException(ex);
@@ -58,7 +60,7 @@ namespace ChiisanaIroiro.View {
                     Clipboard.Clear();
                     Clipboard.SetText(OutputString);
 
-                    MessageBox.Show("Text has been copied to clipboard.");
+                    presenter.CaptureAction(ViewName, "Text has been copied to clipboard.");
                 }
             }
             catch (Exception ex) {

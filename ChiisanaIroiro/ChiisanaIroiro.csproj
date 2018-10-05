@@ -36,6 +36,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>6</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -54,8 +55,8 @@
     <Reference Include="Keywielder, Version=2.0.2017.4509, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Keywielder.2.0.2017.4509\lib\net40\Keywielder.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net40\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Nvy, Version=1.0.2017.1906, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Nvy.1.0.2017.1906\lib\net40\Nvy.dll</HintPath>
@@ -69,10 +70,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Constant\ChangeCaseType.cs" />
+    <Compile Include="Constant\GenerateTemplateType.cs" />
     <Compile Include="Constant\LabelType.cs" />
-    <Compile Include="Constant\GenerateSqlTemplateType.cs" />
-    <EmbeddedResource Include="Embedded\ActionSqlTemplate.eqx" />
     <Compile Include="Constant\NumberType.cs" />
+    <EmbeddedResource Include="Embedded\template.type.sqlaction" />
+    <EmbeddedResource Include="Embedded\template.type.jstimer" />
+    <Compile Include="Constant\ObjectType.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,29 +84,34 @@
     </Compile>
     <Compile Include="Presenter\IChangeCasePresenter.cs" />
     <Compile Include="Presenter\IGenerateNumberPresenter.cs" />
-    <Compile Include="Presenter\IGenerateSqlTemplatePresenter.cs" />
-    <Compile Include="Presenter\IMakeHeaderPresenter.cs" />
-    <Compile Include="Presenter\IMakeLabelPresenter.cs" />
     <Compile Include="Presenter\Impl\GenerateNumberPresenter.cs" />
-    <Compile Include="Presenter\Impl\GenerateSqlTemplatePresenter.cs" />
-    <Compile Include="Presenter\Impl\MakeHeaderPresenter.cs" />
-    <Compile Include="Presenter\Impl\MakeLabelPresenter.cs" />
     <Compile Include="Service\IGenerateNumberService.cs" />
-    <Compile Include="Service\IGenerateSqlTemplateService.cs" />
-    <Compile Include="Service\IMakeHeaderService.cs" />
-    <Compile Include="Service\IMakeLabelService.cs" />
     <Compile Include="Service\Impl\GenerateNumberConfig.cs" />
     <Compile Include="Service\Impl\GenerateNumberService.cs" />
-    <Compile Include="Service\Impl\GenerateSqlTemplateService.cs" />
-    <Compile Include="Service\Impl\MakeHeaderService.cs" />
-    <Compile Include="Service\Impl\MakeLabelService.cs" />
     <Compile Include="Utility\ISessionStore.cs" />
     <Compile Include="Utility\SessionStore.cs" />
     <Compile Include="Utility\TextEditorHelper.cs" />
     <Compile Include="ViewModel\IExceptionOccuredViewModel.cs" />
     <Compile Include="ViewModel\IGenerateNumberViewModel.cs" />
-    <Compile Include="ViewModel\IGenerateSqlTemplateViewModel.cs" />
-    <Compile Include="ViewModel\IMakeHeaderViewModel.cs" />
+    <Compile Include="Presenter\IGenerateTemplatePresenter.cs" />
+    <Compile Include="Presenter\IMainFormPresenter.cs" />
+    <Compile Include="Presenter\IMakeLabelPresenter.cs" />
+    <Compile Include="Presenter\Impl\GenerateTemplatePresenter.cs" />
+    <Compile Include="Presenter\Impl\MainFormPresenter.cs" />
+    <Compile Include="Presenter\Impl\MakeLabelPresenter.cs" />
+    <Compile Include="Presenter\Impl\ObjectCreatePresenter.cs" />
+    <Compile Include="Presenter\IObjectCreatePresenter.cs" />
+    <Compile Include="Service\IGenerateTemplateService.cs" />
+    <Compile Include="Service\IMainFormService.cs" />
+    <Compile Include="Service\IMakeLabelService.cs" />
+    <Compile Include="Service\Impl\GenerateTemplateService.cs" />
+    <Compile Include="Service\Impl\MainFormService.cs" />
+    <Compile Include="Service\Impl\MakeLabelService.cs" />
+    <Compile Include="Service\Impl\ObjectCreateService.cs" />
+    <Compile Include="Service\Impl\ObjectMetadata.cs" />
+    <Compile Include="Service\IObjectCreateService.cs" />
+    <Compile Include="ViewModel\IGenerateTemplateViewModel.cs" />
+    <Compile Include="ViewModel\IMainFormViewModel.cs" />
     <Compile Include="ViewModel\IMakeLabelViewModel.cs" />
     <Compile Include="Presenter\Impl\ChangeCasePresenter.cs" />
     <Compile Include="Program.cs" />
@@ -117,11 +125,19 @@
     <Compile Include="View\GenerateNumberView.Designer.cs">
       <DependentUpon>GenerateNumberView.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\GenerateSqlTemplateView.cs">
+    <Compile Include="ViewModel\IObjectCreateViewModel.cs" />
+    <Compile Include="ViewModel\IViewModel.cs" />
+    <Compile Include="View\ObjectCreateView.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="View\GenerateSqlTemplateView.Designer.cs">
-      <DependentUpon>GenerateSqlTemplateView.cs</DependentUpon>
+    <Compile Include="View\ObjectCreateView.Designer.cs">
+      <DependentUpon>ObjectCreateView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\GenerateTemplateView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\GenerateTemplateView.Designer.cs">
+      <DependentUpon>GenerateTemplateView.cs</DependentUpon>
     </Compile>
     <Compile Include="View\ChangeCaseView.cs">
       <SubType>UserControl</SubType>
@@ -134,12 +150,6 @@
     </Compile>
     <Compile Include="View\LabelMakerView.Designer.cs">
       <DependentUpon>LabelMakerView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\SourceHeaderTextView.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="View\SourceHeaderTextView.Designer.cs">
-      <DependentUpon>SourceHeaderTextView.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -157,8 +167,11 @@
     <EmbeddedResource Include="View\GenerateNumberView.resx">
       <DependentUpon>GenerateNumberView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\GenerateSqlTemplateView.resx">
-      <DependentUpon>GenerateSqlTemplateView.cs</DependentUpon>
+    <EmbeddedResource Include="View\ObjectCreateView.resx">
+      <DependentUpon>ObjectCreateView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\GenerateTemplateView.resx">
+      <DependentUpon>GenerateTemplateView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\ChangeCaseView.resx">
       <DependentUpon>ChangeCaseView.cs</DependentUpon>
@@ -166,7 +179,8 @@
     <EmbeddedResource Include="View\LabelMakerView.resx">
       <DependentUpon>LabelMakerView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Embedded\RetrieveSqlTemplate.eqx" />
+    <EmbeddedResource Include="Embedded\template.type.sqlretrieve" />
+    <EmbeddedResource Include="Embedded\template.type.notified" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -201,6 +215,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Embedded\template.type.jsajax" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Ayumi\Ayumi.csproj">
       <Project>{351ec624-0510-413a-9868-cced2f009db1}</Project>

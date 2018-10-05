@@ -8,32 +8,18 @@ using ChiisanaIroiro.Utility;
 using ChiisanaIroiro.ViewModel;
 
 namespace ChiisanaIroiro.View {
-    public partial class GenerateNumberView : UserControl, IGenerateNumberViewModel {
-        const String ErrorSessName = "generatenumberview.session.errormessage";
+    public partial class GenerateTemplateView : UserControl, IGenerateTemplateViewModel {
+        const String ErrorSessName = "generatetemplateview.session.errormessage";
 
-        static readonly InMemoryCommonList actions = new InMemoryCommonList();
-        readonly IGenerateNumberPresenter presenter;
+        static readonly InMemoryCommonList templateActions = new InMemoryCommonList();
+        readonly IGenerateTemplatePresenter presenter;
 
-        public GenerateNumberView() {
+        public GenerateTemplateView() {
             InitializeComponent();
 
-            IGenerateNumberService service = ObjectRegistry.GetRegisteredObject<IGenerateNumberService>();
-            presenter = ObjectRegistry.GetRegisteredObject<IGenerateNumberPresenter>(this, service);
+            IGenerateTemplateService service = ObjectRegistry.GetRegisteredObject<IGenerateTemplateService>();
+            presenter = ObjectRegistry.GetRegisteredObject<IGenerateTemplatePresenter>(this, service);
             presenter.Initialize();
-        }
-
-        public ICommonList ViewActions => actions;
-        public String ViewName => "Generate Number";
-        public String ViewDesc => "";
-
-        public String InputString {
-            get { return txtInput.Text; }
-            set { txtInput.Text = value; }
-        }
-
-        public String OutputString {
-            get { return txtOutput.Text; }
-            set { txtOutput.Text = value; }
         }
 
         public String ErrorMessage {
@@ -42,6 +28,15 @@ namespace ChiisanaIroiro.View {
                 SessionStore.Add(ErrorSessName, value);
                 MessageBox.Show(this, value);
             }
+        }
+
+        public ICommonList ViewActions => templateActions;
+        public String ViewName => "Generate Template";
+        public String ViewDesc => "";
+
+        public String OutputString {
+            get { return txtOutput.Text; }
+            set { txtOutput.Text = value; }
         }
 
         void btnGenerate_Click(object sender, EventArgs e) {

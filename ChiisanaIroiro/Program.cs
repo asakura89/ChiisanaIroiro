@@ -18,16 +18,18 @@ namespace ChiisanaIroiro {
         }
 
         static void InitializeObjectRegistry() {
-            ObjectRegistry.RegisterObject<IChangeCasePresenter, ChangeCasePresenter>();
             ObjectRegistry.RegisterObject<IChangeCaseService, ChangeCaseService>();
-            ObjectRegistry.RegisterObject<IMakeLabelPresenter, MakeLabelPresenter>();
+            ObjectRegistry.RegisterObject<IChangeCasePresenter, ChangeCasePresenter>();
             ObjectRegistry.RegisterObject<IMakeLabelService, MakeLabelService>();
-            ObjectRegistry.RegisterObject<IMakeHeaderPresenter, MakeHeaderPresenter>();
-            ObjectRegistry.RegisterObject<IMakeHeaderService, MakeHeaderService>();
-            ObjectRegistry.RegisterObject<IGenerateSqlTemplateService, GenerateSqlTemplateService>();
-            ObjectRegistry.RegisterObject<IGenerateSqlTemplatePresenter, GenerateSqlTemplatePresenter>();
+            ObjectRegistry.RegisterObject<IMakeLabelPresenter, MakeLabelPresenter>();
+            ObjectRegistry.RegisterObject<IGenerateTemplateService, GenerateTemplateService>();
+            ObjectRegistry.RegisterObject<IGenerateTemplatePresenter, GenerateTemplatePresenter>();
             ObjectRegistry.RegisterObject<IGenerateNumberPresenter, GenerateNumberPresenter>();
             ObjectRegistry.RegisterObject<IGenerateNumberService, GenerateNumberService>();
+            ObjectRegistry.RegisterObject<IObjectCreateService, ObjectCreateService>();
+            ObjectRegistry.RegisterObject<IObjectCreatePresenter, ObjectCreatePresenter>();
+            ObjectRegistry.RegisterObject<IMainFormService, MainFormService>();
+            ObjectRegistry.RegisterObject<IMainFormPresenter, MainFormPresenter>();
         }
     }
 }

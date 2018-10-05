@@ -29,7 +29,7 @@ namespace ChiisanaIroiro.Service.Impl {
                     config.Pad.ToLowerInvariant() == "left" ?
                         outp.PadLeft(config.Length, '0') :
                         config.Pad.ToLowerInvariant() == "right" ?
-                        outp.PadRight(config.Length, '0') :
+                            outp.PadRight(config.Length, '0') :
                             outp);
 
             IEnumerable<String> generated = running;
@@ -50,7 +50,7 @@ namespace ChiisanaIroiro.Service.Impl {
         IEnumerable<String> GenerateRandomHexNo(GenerateNumberConfig config) {
             return Enumerable
                 .Range(1, config.Iterate)
-                .Select(no => 
+                .Select(no =>
                     String.Join(String.Empty, Enumerable
                         .Range(1, config.Length)
                         .Select(ino => Convert

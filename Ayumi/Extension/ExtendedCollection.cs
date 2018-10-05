@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 namespace Ayumi.Extension {
-    public static class ExtendedCollection {
+    /*public static class ExtendedCollection {
         public delegate TResult Func<T, TResult>(T t);
 
         public static Boolean Any<TSource>(this IEnumerable<TSource> source) {
@@ -143,5 +143,5 @@ namespace Ayumi.Extension {
             foreach (Object current in source)
                 yield return (TResult) current;
         }
-    }
+    }*/
 }

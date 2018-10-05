@@ -1,9 +1,7 @@
 ﻿using System;
-using Ayumi.Data;
 
 namespace ChiisanaIroiro.ViewModel {
-    public interface IChangeCaseViewModel : IExceptionOccuredViewModel {
-        ICommonList CaseType { get; }
+    public interface IChangeCaseViewModel : IViewModel, IExceptionOccuredViewModel {
         String InputString { get; set; }
         String OutputString { get; set; }
     }

@@ -5,9 +5,9 @@ using ChiisanaIroiro.Utility;
 using FastColoredTextBoxNS;
 
 namespace ChiisanaIroiro.View {
-    partial class GenerateNumberView {
+    partial class ObjectCreateView {
         Button btnClipboard;
-        Button btnGenerate;
+        Button btnObjectCreate;
 
         /// <summary>
         ///     Required designer variable.
@@ -36,13 +36,13 @@ namespace ChiisanaIroiro.View {
             components = new Container();
             txtOutput = new FastColoredTextBox();
             txtInput = new FastColoredTextBox();
-            btnGenerate = new Button();
+            btnObjectCreate = new Button();
             btnClipboard = new Button();
             pnlLayout = new TableLayoutPanel();
             pnlLayout.SuspendLayout();
             SuspendLayout();
-            ((ISupportInitialize)txtOutput).BeginInit();
-            ((ISupportInitialize)txtInput).BeginInit();
+            ((ISupportInitialize) txtOutput).BeginInit();
+            ((ISupportInitialize) txtInput).BeginInit();
             // 
             // txtOutput
             // 
@@ -61,16 +61,16 @@ namespace ChiisanaIroiro.View {
             txtInput.TabIndex = 5;
             TextEditorHelper.Initialize(txtInput);
             // 
-            // btnGenerate
+            // btnObjectCreate
             // 
-            btnGenerate.Dock = DockStyle.Fill;
-            btnGenerate.Location = new Point(3, 259);
-            btnGenerate.Name = "btnGenerate";
-            btnGenerate.Size = new Size(844, 39);
-            btnGenerate.TabIndex = 6;
-            btnGenerate.Text = "Generate";
-            btnGenerate.UseVisualStyleBackColor = true;
-            btnGenerate.Click += btnGenerate_Click;
+            btnObjectCreate.Dock = DockStyle.Fill;
+            btnObjectCreate.Location = new Point(3, 259);
+            btnObjectCreate.Name = "btnObjectCreate";
+            btnObjectCreate.Size = new Size(844, 39);
+            btnObjectCreate.TabIndex = 6;
+            btnObjectCreate.Text = "Create Object";
+            btnObjectCreate.UseVisualStyleBackColor = true;
+            btnObjectCreate.Click += btnObjectCreate_Click;
             // 
             // btnClipboard
             // 
@@ -89,7 +89,7 @@ namespace ChiisanaIroiro.View {
             pnlLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             pnlLayout.Controls.Add(btnClipboard, 0, 3);
             pnlLayout.Controls.Add(txtOutput, 0, 2);
-            pnlLayout.Controls.Add(btnGenerate, 0, 1);
+            pnlLayout.Controls.Add(btnObjectCreate, 0, 1);
             pnlLayout.Controls.Add(txtInput, 0, 0);
             pnlLayout.Dock = DockStyle.Fill;
             pnlLayout.Location = new Point(0, 0);
@@ -102,7 +102,7 @@ namespace ChiisanaIroiro.View {
             pnlLayout.Size = new Size(850, 574);
             pnlLayout.TabIndex = 10;
             // 
-            // GenerateNumberView
+            // ObjectCreateView
             // 
             AutoScaleDimensions = new SizeF(7F, 18F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -110,10 +110,10 @@ namespace ChiisanaIroiro.View {
             Controls.Add(pnlLayout);
             Font = new Font("Trebuchet MS", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Margin = new Padding(3, 4, 3, 4);
-            Name = "GenerateNumberView";
+            Name = "ObjectCreateView";
             Size = new Size(850, 574);
-            ((ISupportInitialize)txtOutput).EndInit();
-            ((ISupportInitialize)txtInput).EndInit();
+            ((ISupportInitialize) txtOutput).EndInit();
+            ((ISupportInitialize) txtInput).EndInit();
             pnlLayout.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();

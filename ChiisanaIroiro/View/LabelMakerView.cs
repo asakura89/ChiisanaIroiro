@@ -2,7 +2,6 @@
 using System.Windows.Forms;
 using Ayumi.Core;
 using Ayumi.Data;
-using Ayumi.Desktop;
 using ChiisanaIroiro.Presenter;
 using ChiisanaIroiro.Service;
 using ChiisanaIroiro.Utility;
@@ -10,6 +9,9 @@ using ChiisanaIroiro.ViewModel;
 
 namespace ChiisanaIroiro.View {
     public partial class LabelMakerView : UserControl, IMakeLabelViewModel {
+        const String ErrorSessName = "labelmakerview.session.errormessage";
+
+        static readonly InMemoryCommonList actions = new InMemoryCommonList();
         readonly IMakeLabelPresenter presenter;
 
         public LabelMakerView() {
@@ -20,7 +22,17 @@ namespace ChiisanaIroiro.View {
             presenter.Initialize();
         }
 
-        public ICommonList LabelType => new DesktopDropdownList(cmbLabelType);
+        public String ErrorMessage {
+            get { return Convert.ToString(SessionStore.Get(ErrorSessName)); }
+            set {
+                SessionStore.Add(ErrorSessName, value);
+                MessageBox.Show(this, value);
+            }
+        }
+
+        public ICommonList ViewActions => actions;
+        public String ViewName => "Label Maker";
+        public String ViewDesc => "";
 
         public String InputString {
             get { return txtInput.Text; }
@@ -32,20 +44,10 @@ namespace ChiisanaIroiro.View {
             set { txtOutput.Text = value; }
         }
 
-        const String ErrorSessName = "labelmakerview.session.errormessage";
-
-        public String ErrorMessage {
-            get { return Convert.ToString(SessionStore.Get(ErrorSessName)); }
-            set {
-                SessionStore.Add(ErrorSessName, value);
-                MessageBox.Show(this, value);
-            }
-        }
-
         void btnMakeLabel_Click(object sender, EventArgs e) {
             try {
                 presenter.MakeLabelAction();
-                presenter.CaptureAction("Make Label", "Make label has been done.");
+                presenter.CaptureAction(ViewName, "Make label has been done.");
             }
             catch (Exception ex) {
                 presenter.CaptureException(ex);
@@ -58,7 +60,7 @@ namespace ChiisanaIroiro.View {
                     Clipboard.Clear();
                     Clipboard.SetText(OutputString);
 
-                    MessageBox.Show("Text has been copied to clipboard.");
+                    presenter.CaptureAction(ViewName, "Text has been copied to clipboard.");
                 }
             }
             catch (Exception ex) {

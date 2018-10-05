@@ -1,8 +1,7 @@
 ﻿using System;
-using Ayumi.Data;
 
 namespace ChiisanaIroiro.ViewModel {
-    public interface IGenerateNumberViewModel : IViewModel, IExceptionOccuredViewModel {
+    public interface IObjectCreateViewModel : IViewModel, IExceptionOccuredViewModel {
         String InputString { get; set; }
         String OutputString { get; set; }
     }

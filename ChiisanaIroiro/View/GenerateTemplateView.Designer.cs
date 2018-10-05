@@ -5,7 +5,7 @@ using ChiisanaIroiro.Utility;
 using FastColoredTextBoxNS;
 
 namespace ChiisanaIroiro.View {
-    partial class GenerateNumberView {
+    partial class GenerateTemplateView {
         Button btnClipboard;
         Button btnGenerate;
 
@@ -15,7 +15,6 @@ namespace ChiisanaIroiro.View {
         IContainer components;
 
         TableLayoutPanel pnlLayout;
-        FastColoredTextBox txtInput;
         FastColoredTextBox txtOutput;
 
         /// <summary>
@@ -23,8 +22,9 @@ namespace ChiisanaIroiro.View {
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing) {
-            if (disposing && components != null)
+            if (disposing && components != null) {
                 components.Dispose();
+            }
             base.Dispose(disposing);
         }
 
@@ -35,14 +35,12 @@ namespace ChiisanaIroiro.View {
         void InitializeComponent() {
             components = new Container();
             txtOutput = new FastColoredTextBox();
-            txtInput = new FastColoredTextBox();
             btnGenerate = new Button();
             btnClipboard = new Button();
             pnlLayout = new TableLayoutPanel();
             pnlLayout.SuspendLayout();
             SuspendLayout();
-            ((ISupportInitialize)txtOutput).BeginInit();
-            ((ISupportInitialize)txtInput).BeginInit();
+            ((ISupportInitialize) txtOutput).BeginInit();
             // 
             // txtOutput
             // 
@@ -52,14 +50,6 @@ namespace ChiisanaIroiro.View {
             txtOutput.Size = new Size(309, 67);
             txtOutput.TabIndex = 7;
             TextEditorHelper.Initialize(txtOutput);
-            // 
-            // txtInput
-            // 
-            txtInput.Location = new Point(3, 152);
-            txtInput.Name = "txtInput";
-            txtInput.Size = new Size(309, 67);
-            txtInput.TabIndex = 5;
-            TextEditorHelper.Initialize(txtInput);
             // 
             // btnGenerate
             // 
@@ -78,7 +68,7 @@ namespace ChiisanaIroiro.View {
             btnClipboard.Location = new Point(3, 530);
             btnClipboard.Name = "btnClipboard";
             btnClipboard.Size = new Size(844, 41);
-            btnClipboard.TabIndex = 8;
+            btnClipboard.TabIndex = 9;
             btnClipboard.Text = "Copy to Clipboard";
             btnClipboard.UseVisualStyleBackColor = true;
             btnClipboard.Click += btnClipboard_Click;
@@ -87,22 +77,20 @@ namespace ChiisanaIroiro.View {
             // 
             pnlLayout.ColumnCount = 1;
             pnlLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            pnlLayout.Controls.Add(btnClipboard, 0, 3);
-            pnlLayout.Controls.Add(txtOutput, 0, 2);
+            pnlLayout.Controls.Add(btnClipboard, 0, 2);
             pnlLayout.Controls.Add(btnGenerate, 0, 1);
-            pnlLayout.Controls.Add(txtInput, 0, 0);
+            pnlLayout.Controls.Add(txtOutput, 0, 0);
             pnlLayout.Dock = DockStyle.Fill;
             pnlLayout.Location = new Point(0, 0);
             pnlLayout.Name = "pnlLayout";
-            pnlLayout.RowCount = 4;
-            pnlLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 241F));
+            pnlLayout.RowCount = 3;
+            pnlLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 482F));
             pnlLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 45F));
-            pnlLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 241F));
             pnlLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 45F));
             pnlLayout.Size = new Size(850, 574);
             pnlLayout.TabIndex = 10;
-            // 
-            // GenerateNumberView
+            //
+            // GenerateTemplateView
             // 
             AutoScaleDimensions = new SizeF(7F, 18F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -110,10 +98,9 @@ namespace ChiisanaIroiro.View {
             Controls.Add(pnlLayout);
             Font = new Font("Trebuchet MS", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Margin = new Padding(3, 4, 3, 4);
-            Name = "GenerateNumberView";
+            Name = "GenerateTemplateView";
             Size = new Size(850, 574);
-            ((ISupportInitialize)txtOutput).EndInit();
-            ((ISupportInitialize)txtInput).EndInit();
+            ((ISupportInitialize) txtOutput).EndInit();
             pnlLayout.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();

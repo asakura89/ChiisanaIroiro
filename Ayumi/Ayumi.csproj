@@ -20,6 +20,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>6</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -43,11 +44,13 @@
     <Compile Include="Core\IObjectRegistry.cs" />
     <Compile Include="Core\ObjectRegistry.cs" />
     <Compile Include="Data\ICommonList.cs" />
+    <Compile Include="Data\InMemoryCommonList.cs" />
     <Compile Include="Data\Is.cs" />
     <Compile Include="Desktop\DesktopDropdownList.cs" />
     <Compile Include="Desktop\IValueReturnable.cs" />
     <Compile Include="Desktop\ListControlExtensions.cs" />
     <Compile Include="Desktop\WindowManager.cs" />
+    <Compile Include="DynamicTypeLoader.cs" />
     <Compile Include="Extension\ExtendedCollection.cs" />
     <Compile Include="Extension\ExtendedCommonList.cs" />
     <Compile Include="Extension\ExtendedDataTable.cs" />

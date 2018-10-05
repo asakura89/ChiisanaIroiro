@@ -7,9 +7,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Ayumi")]
 [assembly: AssemblyDescription("Mini many helper code as library")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("ASMNetworkLab")]
+[assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Ayumi")]
-[assembly: AssemblyCopyright("Copyright © ASMNetworkLab 2015")]
+[assembly: AssemblyCopyright("Copyright © 2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
