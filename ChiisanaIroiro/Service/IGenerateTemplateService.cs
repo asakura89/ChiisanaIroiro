@@ -2,7 +2,6 @@
 
 namespace ChiisanaIroiro.Service {
     public interface IGenerateTemplateService {
-        String GenerateActionTemplate();
-        String GenerateRetrieveTemplate();
+        String GenerateTemplate(String type);
     }
 }

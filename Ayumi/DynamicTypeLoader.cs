@@ -121,8 +121,7 @@ namespace Ayumi {
         public Type GetSingleTypeDecoratedBy<TAttribute>(Func<TAttribute, Boolean> predicate) =>
             GetSingleTypeDecoratedBy<TAttribute>(LoadAssemblies(), predicate);
 
-        public static Type GetSingleTypeDecoratedBy<TAttribute>(IEnumerable<Type> types,
-            Func<TAttribute, Boolean> predicate) {
+        public static Type GetSingleTypeDecoratedBy<TAttribute>(IEnumerable<Type> types, Func<TAttribute, Boolean> predicate) {
             if (types == null)
                 return null;
 

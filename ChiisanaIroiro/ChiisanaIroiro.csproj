@@ -64,9 +64,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Constant\ChangeCaseType.cs" />
+    <Compile Include="Constant\GenerateTemplateType.cs" />
     <Compile Include="Constant\LabelType.cs" />
-    <Compile Include="Constant\GenerateSqlTemplateType.cs" />
-    <EmbeddedResource Include="Embedded\ActionSqlTemplate.eqx" />
+    <EmbeddedResource Include="Embedded\template.type.sqlaction" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -138,7 +138,7 @@
       <DependentUpon>LabelMakerView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
-    <EmbeddedResource Include="Embedded\RetrieveSqlTemplate.eqx" />
+    <EmbeddedResource Include="Embedded\template.type.sqlretrieve" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
