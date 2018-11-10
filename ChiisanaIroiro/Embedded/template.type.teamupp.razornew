@@ -1,0 +1,189 @@
+﻿@{
+    ViewBag.Title = "New Client";
+    ViewBag.Description = String.Empty;
+}
+
+<button id="btn-cancel" type="button" class="btn btn-danger btn-std btn-mainaction">
+    Cancel
+    <span class="fa fa-arrow-left"></span>
+</button>
+<div class="v-space"></div>
+<div class="box box-solid">
+    <div class="box-body">
+        <div class="col-xs-12">
+            <div class="row">
+                <div class="col-xs-12 col-md-6">
+                    <div class="post">
+                        <div class="form-group">
+                            <label class="control-label">Client Name</label>
+                            <input id="txt-name" type="text" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Client Code</label>
+                            <input id="txt-code" type="text" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Address</label>
+                            <textarea id="txt-address" type="text" class="form-control" rows="3"></textarea>
+                        </div>
+                    </div>
+                    <div class="post">
+                        <div class="form-group">
+                            <label class="control-label">PIC First Name</label>
+                            <input id="txt-picfname" type="text" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">PIC Last Name</label>
+                            <input id="txt-piclname" type="text" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">PIC Email</label>
+                            <input id="txt-picemail" type="text" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">PIC Office No</label>
+                            <input id="txt-picoffnumber" type="text" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">PIC Mobile No</label>
+                            <input id="txt-picmbnumber" type="text" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="post">
+                        <div class="form-group">
+                            <label class="control-label">Invoice Email</label>
+                            <input id="txt-invoiceemail" type="text" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-md-6">
+                    <div class="form-group">
+                        <button id="btn-submit" class="btn btn-primary btn-std btn-mainaction">
+                            Create
+                            <span class="fa fa-floppy-o"></span>
+                        </button>
+                        <button id="btn-clear" class="btn btn-danger btn-std btn-mainaction">
+                            Clear
+                            <span class="fa fa-times-circle"></span>
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md-6 hidden-xs"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section BodyScript {
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            "use strict";
+
+            jQuery("section.content").on("click", "#btn-cancel", CancelButtonOnClick);
+            function CancelButtonOnClick() {
+                Kayo.RedirectTo("@Url.Action("Index", "Client")", -1);
+            }
+
+            function ClearForm() {
+                Kayo.Clear([
+                    "#txt-name",
+                    "#txt-code",
+                    "#txt-address",
+
+                    "#txt-picfname",
+                    "#txt-piclname",
+                    "#txt-picemail",
+                    "#txt-picoffnumber",
+                    "#txt-picmbnumber",
+
+                    "#txt-invoiceemail"
+                ]);
+            }
+
+            ClearForm();
+
+            jQuery("section.content").on("click", "#btn-submit", SubmitButtonOnClick);
+            function SubmitButtonOnClick() {
+                var isValid = Kayo.ValidateMandatory([
+                    "#txt-name"
+                ]);
+
+                if (isValid) {
+                    Kayo.Disable([
+                        "#txt-name",
+                        "#txt-code",
+                        "#txt-address",
+
+                        "#txt-picfname",
+                        "#txt-piclname",
+                        "#txt-picemail",
+                        "#txt-picoffnumber",
+                        "#txt-picmbnumber",
+
+                        "#txt-invoiceemail",
+
+                        "#btn-submit",
+                        "#btn-clear"
+                    ]);
+
+                    jQuery.ajax({
+                        type: "POST",
+                        url: "@Url.Action("TryCreate", "Client")",
+                        contentType: "application/json; charset=utf-8",
+                        data: JSON.stringify(GetData()),
+                        success: function (data) {
+                            if (data.ResponseType !== "E") {
+                                var message = data.Message;
+                                jQuery.InfoBox("Success", message);
+                                Kayo.RedirectTo("@Url.Action("New", "Client")");
+                            }
+                            else
+                                jQuery.ErrorBox("Error", data.Message);
+                        },
+                        error: function (data) {
+                            Kayo.OnAjaxError(data, function (message) {
+                                jQuery.ErrorBox("Error", message);
+                            });
+                        },
+                        complete: function (data) {
+                            Kayo.Enable([
+                                "#txt-name",
+                                "#txt-code",
+                                "#txt-address",
+
+                                "#txt-picfname",
+                                "#txt-piclname",
+                                "#txt-picemail",
+                                "#txt-picoffnumber",
+                                "#txt-picmbnumber",
+
+                                "#txt-invoiceemail",
+
+                                "#btn-submit",
+                                "#btn-clear"
+                            ]);
+                        }
+                    });
+                }
+            }
+
+            function GetData() {
+                return {
+                    Name: Kayo.ValueOrDefault(document.getElementById("txt-name")),
+                    Code: Kayo.ValueOrDefault(document.getElementById("txt-code")),
+                    Address: Kayo.ValueOrDefault(document.getElementById("txt-address")),
+                    PicFirstName: Kayo.ValueOrDefault(document.getElementById("txt-picfname")),
+                    PicLastName: Kayo.ValueOrDefault(document.getElementById("txt-piclname")),
+                    PicEmail: Kayo.ValueOrDefault(document.getElementById("txt-picemail")),
+                    PicOfficeNumber: Kayo.ValueOrDefault(document.getElementById("txt-picoffnumber")),
+                    PicMobileNumber: Kayo.ValueOrDefault(document.getElementById("txt-picmbnumber")),
+                    InvoiceEmail: Kayo.ValueOrDefault(document.getElementById("txt-invoiceemail"))
+                };
+            }
+
+            jQuery("section.content").on("click", "#btn-clear", ClearForm);
+        });
+    </script>
+}

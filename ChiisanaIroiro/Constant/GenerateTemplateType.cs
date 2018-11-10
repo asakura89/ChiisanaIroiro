@@ -6,5 +6,7 @@ namespace ChiisanaIroiro.Constant {
         public const String SqlRetrieve = "template.type.sqlretrieve";
         public const String JsTimer = "template.type.jstimer";
         public const String JsAjax = "template.type.jsajax";
+        public const String TeamUppRazorIndex = "template.type.teamupp.razorindex";
+        public const String TeamUppRazorNew = "template.type.teamupp.razornew";
     }
 }

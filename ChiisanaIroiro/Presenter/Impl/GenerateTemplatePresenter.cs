@@ -35,10 +35,12 @@ namespace ChiisanaIroiro.Presenter.Impl {
         public void CaptureAction(String action, String description) { }
 
         IEnumerable<NameValueItem> GetTemplateTypeList() {
-            yield return new NameValueItem("Sql Action Template", GenerateTemplateType.SqlAction);
-            yield return new NameValueItem("Sql Retrieve Template", GenerateTemplateType.SqlRetrieve);
-            yield return new NameValueItem("Javascript Ajax Template", GenerateTemplateType.JsAjax);
-            yield return new NameValueItem("Javascript Timer Template", GenerateTemplateType.JsTimer);
+            yield return new NameValueItem("Sql Action", GenerateTemplateType.SqlAction);
+            yield return new NameValueItem("Sql Retrieve", GenerateTemplateType.SqlRetrieve);
+            yield return new NameValueItem("Javascript Ajax", GenerateTemplateType.JsAjax);
+            yield return new NameValueItem("Javascript Timer", GenerateTemplateType.JsTimer);
+            yield return new NameValueItem("TeamUpp Razor New Page", GenerateTemplateType.TeamUppRazorNew);
+            yield return new NameValueItem("TeamUpp Razor Index Page", GenerateTemplateType.TeamUppRazorIndex);
         }
     }
 }

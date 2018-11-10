@@ -181,6 +181,8 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Embedded\template.type.sqlretrieve" />
     <EmbeddedResource Include="Embedded\template.type.notified" />
+    <EmbeddedResource Include="Embedded\template.type.teamupp.razornew" />
+    <EmbeddedResource Include="Embedded\template.type.teamupp.razorindex" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
