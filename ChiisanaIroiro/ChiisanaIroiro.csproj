@@ -69,6 +69,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Constant\StringUtilType.cs" />
     <Compile Include="Constant\ChangeCaseType.cs" />
     <Compile Include="Constant\GenerateTemplateType.cs" />
     <Compile Include="Constant\LabelType.cs" />
@@ -82,15 +83,20 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presenter\Impl\StringUtilPresenter.cs" />
+    <Compile Include="Presenter\IStringUtilPresenter.cs" />
     <Compile Include="Presenter\IChangeCasePresenter.cs" />
     <Compile Include="Presenter\IGenerateNumberPresenter.cs" />
     <Compile Include="Presenter\Impl\GenerateNumberPresenter.cs" />
+    <Compile Include="Service\Impl\StringUtilService.cs" />
+    <Compile Include="Service\IStringUtilService.cs" />
     <Compile Include="Service\IGenerateNumberService.cs" />
     <Compile Include="Service\Impl\GenerateNumberConfig.cs" />
     <Compile Include="Service\Impl\GenerateNumberService.cs" />
     <Compile Include="Utility\ISessionStore.cs" />
     <Compile Include="Utility\SessionStore.cs" />
     <Compile Include="Utility\TextEditorHelper.cs" />
+    <Compile Include="ViewModel\IStringUtilViewModel.cs" />
     <Compile Include="ViewModel\IExceptionOccuredViewModel.cs" />
     <Compile Include="ViewModel\IGenerateNumberViewModel.cs" />
     <Compile Include="Presenter\IGenerateTemplatePresenter.cs" />
@@ -119,6 +125,12 @@
     <Compile Include="Service\IChangeCaseService.cs" />
     <Compile Include="Service\Impl\ChangeCaseService.cs" />
     <Compile Include="ViewModel\IChangeCaseViewModel.cs" />
+    <Compile Include="View\StringUtilView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\StringUtilView.Designer.cs">
+      <DependentUpon>StringUtilView.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\GenerateNumberView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -164,6 +176,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="View\StringUtilView.resx">
+      <DependentUpon>StringUtilView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\GenerateNumberView.resx">
       <DependentUpon>GenerateNumberView.cs</DependentUpon>
     </EmbeddedResource>

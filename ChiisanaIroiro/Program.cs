@@ -28,6 +28,8 @@ namespace ChiisanaIroiro {
             ObjectRegistry.RegisterObject<IGenerateNumberService, GenerateNumberService>();
             ObjectRegistry.RegisterObject<IObjectCreateService, ObjectCreateService>();
             ObjectRegistry.RegisterObject<IObjectCreatePresenter, ObjectCreatePresenter>();
+            ObjectRegistry.RegisterObject<IStringUtilService, StringUtilService>();
+            ObjectRegistry.RegisterObject<IStringUtilPresenter, StringUtilPresenter>();
             ObjectRegistry.RegisterObject<IMainFormService, MainFormService>();
             ObjectRegistry.RegisterObject<IMainFormPresenter, MainFormPresenter>();
         }
