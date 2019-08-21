@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Ayumi.Data;
@@ -7,9 +7,8 @@ using Nvy;
 namespace Ayumi.Extension {
     public static class ExtendedCommonList {
         public static void BindToICommonList<T>(this ICommonList commonList, IEnumerable<T> dataList,
-            Func<T, String> nameSelector, Func<T, String> valueSelector) where T : class {
-            BindToICommonList(commonList, dataList, nameSelector, valueSelector, false);
-        }
+            Func<T, String> nameSelector, Func<T, String> valueSelector) where T : class =>
+                BindToICommonList(commonList, dataList, nameSelector, valueSelector, false);
 
         public static void BindToICommonList<T>(this ICommonList commonList, IEnumerable<T> dataList,
             Func<T, String> nameSelector, Func<T, String> valueSelector, Boolean isOrdered) where T : class {
@@ -21,9 +20,8 @@ namespace Ayumi.Extension {
             RawBindToICommonList(commonList, nviList, isOrdered);
         }
 
-        public static void BindToICommonList(this ICommonList commonList, IEnumerable<NameValueItem> dataList) {
+        public static void BindToICommonList(this ICommonList commonList, IEnumerable<NameValueItem> dataList) =>
             BindToICommonList(commonList, dataList, false);
-        }
 
         public static void BindToICommonList(this ICommonList commonList, IEnumerable<NameValueItem> dataList,
             Boolean isOrdered) {
@@ -34,9 +32,8 @@ namespace Ayumi.Extension {
         }
 
         public static void RawBindToICommonList<T>(this ICommonList commonList, IEnumerable<T> dataList,
-            Func<T, String> nameSelector, Func<T, String> valueSelector) where T : class {
-            RawBindToICommonList(commonList, dataList, nameSelector, valueSelector, false);
-        }
+            Func<T, String> nameSelector, Func<T, String> valueSelector) where T : class =>
+                RawBindToICommonList(commonList, dataList, nameSelector, valueSelector, false);
 
         public static void RawBindToICommonList<T>(this ICommonList commonList, IEnumerable<T> dataList,
             Func<T, String> nameSelector, Func<T, String> valueSelector, Boolean isOrdered) where T : class {
@@ -55,9 +52,8 @@ namespace Ayumi.Extension {
             }
         }
 
-        public static void RawBindToICommonList(this ICommonList commonList, IEnumerable<NameValueItem> dataList) {
+        public static void RawBindToICommonList(this ICommonList commonList, IEnumerable<NameValueItem> dataList) =>
             RawBindToICommonList(commonList, dataList, false);
-        }
 
         public static void RawBindToICommonList(this ICommonList commonList, IEnumerable<NameValueItem> dataList,
             Boolean isOrdered) {

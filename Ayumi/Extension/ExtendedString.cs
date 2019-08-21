@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace Ayumi.Extension {
     public static class ExtendedString {
         public static IEnumerable<String> Cut(this String originalString, Int32 cutSize) {
-            for (int index = 0, stringLength = originalString.Length; index < stringLength; index += cutSize) {
+            for (Int32 index = 0, stringLength = originalString.Length; index < stringLength; index += cutSize) {
                 Int32 startIndex = index > stringLength ? stringLength : index;
                 Int32 currentCutSize = cutSize > stringLength - index ? stringLength - index : cutSize;
                 String subtractedString = originalString.Substring(startIndex, currentCutSize);

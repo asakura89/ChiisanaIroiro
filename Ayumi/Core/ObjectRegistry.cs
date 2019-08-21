@@ -1,13 +1,11 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace Ayumi.Core {
     public static class ObjectRegistry {
         static readonly Dictionary<Type, Type> objectList = new Dictionary<Type, Type>();
 
-        public static A GetRegisteredObject<A>() {
-            return GetRegisteredObject<A>(null);
-        }
+        public static A GetRegisteredObject<A>() => GetRegisteredObject<A>(null);
 
         public static A GetRegisteredObject<A>(params Object[] constructorParamList) {
             Type implType = objectList[typeof(A)];

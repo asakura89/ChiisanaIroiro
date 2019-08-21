@@ -1,12 +1,10 @@
-﻿using System;
+using System;
 
 namespace Ayumi.Data {
     public class Is {
         Is() { }
 
-        public static Is It() {
-            return new Is();
-        }
+        public static Is It() => new Is();
 
         public Is Null(Object obj, String customErrorMessage = "Object is null.") {
             if (obj == null)

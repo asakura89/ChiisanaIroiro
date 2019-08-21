@@ -1,0 +1,7 @@
+﻿{
+    "RemoveExtraSpaces":  true,
+    "RemoveSpaces": false,
+    "RemoveTabs": true,
+    "RemoveEmptyLines": false,
+    "RemoveDulicateLines": false
+}

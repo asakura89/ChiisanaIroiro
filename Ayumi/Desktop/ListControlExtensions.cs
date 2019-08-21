@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
@@ -46,7 +46,7 @@ namespace Ayumi.Desktop {
 
         public static void PopulateWithDataList<T>(this ListControl listControl, IList<T> dataList, String display,
             String value) {
-            var newT = Activator.CreateInstance<T>();
+            T newT = Activator.CreateInstance<T>();
             dataList.Insert(0, newT);
             //ClearItemList(listControl);
             listControl.DataSource = null;
@@ -57,7 +57,7 @@ namespace Ayumi.Desktop {
             String value) {
             DataRow emptyRow = dataTable.NewRow();
             Int32 colCount = dataTable.Columns.Count;
-            for (int i = 0; i < colCount; i++) {
+            for (Int32 i = 0; i < colCount; i++) {
                 String currentColumnType = dataTable.Columns[i].DataType.Name;
                 switch (currentColumnType) {
                     case "Boolean":

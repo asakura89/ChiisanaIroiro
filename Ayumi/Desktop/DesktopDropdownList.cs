@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
@@ -33,10 +33,7 @@ namespace Ayumi.Desktop {
         public NameValueItem this[Int32 index] {
             get {
                 var dataSource = internalL.DataSource as List<NameValueItem>;
-                if (dataSource == null)
-                    return null;
-
-                return dataSource[index];
+                return dataSource?[index];
             }
             set {
                 var dataSource = internalL.DataSource as List<NameValueItem> ?? new List<NameValueItem>();
@@ -61,8 +58,6 @@ namespace Ayumi.Desktop {
             internalL.PopulateWithRawDataList(dataSource, NameValueItem.NameProperty, NameValueItem.ValueProperty);
         }
 
-        public void Clear() {
-            internalL.DataSource = null;
-        }
+        public void Clear() => internalL.DataSource = null;
     }
 }

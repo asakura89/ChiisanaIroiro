@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Core\IObjectRegistry.cs" />
     <Compile Include="Core\ObjectRegistry.cs" />
+    <Compile Include="Data\Config.cs" />
     <Compile Include="Data\ICommonList.cs" />
     <Compile Include="Data\InMemoryCommonList.cs" />
     <Compile Include="Data\Is.cs" />
@@ -50,18 +51,20 @@
     <Compile Include="Desktop\IValueReturnable.cs" />
     <Compile Include="Desktop\ListControlExtensions.cs" />
     <Compile Include="Desktop\WindowManager.cs" />
-    <Compile Include="DynamicTypeLoader.cs" />
+    <Compile Include="Plugin\DynamicTypeLoader.cs" />
     <Compile Include="Extension\ExtendedCollection.cs" />
     <Compile Include="Extension\ExtendedCommonList.cs" />
     <Compile Include="Extension\ExtendedDataTable.cs" />
     <Compile Include="Extension\ExtendedDateTime.cs" />
     <Compile Include="Extension\ExtendedString.cs" />
+    <Compile Include="Plugin\IPlugin.cs" />
     <Compile Include="Logger\IActionCapture.cs" />
     <Compile Include="Logger\IExceptionCapture.cs" />
     <Compile Include="Logger\ILogService.cs" />
     <Compile Include="Logger\LogLevel.cs" />
     <Compile Include="Logger\LogManager.cs" />
     <Compile Include="Logger\LogService.cs" />
+    <Compile Include="Plugin\PluginInfoAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

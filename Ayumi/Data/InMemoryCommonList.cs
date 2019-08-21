@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Nvy;
@@ -20,17 +20,13 @@ namespace Ayumi.Data {
             set { nvies[index] = value; }
         }
 
-        public void Add(NameValueItem nvi) {
-            nvies.Add(nvi);
-        }
+        public void Add(NameValueItem nvi) => nvies.Add(nvi);
 
         public void AddRange(IEnumerable<NameValueItem> nviList) {
             foreach (NameValueItem nvy in nviList)
                 nvies.Add(nvy);
         }
 
-        public void Clear() {
-            nvies.Clear();
-        }
+        public void Clear() => nvies.Clear();
     }
 }

@@ -2,27 +2,27 @@
 
 namespace Ayumi.Logger {
     public abstract class LogService : ILogService {
-        public void Debug(object message) {
+        public void Debug(Object message) {
             throw new NotImplementedException();
         }
 
-        public void Debug(object message, Exception exception) {
+        public void Debug(Object message, Exception exception) {
             throw new NotImplementedException();
         }
 
-        public void Info(object message) {
+        public void Info(Object message) {
             throw new NotImplementedException();
         }
 
-        public void Info(object message, Exception exception) {
+        public void Info(Object message, Exception exception) {
             throw new NotImplementedException();
         }
 
-        public void Error(object message) {
+        public void Error(Object message) {
             throw new NotImplementedException();
         }
 
-        public void Error(object message, Exception exception) {
+        public void Error(Object message, Exception exception) {
             throw new NotImplementedException();
         }
     }
