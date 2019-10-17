@@ -1,9 +1,9 @@
 using System;
-using Ayumi.Plugin;
+using Ayumi.ViewablePlugin;
 
 namespace NewChiisanairoiro {
     public sealed class FeatureDropdownItem {
         public String Name { get; set; }
-        public IPlugin Value { get; set; }
+        public IViewablePlugin Value { get; set; }
     }
 }

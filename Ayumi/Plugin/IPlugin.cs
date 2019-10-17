@@ -2,8 +2,8 @@ using System;
 
 namespace Ayumi.Plugin {
     public interface IPlugin {
-        String Name { get; }
-        String Desc { get; }
+        String ComponentName { get; }
+        String ComponentDesc { get; }
         Object Process(Object processArgs);
     }
 }

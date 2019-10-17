@@ -9,9 +9,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DefaultPlugin</RootNamespace>
     <AssemblyName>DefaultPlugin</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -21,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,8 +31,15 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.WindowsAPICodePack, Version=1.1.3.3, Culture=neutral, PublicKeyToken=8985beaab7ea3f04, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft-WindowsAPICodePack-Core.1.1.3.3\lib\net452\Microsoft.WindowsAPICodePack.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack.Shell, Version=1.1.3.3, Culture=neutral, PublicKeyToken=8985beaab7ea3f04, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft-WindowsAPICodePack-Shell.1.1.3.3\lib\net452\Microsoft.WindowsAPICodePack.Shell.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Newtonsoft.Json.12.0.2\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -47,30 +56,64 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CountLine.cs" />
+    <Compile Include="CopyFilesView.xaml.cs">
+      <DependentUpon>CopyFilesView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DbgExt.cs" />
+    <Compile Include="GenerateAlphanumericView.xaml.cs">
+      <DependentUpon>GenerateAlphanumericView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GenerateCSharpPropertyView.xaml.cs">
+      <DependentUpon>GenerateCSharpPropertyView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CountCharacterView.xaml.cs">
+      <DependentUpon>CountCharacterView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CountLineView.xaml.cs">
+      <DependentUpon>CountLineView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ExtractDirectoryName.cs" />
-    <Compile Include="MergeFiles.cs" />
+    <Compile Include="GenerateProcessIdView.xaml.cs">
+      <DependentUpon>GenerateProcessIdView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Keywielder.cs" />
     <Compile Include="Base64Decode.cs" />
     <Compile Include="ConfigDialog\StripTextConfigDialog.xaml.cs">
       <DependentUpon>StripTextConfigDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="ExtractDelimitedText.cs" />
+    <Compile Include="MergeFilesView.xaml.cs">
+      <DependentUpon>MergeFilesView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="OtherDialog\MergeFileOutputDialog.xaml.cs">
       <DependentUpon>MergeFileOutputDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SortListDescView.xaml.cs">
+      <DependentUpon>SortListDescView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SortListView.xaml.cs">
+      <DependentUpon>SortListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TaskDialogExt.cs" />
     <Compile Include="TextStatistics.cs" />
     <Compile Include="HtmlDecode.cs" />
     <Compile Include="HtmlEncode.cs" />
     <Compile Include="Base64Encode.cs" />
     <Compile Include="Poco\StripTextConfig.cs" />
-    <Compile Include="SortListDesc.cs" />
     <Compile Include="StripText.cs" />
-    <Compile Include="CountCharacter.cs" />
-    <Compile Include="ToTitleCase.cs" />
-    <Compile Include="ToLowerCase.cs" />
-    <Compile Include="SortList.cs" />
-    <Compile Include="ToUpperCase.cs" />
+    <Compile Include="FormatJsonView.xaml.cs">
+      <DependentUpon>FormatJsonView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ToLowerCaseView.xaml.cs">
+      <DependentUpon>ToLowerCaseView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ToTitleCaseView.xaml.cs">
+      <DependentUpon>ToTitleCaseView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ToUpperCaseView.xaml.cs">
+      <DependentUpon>ToUpperCaseView.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Config\strip-text.json">
@@ -83,9 +126,41 @@
       <Project>{351ec624-0510-413a-9868-cced2f009db1}</Project>
       <Name>Ayumi</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Plugin.Common\Plugin.Common.csproj">
+      <Project>{7b8866cb-b7e0-4ad9-8598-d111b30d3ec0}</Project>
+      <Name>Plugin.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Page Include="ConfigDialog\StripTextConfigDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="CopyFilesView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="GenerateAlphanumericView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="GenerateCSharpPropertyView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="CountCharacterView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="CountLineView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="GenerateProcessIdView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MergeFilesView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -93,6 +168,31 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="SortListDescView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="SortListView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="FormatJsonView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ToLowerCaseView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ToTitleCaseView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ToUpperCaseView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

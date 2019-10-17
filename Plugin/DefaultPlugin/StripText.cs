@@ -3,9 +3,9 @@ using Ayumi.Plugin;
 
 namespace DefaultPlugin {
     public class StripText : IPlugin {
-        public String Name => "Text Stripper";
+        public String ComponentName => "Text Stripper";
 
-        public String Desc => "Remove part of string";
+        public String ComponentDesc => "Remove part of string";
 
         public Object Process(Object processArgs) {
             String input = Convert.ToString(processArgs);

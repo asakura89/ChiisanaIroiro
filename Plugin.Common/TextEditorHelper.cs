@@ -2,7 +2,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using FastColoredTextBoxNS;
 
-namespace NewChiisanairoiro {
+namespace Plugin.Common {
     public static class TextEditorHelper {
         public static void Initialize(FastColoredTextBox editor) {
             editor.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;

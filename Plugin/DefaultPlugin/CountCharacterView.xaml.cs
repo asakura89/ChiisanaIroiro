@@ -2,17 +2,28 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Ayumi.Plugin;
+using System.Windows;
+using System.Windows.Controls;
+using Ayumi.ViewablePlugin;
 
 namespace DefaultPlugin {
-    public class CountCharacter : IPlugin {
-        public String Name => "Count Character";
+    public partial class CountCharacterView : UserControl, IViewablePlugin {
+        public String ComponentName => "Count Character";
 
-        public String Desc => "Count character per line and total";
+        public String ComponentDesc => "Count character per line and total";
 
-        public Object Process(Object processArgs) {
-            String input = Convert.ToString(processArgs);
-            IList<String> lines = input
+        public UserControl View => this;
+
+        public Object Process(Object processArgs) => throw new InvalidOperationException("Not used.");
+
+        public CountCharacterView() {
+            InitializeComponent();
+            CommonView.ConfigButtonAccesssor.Visibility = Visibility.Collapsed;
+            CommonView.ProcessButtonAccesssor.Click += ProcessButton_Click;
+        }
+
+        void ProcessButton_Click(Object sender, RoutedEventArgs e) {
+            IList<String> lines = CommonView.Input
                 .Split(new[] { Environment.NewLine }, StringSplitOptions.None)
                 .ToList();
 
@@ -30,10 +41,6 @@ namespace DefaultPlugin {
                 outputBuilder.AppendLine($"[{(idx +1).ToString().PadLeft(digits, ' ')}] {full} (full), {stripped} (w/o spaces)");
             }
 
-            return outputBuilder
-                .Append($"[All] {totalFull} (full), {totalStripped} (w/o spaces)")
-                .ToString();
-
             /*
             Test with these
 
@@ -45,6 +52,10 @@ namespace DefaultPlugin {
             TheDragonQuest
 
             */
+
+            CommonView.Output = outputBuilder
+                .Append($"[All] {totalFull} (full), {totalStripped} (w/o spaces)")
+                .ToString();
         }
 
         Int32 Digits(Int32 n) {
