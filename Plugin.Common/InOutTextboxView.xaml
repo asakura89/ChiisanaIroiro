@@ -6,7 +6,7 @@
              xmlns:integration="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration"
              mc:Ignorable="d" d:DesignHeight="600" d:DesignWidth="850">
     <StackPanel>
-        <StackPanel Orientation="Horizontal" Height="30" HorizontalAlignment="Center">
+        <StackPanel x:Name="ButtonPanel" Orientation="Horizontal" Height="30" HorizontalAlignment="Center">
             <Button x:Name="ConfigButton"  Width="120">Config</Button>
             <Button x:Name="ClipboardButton"  Width="120" Click="ClipboardButton_Click">Clipboard</Button>
             <Button x:Name="ProcessButton"  Width="120">Process</Button>

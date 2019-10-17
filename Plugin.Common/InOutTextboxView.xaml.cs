@@ -26,6 +26,13 @@ namespace Plugin.Common {
             }
         }
 
+        public void HideAllButton() {
+            ConfigButton.Visibility = Visibility.Collapsed;
+            ClipboardButton.Visibility = Visibility.Collapsed;
+            ProcessButton.Visibility = Visibility.Collapsed;
+            ButtonPanel.Visibility = Visibility.Collapsed;
+        }
+
         public Button ConfigButtonAccesssor => ConfigButton;
         public Button ClipboardButtonAccesssor => ClipboardButton;
         public Button ProcessButtonAccesssor => ProcessButton;

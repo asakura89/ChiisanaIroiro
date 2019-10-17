@@ -1,4 +1,5 @@
 using System;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using Ayumi.ViewablePlugin;
@@ -30,6 +31,13 @@ namespace DefaultPlugin {
             }
         }
 
+        Int32 Count {
+            get {
+                String count = String.IsNullOrEmpty(CountTextbox.Text) ? "0" : CountTextbox.Text;
+                return Convert.ToInt32(count);
+            }
+        }
+
         AlphaType GeneratorType { get; set; } = AlphaType.Lower;
 
         public GenerateAlphanumericView() {
@@ -46,36 +54,44 @@ namespace DefaultPlugin {
         }
 
         void ProcessButton_Click(Object sender, RoutedEventArgs e) {
-            if (Uppercase && Lowercase && Numeric && Symbol)
-                GeneratorType = AlphaType.UpperLowerNumericSymbol;
-            else if (Uppercase && Lowercase && Numeric)
-                GeneratorType = AlphaType.UpperLowerNumeric;
-            else if (Uppercase && Lowercase && Symbol)
-                GeneratorType = AlphaType.UpperLowerSymbol;
-            else if (Uppercase && Lowercase)
-                GeneratorType = AlphaType.UpperLower;
-            else if (Uppercase && Numeric)
-                GeneratorType = AlphaType.UpperNumeric;
-            else if (Uppercase && Symbol)
-                GeneratorType = AlphaType.UpperSymbol;
-            else if (Uppercase)
-                GeneratorType = AlphaType.Upper;
-            else if (Lowercase && Numeric)
-                GeneratorType = AlphaType.LowerNumeric;
-            else if (Lowercase && Symbol)
-                GeneratorType = AlphaType.LowerSymbol;
-            else if (Lowercase)
-                GeneratorType = AlphaType.Lower;
-            else if (Numeric && Symbol)
-                GeneratorType = AlphaType.NumericSymbol;
-            else if (Numeric)
-                GeneratorType = AlphaType.Numeric;
-            else if (Symbol)
-                GeneratorType = AlphaType.Symbol;
+            if (Count > 0) {
+                var builder = new StringBuilder();
+                for (Int32 counter = 0; counter < Count; counter++) {
+                    if (Uppercase && Lowercase && Numeric && Symbol)
+                        GeneratorType = AlphaType.UpperLowerNumericSymbol;
+                    else if (Uppercase && Lowercase && Numeric)
+                        GeneratorType = AlphaType.UpperLowerNumeric;
+                    else if (Uppercase && Lowercase && Symbol)
+                        GeneratorType = AlphaType.UpperLowerSymbol;
+                    else if (Uppercase && Lowercase)
+                        GeneratorType = AlphaType.UpperLower;
+                    else if (Uppercase && Numeric)
+                        GeneratorType = AlphaType.UpperNumeric;
+                    else if (Uppercase && Symbol)
+                        GeneratorType = AlphaType.UpperSymbol;
+                    else if (Uppercase)
+                        GeneratorType = AlphaType.Upper;
+                    else if (Lowercase && Numeric)
+                        GeneratorType = AlphaType.LowerNumeric;
+                    else if (Lowercase && Symbol)
+                        GeneratorType = AlphaType.LowerSymbol;
+                    else if (Lowercase)
+                        GeneratorType = AlphaType.Lower;
+                    else if (Numeric && Symbol)
+                        GeneratorType = AlphaType.NumericSymbol;
+                    else if (Numeric)
+                        GeneratorType = AlphaType.Numeric;
+                    else if (Symbol)
+                        GeneratorType = AlphaType.Symbol;
 
-            CommonView.Output = K.New()
-                .AddRandomString(Length, GeneratorType)
-                .BuildKey();
+                    builder.AppendLine(
+                        K.New()
+                            .AddRandomString(Length, GeneratorType)
+                            .BuildKey());
+                }
+
+                CommonView.Output = builder.ToString();
+            }
         }
     }
 }
