@@ -63,6 +63,12 @@
     <Compile Include="GenerateAlphanumericView.xaml.cs">
       <DependentUpon>GenerateAlphanumericView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="RandomizeView.xaml.cs">
+      <DependentUpon>RandomizeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SearchStringView.xaml.cs">
+      <DependentUpon>SearchStringView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GenerateCSharpPropertyView.xaml.cs">
       <DependentUpon>GenerateCSharpPropertyView.xaml</DependentUpon>
     </Compile>
@@ -88,8 +94,8 @@
     <Compile Include="OtherDialog\MergeFileOutputDialog.xaml.cs">
       <DependentUpon>MergeFileOutputDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SortListDescView.xaml.cs">
-      <DependentUpon>SortListDescView.xaml</DependentUpon>
+    <Compile Include="GroupByFirstLetterView.xaml.cs">
+      <DependentUpon>GroupByFirstLetterView.xaml</DependentUpon>
     </Compile>
     <Compile Include="SortListView.xaml.cs">
       <DependentUpon>SortListView.xaml</DependentUpon>
@@ -138,6 +144,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="RandomizeView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="SearchStringView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="GenerateCSharpPropertyView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -162,7 +176,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="SortListDescView.xaml">
+    <Page Include="GroupByFirstLetterView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

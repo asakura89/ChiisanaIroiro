@@ -14,6 +14,8 @@ namespace DefaultPlugin {
 
         public Object Process(Object processArgs) => throw new InvalidOperationException("Not used.");
 
+        Boolean Desc => DescCheckbox.IsChecked ?? false;
+
         public SortListView() {
             InitializeComponent();
             CommonView.ConfigButtonAccesssor.Visibility = Visibility.Collapsed;
@@ -21,10 +23,13 @@ namespace DefaultPlugin {
         }
 
         void ProcessButton_Click(Object sender, RoutedEventArgs e) {
-            String output = String.Join(Environment.NewLine,
-                CommonView.Input
-                    .Split(new[] { Environment.NewLine }, StringSplitOptions.None)
-                    .OrderBy(str => str));
+            String[] splitted = CommonView.Input.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
+            String output = String.Join(
+                Environment.NewLine,
+                Desc ?
+                    splitted.OrderByDescending(str => str) :
+                    splitted.OrderBy(str => str)
+            );
 
             CommonView.Output = output;
         }
