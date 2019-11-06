@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugin.Common", "Plugin.Com
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenerateRandomPlugin", "Plugin\GenerateRandomPlugin\GenerateRandomPlugin.csproj", "{661A5065-84A7-456A-9249-0EF4D774FBCD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DyanaPlugin", "Plugin\DyanaPlugin\DyanaPlugin.csproj", "{3BA73763-19A8-4161-BB69-DE1E13E1B872}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,10 @@ Global
 		{661A5065-84A7-456A-9249-0EF4D774FBCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{661A5065-84A7-456A-9249-0EF4D774FBCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{661A5065-84A7-456A-9249-0EF4D774FBCD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BA73763-19A8-4161-BB69-DE1E13E1B872}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BA73763-19A8-4161-BB69-DE1E13E1B872}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BA73763-19A8-4161-BB69-DE1E13E1B872}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BA73763-19A8-4161-BB69-DE1E13E1B872}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -56,6 +62,7 @@ Global
 		{351EC624-0510-413A-9868-CCED2F009DB1} = {D2DDD991-9127-406D-8B4C-CD06238B5244}
 		{7B8866CB-B7E0-4AD9-8598-D111B30D3EC0} = {D2DDD991-9127-406D-8B4C-CD06238B5244}
 		{661A5065-84A7-456A-9249-0EF4D774FBCD} = {7F4CDCE7-53E2-45F9-BB0F-37C0355EB28D}
+		{3BA73763-19A8-4161-BB69-DE1E13E1B872} = {7F4CDCE7-53E2-45F9-BB0F-37C0355EB28D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {21C40BD6-B02A-4DE8-B906-D209DA55E475}
