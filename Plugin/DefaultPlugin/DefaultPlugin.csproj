@@ -63,6 +63,9 @@
     <Compile Include="GenerateAlphanumericView.xaml.cs">
       <DependentUpon>GenerateAlphanumericView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GenerateGuidView.xaml.cs">
+      <DependentUpon>GenerateGuidView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TextStatisticsView.xaml.cs">
       <DependentUpon>TextStatisticsView.xaml</DependentUpon>
     </Compile>
@@ -143,6 +146,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="GenerateAlphanumericView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="GenerateGuidView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
