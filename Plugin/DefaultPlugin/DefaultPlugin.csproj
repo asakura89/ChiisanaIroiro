@@ -47,6 +47,7 @@
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -58,6 +59,9 @@
   <ItemGroup>
     <Compile Include="CopyFilesView.xaml.cs">
       <DependentUpon>CopyFilesView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EncodeDecodeView.xaml.cs">
+      <DependentUpon>EncodeDecodeView.xaml</DependentUpon>
     </Compile>
     <Compile Include="DbgExt.cs" />
     <Compile Include="GenerateAlphanumericView.xaml.cs">
@@ -107,8 +111,6 @@
       <DependentUpon>SortListView.xaml</DependentUpon>
     </Compile>
     <Compile Include="TaskDialogExt.cs" />
-    <Compile Include="HtmlDecode.cs" />
-    <Compile Include="HtmlEncode.cs" />
     <Compile Include="Base64Encode.cs" />
     <Compile Include="Poco\StripTextConfig.cs" />
     <Compile Include="StripText.cs" />
@@ -142,6 +144,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="CopyFilesView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="EncodeDecodeView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
