@@ -6,6 +6,7 @@ using System.Windows;
 using System.Windows.Controls;
 using Ayumi.ViewablePlugin;
 using Microsoft.WindowsAPICodePack.Dialogs;
+using SysProcess = System.Diagnostics.Process;
 
 namespace DefaultPlugin {
     public partial class CopyFilesView : UserControl, IViewablePlugin {
@@ -57,6 +58,15 @@ namespace DefaultPlugin {
         void BrowseSourceButton_Click(Object sender, RoutedEventArgs e) => Browse(ref SourceDirectoryTextBox);
 
         void BrowseTargetButton_Click(Object sender, RoutedEventArgs e) => Browse(ref TargetDirectoryTextBox);
+
+        void Open(String path) {
+            if (!String.IsNullOrEmpty(path) && Directory.Exists(path))
+                SysProcess.Start(path);
+        }
+
+        void OpenSourceButton_Click(Object sender, RoutedEventArgs e) => Open(SourceDirectoryTextBox.Text);
+
+        void OpenTargetButton_Click(Object sender, RoutedEventArgs e) => Open(TargetDirectoryTextBox.Text);
 
         void ProcessButton_Click(Object sender, RoutedEventArgs e) {
             try {

@@ -37,6 +37,7 @@
     <Reference Include="Nvy, Version=1.0.2017.1906, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Nvy.1.0.2017.1906\lib\net40\Nvy.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -51,9 +52,13 @@
     <Compile Include="Data\ICommonList.cs" />
     <Compile Include="Data\InMemoryCommonList.cs" />
     <Compile Include="Data\Is.cs" />
+    <Compile Include="Desktop\BooleanInverter.cs" />
+    <Compile Include="Desktop\BooleanToVisibilityConverter.cs" />
     <Compile Include="Desktop\DesktopDropdownList.cs" />
     <Compile Include="Desktop\IValueReturnable.cs" />
     <Compile Include="Desktop\ListControlExtensions.cs" />
+    <Compile Include="Desktop\MathExpressionConverter.cs" />
+    <Compile Include="Desktop\PercentageConverter.cs" />
     <Compile Include="Desktop\WindowManager.cs" />
     <Compile Include="Plugin\DynamicTypeLoader.cs" />
     <Compile Include="Extension\ExtendedCollection.cs" />

@@ -92,6 +92,7 @@ namespace Ayumi.Desktop {
                         break;
                 }
             }
+
             dataTable.Rows.InsertAt(emptyRow, 0);
 
             //ClearItemList(listControl);

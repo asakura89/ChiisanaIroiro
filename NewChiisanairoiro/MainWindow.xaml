@@ -3,18 +3,30 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ayumi="clr-namespace:Ayumi.Desktop;assembly=Ayumi"
         mc:Ignorable="d"
         Title="ちいさな色々" SizeToContent="WidthAndHeight" Height="Auto" MinWidth="850" Width="Auto"
         WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
-    <Grid Background="Black">
+    <Window.Resources>
+        <ayumi:PercentageConverter x:Key="PercentageConverter" />
+    </Window.Resources>
+    <Grid x:Name="RootGrid" Background="Black">
         <StackPanel Orientation="Vertical">
             <StackPanel Orientation="Horizontal" Height="30">
-                <ComboBox x:Name="AvailableFeaturesDropdownList" Width="835"
+                <ComboBox x:Name="AvailableFeaturesDropdownList"
+                    Width="{Binding Converter={StaticResource PercentageConverter}, ElementName=RootGrid, Path=ActualWidth, ConverterParameter=100}"
+                    MaxWidth="{Binding ElementName=AvailableFeaturesDropdownList, Path=Width}"
                     HorizontalContentAlignment="Left"
                     VerticalContentAlignment="Center"
                     SelectionChanged="AvailableFeaturesDropdownList_SelectionChanged"></ComboBox>
             </StackPanel>
-            <StackPanel x:Name="ComponentHost" Orientation="Horizontal" MinHeight="560" Height="Auto" />
+            <StackPanel
+                x:Name="ComponentHost"
+                Orientation="Horizontal"
+                MinHeight="560"
+                Height="Auto"
+                Width="{Binding Converter={StaticResource PercentageConverter}, ElementName=RootGrid, Path=ActualWidth, ConverterParameter=100}"
+                MaxWidth="{Binding ElementName=ComponentHost, Path=Width}"/>
         </StackPanel>
     </Grid>
 </Window>

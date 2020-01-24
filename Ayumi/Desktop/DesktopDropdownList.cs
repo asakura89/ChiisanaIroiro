@@ -19,7 +19,8 @@ namespace Ayumi.Desktop {
         public IEnumerable<NameValueItem> Items {
             get { return internalL.DataSource as List<NameValueItem> ?? new List<NameValueItem>(); }
             set {
-                internalL.PopulateWithRawDataList(value.ToList(), NameValueItem.NameProperty, NameValueItem.ValueProperty);
+                internalL.PopulateWithRawDataList(value.ToList(), NameValueItem.NameProperty,
+                    NameValueItem.ValueProperty);
             }
         }
 

@@ -16,6 +16,44 @@ namespace Plugin.Common {
             }
         }
 
+        public Double OutputWidth {
+            get {
+                return (Double) GetValue(OutputWidthProperty);
+            }
+            set {
+                SetValue(OutputWidthProperty, value);
+            }
+        }
+
+        public static readonly DependencyProperty OutputWidthProperty =
+            DependencyProperty.Register(nameof(OutputWidth), typeof(Double), typeof(OutTextboxView),
+                new PropertyMetadata(new PropertyChangedCallback(OutputWidthPropertyChanged)));
+
+        static void OutputWidthPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e) {
+            var control = d as InOutTextboxView;
+            if (control != null)
+                control.OutputTextBoxHost.Width = Convert.ToInt32((Double) e.NewValue);
+        }
+
+        public Double OutputHeight {
+            get {
+                return (Double) GetValue(OutputHeightProperty);
+            }
+            set {
+                SetValue(OutputHeightProperty, value);
+            }
+        }
+
+        public static readonly DependencyProperty OutputHeightProperty =
+            DependencyProperty.Register(nameof(OutputHeight), typeof(Double), typeof(OutTextboxView),
+                new PropertyMetadata(new PropertyChangedCallback(OutputHeightPropertyChanged)));
+
+        static void OutputHeightPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e) {
+            var control = d as InOutTextboxView;
+            if (control != null)
+                control.OutputTextBoxHost.Height = Convert.ToInt32((Double) e.NewValue);
+        }
+
         public Button ConfigButtonAccesssor => ConfigButton;
         public Button ClipboardButtonAccesssor => ClipboardButton;
         public Button ProcessButtonAccesssor => ProcessButton;
