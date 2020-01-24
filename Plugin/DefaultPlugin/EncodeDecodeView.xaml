@@ -4,54 +4,27 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:common="clr-namespace:Plugin.Common;assembly=Plugin.Common"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d" d:DesignHeight="600" d:DesignWidth="850">
     <Grid>
         <StackPanel Orientation="Vertical">
             <StackPanel Orientation="Horizontal" Height="30" HorizontalAlignment="Center">
-                <RadioButton x:Name="HtmlEncodeRadio"
-                    GroupName="EncDecRadioGroup"
-                    Margin="0,0,10,0"
+                <ComboBox
+                    x:Name="EncodeDecodeComboBox"
+                    IsReadOnly="True"
+                    Width="170"
                     HorizontalContentAlignment="Left"
-                    VerticalContentAlignment="Center" />
-                <TextBlock Text="Html Encode" Width="70"
-                    Background="Transparent"
-                    Foreground="Red"
-                    Margin="0,0,10,0"
-                    VerticalAlignment="Center"
-                    TextAlignment="Left" />
-                <RadioButton x:Name="HtmlDecodeRadio"
-                    GroupName="EncDecRadioGroup"
-                    Margin="0,0,10,0"
-                    HorizontalContentAlignment="Left"
-                    VerticalContentAlignment="Center" />
-                <TextBlock Text="Html Decode" Width="70"
-                    Background="Transparent"
-                    Foreground="Red"
-                    Margin="0,0,10,0"
-                    VerticalAlignment="Center"
-                    TextAlignment="Left" />
-                <RadioButton x:Name="UrlEncodeRadio"
-                    GroupName="EncDecRadioGroup"
-                    Margin="0,0,10,0"
-                    HorizontalContentAlignment="Left"
-                    VerticalContentAlignment="Center" />
-                <TextBlock Text="Url Encode" Width="70"
-                    Background="Transparent"
-                    Foreground="Red"
-                    Margin="0,0,10,0"
-                    VerticalAlignment="Center"
-                    TextAlignment="Left" />
-                <RadioButton x:Name="UrlDecodeRadio"
-                    GroupName="EncDecRadioGroup"
-                    Margin="0,0,10,0"
-                    HorizontalContentAlignment="Left"
-                    VerticalContentAlignment="Center" />
-                <TextBlock Text="Url Decode" Width="70"
-                    Background="Transparent"
-                    Foreground="Red"
-                    Margin="0,0,10,0"
-                    VerticalAlignment="Center"
-                    TextAlignment="Left" />
+                    VerticalContentAlignment="Center">
+                    <ComboBoxItem IsSelected="True" Content="" />
+                    <ComboBoxItem Content="Html Encode" />
+                    <ComboBoxItem Content="Html Decode" />
+                    <ComboBoxItem Content="Url Encode" />
+                    <ComboBoxItem Content="Url Decode" />
+                    <ComboBoxItem Content="Base64 Encode" />
+                    <ComboBoxItem Content="Base64 Decode" />
+                    <ComboBoxItem Content="Base64 Url Encode" />
+                    <ComboBoxItem Content="Base64 Url Decode" />
+                </ComboBox>
                 <Button x:Name="ClipboardButton"  Width="120" Click="ClipboardButton_Click">Clipboard</Button>
                 <Button x:Name="ProcessButton"  Width="120" Click="ProcessButton_Click">Process</Button>
             </StackPanel>

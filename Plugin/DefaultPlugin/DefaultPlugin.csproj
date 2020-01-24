@@ -93,7 +93,6 @@
       <DependentUpon>GenerateProcessIdView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Keywielder.cs" />
-    <Compile Include="Base64Decode.cs" />
     <Compile Include="ConfigDialog\StripTextConfigDialog.xaml.cs">
       <DependentUpon>StripTextConfigDialog.xaml</DependentUpon>
     </Compile>
@@ -111,7 +110,6 @@
       <DependentUpon>SortListView.xaml</DependentUpon>
     </Compile>
     <Compile Include="TaskDialogExt.cs" />
-    <Compile Include="Base64Encode.cs" />
     <Compile Include="Poco\StripTextConfig.cs" />
     <Compile Include="StripText.cs" />
     <Compile Include="FormatJsonView.xaml.cs">
