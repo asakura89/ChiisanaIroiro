@@ -7,7 +7,7 @@ using System.Windows.Controls;
 using Ayumi.Plugin;
 using Ayumi.ViewablePlugin;
 
-namespace NewChiisanairoiro {
+namespace Chiisanairoiro {
     public partial class MainWindow : Window {
         public FeatureDropdownItem SelectedFeature { get; set; }
 
