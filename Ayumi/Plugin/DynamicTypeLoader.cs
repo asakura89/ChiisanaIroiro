@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using Ayumi.Extension;
 using Nvy;
 
 namespace Ayumi.Plugin {
@@ -69,8 +70,55 @@ namespace Ayumi.Plugin {
                 .Where(asm => asm != null)
                 .ToList();
 
+            //assemblies = assemblies
+            //    .Concat(
+            //        assemblies
+            //            .SelectMany(asm => asm.GetReferencedAssemblies())
+            //            .Select(asmName => {
+            //                try {
+            //                    return Assembly.Load(
+            //                        File.ReadAllBytes(
+            //                            Path.Combine(loadFromPath, asmName.Name + ".dll")));
+            //                }
+            //                catch {
+            //                    return null;
+            //                }
+            //            })
+            //            .Where(asm => asm != null)
+            //    )
+            //    .GroupBy(asm => asm.FullName.ToLowerInvariant())
+            //    .Select(grp => grp.OrderBy(asm => GetVersionInteger(asm)).Last())
+            //    .ToList();
+
+            AppDomain.CurrentDomain.AssemblyResolve += CurrentDomain_AssemblyResolve;
+
             return assemblies.Any() ? assemblies : null;
         }
+
+        Assembly CurrentDomain_AssemblyResolve(Object sender, ResolveEventArgs args) {
+            try {
+                if (args.Name.Contains(".resources"))
+                    return null;
+
+                Assembly asm = AppDomain.CurrentDomain.GetAssemblies().FirstOrDefault(a => a.FullName == args.Name);
+                if (asm != null)
+                    return asm;
+            }
+            catch {
+                return null;
+            }
+
+            String[] parts = args.Name.Split(',');
+            String file = $"{Path.GetDirectoryName(args.RequestingAssembly.Location)}\\{parts[0].Trim()}.dll";
+
+            return Assembly.Load(file);
+        }
+
+        //static Int32 GetVersionInteger(Assembly asm) => asm
+        //    .GetAssemblyVersion()
+        //    .Split(new[] { '.', '-', '_' }, StringSplitOptions.RemoveEmptyEntries)
+        //    .Select(part => part.All(c => Char.IsDigit(c)) ? Convert.ToInt32(part) : 0)
+        //    .Sum();
 
         public static IEnumerable<Type> GetTypesDecoratedBy<TAttribute>(IEnumerable<Assembly> assemblies) =>
             assemblies?

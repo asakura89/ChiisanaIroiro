@@ -28,12 +28,10 @@ namespace DefaultPlugin {
             ZipCheckBox.IsChecked = true;
         }
 
-        InvalidOperationException NaiseuErrorMessage(String message) => new InvalidOperationException($"{message} ヽ(ﾟДﾟ; )ﾉ");
-
         void Browse(ref TextBox outputTextBox) {
             try {
                 if (!CommonFileDialog.IsPlatformSupported)
-                    throw NaiseuErrorMessage("Platform is not supported");
+                    throw "Platform is not supported".AsNaiseuErrorMessage();
 
                 var browseDialog = new CommonOpenFileDialog {
                     InitialDirectory = AppDomain.CurrentDomain.BaseDirectory,
@@ -92,7 +90,7 @@ namespace DefaultPlugin {
                                 .Where(info => !info.ExistsOnSource)
                                 .Select(info => info.SourcePath));
 
-                        throw NaiseuErrorMessage($"Check these:{Environment.NewLine}{nonExistentPaths}");
+                        throw $"Check these:{Environment.NewLine}{nonExistentPaths}".AsNaiseuErrorMessage();
                     }
 
                     foreach ((String OriginalPath, String SourcePath, String OriginalSourceDir, Boolean ExistsOnSource, String TargetPath) info in pathInfos) {

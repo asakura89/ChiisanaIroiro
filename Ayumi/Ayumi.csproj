@@ -60,6 +60,7 @@
     <Compile Include="Desktop\MathExpressionConverter.cs" />
     <Compile Include="Desktop\PercentageConverter.cs" />
     <Compile Include="Desktop\WindowManager.cs" />
+    <Compile Include="Extension\AssemblyVersionExt.cs" />
     <Compile Include="Plugin\DynamicTypeLoader.cs" />
     <Compile Include="Extension\ExtendedCollection.cs" />
     <Compile Include="Extension\ExtendedCommonList.cs" />

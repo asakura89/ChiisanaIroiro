@@ -1,0 +1,41 @@
+<UserControl x:Class="DefaultPlugin.ZipFilesView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:common="clr-namespace:Plugin.Common;assembly=Plugin.Common"
+    xmlns:ayumi="clr-namespace:Ayumi.Desktop;assembly=Ayumi"
+    mc:Ignorable="d" d:DesignHeight="600" d:DesignWidth="850">
+    <UserControl.Resources>
+        <ayumi:PercentageConverter x:Key="PercentageConverter" />
+    </UserControl.Resources>
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <StackPanel Orientation="Horizontal" Height="30" HorizontalAlignment="Center">
+                <TextBlock
+                    Text="Zip File"
+                    Background="Transparent"
+                    Foreground="Red"
+                    Margin="0,0,10,0"
+                    VerticalAlignment="Center"
+                    TextAlignment="Right" />
+                <TextBox
+                    x:Name="ZipFileTextBox"
+                    Width="200"
+                    HorizontalContentAlignment="Left"
+                    VerticalContentAlignment="Center"
+                    HorizontalScrollBarVisibility="Disabled"
+                    VerticalScrollBarVisibility="Disabled" />
+                <Button
+                    x:Name="BrowseZipFileButton"
+                    Width="35"
+                    Click="BrowseZipFileButton_Click"
+                    Margin="0,0,10,0">•••</Button>
+                <Button x:Name="ProcessButton"  Width="120" Click="ProcessButton_Click">Process</Button>
+            </StackPanel>
+            <common:OutTextboxView
+                x:Name="CommonView"
+                OutputWidth="{Binding Converter={StaticResource PercentageConverter}, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Path=ActualWidth, ConverterParameter=100}" />
+        </StackPanel>
+    </Grid>
+</UserControl>
