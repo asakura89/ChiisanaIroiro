@@ -30,7 +30,7 @@ namespace Plugin.Common {
                 new PropertyMetadata(new PropertyChangedCallback(OutputWidthPropertyChanged)));
 
         static void OutputWidthPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e) {
-            var control = d as InOutTextboxView;
+            var control = d as OutTextboxView;
             if (control != null)
                 control.OutputTextBoxHost.Width = Convert.ToInt32((Double) e.NewValue);
         }
@@ -49,7 +49,7 @@ namespace Plugin.Common {
                 new PropertyMetadata(new PropertyChangedCallback(OutputHeightPropertyChanged)));
 
         static void OutputHeightPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e) {
-            var control = d as InOutTextboxView;
+            var control = d as OutTextboxView;
             if (control != null)
                 control.OutputTextBoxHost.Height = Convert.ToInt32((Double) e.NewValue);
         }

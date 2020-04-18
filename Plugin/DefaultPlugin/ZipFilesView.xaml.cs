@@ -1,6 +1,8 @@
 using System;
 using System.IO;
 using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using Ayumi.ViewablePlugin;
@@ -50,31 +52,36 @@ namespace DefaultPlugin {
         void BrowseZipFileButton_Click(Object sender, RoutedEventArgs e) => Browse(ref ZipFileTextBox);
 
         void ProcessButton_Click(Object sender, RoutedEventArgs e) {
-            try {
-                var builder = new StringBuilder();
-                var stream = (Stream) File.Open(ZipFileTextBox.Text, FileMode.Open, FileAccess.Read, FileShare.Read);
-                using (var zip = ZipFile.Read(stream)) {
-                    foreach (ZipEntry entry in zip) {
-                        if (Path.GetExtension(entry.FileName).Equals(".zip", StringComparison.InvariantCultureIgnoreCase)) {
-                            String izipName = entry.FileName + "/";
-                            builder.AppendLine(izipName);
+            if (!String.IsNullOrEmpty(ZipFileTextBox.Text)) {
+                Task.Factory
+                    .StartNew(() => {
+                        try {
+                            var builder = new StringBuilder();
+                            var stream = (Stream) File.Open(ZipFileTextBox.Text, FileMode.Open, FileAccess.Read, FileShare.Read);
+                            using (var zip = ZipFile.Read(stream)) {
+                                foreach (ZipEntry entry in zip) {
+                                    if (Path.GetExtension(entry.FileName).Equals(".zip", StringComparison.InvariantCultureIgnoreCase)) {
+                                        String izipName = entry.FileName + "/";
+                                        builder.AppendLine(izipName);
 
-                            var contentStream = new MemoryStream();
-                            entry.Extract(contentStream);
-                            contentStream.Position = 0;
-                            using (var izip = ZipFile.Read(contentStream))
-                                foreach (ZipEntry izipEntry in izip)
-                                    builder.AppendLine(izipName + izipEntry.FileName);
+                                        var contentStream = new MemoryStream();
+                                        entry.Extract(contentStream);
+                                        contentStream.Position = 0;
+                                        using (var izip = ZipFile.Read(contentStream))
+                                            foreach (ZipEntry izipEntry in izip)
+                                                builder.AppendLine(izipName + izipEntry.FileName);
+                                    }
+                                    else
+                                        builder.AppendLine(entry.FileName);
+                                }
+                            }
+
+                            CommonView.Output = builder.ToString();
                         }
-                        else
-                            builder.AppendLine(entry.FileName);
-                    }
-                }
-
-                CommonView.Output = builder.ToString();
-            }
-            catch (Exception ex) {
-                ex.ShowInTaskDialog();
+                        catch (Exception ex) {
+                            ex.ShowInTaskDialog();
+                        }
+                    }, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.FromCurrentSynchronizationContext());
             }
         }
     }

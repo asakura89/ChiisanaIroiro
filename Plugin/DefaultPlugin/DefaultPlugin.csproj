@@ -61,8 +61,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ExcMessageExt.cs" />
-    <Compile Include="TreeStructView.xaml.cs">
-      <DependentUpon>TreeStructView.xaml</DependentUpon>
+    <Compile Include="DirListView.xaml.cs">
+      <DependentUpon>DirListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DirTreeStructView.xaml.cs">
+      <DependentUpon>DirTreeStructView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TimeSpanExplainerView.xaml.cs">
+      <DependentUpon>TimeSpanExplainerView.xaml</DependentUpon>
     </Compile>
     <Compile Include="ZipFilesView.xaml.cs">
       <DependentUpon>ZipFilesView.xaml</DependentUpon>
@@ -151,7 +157,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="TreeStructView.xaml">
+    <Page Include="DirListView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DirTreeStructView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TimeSpanExplainerView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

@@ -5,6 +5,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -13,21 +14,23 @@ using Ayumi.ViewablePlugin;
 using Microsoft.WindowsAPICodePack.Dialogs;
 
 namespace DefaultPlugin {
-    public partial class TreeStructView : UserControl, IViewablePlugin {
-        public String ComponentName => "Tree Struct";
+    public partial class DirListView : UserControl, IViewablePlugin {
+        public String ComponentName => "Directory List";
 
-        public String ComponentDesc => "Generate tree structure";
+        public String ComponentDesc => "Content list of a directory";
 
         public UserControl View => this;
 
         public Object Process(Object processArgs) => throw new InvalidOperationException("Not used.");
 
-        Boolean Unicode => UnicodeCheckbox.IsChecked ?? false;
+        Boolean JustDir => JustDirRadio.IsChecked ?? false;
 
-        public TreeStructView() {
+        Boolean JustFile => JustFileRadio.IsChecked ?? false;
+
+        public DirListView() {
             InitializeComponent();
-            CommonView.ConfigButtonAccesssor.Visibility = Visibility.Collapsed;
-            CommonView.ProcessButtonAccesssor.Click += ProcessButton_Click;
+            CommonView.HideAllButton();
+            BothRadio.IsChecked = true;
         }
 
         void Browse(ref TextBox pathTextBox) {
@@ -57,6 +60,13 @@ namespace DefaultPlugin {
 
         void BrowseButton_Click(Object sender, RoutedEventArgs e) => Browse(ref PathTextBox);
 
+        void ClipboardButton_Click(Object sender, RoutedEventArgs e) {
+            if (CommonView.Output != String.Empty) {
+                Clipboard.Clear();
+                Clipboard.SetText(CommonView.Output);
+            }
+        }
+
         void ProcessButton_Click(Object sender, RoutedEventArgs e) {
             if (!String.IsNullOrEmpty(PathTextBox.Text)) {
                 Task.Factory
@@ -81,7 +91,7 @@ namespace DefaultPlugin {
                             consoleWriter = process.StandardInput;
                             consoleReader = process.StandardOutput;
 
-                            String command = $@"tree {(Unicode ? String.Empty : "/A ")}/F ""{PathTextBox.Text}""";
+                            String command = $@"dir /S /B ""{PathTextBox.Text}""";
                             consoleWriter.WriteLine("@echo off");
                             consoleWriter.WriteLine(command);
                             consoleWriter.WriteLine("exit");
@@ -89,12 +99,20 @@ namespace DefaultPlugin {
                             String output = consoleReader.ReadToEnd();
                             IEnumerable<String> splitted = output
                                 .Split(new[] { Environment.NewLine }, StringSplitOptions.None)
-                                .Skip(7);
+                                .Skip(5);
 
-                            CommonView.Output = String.Join(Environment.NewLine, splitted.Take(splitted.Count() -3));
+                            splitted = splitted.Take(splitted.Count() -2);
+
+                            var regex = new Regex(@"^(.+)\\([^\\]+).+\.[^.+]{2,}$", RegexOptions.Compiled);
+                            if (JustDir)
+                                splitted = splitted.Where(line => !regex.IsMatch(line));
+                            else if (JustFile)
+                                splitted = splitted.Where(line => regex.IsMatch(line));
+
+                            CommonView.Output = String.Join(Environment.NewLine, splitted);
                         }
                         catch (Exception ex) {
-                            Console.WriteLine(ex.Message);
+                            ex.ShowInTaskDialog();
                         }
                         finally {
                             if (consoleWriter != null)
