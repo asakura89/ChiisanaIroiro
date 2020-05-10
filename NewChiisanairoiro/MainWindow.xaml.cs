@@ -20,6 +20,7 @@ namespace Chiisanairoiro {
             IList<FeatureDropdownItem> infos = pluginDirs
                 .SelectMany(dir =>
                     new DynamicTypeLoader(dir)
+                        .LoadAssemblies()
                         .GetTypesInheritedBy<IViewablePlugin>()
                         .Where(type => !type.IsAbstract && !type.IsInterface)
                         .Select(pluginType => (IViewablePlugin) Activator.CreateInstance(pluginType))

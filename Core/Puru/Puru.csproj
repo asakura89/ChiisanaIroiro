@@ -42,10 +42,12 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AssemblyExt.cs" />
     <Compile Include="DynamicTypeLoader.cs" />
     <Compile Include="IPlugin.cs" />
     <Compile Include="PluginInfoAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TypeExt.cs" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
