@@ -1,0 +1,28 @@
+<UserControl x:Class="TextProcessingPlugin.SearchStringView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:ioTextbox="clr-namespace:Plugin.IOTextbox;assembly=Plugin.IOTextbox"
+    mc:Ignorable="d" d:DesignHeight="600" d:DesignWidth="850">
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <StackPanel Orientation="Horizontal" Height="30" HorizontalAlignment="Center">
+                <TextBlock Text="Regex" Width="40"
+                    Background="Transparent"
+                    Foreground="Red"
+                    Margin="0,0,5,0"
+                    VerticalAlignment="Center"
+                    TextAlignment="Right" />
+                <TextBox Width="600"
+                    x:Name="RegexTextbox"
+                    Margin="0,0,5,0"
+                    HorizontalContentAlignment="Left"
+                    VerticalContentAlignment="Center"
+                    HorizontalScrollBarVisibility="Disabled"
+                    VerticalScrollBarVisibility="Disabled" />
+            </StackPanel>
+            <ioTextbox:InOutTextboxView x:Name="CommonView" />
+        </StackPanel>
+    </Grid>
+</UserControl>

@@ -37,23 +37,14 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
-    <Reference Include="UIAutomationProvider" />
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -92,6 +83,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Plugins\.git-keep" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -101,16 +93,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Plugins\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Ayumi\Ayumi.csproj">
-      <Project>{351ec624-0510-413a-9868-cced2f009db1}</Project>
-      <Name>Ayumi</Name>
+    <ProjectReference Include="..\Core\Puru.Wpf\Puru.Wpf.csproj">
+      <Project>{5538f236-1dc7-463a-874c-e3199cf9a85e}</Project>
+      <Name>Puru.Wpf</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Plugin.Common\Plugin.Common.csproj">
-      <Project>{7b8866cb-b7e0-4ad9-8598-d111b30d3ec0}</Project>
-      <Name>Plugin.Common</Name>
+    <ProjectReference Include="..\Core\Puru\Puru.csproj">
+      <Project>{dc040309-dfa1-498e-885b-c901afb76bc8}</Project>
+      <Name>Puru</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

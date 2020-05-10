@@ -1,0 +1,33 @@
+<UserControl x:Class="TextProcessingPlugin.EncodeDecodeView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:ioTextbox="clr-namespace:Plugin.IOTextbox;assembly=Plugin.IOTextbox"
+    mc:Ignorable="d" d:DesignHeight="600" d:DesignWidth="850">
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <StackPanel Orientation="Horizontal" Height="30" HorizontalAlignment="Center">
+                <ComboBox
+                    x:Name="EncodeDecodeComboBox"
+                    IsReadOnly="True"
+                    Width="170"
+                    HorizontalContentAlignment="Left"
+                    VerticalContentAlignment="Center">
+                    <ComboBoxItem IsSelected="True" Content="" />
+                    <ComboBoxItem Content="Html Encode" />
+                    <ComboBoxItem Content="Html Decode" />
+                    <ComboBoxItem Content="Url Encode" />
+                    <ComboBoxItem Content="Url Decode" />
+                    <ComboBoxItem Content="Base64 Encode" />
+                    <ComboBoxItem Content="Base64 Decode" />
+                    <ComboBoxItem Content="Base64 Url Encode" />
+                    <ComboBoxItem Content="Base64 Url Decode" />
+                </ComboBox>
+                <Button x:Name="ClipboardButton"  Width="120" Click="ClipboardButton_Click">Clipboard</Button>
+                <Button x:Name="ProcessButton"  Width="120" Click="ProcessButton_Click">Process</Button>
+            </StackPanel>
+            <ioTextbox:InOutTextboxView x:Name="CommonView" />
+        </StackPanel>
+    </Grid>
+</UserControl>

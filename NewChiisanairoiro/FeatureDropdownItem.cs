@@ -1,5 +1,5 @@
 using System;
-using Ayumi.ViewablePlugin;
+using Puru.Wpf;
 
 namespace Chiisanairoiro {
     public sealed class FeatureDropdownItem {

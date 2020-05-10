@@ -1,0 +1,21 @@
+<UserControl
+    x:Class="FileProcessingPlugin.MergeFilesView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    mc:Ignorable="d" d:DesignHeight="600" d:DesignWidth="850">
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <StackPanel Orientation="Vertical" Height="530">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Root Directory" Width="130" Foreground="Red" />
+                    <TextBox x:Name="RootDirectoryTextbox" Width="720" Height="30" />
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Height="30" HorizontalAlignment="Center">
+                <Button x:Name="ProcessButton" Width="120" Click="ProcessButton_Click">Process</Button>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

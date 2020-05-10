@@ -1,32 +1,28 @@
-<Window x:Class="Chiisanairoiro.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:ayumi="clr-namespace:Ayumi.Desktop;assembly=Ayumi"
-        mc:Ignorable="d"
-        Title="ちいさな色々" SizeToContent="WidthAndHeight" Height="Auto" MinWidth="850" Width="Auto"
-        WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
-    <Window.Resources>
-        <ayumi:PercentageConverter x:Key="PercentageConverter" />
-    </Window.Resources>
+<Window
+    x:Class="Chiisanairoiro.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Title="Chiisanairoiro • Various Simple Tools" SizeToContent="WidthAndHeight" Height="Auto" MinWidth="850" Width="Auto"
+    WindowStartupLocation="CenterScreen">
     <Grid x:Name="RootGrid" Background="Black">
-        <StackPanel Orientation="Vertical">
-            <StackPanel Orientation="Horizontal" Height="30">
-                <ComboBox x:Name="AvailableFeaturesDropdownList"
-                    Width="{Binding Converter={StaticResource PercentageConverter}, ElementName=RootGrid, Path=ActualWidth, ConverterParameter=100}"
-                    MaxWidth="{Binding ElementName=AvailableFeaturesDropdownList, Path=Width}"
+        <DockPanel>
+            <DockPanel Height="30" DockPanel.Dock="Top">
+                <ComboBox
+                    x:Name="AvailableFeaturesDropdownList"
+                    MinWidth="850"
                     HorizontalContentAlignment="Left"
                     VerticalContentAlignment="Center"
-                    SelectionChanged="AvailableFeaturesDropdownList_SelectionChanged"></ComboBox>
-            </StackPanel>
+                    SelectionChanged="AvailableFeaturesDropdownList_SelectionChanged"
+                    DockPanel.Dock="Top"/>
+            </DockPanel>
             <StackPanel
                 x:Name="ComponentHost"
                 Orientation="Horizontal"
-                MinHeight="560"
-                Height="Auto"
-                Width="{Binding Converter={StaticResource PercentageConverter}, ElementName=RootGrid, Path=ActualWidth, ConverterParameter=100}"
-                MaxWidth="{Binding ElementName=ComponentHost, Path=Width}"/>
-        </StackPanel>
+                DockPanel.Dock="Bottom"
+                MinHeight="570" />
+        </DockPanel>
     </Grid>
 </Window>

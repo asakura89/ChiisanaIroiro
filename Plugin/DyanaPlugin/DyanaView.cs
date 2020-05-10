@@ -1,7 +1,7 @@
 using System;
 using System.Windows.Controls;
-using Ayumi.ViewablePlugin;
 using Dyana.View;
+using Puru.Wpf;
 
 namespace DyanaPlugin {
     public class DyanaView : IViewablePlugin {

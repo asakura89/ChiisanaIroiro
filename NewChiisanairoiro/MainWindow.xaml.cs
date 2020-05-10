@@ -4,24 +4,30 @@ using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using Ayumi.Plugin;
-using Ayumi.ViewablePlugin;
+using Puru;
+using Puru.Wpf;
 
 namespace Chiisanairoiro {
     public partial class MainWindow : Window {
-        public FeatureDropdownItem SelectedFeature { get; set; }
-
         public MainWindow() {
             InitializeComponent();
             InitializePlugins();
         }
 
         void InitializePlugins() {
-            var loader = new DynamicTypeLoader(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Plugins"));
-            IList<FeatureDropdownItem> infos = loader
-                .GetTypesInheritedBy<IViewablePlugin>()
-                .Select(pluginType => (IViewablePlugin) Activator.CreateInstance(pluginType))
-                .Select(plugin => new FeatureDropdownItem { Name = $"{plugin.ComponentName}{(String.IsNullOrEmpty(plugin.ComponentDesc) ? String.Empty : " - " + plugin.ComponentDesc)}", Value = plugin })
+            String pluginsRootDir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Plugins");
+            IList<String> pluginDirs = Directory.EnumerateDirectories(pluginsRootDir).ToList();
+            IList<FeatureDropdownItem> infos = pluginDirs
+                .SelectMany(dir =>
+                    new DynamicTypeLoader(dir)
+                        .GetTypesInheritedBy<IViewablePlugin>()
+                        .Where(type => !type.IsAbstract && !type.IsInterface)
+                        .Select(pluginType => (IViewablePlugin) Activator.CreateInstance(pluginType))
+                )
+                .Select(plugin => new FeatureDropdownItem {
+                    Name = $"[{plugin.ComponentName}]{(String.IsNullOrEmpty(plugin.ComponentDesc) ? String.Empty : " " + plugin.ComponentDesc)}",
+                    Value = plugin
+                })
                 .OrderBy(plugin => plugin.Name)
                 .ToList();
 
@@ -30,10 +36,10 @@ namespace Chiisanairoiro {
         }
 
         void AvailableFeaturesDropdownList_SelectionChanged(Object sender, SelectionChangedEventArgs e) {
-            SelectedFeature = AvailableFeaturesDropdownList.SelectedValue as FeatureDropdownItem;
-            if (SelectedFeature != null) {
+            var selected = AvailableFeaturesDropdownList.SelectedValue as FeatureDropdownItem;
+            if (selected != null) {
                 ComponentHost.Children.Clear();
-                ComponentHost.Children.Add(SelectedFeature.Value.View);
+                ComponentHost.Children.Add(selected.Value.View);
             }
         }
     }

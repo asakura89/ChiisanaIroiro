@@ -18,10 +18,12 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\NewChiisanairoiro\bin\Debug\Plugins\</OutputPath>
+    <OutputPath>..\..\NewChiisanairoiro\bin\Debug\Plugins\DyanaPlugin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <NoWarn>
+    </NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -50,14 +52,18 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Ayumi\Ayumi.csproj">
-      <Project>{351ec624-0510-413a-9868-cced2f009db1}</Project>
-      <Name>Ayumi</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Lib\Dyana.Core.dll" />
     <Content Include="Lib\Dyana.View.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\Puru.Wpf\Puru.Wpf.csproj">
+      <Project>{5538f236-1dc7-463a-874c-e3199cf9a85e}</Project>
+      <Name>Puru.Wpf</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Core\Puru\Puru.csproj">
+      <Project>{dc040309-dfa1-498e-885b-c901afb76bc8}</Project>
+      <Name>Puru</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

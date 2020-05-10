@@ -17,7 +17,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\NewChiisanairoiro\bin\Debug\Plugins\</OutputPath>
+    <OutputPath>..\..\NewChiisanairoiro\bin\Debug\Plugins\GenerateRandomPlugin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -31,39 +31,66 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FastColoredTextBox, Version=2.16.24.0, Culture=neutral, PublicKeyToken=fb8aa12b994ef61b, processorArchitecture=MSIL">
-      <HintPath>..\packages\FCTB.2.16.24\lib\FastColoredTextBox.dll</HintPath>
-    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xaml" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
     <Reference Include="WindowsBase" />
-    <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GenerateAlphanumericView.xaml.cs">
+      <DependentUpon>GenerateAlphanumericView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GenerateGuidView.xaml.cs">
+      <DependentUpon>GenerateGuidView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GenerateProcessIdView.xaml.cs">
+      <DependentUpon>GenerateProcessIdView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Keywielder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RandomizeView.xaml.cs">
+      <DependentUpon>RandomizeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RyandomNumberGenerator.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\Ayumi\Ayumi.csproj">
-      <Project>{351ec624-0510-413a-9868-cced2f009db1}</Project>
-      <Name>Ayumi</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Plugin.Common\Plugin.Common.csproj">
+    <ProjectReference Include="..\..\Core\Plugin.Common\Plugin.Common.csproj">
       <Project>{7b8866cb-b7e0-4ad9-8598-d111b30d3ec0}</Project>
       <Name>Plugin.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Core\Plugin.IOTextbox\Plugin.IOTextbox.csproj">
+      <Project>{50eba8d1-7b2b-4996-8e59-b3ef3ad5a5c2}</Project>
+      <Name>Plugin.IOTextbox</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Core\Puru.Wpf\Puru.Wpf.csproj">
+      <Project>{5538f236-1dc7-463a-874c-e3199cf9a85e}</Project>
+      <Name>Puru.Wpf</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Core\Puru\Puru.csproj">
+      <Project>{dc040309-dfa1-498e-885b-c901afb76bc8}</Project>
+      <Name>Puru</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="GenerateAlphanumericView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="GenerateGuidView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="GenerateProcessIdView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="RandomizeView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

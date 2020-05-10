@@ -1,0 +1,83 @@
+<UserControl x:Class="GenerateRandomPlugin.GenerateAlphanumericView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:ioTextbox="clr-namespace:Plugin.IOTextbox;assembly=Plugin.IOTextbox"
+    mc:Ignorable="d" d:DesignHeight="600" d:DesignWidth="850">
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <StackPanel Orientation="Horizontal" Height="30" HorizontalAlignment="Center">
+                <CheckBox x:Name="UpperCheckbox"
+                    Margin="0,0,5,0"
+                    HorizontalContentAlignment="Left"
+                    VerticalContentAlignment="Center" />
+                <TextBlock Text="Uppercase" Width="60"
+                    Background="Transparent"
+                    Foreground="Red"
+                    Margin="0,0,5,0"
+                    VerticalAlignment="Center"
+                    TextAlignment="Left" />
+                <CheckBox x:Name="LowerCheckbox"
+                    Margin="0,0,5,0"
+                    HorizontalContentAlignment="Left"
+                    VerticalContentAlignment="Center" />
+                <TextBlock Text="Lowercase" 
+                    Background="Transparent"
+                    Foreground="Red"
+                    Margin="0,0,5,0"
+                    VerticalAlignment="Center"
+                    TextAlignment="Left" />
+                <CheckBox x:Name="NumericCheckbox"
+                    Margin="0,0,5,0"
+                    HorizontalContentAlignment="Left"
+                    VerticalContentAlignment="Center" />
+                <TextBlock Text="Numeric" Width="60"
+                    Background="Transparent"
+                    Foreground="Red"
+                    Margin="0,0,5,0"
+                    VerticalAlignment="Center"
+                    TextAlignment="Left" />
+                <CheckBox x:Name="SymbolCheckbox"
+                    Margin="0,0,5,0"
+                    HorizontalContentAlignment="Left"
+                    VerticalContentAlignment="Center" />
+                <TextBlock Text="Symbol" Width="60"
+                    Background="Transparent"
+                    Foreground="Red"
+                    Margin="0,0,5,0"
+                    VerticalAlignment="Center"
+                    TextAlignment="Left" />
+                <TextBlock Text="Length" Width="40"
+                    Background="Transparent"
+                    Foreground="Red"
+                    Margin="0,0,5,0"
+                    VerticalAlignment="Center"
+                    TextAlignment="Right" />
+                <TextBox Text="32" Width="65"
+                    x:Name="LengthTextbox"
+                    Margin="0,0,5,0"
+                    HorizontalContentAlignment="Left"
+                    VerticalContentAlignment="Center"
+                    HorizontalScrollBarVisibility="Disabled"
+                    VerticalScrollBarVisibility="Disabled" />
+                <TextBlock Text="Count" Width="40"
+                    Background="Transparent"
+                    Foreground="Red"
+                    Margin="0,0,5,0"
+                    VerticalAlignment="Center"
+                    TextAlignment="Right" />
+                <TextBox Text="5" Width="65"
+                    x:Name="CountTextbox"
+                    Margin="0,0,5,0"
+                    HorizontalContentAlignment="Left"
+                    VerticalContentAlignment="Center"
+                    HorizontalScrollBarVisibility="Disabled"
+                    VerticalScrollBarVisibility="Disabled" />
+                <Button x:Name="ClipboardButton"  Width="120" Click="ClipboardButton_Click">Clipboard</Button>
+                <Button x:Name="ProcessButton"  Width="120" Click="ProcessButton_Click">Process</Button>
+            </StackPanel>
+            <ioTextbox:OutTextboxView x:Name="CommonView" />
+        </StackPanel>
+    </Grid>
+</UserControl>

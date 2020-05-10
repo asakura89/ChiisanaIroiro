@@ -1,0 +1,35 @@
+<UserControl x:Class="FileProcessingPlugin.ZipFilesView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:ioTextbox="clr-namespace:Plugin.IOTextbox;assembly=Plugin.IOTextbox"
+    mc:Ignorable="d" d:DesignHeight="600" d:DesignWidth="850">
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <StackPanel Orientation="Horizontal" Height="30" HorizontalAlignment="Center">
+                <TextBlock
+                    Text="Zip File"
+                    Background="Transparent"
+                    Foreground="Red"
+                    Margin="0,0,10,0"
+                    VerticalAlignment="Center"
+                    TextAlignment="Right" />
+                <TextBox
+                    x:Name="ZipFileTextBox"
+                    Width="200"
+                    HorizontalContentAlignment="Left"
+                    VerticalContentAlignment="Center"
+                    HorizontalScrollBarVisibility="Disabled"
+                    VerticalScrollBarVisibility="Disabled" />
+                <Button
+                    x:Name="BrowseZipFileButton"
+                    Width="35"
+                    Click="BrowseZipFileButton_Click"
+                    Margin="0,0,10,0">•••</Button>
+                <Button x:Name="ProcessButton"  Width="120" Click="ProcessButton_Click">Process</Button>
+            </StackPanel>
+            <ioTextbox:OutTextboxView x:Name="CommonView" />
+        </StackPanel>
+    </Grid>
+</UserControl>
