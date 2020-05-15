@@ -12,10 +12,12 @@ namespace KeywielderCore {
         UpperLower,
         UpperNumeric,
         UpperSymbol,
+        UpperHex,
         Upper,
 
         LowerNumeric,
         LowerSymbol,
+        LowerHex,
         Lower,
 
         NumericSymbol,
@@ -26,6 +28,8 @@ namespace KeywielderCore {
     public class Wielder {
         const String UppercaseAlphabet = "A B C D E F G H I J K L M N O P Q R S T U V W X Y Z";
         const String LowercaseAlphabet = "a b c d e f g h i j k l m n o p q r s t u v w x y z";
+        const String UppercaseHexAlphabet = "A B C D E F";
+        const String LowercaseHexAlphabet = "a b c d e f";
         const String Numeric = "1 2 3 4 5 6 7 8 9 0";
         const String Symbol = "~ ! @ # $ % ^ & * _ - + = ` | \\ ( ) { } [ ] : ; < > . ? /";
 
@@ -36,10 +40,12 @@ namespace KeywielderCore {
             [AlphaType.UpperLower] = UppercaseAlphabet + " " + LowercaseAlphabet,
             [AlphaType.UpperNumeric] = UppercaseAlphabet + " " + Numeric,
             [AlphaType.UpperSymbol] = UppercaseAlphabet + " " + Symbol,
+            [AlphaType.UpperHex] = UppercaseHexAlphabet + " " + Numeric,
             [AlphaType.Upper] = UppercaseAlphabet,
 
             [AlphaType.LowerNumeric] = LowercaseAlphabet + " " + Numeric,
             [AlphaType.LowerSymbol] = LowercaseAlphabet + " " + Symbol,
+            [AlphaType.LowerHex] = LowercaseHexAlphabet + " " + Numeric,
             [AlphaType.Lower] = LowercaseAlphabet,
 
             [AlphaType.NumericSymbol] = Numeric + " " + Symbol,
@@ -69,6 +75,13 @@ namespace KeywielderCore {
 
         public Wielder AddRandomAlphaNumeric(Int32 valueLength, Boolean uppercase, String backSeparator) =>
             uppercase ? AddRandomString(valueLength, AlphaType.Upper, backSeparator) : AddRandomString(valueLength, AlphaType.Lower, backSeparator);
+
+        public Wielder AddRandomHex(Int32 valueLength) => AddRandomHex(valueLength, true);
+
+        public Wielder AddRandomHex(Int32 valueLength, Boolean uppercase) => AddRandomHex(valueLength, uppercase, String.Empty);
+
+        public Wielder AddRandomHex(Int32 valueLength, Boolean uppercase, String backSeparator) =>
+            uppercase ? AddRandomString(valueLength, AlphaType.UpperHex, backSeparator) : AddRandomString(valueLength, AlphaType.LowerHex, backSeparator);
 
         Wielder AddRandom(Int32 valueLength, String[] charCombination, String backSeparator) {
             var randomString = new StringBuilder();

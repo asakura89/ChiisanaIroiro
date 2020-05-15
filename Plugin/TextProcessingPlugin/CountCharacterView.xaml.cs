@@ -38,7 +38,7 @@ namespace TextProcessingPlugin {
                 totalFull += full;
                 totalStripped += stripped;
 
-                outputBuilder.AppendLine($"[{(idx +1).ToString().PadLeft(digits, ' ')}] {full} (full), {stripped} (w/o spaces)");
+                outputBuilder.AppendLine($"w/ spaces: {full.ToString().PadLeft(4, ' ')}, w/o spaces: {stripped.ToString().PadLeft(4, ' ')}");
             }
 
             /*
@@ -54,7 +54,8 @@ namespace TextProcessingPlugin {
             */
 
             CommonView.Output = outputBuilder
-                .Append($"[All] {totalFull} (full), {totalStripped} (w/o spaces)")
+                .AppendLine()
+                .Append($"w/ spaces: {totalFull.ToString().PadLeft(4, ' ')}, w/o spaces: {totalStripped.ToString().PadLeft(4, ' ')}")
                 .ToString();
         }
 

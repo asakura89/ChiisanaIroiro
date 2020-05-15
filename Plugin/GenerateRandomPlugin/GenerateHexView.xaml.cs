@@ -3,11 +3,12 @@ using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using KeywielderCore;
 using Puru.Wpf;
 
 namespace GenerateRandomPlugin {
-    public partial class GenerateGuidView : UserControl, IViewablePlugin {
-        public String ComponentName => "Generate Random Guid";
+    public partial class GenerateHexView : UserControl, IViewablePlugin {
+        public String ComponentName => "Generate Random Hex";
 
         public String ComponentDesc => String.Empty;
 
@@ -22,7 +23,16 @@ namespace GenerateRandomPlugin {
             }
         }
 
-        public GenerateGuidView() {
+        Int32 Length {
+            get {
+                String length = String.IsNullOrEmpty(LengthTextbox.Text) ? "0" : LengthTextbox.Text;
+                return Convert.ToInt32(length);
+            }
+        }
+
+        Boolean Uppercase => UpperCheckbox.IsChecked ?? false;
+
+        public GenerateHexView() {
             InitializeComponent();
             CommonView.HideAllButton();
         }
@@ -38,18 +48,10 @@ namespace GenerateRandomPlugin {
             var builder = new StringBuilder();
             Int32 counter = 0;
             while (counter < Count) {
-                var guid = Guid.NewGuid();
-                builder
-                    .AppendLine(guid.ToString("D"))
-                    .AppendLine(guid.ToString("N"))
-                    .AppendLine(guid.ToString("P"))
-                    .AppendLine(guid.ToString("B"))
-                    .AppendLine(guid.ToString("X"))
-                    .AppendLine(guid.ToString("D").ToUpperInvariant())
-                    .AppendLine(guid.ToString("N").ToUpperInvariant())
-                    .AppendLine(guid.ToString("P").ToUpperInvariant())
-                    .AppendLine(guid.ToString("B").ToUpperInvariant())
-                    .AppendLine();
+                builder.AppendLine(
+                    Wielder.New()
+                        .AddRandomHex(Length, Uppercase)
+                        .BuildKey());
 
                 counter++;
             }
