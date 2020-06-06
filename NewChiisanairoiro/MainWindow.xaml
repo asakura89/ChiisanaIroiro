@@ -9,14 +9,24 @@
     WindowStartupLocation="CenterScreen">
     <Grid x:Name="RootGrid" Background="Black">
         <DockPanel>
-            <DockPanel Height="30" DockPanel.Dock="Top">
-                <ComboBox
-                    x:Name="AvailableFeaturesDropdownList"
-                    MinWidth="850"
-                    HorizontalContentAlignment="Left"
-                    VerticalContentAlignment="Center"
-                    SelectionChanged="AvailableFeaturesDropdownList_SelectionChanged"
-                    DockPanel.Dock="Top"/>
+            <DockPanel Height="65" DockPanel.Dock="Top">
+                <DockPanel DockPanel.Dock="Top">
+                    <TextBox
+                        MinWidth="850"
+                        MinHeight="30"
+                        x:Name="SearchTextbox"
+                        HorizontalContentAlignment="Left"
+                        VerticalContentAlignment="Center"
+                        DockPanel.Dock="Top"
+                        TextChanged="SearchTextbox_OnTextChanged" />
+                    <ComboBox
+                        x:Name="AvailableFeaturesDropdownList"
+                        MinWidth="850"
+                        HorizontalContentAlignment="Left"
+                        VerticalContentAlignment="Center"
+                        SelectionChanged="AvailableFeaturesDropdownList_SelectionChanged"
+                        DockPanel.Dock="Bottom"/>
+                </DockPanel>
             </DockPanel>
             <StackPanel
                 x:Name="ComponentHost"

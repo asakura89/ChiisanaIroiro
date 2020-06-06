@@ -9,6 +9,8 @@ using Puru.Wpf;
 
 namespace Chiisanairoiro {
     public partial class MainWindow : Window {
+        IList<FeatureDropdownItem> features;
+
         public MainWindow() {
             InitializeComponent();
             InitializePlugins();
@@ -32,7 +34,9 @@ namespace Chiisanairoiro {
                 .OrderBy(plugin => plugin.Name)
                 .ToList();
 
-            AvailableFeaturesDropdownList.ItemsSource = infos;
+            features = infos;
+
+            AvailableFeaturesDropdownList.ItemsSource = features;
             AvailableFeaturesDropdownList.DisplayMemberPath = "Name";
         }
 
@@ -42,6 +46,17 @@ namespace Chiisanairoiro {
                 ComponentHost.Children.Clear();
                 ComponentHost.Children.Add(selected.Value.View);
             }
+        }
+
+        void SearchTextbox_OnTextChanged(Object sender, TextChangedEventArgs e) {
+            if (String.IsNullOrEmpty(SearchTextbox.Text)) {
+                AvailableFeaturesDropdownList.ItemsSource = features;
+                return;
+            }
+
+            AvailableFeaturesDropdownList.ItemsSource = features
+                .Where(feature => feature.Name.ToLowerInvariant().Contains(SearchTextbox.Text.ToLowerInvariant()))
+                .ToList();
         }
     }
 }
