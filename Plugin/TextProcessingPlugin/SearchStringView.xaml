@@ -19,7 +19,7 @@
                     Margin="0,0,5,0"
                     HorizontalContentAlignment="Left"
                     VerticalContentAlignment="Center"
-                    HorizontalScrollBarVisibility="Disabled"
+                    HorizontalScrollBarVisibility="Hidden"
                     VerticalScrollBarVisibility="Disabled" />
             </StackPanel>
             <ioTextbox:InOutTextboxView x:Name="CommonView" />

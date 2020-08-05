@@ -19,7 +19,7 @@
                     Margin="0,0,15,0"
                     HorizontalContentAlignment="Left"
                     VerticalContentAlignment="Center"
-                    HorizontalScrollBarVisibility="Disabled"
+                    HorizontalScrollBarVisibility="Hidden"
                     VerticalScrollBarVisibility="Disabled"
                     KeyUp="NumericTextbox_KeyUp" />
                 <TextBlock Text="Iterate Count" Width="75"
@@ -33,7 +33,7 @@
                     Margin="0,0,15,0"
                     HorizontalContentAlignment="Left"
                     VerticalContentAlignment="Center"
-                    HorizontalScrollBarVisibility="Disabled"
+                    HorizontalScrollBarVisibility="Hidden"
                     VerticalScrollBarVisibility="Disabled"
                     KeyUp="NumericTextbox_KeyUp" />
                 <Button x:Name="ClipboardButton"  Width="120" Click="ClipboardButton_Click">Clipboard</Button>

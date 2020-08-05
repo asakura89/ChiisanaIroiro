@@ -20,7 +20,7 @@
                     Width="200"
                     HorizontalContentAlignment="Left"
                     VerticalContentAlignment="Center"
-                    HorizontalScrollBarVisibility="Disabled"
+                    HorizontalScrollBarVisibility="Hidden"
                     VerticalScrollBarVisibility="Disabled" />
                 <Button
                     x:Name="BrowseZipFileButton"

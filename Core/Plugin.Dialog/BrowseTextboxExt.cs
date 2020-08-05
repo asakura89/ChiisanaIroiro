@@ -24,6 +24,8 @@ namespace Plugin.Dialog {
                     pathTextBox.CaretIndex = browseDialog.FileName.Length -1;
                     pathTextBox.Focus();
                 }
+
+                pathTextBox.CaretIndex = 0;
             }
             catch (Exception ex) {
                 ex.ShowInTaskDialog();
