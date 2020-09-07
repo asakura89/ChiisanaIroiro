@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.852
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewChiisanairoiro", "NewChiisanairoiro\NewChiisanairoiro.csproj", "{D79C98D7-A591-428B-BCB8-211846410F75}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShinChiisanairoiro", "ShinChiisanairoiro\ShinChiisanairoiro.csproj", "{D79C98D7-A591-428B-BCB8-211846410F75}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Plugin", "Plugin", "{7F4CDCE7-53E2-45F9-BB0F-37C0355EB28D}"
 EndProject
