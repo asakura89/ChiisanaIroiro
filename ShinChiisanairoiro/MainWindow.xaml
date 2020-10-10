@@ -31,6 +31,8 @@
             <StackPanel
                 x:Name="ComponentHost"
                 Orientation="Horizontal"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
                 DockPanel.Dock="Bottom"
                 MinHeight="570" />
         </DockPanel>

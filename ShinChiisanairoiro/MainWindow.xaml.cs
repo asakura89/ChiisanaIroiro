@@ -51,12 +51,15 @@ namespace Chiisanairoiro {
         void SearchTextbox_OnTextChanged(Object sender, TextChangedEventArgs e) {
             if (String.IsNullOrEmpty(SearchTextbox.Text)) {
                 AvailableFeaturesDropdownList.ItemsSource = features;
+                AvailableFeaturesDropdownList.SelectedIndex = -1;
                 return;
             }
 
             AvailableFeaturesDropdownList.ItemsSource = features
                 .Where(feature => feature.Name.ToLowerInvariant().Contains(SearchTextbox.Text.ToLowerInvariant()))
                 .ToList();
+
+            AvailableFeaturesDropdownList.SelectedIndex = 0;
         }
     }
 }
