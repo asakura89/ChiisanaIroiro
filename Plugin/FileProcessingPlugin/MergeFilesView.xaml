@@ -7,14 +7,56 @@
     mc:Ignorable="d" d:DesignHeight="600" d:DesignWidth="850">
     <Grid>
         <StackPanel Orientation="Vertical">
-            <StackPanel Orientation="Vertical" Height="530">
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Root Directory" Width="130" Foreground="Red" />
-                    <TextBox x:Name="RootDirectoryTextbox" Width="720" Height="30" />
-                </StackPanel>
-            </StackPanel>
             <StackPanel Orientation="Horizontal" Height="30" HorizontalAlignment="Center">
-                <Button x:Name="ProcessButton" Width="120" Click="ProcessButton_Click">Process</Button>
+                <TextBlock
+                    Text="Source Root Dir"
+                    Background="Transparent"
+                    Foreground="Red"
+                    Margin="0,0,10,0"
+                    VerticalAlignment="Center"
+                    TextAlignment="Right" />
+                <TextBox
+                    x:Name="SourceRootDirTextBox"
+                    Width="200"
+                    HorizontalContentAlignment="Left"
+                    VerticalContentAlignment="Center"
+                    HorizontalScrollBarVisibility="Hidden"
+                    VerticalScrollBarVisibility="Disabled" />
+                <Button
+                    x:Name="OpenSourceRootDirButton"
+                    FontSize="18"
+                    Width="35"
+                    Click="OpenSourceRootDirButton_Click">🡥</Button>
+                <Button
+                    x:Name="BrowseSourceRootDirButton"
+                    Width="35"
+                    Click="BrowseSourceRootDirButton_Click"
+                    Margin="0,0,10,0">•••</Button>
+                <TextBlock
+                    Text="Output Dir"
+                    Background="Transparent"
+                    Foreground="Red"
+                    Margin="0,0,10,0"
+                    VerticalAlignment="Center"
+                    TextAlignment="Right" />
+                <TextBox
+                    x:Name="OutputDirTextBox"
+                    Width="200"
+                    HorizontalContentAlignment="Left"
+                    VerticalContentAlignment="Center"
+                    HorizontalScrollBarVisibility="Hidden"
+                    VerticalScrollBarVisibility="Disabled" />
+                <Button
+                    x:Name="OpenOutputDirButton"
+                    FontSize="18"
+                    Width="35"
+                    Click="OpenOutputDirButton_Click">🡥</Button>
+                <Button
+                    x:Name="BrowseOutputDirButton"
+                    Width="35"
+                    Click="BrowseOutputDirButton_Click"
+                    Margin="0,0,10,0">•••</Button>
+                <Button x:Name="ProcessButton"  Width="120" Click="ProcessButton_Click">Process</Button>
             </StackPanel>
         </StackPanel>
     </Grid>
