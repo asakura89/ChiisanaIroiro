@@ -1,19 +1,25 @@
 using System;
 using System.Windows;
 using System.Windows.Controls;
-using FastColoredTextBoxNS;
 using Plugin.Common;
 
 namespace Plugin.IOTextbox {
     public partial class OutTextboxView : UserControl {
-        readonly FastColoredTextBox outputTextbox = new FastColoredTextBox();
-
         public String Output {
             get {
-                return outputTextbox.Text;
+                return OutputTextBox.Text;
             }
             set {
-                outputTextbox.Text = value;
+                OutputTextBox.Text = value;
+            }
+        }
+
+        public Boolean ReadOnlyOutput {
+            get {
+                return OutputTextBox.IsReadOnly;
+            }
+            set {
+                OutputTextBox.IsReadOnly = value;
             }
         }
 
@@ -34,9 +40,7 @@ namespace Plugin.IOTextbox {
         }
 
         void InitializeInternalComponent() {
-            TextEditorHelper.Initialize(outputTextbox);
-
-            OutputTextBoxHost.Child = outputTextbox;
+            TextEditorHelper.Initialize(OutputTextBox);
         }
 
         void ClipboardButton_Click(Object sender, RoutedEventArgs e) {

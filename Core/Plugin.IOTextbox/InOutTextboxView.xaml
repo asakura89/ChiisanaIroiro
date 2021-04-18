@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:integration="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration"
+    xmlns:avalonedit="http://icsharpcode.net/sharpdevelop/avalonedit"
     mc:Ignorable="d" d:DesignHeight="600" d:DesignWidth="1080">
     <DockPanel MinWidth="1080">
         <StackPanel
@@ -19,13 +19,13 @@
             <Button x:Name="ProcessButton"  Width="120">Process</Button>
         </StackPanel>
         <DockPanel x:Name="TextBoxContainer" DockPanel.Dock="Bottom">
-            <integration:WindowsFormsHost
-                x:Name="InputTextBoxHost"
+            <avalonedit:TextEditor
+                x:Name="InputTextBox"
                 DockPanel.Dock="Left"
                 MinWidth="540"
-                MinHeight="570" />
-            <integration:WindowsFormsHost
-                x:Name="OutputTextBoxHost"
+                MinHeight="570"/>
+            <avalonedit:TextEditor
+                x:Name="OutputTextBox"
                 DockPanel.Dock="Right"
                 MinWidth="540"
                 MinHeight="570"/>

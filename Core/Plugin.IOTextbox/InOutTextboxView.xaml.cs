@@ -1,32 +1,46 @@
 using System;
 using System.Windows;
 using System.Windows.Controls;
-using FastColoredTextBoxNS;
 using Plugin.Common;
 
 namespace Plugin.IOTextbox {
     public partial class InOutTextboxView : UserControl {
-        readonly FastColoredTextBox inputTextbox = new FastColoredTextBox();
-        readonly FastColoredTextBox outputTextbox = new FastColoredTextBox();
-
         public String Input {
             get {
-                return inputTextbox.Text;
+                return InputTextBox.Text;
             }
             set {
-                inputTextbox.Text = value;
+                InputTextBox.Text = value;
             }
         }
 
         public String Output {
             get {
-                return outputTextbox.Text;
+                return OutputTextBox.Text;
             }
             set {
-                outputTextbox.Text = value;
+                OutputTextBox.Text = value;
             }
         }
-        
+
+        public Boolean ReadOnlyInput {
+            get {
+                return OutputTextBox.IsReadOnly;
+            }
+            set {
+                OutputTextBox.IsReadOnly = value;
+            }
+        }
+
+        public Boolean ReadOnlyOutput {
+            get {
+                return OutputTextBox.IsReadOnly;
+            }
+            set {
+                OutputTextBox.IsReadOnly = value;
+            }
+        }
+
         public void HideAllButton() {
             ConfigButton.Visibility = Visibility.Collapsed;
             ClipboardButton.Visibility = Visibility.Collapsed;
@@ -44,11 +58,8 @@ namespace Plugin.IOTextbox {
         }
 
         void InitializeInternalComponent() {
-            TextEditorHelper.Initialize(inputTextbox);
-            TextEditorHelper.Initialize(outputTextbox);
-
-            InputTextBoxHost.Child = inputTextbox;
-            OutputTextBoxHost.Child = outputTextbox;
+            TextEditorHelper.Initialize(InputTextBox);
+            TextEditorHelper.Initialize(OutputTextBox);
         }
 
         void ClipboardButton_Click(Object sender, RoutedEventArgs e) {
