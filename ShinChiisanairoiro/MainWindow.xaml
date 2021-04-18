@@ -5,36 +5,38 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Title="Chiisanairoiro • Various Simple Tools" SizeToContent="WidthAndHeight" Height="Auto" MinWidth="850" Width="Auto"
+    d:DesignHeight="600" d:DesignWidth="1080"
+    Title="Chiisanairoiro • Various Simple Tools"
+    Height="600" Width="1080"
     WindowStartupLocation="CenterScreen">
     <Grid x:Name="RootGrid" Background="Black">
-        <DockPanel>
-            <DockPanel Height="65" DockPanel.Dock="Top">
-                <DockPanel DockPanel.Dock="Top">
-                    <TextBox
-                        MinWidth="850"
-                        MinHeight="30"
-                        x:Name="SearchTextbox"
-                        HorizontalContentAlignment="Left"
-                        VerticalContentAlignment="Center"
-                        DockPanel.Dock="Top"
-                        TextChanged="SearchTextbox_OnTextChanged" />
-                    <ComboBox
-                        x:Name="AvailableFeaturesDropdownList"
-                        MinWidth="850"
-                        HorizontalContentAlignment="Left"
-                        VerticalContentAlignment="Center"
-                        SelectionChanged="AvailableFeaturesDropdownList_SelectionChanged"
-                        DockPanel.Dock="Bottom"/>
-                </DockPanel>
-            </DockPanel>
-            <StackPanel
-                x:Name="ComponentHost"
-                Orientation="Horizontal"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                DockPanel.Dock="Bottom"
-                MinHeight="570" />
-        </DockPanel>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="18*" />
+        </Grid.RowDefinitions>
+
+        <TextBox
+            Grid.Row="0"
+            x:Name="SearchTextbox"
+            HorizontalContentAlignment="Left"
+            VerticalContentAlignment="Center"
+            TextChanged="SearchTextbox_OnTextChanged" />
+
+        <ComboBox
+            Grid.Row="1"
+            x:Name="AvailableFeaturesDropdownList"
+            HorizontalContentAlignment="Left"
+            VerticalContentAlignment="Center"
+            SelectionChanged="AvailableFeaturesDropdownList_SelectionChanged" />
+
+        <Grid Grid.Row="2" x:Name="ComponentHost">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+        </Grid>
     </Grid>
 </Window>

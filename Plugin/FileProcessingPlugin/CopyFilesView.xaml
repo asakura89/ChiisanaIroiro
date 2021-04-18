@@ -6,81 +6,88 @@
     xmlns:ioTextbox="clr-namespace:Plugin.IOTextbox;assembly=Plugin.IOTextbox"
     mc:Ignorable="d" d:DesignHeight="600" d:DesignWidth="850">
     <Grid>
-        <StackPanel Orientation="Vertical">
-            <StackPanel Orientation="Horizontal" Height="30" HorizontalAlignment="Center">
-                <CheckBox x:Name="ZipCheckBox"
-                    Margin="0,0,10,0"
-                    HorizontalContentAlignment="Left"
-                    VerticalContentAlignment="Center" />
-                <TextBlock Text="Zip" Width="25"
-                    Background="Transparent"
-                    Foreground="Red"
-                    Margin="0,0,10,0"
-                    VerticalAlignment="Center"
-                    TextAlignment="Left" />
-                <CheckBox x:Name="ComplainCheckBox"
-                    Margin="0,0,10,0"
-                    HorizontalContentAlignment="Left"
-                    VerticalContentAlignment="Center" />
-                <TextBlock Text="Complain Non-existent" Width="125"
-                    Background="Transparent"
-                    Foreground="Red"
-                    Margin="0,0,10,0"
-                    VerticalAlignment="Center"
-                    TextAlignment="Left" />
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" Height="30" HorizontalAlignment="Center">
-                <TextBlock
-                    Text="Source Dir"
-                    Background="Transparent"
-                    Foreground="Red"
-                    Margin="0,0,10,0"
-                    VerticalAlignment="Center"
-                    TextAlignment="Right" />
-                <TextBox
-                    x:Name="SourceDirectoryTextBox"
-                    Width="200"
-                    HorizontalContentAlignment="Left"
-                    VerticalContentAlignment="Center"
-                    HorizontalScrollBarVisibility="Hidden"
-                    VerticalScrollBarVisibility="Disabled" />
-                <Button
-                    x:Name="OpenSourceButton"
-                    FontSize="18"
-                    Width="35"
-                    Click="OpenSourceButton_Click">🡥</Button>
-                <Button
-                    x:Name="BrowseSourceButton"
-                    Width="35"
-                    Click="BrowseSourceButton_Click"
-                    Margin="0,0,10,0">•••</Button>
-                <TextBlock
-                    Text="Target Dir"
-                    Background="Transparent"
-                    Foreground="Red"
-                    Margin="0,0,10,0"
-                    VerticalAlignment="Center"
-                    TextAlignment="Right" />
-                <TextBox
-                    x:Name="TargetDirectoryTextBox"
-                    Width="200"
-                    HorizontalContentAlignment="Left"
-                    VerticalContentAlignment="Center"
-                    HorizontalScrollBarVisibility="Hidden"
-                    VerticalScrollBarVisibility="Disabled" />
-                <Button
-                    x:Name="OpenTargetButton"
-                    FontSize="18"
-                    Width="35"
-                    Click="OpenTargetButton_Click">🡥</Button>
-                <Button
-                    x:Name="BrowseTargetButton"
-                    Width="35"
-                    Click="BrowseTargetButton_Click"
-                    Margin="0,0,10,0">•••</Button>
-                <Button x:Name="ProcessButton"  Width="120" Click="ProcessButton_Click">Process</Button>
-            </StackPanel>
-            <ioTextbox:OutTextboxView x:Name="CommonView" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="14*" />
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Height="30" HorizontalAlignment="Center">
+            <CheckBox
+                x:Name="ZipCheckBox"
+                Margin="0,0,10,0"
+                HorizontalContentAlignment="Left"
+                VerticalContentAlignment="Center" />
+            <TextBlock
+                Text="Zip" Width="25"
+                Background="Transparent"
+                Foreground="Red"
+                Margin="0,0,10,0"
+                VerticalAlignment="Center"
+                TextAlignment="Left" />
+            <CheckBox
+                x:Name="ComplainCheckBox"
+                Margin="0,0,10,0"
+                HorizontalContentAlignment="Left"
+                VerticalContentAlignment="Center" />
+            <TextBlock
+                Text="Complain Non-existent" Width="125"
+                Background="Transparent"
+                Foreground="Red"
+                Margin="0,0,10,0"
+                VerticalAlignment="Center"
+                TextAlignment="Left" />
         </StackPanel>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Height="30" HorizontalAlignment="Center">
+            <TextBlock
+                Text="Source Dir"
+                Background="Transparent"
+                Foreground="Red"
+                Margin="0,0,10,0"
+                VerticalAlignment="Center"
+                TextAlignment="Right" />
+            <TextBox
+                x:Name="SourceDirectoryTextBox"
+                Width="200"
+                HorizontalContentAlignment="Left"
+                VerticalContentAlignment="Center"
+                HorizontalScrollBarVisibility="Hidden"
+                VerticalScrollBarVisibility="Disabled" />
+            <Button
+                x:Name="OpenSourceButton"
+                FontSize="18"
+                Width="35"
+                Click="OpenSourceButton_Click">🡥</Button>
+            <Button
+                x:Name="BrowseSourceButton"
+                Width="35"
+                Click="BrowseSourceButton_Click"
+                Margin="0,0,10,0">•••</Button>
+            <TextBlock
+                Text="Target Dir"
+                Background="Transparent"
+                Foreground="Red"
+                Margin="0,0,10,0"
+                VerticalAlignment="Center"
+                TextAlignment="Right" />
+            <TextBox
+                x:Name="TargetDirectoryTextBox"
+                Width="200"
+                HorizontalContentAlignment="Left"
+                VerticalContentAlignment="Center"
+                HorizontalScrollBarVisibility="Hidden"
+                VerticalScrollBarVisibility="Disabled" />
+            <Button
+                x:Name="OpenTargetButton"
+                FontSize="18"
+                Width="35"
+                Click="OpenTargetButton_Click">🡥</Button>
+            <Button
+                x:Name="BrowseTargetButton"
+                Width="35"
+                Click="BrowseTargetButton_Click"
+                Margin="0,0,10,0">•••</Button>
+            <Button x:Name="ProcessButton"  Width="120" Click="ProcessButton_Click">Process</Button>
+        </StackPanel>
+        <ioTextbox:OutTextboxView Grid.Row="2" x:Name="CommonView" />
     </Grid>
 </UserControl>

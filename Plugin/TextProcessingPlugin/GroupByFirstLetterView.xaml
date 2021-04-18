@@ -6,30 +6,35 @@
     xmlns:ioTextbox="clr-namespace:Plugin.IOTextbox;assembly=Plugin.IOTextbox"
     mc:Ignorable="d" d:DesignHeight="600" d:DesignWidth="850">
     <Grid>
-        <StackPanel Orientation="Vertical">
-            <StackPanel Orientation="Horizontal" Height="30" HorizontalAlignment="Center">
-                <TextBlock Text="Group by" Width="45"
-                    Background="Transparent"
-                    Foreground="Red"
-                    Margin="0,0,15,0"
-                    VerticalAlignment="Center"
-                    TextAlignment="Right" />
-                <TextBox Text="10" Width="45"
-                    x:Name="XLetterTextbox"
-                    Margin="0,0,15,0"
-                    HorizontalContentAlignment="Left"
-                    VerticalContentAlignment="Center"
-                    HorizontalScrollBarVisibility="Hidden"
-                    VerticalScrollBarVisibility="Disabled"
-                    KeyUp="NumericTextbox_KeyUp" />
-                <TextBlock Text="Letter" Width="45"
-                    Background="Transparent"
-                    Foreground="Red"
-                    Margin="0,0,15,0"
-                    VerticalAlignment="Center"
-                    TextAlignment="Left" />
-            </StackPanel>
-            <ioTextbox:InOutTextboxView x:Name="CommonView" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="15*" />
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Height="30" HorizontalAlignment="Center">
+            <TextBlock
+                Text="Group by" Width="45"
+                Background="Transparent"
+                Foreground="Red"
+                Margin="0,0,15,0"
+                VerticalAlignment="Center"
+                TextAlignment="Right" />
+            <TextBox
+                Text="10" Width="45"
+                x:Name="XLetterTextbox"
+                Margin="0,0,15,0"
+                HorizontalContentAlignment="Left"
+                VerticalContentAlignment="Center"
+                HorizontalScrollBarVisibility="Hidden"
+                VerticalScrollBarVisibility="Disabled"
+                KeyUp="NumericTextbox_KeyUp" />
+            <TextBlock
+                Text="Letter" Width="45"
+                Background="Transparent"
+                Foreground="Red"
+                Margin="0,0,15,0"
+                VerticalAlignment="Center"
+                TextAlignment="Left" />
         </StackPanel>
+        <ioTextbox:InOutTextboxView Grid.Row="1" x:Name="CommonView" />
     </Grid>
 </UserControl>

@@ -6,22 +6,24 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:avalonedit="http://icsharpcode.net/sharpdevelop/avalonedit"
     mc:Ignorable="d" d:DesignHeight="600" d:DesignWidth="1080">
-    <DockPanel MinWidth="1080">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="15*" />
+        </Grid.RowDefinitions>
         <StackPanel
+            Grid.Row="0"
             x:Name="ButtonPanel"
             Orientation="Horizontal"
             Height="30"
             HorizontalAlignment="Center"
-            VerticalAlignment="Center"
-            DockPanel.Dock="Top">
+            VerticalAlignment="Center">
             <Button x:Name="ConfigButton"  Width="120">Config</Button>
             <Button x:Name="ClipboardButton"  Width="120" Click="ClipboardButton_Click">Clipboard</Button>
             <Button x:Name="ProcessButton"  Width="120">Process</Button>
         </StackPanel>
-        <avalonedit:TextEditor
-            x:Name="OutputTextBox"
-            DockPanel.Dock="Bottom"
-            MinWidth="540"
-            MinHeight="570"/>
-    </DockPanel>
+        <Border Grid.Row="1" BorderBrush="#f0b310" BorderThickness="4">
+            <avalonedit:TextEditor  x:Name="OutputTextBox" />
+        </Border>
+    </Grid>
 </UserControl>

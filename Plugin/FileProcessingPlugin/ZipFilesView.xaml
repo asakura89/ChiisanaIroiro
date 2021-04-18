@@ -6,30 +6,32 @@
     xmlns:ioTextbox="clr-namespace:Plugin.IOTextbox;assembly=Plugin.IOTextbox"
     mc:Ignorable="d" d:DesignHeight="600" d:DesignWidth="850">
     <Grid>
-        <StackPanel Orientation="Vertical">
-            <StackPanel Orientation="Horizontal" Height="30" HorizontalAlignment="Center">
-                <TextBlock
-                    Text="Zip File"
-                    Background="Transparent"
-                    Foreground="Red"
-                    Margin="0,0,10,0"
-                    VerticalAlignment="Center"
-                    TextAlignment="Right" />
-                <TextBox
-                    x:Name="ZipFileTextBox"
-                    Width="200"
-                    HorizontalContentAlignment="Left"
-                    VerticalContentAlignment="Center"
-                    HorizontalScrollBarVisibility="Hidden"
-                    VerticalScrollBarVisibility="Disabled" />
-                <Button
-                    x:Name="BrowseZipFileButton"
-                    Width="35"
-                    Click="BrowseZipFileButton_Click"
-                    Margin="0,0,10,0">•••</Button>
-                <Button x:Name="ProcessButton"  Width="120" Click="ProcessButton_Click">Process</Button>
-            </StackPanel>
-            <ioTextbox:OutTextboxView x:Name="CommonView" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="15*" />
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Height="30" HorizontalAlignment="Center">
+            <TextBlock
+                Text="Zip File"
+                Background="Transparent"
+                Foreground="Red"
+                Margin="0,0,10,0"
+                VerticalAlignment="Center"
+                TextAlignment="Right" />
+            <TextBox
+                x:Name="ZipFileTextBox"
+                Width="200"
+                HorizontalContentAlignment="Left"
+                VerticalContentAlignment="Center"
+                HorizontalScrollBarVisibility="Hidden"
+                VerticalScrollBarVisibility="Disabled" />
+            <Button
+                x:Name="BrowseZipFileButton"
+                Width="35"
+                Click="BrowseZipFileButton_Click"
+                Margin="0,0,10,0">•••</Button>
+            <Button x:Name="ProcessButton"  Width="120" Click="ProcessButton_Click">Process</Button>
         </StackPanel>
+        <ioTextbox:OutTextboxView Grid.Row="1" x:Name="CommonView" />
     </Grid>
 </UserControl>

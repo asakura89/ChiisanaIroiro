@@ -6,8 +6,9 @@
     xmlns:ioTextbox="clr-namespace:Plugin.IOTextbox;assembly=Plugin.IOTextbox"
     mc:Ignorable="d" d:DesignHeight="600" d:DesignWidth="850">
     <Grid>
-        <StackPanel Orientation="Vertical">
-            <ioTextbox:InOutTextboxView x:Name="CommonView" />
-        </StackPanel>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <ioTextbox:InOutTextboxView Grid.Row="0" x:Name="CommonView" />
     </Grid>
 </UserControl>

@@ -6,23 +6,27 @@
     xmlns:ioTextbox="clr-namespace:Plugin.IOTextbox;assembly=Plugin.IOTextbox"
     mc:Ignorable="d" d:DesignHeight="600" d:DesignWidth="850">
     <Grid>
-        <StackPanel Orientation="Vertical">
-            <StackPanel Orientation="Horizontal" Height="30" HorizontalAlignment="Center">
-                <TextBlock Text="Regex" Width="40"
-                    Background="Transparent"
-                    Foreground="Red"
-                    Margin="0,0,5,0"
-                    VerticalAlignment="Center"
-                    TextAlignment="Right" />
-                <TextBox Width="600"
-                    x:Name="RegexTextbox"
-                    Margin="0,0,5,0"
-                    HorizontalContentAlignment="Left"
-                    VerticalContentAlignment="Center"
-                    HorizontalScrollBarVisibility="Hidden"
-                    VerticalScrollBarVisibility="Disabled" />
-            </StackPanel>
-            <ioTextbox:InOutTextboxView x:Name="CommonView" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="15*" />
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Height="30" HorizontalAlignment="Center">
+            <TextBlock
+                Text="Regex" Width="40"
+                Background="Transparent"
+                Foreground="Red"
+                Margin="0,0,5,0"
+                VerticalAlignment="Center"
+                TextAlignment="Right" />
+            <TextBox
+                Width="600"
+                x:Name="RegexTextbox"
+                Margin="0,0,5,0"
+                HorizontalContentAlignment="Left"
+                VerticalContentAlignment="Center"
+                HorizontalScrollBarVisibility="Hidden"
+                VerticalScrollBarVisibility="Disabled" />
         </StackPanel>
+        <ioTextbox:InOutTextboxView Grid.Row="1" x:Name="CommonView" />
     </Grid>
 </UserControl>

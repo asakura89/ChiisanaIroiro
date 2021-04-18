@@ -6,78 +6,92 @@
     xmlns:ioTextbox="clr-namespace:Plugin.IOTextbox;assembly=Plugin.IOTextbox"
     mc:Ignorable="d" d:DesignHeight="600" d:DesignWidth="850">
     <Grid>
-        <StackPanel Orientation="Vertical">
-            <StackPanel Orientation="Horizontal" Height="30" HorizontalAlignment="Center">
-                <CheckBox x:Name="UpperCheckbox"
-                    Margin="0,0,5,0"
-                    HorizontalContentAlignment="Left"
-                    VerticalContentAlignment="Center" />
-                <TextBlock Text="Uppercase" Width="60"
-                    Background="Transparent"
-                    Foreground="Red"
-                    Margin="0,0,5,0"
-                    VerticalAlignment="Center"
-                    TextAlignment="Left" />
-                <CheckBox x:Name="LowerCheckbox"
-                    Margin="0,0,5,0"
-                    HorizontalContentAlignment="Left"
-                    VerticalContentAlignment="Center" />
-                <TextBlock Text="Lowercase" 
-                    Background="Transparent"
-                    Foreground="Red"
-                    Margin="0,0,5,0"
-                    VerticalAlignment="Center"
-                    TextAlignment="Left" />
-                <CheckBox x:Name="NumericCheckbox"
-                    Margin="0,0,5,0"
-                    HorizontalContentAlignment="Left"
-                    VerticalContentAlignment="Center" />
-                <TextBlock Text="Numeric" Width="60"
-                    Background="Transparent"
-                    Foreground="Red"
-                    Margin="0,0,5,0"
-                    VerticalAlignment="Center"
-                    TextAlignment="Left" />
-                <CheckBox x:Name="SymbolCheckbox"
-                    Margin="0,0,5,0"
-                    HorizontalContentAlignment="Left"
-                    VerticalContentAlignment="Center" />
-                <TextBlock Text="Symbol" Width="60"
-                    Background="Transparent"
-                    Foreground="Red"
-                    Margin="0,0,5,0"
-                    VerticalAlignment="Center"
-                    TextAlignment="Left" />
-                <TextBlock Text="Length" Width="40"
-                    Background="Transparent"
-                    Foreground="Red"
-                    Margin="0,0,5,0"
-                    VerticalAlignment="Center"
-                    TextAlignment="Right" />
-                <TextBox Text="32" Width="65"
-                    x:Name="LengthTextbox"
-                    Margin="0,0,5,0"
-                    HorizontalContentAlignment="Left"
-                    VerticalContentAlignment="Center"
-                    HorizontalScrollBarVisibility="Hidden"
-                    VerticalScrollBarVisibility="Disabled" />
-                <TextBlock Text="Count" Width="40"
-                    Background="Transparent"
-                    Foreground="Red"
-                    Margin="0,0,5,0"
-                    VerticalAlignment="Center"
-                    TextAlignment="Right" />
-                <TextBox Text="5" Width="65"
-                    x:Name="CountTextbox"
-                    Margin="0,0,5,0"
-                    HorizontalContentAlignment="Left"
-                    VerticalContentAlignment="Center"
-                    HorizontalScrollBarVisibility="Hidden"
-                    VerticalScrollBarVisibility="Disabled" />
-                <Button x:Name="ClipboardButton"  Width="120" Click="ClipboardButton_Click">Clipboard</Button>
-                <Button x:Name="ProcessButton"  Width="120" Click="ProcessButton_Click">Process</Button>
-            </StackPanel>
-            <ioTextbox:OutTextboxView x:Name="CommonView" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="15*" />
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Height="30" HorizontalAlignment="Center">
+            <CheckBox
+                x:Name="UpperCheckbox"
+                Margin="0,0,5,0"
+                HorizontalContentAlignment="Left"
+                VerticalContentAlignment="Center" />
+            <TextBlock
+                Text="Uppercase" Width="60"
+                Background="Transparent"
+                Foreground="Red"
+                Margin="0,0,5,0"
+                VerticalAlignment="Center"
+                TextAlignment="Left" />
+            <CheckBox
+                x:Name="LowerCheckbox"
+                Margin="0,0,5,0"
+                HorizontalContentAlignment="Left"
+                VerticalContentAlignment="Center" />
+            <TextBlock
+                Text="Lowercase" 
+                Background="Transparent"
+                Foreground="Red"
+                Margin="0,0,5,0"
+                VerticalAlignment="Center"
+                TextAlignment="Left" />
+            <CheckBox
+                x:Name="NumericCheckbox"
+                Margin="0,0,5,0"
+                HorizontalContentAlignment="Left"
+                VerticalContentAlignment="Center" />
+            <TextBlock
+                Text="Numeric" Width="60"
+                Background="Transparent"
+                Foreground="Red"
+                Margin="0,0,5,0"
+                VerticalAlignment="Center"
+                TextAlignment="Left" />
+            <CheckBox
+                x:Name="SymbolCheckbox"
+                Margin="0,0,5,0"
+                HorizontalContentAlignment="Left"
+                VerticalContentAlignment="Center" />
+            <TextBlock
+                Text="Symbol" Width="60"
+                Background="Transparent"
+                Foreground="Red"
+                Margin="0,0,5,0"
+                VerticalAlignment="Center"
+                TextAlignment="Left" />
+            <TextBlock
+                Text="Length" Width="40"
+                Background="Transparent"
+                Foreground="Red"
+                Margin="0,0,5,0"
+                VerticalAlignment="Center"
+                TextAlignment="Right" />
+            <TextBox
+                Text="32" Width="65"
+                x:Name="LengthTextbox"
+                Margin="0,0,5,0"
+                HorizontalContentAlignment="Left"
+                VerticalContentAlignment="Center"
+                HorizontalScrollBarVisibility="Hidden"
+                VerticalScrollBarVisibility="Disabled" />
+            <TextBlock
+                Text="Count" Width="40"
+                Background="Transparent"
+                Foreground="Red"
+                Margin="0,0,5,0"
+                VerticalAlignment="Center"
+                TextAlignment="Right" />
+            <TextBox
+                Text="5" Width="65"
+                x:Name="CountTextbox"
+                Margin="0,0,5,0"
+                HorizontalContentAlignment="Left"
+                VerticalContentAlignment="Center"
+                HorizontalScrollBarVisibility="Hidden"
+                VerticalScrollBarVisibility="Disabled" />
+            <Button x:Name="ClipboardButton"  Width="120" Click="ClipboardButton_Click">Clipboard</Button>
+            <Button x:Name="ProcessButton"  Width="120" Click="ProcessButton_Click">Process</Button>
         </StackPanel>
+        <ioTextbox:OutTextboxView Grid.Row="1" x:Name="CommonView" />
     </Grid>
 </UserControl>
