@@ -44,6 +44,11 @@
       <DependentUpon>GenerateCSharpPropertyView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\AssemblyVersion.cs">
+      <DependentUpon>AssemblyVersion.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="TimeSpanExplainerView.xaml.cs">
       <DependentUpon>TimeSpanExplainerView.xaml</DependentUpon>
     </Compile>
@@ -71,6 +76,12 @@
       <Project>{dc040309-dfa1-498e-885b-c901afb76bc8}</Project>
       <Name>Puru</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Properties\AssemblyVersion.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>AssemblyVersion.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
