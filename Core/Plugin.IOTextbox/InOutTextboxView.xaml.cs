@@ -1,6 +1,7 @@
 using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using Plugin.Common;
 
 namespace Plugin.IOTextbox {
@@ -60,6 +61,9 @@ namespace Plugin.IOTextbox {
         void InitializeInternalComponent() {
             TextEditorHelper.Initialize(InputTextBox);
             TextEditorHelper.Initialize(OutputTextBox);
+
+            InputBorder.BorderBrush = new SolidColorBrush(ColorGenerator.GetColor());
+            OutputBorder.BorderBrush = new SolidColorBrush(ColorGenerator.GetColor());
         }
 
         void ClipboardButton_Click(Object sender, RoutedEventArgs e) {

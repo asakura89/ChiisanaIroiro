@@ -22,7 +22,7 @@
             <Button x:Name="ClipboardButton"  Width="120" Click="ClipboardButton_Click">Clipboard</Button>
             <Button x:Name="ProcessButton"  Width="120">Process</Button>
         </StackPanel>
-        <Border Grid.Row="1" BorderBrush="#f0b310" BorderThickness="4">
+        <Border Grid.Row="1" x:Name="OutputBorder" BorderThickness="4">
             <avalonedit:TextEditor  x:Name="OutputTextBox" />
         </Border>
     </Grid>

@@ -27,10 +27,10 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <Border Grid.Column="0" BorderBrush="#1ab7ea" BorderThickness="4">
+            <Border Grid.Column="0" x:Name="InputBorder" BorderThickness="4">
                 <avalonedit:TextEditor  x:Name="InputTextBox" />
             </Border>
-            <Border Grid.Column="1" BorderBrush="#0068b3" BorderThickness="4">
+            <Border Grid.Column="1" x:Name="OutputBorder" BorderThickness="4">
                 <avalonedit:TextEditor  x:Name="OutputTextBox" />
             </Border>
         </Grid>
