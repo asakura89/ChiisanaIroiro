@@ -31,16 +31,16 @@ namespace OokiPlugin {
         };
 
         public OokiView() {
-            IsVisibleChanged += OnIsVisibleChanged;
-        }
-
-        void OnIsVisibleChanged(Object sender, DependencyPropertyChangedEventArgs e) {
+            Sizer.SetAppDPIAware();
             InitializeComponent();
-            WindowBorder.BorderBrush = new SolidColorBrush(ColorGenerator.GetColor());
 
             LoadProfiles();
             WindowSizeDropdownList.SelectedItem = profiles.First();
+            IsVisibleChanged += OnIsVisibleChanged;
         }
+
+        void OnIsVisibleChanged(Object sender, DependencyPropertyChangedEventArgs e) =>
+            WindowBorder.BorderBrush = new SolidColorBrush(ColorGenerator.GetColor());
 
         void AddButton_Click(Object sender, RoutedEventArgs e) {
 
@@ -81,12 +81,13 @@ namespace OokiPlugin {
             try {
                 IList<ActiveWindow> allWindows = ActiveWindowCollector.GetActiveWindows();
                 IList<ActiveWindow> selectedWindowList = allWindows
-                    .Where(wnd => wnd.Name.ToLowerInvariant() != "start")
+                    .Where(wnd => !new[] { "start", "chiisanairoiro" }.Contains(wnd.Name.ToLowerInvariant()))
                     .ToList();
 
                 foreach (ActiveWindow item in selectedWindowList) {
                     var profile = (Profile) WindowSizeDropdownList.SelectedItem;
                     Sizer.Set(item.Id, (Int32) profile.Size.Width, (Int32) profile.Size.Height);
+                    // ^ this function will have DPI scaling awareness when called from Win Forms but not from WPF :(
                 }
             }
             catch (Exception ex) {
@@ -113,6 +114,11 @@ namespace OokiPlugin {
                     MoveWindow(hWnd, rect.X, rect.Y, w, h, true);
             }
 
+            public static void SetAppDPIAware() {
+                if (Environment.OSVersion.Version.Major >= 6)
+                    SetProcessDPIAware();
+            }
+
             [StructLayout(LayoutKind.Sequential)]
             public struct Rect {
                 public Int32 X;
@@ -126,6 +132,9 @@ namespace OokiPlugin {
 
             [DllImport("user32.dll", SetLastError = true)]
             static extern Boolean MoveWindow(IntPtr hWnd, Int32 x, Int32 y, Int32 width, Int32 height, Boolean repaint);
+
+            [DllImport("user32.dll", SetLastError = true)]
+            static extern Boolean SetProcessDPIAware();
         }
 
         public static class ActiveWindowCollector {
