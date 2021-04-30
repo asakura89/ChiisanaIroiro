@@ -1,8 +1,7 @@
 using System;
 using System.Windows.Media;
-using RyaNG;
 
-namespace Plugin.IOTextbox {
+namespace Plugin.Common {
     public static class ColorGenerator {
         static String[] Colors = new[] {
             "#0068b3",

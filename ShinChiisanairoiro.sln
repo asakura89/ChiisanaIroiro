@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextProcessingPlugin", "Plu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DyandraPlugin", "Plugin\DyandraPlugin\DyandraPlugin.csproj", "{3F63D727-8431-4DBB-B780-65EC5E8B0429}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OokiPlugin", "Plugin\OokiPlugin\OokiPlugin.csproj", "{A4783F98-DBAC-41AB-AE2A-44890F800D6E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -91,6 +93,10 @@ Global
 		{3F63D727-8431-4DBB-B780-65EC5E8B0429}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F63D727-8431-4DBB-B780-65EC5E8B0429}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F63D727-8431-4DBB-B780-65EC5E8B0429}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4783F98-DBAC-41AB-AE2A-44890F800D6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4783F98-DBAC-41AB-AE2A-44890F800D6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4783F98-DBAC-41AB-AE2A-44890F800D6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4783F98-DBAC-41AB-AE2A-44890F800D6E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -108,6 +114,7 @@ Global
 		{661A5065-84A7-456A-9249-0EF4D774FBCD} = {7F4CDCE7-53E2-45F9-BB0F-37C0355EB28D}
 		{C8D423D0-756A-466C-904E-873D5BDD65A0} = {7F4CDCE7-53E2-45F9-BB0F-37C0355EB28D}
 		{3F63D727-8431-4DBB-B780-65EC5E8B0429} = {7F4CDCE7-53E2-45F9-BB0F-37C0355EB28D}
+		{A4783F98-DBAC-41AB-AE2A-44890F800D6E} = {7F4CDCE7-53E2-45F9-BB0F-37C0355EB28D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {21C40BD6-B02A-4DE8-B906-D209DA55E475}

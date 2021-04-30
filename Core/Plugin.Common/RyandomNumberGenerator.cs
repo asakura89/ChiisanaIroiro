@@ -1,6 +1,6 @@
 using System;
 
-namespace RyaNG {
+namespace Plugin.Common {
     internal static class RyandomNumberGenerator {
         // https://en.wikipedia.org/wiki/Feigenbaum_constants
         internal const Int32 Feigenbaum = 46692;
