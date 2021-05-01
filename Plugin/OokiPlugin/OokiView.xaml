@@ -12,6 +12,7 @@
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="15*" />
+                <ColumnDefinition Width="3*" />
                 <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="1*" />
             </Grid.ColumnDefinitions>
@@ -20,14 +21,32 @@
                 Grid.Column="0"
                 x:Name="WindowSizeDropdownList"
                 VerticalContentAlignment="Center"/>
-            <Button
+            <StackPanel
                 Grid.Row="0"
                 Grid.Column="1"
+                Margin="10, 0"
+                Orientation="Horizontal">
+                <CheckBox
+                    x:Name="ScalingFCheckBox"
+                    IsChecked="True"
+                    HorizontalContentAlignment="Left"
+                    VerticalContentAlignment="Center" />
+                <TextBlock
+                    Text="Consider Scaling Factor"
+                    Background="Transparent"
+                    Foreground="Red"
+                    Margin="10, 0"
+                    VerticalAlignment="Center"
+                    TextAlignment="Left" />
+            </StackPanel>
+            <Button
+                Grid.Row="0"
+                Grid.Column="2"
                 x:Name="AddButton"
                 Click="AddButton_Click">A</Button>
             <Button
                 Grid.Row="0"
-                Grid.Column="2"
+                Grid.Column="3"
                 x:Name="ResizeButton"
                 Click="ResizeButton_Click">R</Button>
         </Grid>

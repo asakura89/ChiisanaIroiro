@@ -29,8 +29,9 @@ namespace OokiPlugin {
             new Profile { Name = "Default Bar", Size = new Size(235, 26) }
         };
 
+        Boolean ConsiderScalingFactor => ScalingFCheckBox.IsChecked ?? false;
+
         public OokiView() {
-            //Sizer.SetAppDPIAware();
             InitializeComponent();
 
             LoadProfiles();
@@ -85,8 +86,7 @@ namespace OokiPlugin {
 
                 foreach (ActiveWindow item in selectedWindowList) {
                     var profile = (Profile) WindowSizeDropdownList.SelectedItem;
-                    Sizer.Set(item.Id, (Int32) profile.Size.Width, (Int32) profile.Size.Height);
-                    // ^ this function will have DPI scaling awareness when called from Win Forms but not from WPF :(
+                    Sizer.Set(item.Id, (Int32) profile.Size.Width, (Int32) profile.Size.Height, ConsiderScalingFactor);
                 }
             }
             catch (Exception ex) {
@@ -107,24 +107,27 @@ namespace OokiPlugin {
         }
 
         public static class Sizer {
-            public static void Set(IntPtr hWnd, Int32 w, Int32 h) {
-                SetSizeAsScaled(ref w, ref h);
+            public static void Set(IntPtr hWnd, Int32 w, Int32 h, Boolean isScaled = true) {
+                if (isScaled)
+                    SetSizeAsScaled(ref w, ref h);
+
                 var rect = new Rect();
                 if (GetWindowRect(hWnd, ref rect))
                     MoveWindow(hWnd, rect.X, rect.Y, w, h, true);
             }
 
             static void SetSizeAsScaled(ref Int32 w, ref Int32 h) {
-                UInt32 dpix, dpiy;
-                GetDpi(0, 0, MONITOR_DPI_TYPE.MDT_EFFECTIVE_DPI, out dpix, out dpiy);
-                Single scale = GetScalingFactor((Int32) dpix);
+                Single scale = GetScalingFactor();
                 w = (Int32) Math.Round(w * scale);
                 h = (Int32) Math.Round(h * scale);
             }
 
-            static Single GetScalingFactor(Int32 dpi) {
+            static Single GetScalingFactor() {
+                UInt32 dpix, dpiy;
+                GetDpi(0, 0, MONITOR_DPI_TYPE.MDT_EFFECTIVE_DPI, out dpix, out dpiy);
+
                 const Int32 Default = 96;
-                return (Single) dpi / Default;
+                return (Single) dpix / Default;
             }
 
             static void GetDpi(Int32 x, Int32 y, MONITOR_DPI_TYPE dpiType, out UInt32 dpiX, out UInt32 dpiY) {
@@ -132,13 +135,6 @@ namespace OokiPlugin {
                 IntPtr mon = MonitorFromPoint(point, MONITOR_POINT.MONITOR_DEFAULTTONEAREST);
                 GetDpiForMonitor(mon, dpiType, out dpiX, out dpiY);
             }
-
-            //public static void SetAppDPIAware() {
-            //    //if (Environment.OSVersion.Version.Major >= 6)
-            //    //    SetProcessDPIAware();
-            //    if (Environment.OSVersion.Version.Major >= 6)
-            //        SetProcessDpiAwareness(PROCESS_DPI_AWARENESS.PROCESS_PER_MONITOR_DPI_AWARE);
-            //}
 
             [StructLayout(LayoutKind.Sequential)]
             public struct Rect {
@@ -154,23 +150,11 @@ namespace OokiPlugin {
             [DllImport("user32.dll", SetLastError = true)]
             static extern Boolean MoveWindow(IntPtr hWnd, Int32 x, Int32 y, Int32 width, Int32 height, Boolean repaint);
 
-            //[DllImport("user32.dll", SetLastError = true)]
-            //static extern Boolean SetProcessDPIAware();
-
             enum MONITOR_POINT {
                 MONITOR_DEFAULTTONULL = 0,
                 MONITOR_DEFAULTTOPRIMARY = 1,
                 MONITOR_DEFAULTTONEAREST = 2
             }
-
-            enum PROCESS_DPI_AWARENESS {
-                PROCESS_DPI_UNAWARE = 0,
-                PROCESS_SYSTEM_DPI_AWARE = 1,
-                PROCESS_PER_MONITOR_DPI_AWARE = 2
-            }
-
-            //[DllImport("SHCore.dll", SetLastError = true)]
-            //static extern Boolean SetProcessDpiAwareness(PROCESS_DPI_AWARENESS awareness);
 
             enum MONITOR_DPI_TYPE {
                 MDT_EFFECTIVE_DPI = 0,
@@ -181,7 +165,6 @@ namespace OokiPlugin {
 
             [DllImport("user32.dll", SetLastError = true)]
             static extern IntPtr MonitorFromPoint([In]System.Drawing.Point pt, [In]MONITOR_POINT dwFlags);
-
 
             [DllImport("SHCore.dll", SetLastError = true)]
             static extern IntPtr GetDpiForMonitor([In]IntPtr hmonitor, [In]MONITOR_DPI_TYPE dpiType, [Out]out UInt32 dpiX, [Out]out UInt32 dpiY);
