@@ -12,25 +12,36 @@
     <Grid x:Name="RootGrid" Background="Black">
         <Grid.RowDefinitions>
             <RowDefinition Height="1*" />
-            <RowDefinition Height="1*" />
             <RowDefinition Height="18*" />
         </Grid.RowDefinitions>
 
-        <TextBox
-            Grid.Row="0"
-            x:Name="SearchTextbox"
-            HorizontalContentAlignment="Left"
-            VerticalContentAlignment="Center"
-            TextChanged="SearchTextbox_OnTextChanged" />
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="4*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="15*" />
+            </Grid.ColumnDefinitions>
 
-        <ComboBox
-            Grid.Row="1"
-            x:Name="AvailableFeaturesDropdownList"
-            HorizontalContentAlignment="Left"
-            VerticalContentAlignment="Center"
-            SelectionChanged="AvailableFeaturesDropdownList_SelectionChanged" />
-
-        <Grid Grid.Row="2" x:Name="ComponentHost">
+            <TextBox
+                Grid.Column="0"
+                x:Name="SearchTextbox"
+                HorizontalContentAlignment="Left"
+                VerticalContentAlignment="Center"
+                TextChanged="SearchTextbox_OnTextChanged" />
+            <Button
+                Grid.Column="1"
+                x:Name="ClearButton"
+                FontSize="18"
+                VerticalContentAlignment="Center"
+                Click="ClearButton_Click">×</Button>
+            <ComboBox
+                Grid.Column="2"
+                x:Name="AvailableFeaturesDropdownList"
+                HorizontalContentAlignment="Left"
+                VerticalContentAlignment="Center"
+                SelectionChanged="AvailableFeaturesDropdownList_SelectionChanged" />
+        </Grid>
+        <Grid Grid.Row="1" x:Name="ComponentHost">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>

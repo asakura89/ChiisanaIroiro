@@ -61,5 +61,7 @@ namespace Chiisanairoiro {
 
             AvailableFeaturesDropdownList.SelectedIndex = 0;
         }
+
+        void ClearButton_Click(Object sender, RoutedEventArgs e) => SearchTextbox.Text = String.Empty;
     }
 }
