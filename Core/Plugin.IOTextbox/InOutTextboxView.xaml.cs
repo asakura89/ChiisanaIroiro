@@ -56,14 +56,17 @@ namespace Plugin.IOTextbox {
         public InOutTextboxView() {
             InitializeComponent();
             InitializeInternalComponent();
+            IsVisibleChanged += OnIsVisibleChanged;
+        }
+
+        void OnIsVisibleChanged(Object sender, DependencyPropertyChangedEventArgs e) {
+            InputBorder.BorderBrush = new SolidColorBrush(ColorGenerator.GetColor());
+            OutputBorder.BorderBrush = new SolidColorBrush(ColorGenerator.GetColor());
         }
 
         void InitializeInternalComponent() {
             TextEditorHelper.Initialize(InputTextBox);
             TextEditorHelper.Initialize(OutputTextBox);
-
-            InputBorder.BorderBrush = new SolidColorBrush(ColorGenerator.GetColor());
-            OutputBorder.BorderBrush = new SolidColorBrush(ColorGenerator.GetColor());
         }
 
         void ClipboardButton_Click(Object sender, RoutedEventArgs e) {

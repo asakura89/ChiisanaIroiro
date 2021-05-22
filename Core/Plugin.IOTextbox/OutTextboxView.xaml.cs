@@ -38,12 +38,13 @@ namespace Plugin.IOTextbox {
         public OutTextboxView() {
             InitializeComponent();
             InitializeInternalComponent();
+            IsVisibleChanged += OnIsVisibleChanged;
         }
 
-        void InitializeInternalComponent() {
-            TextEditorHelper.Initialize(OutputTextBox);
+        void OnIsVisibleChanged(Object sender, DependencyPropertyChangedEventArgs e) =>
             OutputBorder.BorderBrush = new SolidColorBrush(ColorGenerator.GetColor());
-        }
+
+        void InitializeInternalComponent() => TextEditorHelper.Initialize(OutputTextBox);
 
         void ClipboardButton_Click(Object sender, RoutedEventArgs e) {
             if (Output != String.Empty) {

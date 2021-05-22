@@ -8,8 +8,8 @@ namespace Plugin.Common {
     public static class TextEditorHelper {
         public static void Initialize(TextEditor editor) {
             editor.FontFamily = new FontFamily("Consolas");
-            editor.FontSize = 12;
-            editor.SyntaxHighlighting = HighlightingManager.Instance.GetDefinition("C#");
+            editor.FontSize = 14;
+            editor.SyntaxHighlighting = HighlightingManager.Instance.GetDefinition("MarkDown");
             editor.ShowLineNumbers = true;
             editor.Encoding = Encoding.UTF8;
             editor.WordWrap = false;
