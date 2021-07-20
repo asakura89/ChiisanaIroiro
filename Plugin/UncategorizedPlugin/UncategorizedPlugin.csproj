@@ -40,6 +40,9 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Scratchpad.xaml.cs">
+      <DependentUpon>Scratchpad.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GenerateCSharpPropertyView.xaml.cs">
       <DependentUpon>GenerateCSharpPropertyView.xaml</DependentUpon>
     </Compile>
@@ -52,8 +55,13 @@
     <Compile Include="TimeSpanExplainerView.xaml.cs">
       <DependentUpon>TimeSpanExplainerView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="XmlExt.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Scratchpad.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="GenerateCSharpPropertyView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -78,6 +86,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="form.config" />
     <Content Include="Properties\AssemblyVersion.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>AssemblyVersion.cs</LastGenOutput>
