@@ -35,11 +35,17 @@
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml" />
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DummyUserControl.xaml.cs">
+      <DependentUpon>DummyUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Scratchpad.xaml.cs">
       <DependentUpon>Scratchpad.xaml</DependentUpon>
     </Compile>
@@ -55,9 +61,17 @@
     <Compile Include="TimeSpanExplainerView.xaml.cs">
       <DependentUpon>TimeSpanExplainerView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="XFControl.cs" />
+    <Compile Include="XFMultilineText.cs" />
+    <Compile Include="XFSingleSelect.cs" />
+    <Compile Include="XFText.cs" />
     <Compile Include="XmlExt.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="DummyUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Scratchpad.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
