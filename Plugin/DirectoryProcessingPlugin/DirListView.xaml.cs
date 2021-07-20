@@ -78,7 +78,8 @@ namespace DirectoryProcessingPlugin {
 
                             splitted = splitted.Take(splitted.Count() -2);
 
-                            var regex = new Regex(@"^(.+)\\([^\\]+).+\.[^.+]{2,}$", RegexOptions.Compiled);
+                            // ([^\\]+)?\.[^\\]{2,}$
+                            var regex = new Regex(@"^(.+)\\([^\\]+).+\.[^\\]{2,}$", RegexOptions.Compiled);
                             if (JustDir)
                                 splitted = splitted.Where(line => !regex.IsMatch(line));
                             else if (JustFile)

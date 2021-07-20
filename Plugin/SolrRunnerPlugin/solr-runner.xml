@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SolrRunner>
+    <Profile Default="true" Name="profile-1">
+        <Zookeeper Name="zk-1" Path="D:\Microsoft\Workspace\Reach\reach_wwwroot\zk_1" />
+        <Zookeeper Name="zk-2" Path="D:\Microsoft\Workspace\Reach\reach_wwwroot\zk_2" />
+        <Zookeeper Name="zk-3" Path="D:\Microsoft\Workspace\Reach\reach_wwwroot\zk_3" />
+        <Solr Cloud="true" InlineParam="false" Name="solr-1" Path="D:\Microsoft\Workspace\Reach\reach_wwwroot\solr_1" />
+        <Solr Cloud="true" InlineParam="false" Name="solr-2" Path="D:\Microsoft\Workspace\Reach\reach_wwwroot\solr_1" />
+    </Profile>
+</SolrRunner>
