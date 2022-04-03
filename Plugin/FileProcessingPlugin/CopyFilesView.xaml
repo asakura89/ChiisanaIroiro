@@ -25,12 +25,12 @@
                 VerticalAlignment="Center"
                 TextAlignment="Left" />
             <CheckBox
-                x:Name="ComplainCheckBox"
+                x:Name="OverwriteExistingCheckBox"
                 Margin="0,0,10,0"
                 HorizontalContentAlignment="Left"
                 VerticalContentAlignment="Center" />
             <TextBlock
-                Text="Complain Non-existent" Width="125"
+                Text="Overwrite existing files" Width="125"
                 Background="Transparent"
                 Foreground="Red"
                 Margin="0,0,10,0"
