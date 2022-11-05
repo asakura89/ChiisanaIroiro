@@ -1,0 +1,200 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Rebuild DirectoryProcessingPlugin",
+            "command": "dotnet",
+            "type": "shell",
+            "args": [
+                "build",
+                "--nologo",
+                "--no-incremental",
+                "--verbosity",
+                "minimal",
+                "${workspaceFolder}\\Plugin\\DirectoryProcessingPlugin\\DirectoryProcessingPlugin.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "group": "build",
+            "presentation": {
+                "reveal": "silent"
+            },
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "Rebuild DyanaPlugin",
+            "command": "dotnet",
+            "type": "shell",
+            "args": [
+                "build",
+                "--nologo",
+                "--no-incremental",
+                "--verbosity",
+                "minimal",
+                "${workspaceFolder}\\Plugin\\DyanaPlugin\\DyanaPlugin.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "group": "build",
+            "presentation": {
+                "reveal": "silent"
+            },
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "Rebuild DyandraPlugin",
+            "command": "dotnet",
+            "type": "shell",
+            "args": [
+                "build",
+                "--nologo",
+                "--no-incremental",
+                "--verbosity",
+                "minimal",
+                "${workspaceFolder}\\Plugin\\DyandraPlugin\\DyandraPlugin.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "group": "build",
+            "presentation": {
+                "reveal": "silent"
+            },
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "Rebuild FileProcessingPlugin",
+            "command": "dotnet",
+            "type": "shell",
+            "args": [
+                "build",
+                "--nologo",
+                "--no-incremental",
+                "--verbosity",
+                "minimal",
+                "${workspaceFolder}\\Plugin\\FileProcessingPlugin\\FileProcessingPlugin.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "group": "build",
+            "presentation": {
+                "reveal": "silent"
+            },
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "Rebuild GenerateRandomPlugin",
+            "command": "dotnet",
+            "type": "shell",
+            "args": [
+                "build",
+                "--nologo",
+                "--no-incremental",
+                "--verbosity",
+                "minimal",
+                "${workspaceFolder}\\Plugin\\GenerateRandomPlugin\\GenerateRandomPlugin.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "group": "build",
+            "presentation": {
+                "reveal": "silent"
+            },
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "Rebuild OokiPlugin",
+            "command": "dotnet",
+            "type": "shell",
+            "args": [
+                "build",
+                "--nologo",
+                "--no-incremental",
+                "--verbosity",
+                "minimal",
+                "${workspaceFolder}\\Plugin\\OokiPlugin\\OokiPlugin.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "group": "build",
+            "presentation": {
+                "reveal": "silent"
+            },
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "Rebuild TextProcessingPlugin",
+            "command": "dotnet",
+            "type": "shell",
+            "args": [
+                "build",
+                "--nologo",
+                "--no-incremental",
+                "--verbosity",
+                "minimal",
+                "${workspaceFolder}\\Plugin\\TextProcessingPlugin\\TextProcessingPlugin.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "group": "build",
+            "presentation": {
+                "reveal": "silent"
+            },
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "Rebuild UncategorizedPlugin",
+            "command": "dotnet",
+            "type": "shell",
+            "args": [
+                "build",
+                "--nologo",
+                "--no-incremental",
+                "--verbosity",
+                "minimal",
+                "${workspaceFolder}\\Plugin\\UncategorizedPlugin\\UncategorizedPlugin.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "group": "build",
+            "presentation": {
+                "reveal": "silent"
+            },
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "Rebuild Chiisanairoiro",
+            "command": "dotnet",
+            "type": "shell",
+            "args": [
+                "build",
+                "--nologo",
+                "--no-incremental",
+                "--verbosity",
+                "minimal",
+                "${workspaceFolder}\\ShinChiisanairoiro\\ShinChiisanairoiro.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "group": "build",
+            "presentation": {
+                "reveal": "silent"
+            },
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "Rebuild All",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "Rebuild DirectoryProcessingPlugin",
+                "Rebuild DyanaPlugin",
+                "Rebuild DyandraPlugin",
+                "Rebuild FileProcessingPlugin",
+                "Rebuild GenerateRandomPlugin",
+                "Rebuild OokiPlugin",
+                "Rebuild TextProcessingPlugin",
+                "Rebuild UncategorizedPlugin",
+                "Rebuild Chiisanairoiro"
+            ]
+        },
+    ]
+}
