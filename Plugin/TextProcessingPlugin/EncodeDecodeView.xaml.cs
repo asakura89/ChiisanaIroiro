@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -30,10 +31,10 @@ namespace TextProcessingPlugin {
         }
 
         static readonly IDictionary<Int32, Func<String[], IEnumerable<String>>> Operations = new Dictionary<Int32, Func<String[], IEnumerable<String>>> {
-            [1] = inputs => inputs.Select(input => AntiXssEncoder.HtmlEncode(input, true)),
-            [2] = inputs => inputs.Select(input => HttpUtility.HtmlDecode(input)),
-            [3] = inputs => inputs.Select(input => AntiXssEncoder.UrlEncode(input).Replace("+", "%20")),
-            [4] = inputs => inputs.Select(input => HttpUtility.UrlDecode(input)),
+            [1] = inputs => inputs.Select(input => WebUtility.HtmlDecode(input)),
+            [2] = inputs => inputs.Select(input => WebUtility.HtmlDecode(input)),
+            [3] = inputs => inputs.Select(input => WebUtility.UrlEncode(input).Replace("+", "%20")),
+            [4] = inputs => inputs.Select(input => WebUtility.UrlDecode(input)),
             [5] = inputs => inputs.Select(input => Convert.ToBase64String(Encoding.UTF8.GetBytes(input))),
             [6] = inputs => inputs.Select(input => Encoding.UTF8.GetString(Convert.FromBase64String(input))),
             [7] = inputs => inputs.Select(SecurityExt.EncodeBase64Url),

@@ -1,15 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net6.0-windows</TargetFramework>
+    <LangVersion>10</LangVersion>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
     <OutputType>Library</OutputType>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <UseWPF>true</UseWPF>
     <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <OutputPath>..\..\ShinChiisanairoiro\bin\Debug\Plugins\OokiPlugin\</OutputPath>
-    <NoWarn>
-    </NoWarn>
   </PropertyGroup>
   <ItemGroup>
     <Compile Update="Properties\AssemblyVersion.cs">
@@ -28,19 +26,11 @@
     <ProjectReference Include="..\..\Core\Plugin.Common\Plugin.Common.csproj" />
     <ProjectReference Include="..\..\Core\Plugin.Dialog\Plugin.Dialog.csproj" />
     <ProjectReference Include="..\..\Core\Puru.Wpf\Puru.Wpf.csproj" />
-    <ProjectReference Include="..\..\Core\Puru\Puru.csproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <ProjectReference Include="..\..\Ayumi\Ayumi.csproj" />
   </ItemGroup>
   <ItemGroup>
     <None Update="ooki.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers" Version="0.4.346202">
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
   </ItemGroup>
 </Project>

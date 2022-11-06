@@ -1,5 +1,5 @@
-using System;
 using System.Windows.Media;
+using RyaNG;
 
 namespace Plugin.Common {
     public static class ColorGenerator {
@@ -12,7 +12,7 @@ namespace Plugin.Common {
         };
 
         public static Color GetColor() {
-            Int32 index = Colors.Length.TurnToRyandom();
+            Int32 index = Colors.Length.Ryandomize();
             String color = Colors[index];
             Object realColor = ColorConverter.ConvertFromString(color);
             if (realColor == null)

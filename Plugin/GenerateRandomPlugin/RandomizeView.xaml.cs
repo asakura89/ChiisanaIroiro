@@ -44,7 +44,7 @@ namespace GenerateRandomPlugin {
             String[] strings = CommonView.Input.Split(new[] {Environment.NewLine}, StringSplitOptions.RemoveEmptyEntries);
             Int32 ctr = 0;
             while (ctr < strings.Length) {
-                Int32 randIdx = 0.TurnToRyandom(ctr +1);
+                Int32 randIdx = 0.Ryandomize(ctr +1);
 
                 String temp = strings[randIdx];
                 strings[randIdx] = strings[ctr];

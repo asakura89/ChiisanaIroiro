@@ -1,4 +1,3 @@
-using System;
 using Microsoft.WindowsAPICodePack.Dialogs;
 
 namespace Plugin.Dialog {

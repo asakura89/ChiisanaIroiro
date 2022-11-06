@@ -3,37 +3,37 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.852
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShinChiisanairoiro", "ShinChiisanairoiro\ShinChiisanairoiro.csproj", "{D79C98D7-A591-428B-BCB8-211846410F75}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShinChiisanairoiro", "ShinChiisanairoiro\ShinChiisanairoiro.csproj", "{D79C98D7-A591-428B-BCB8-211846410F75}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Plugin", "Plugin", "{7F4CDCE7-53E2-45F9-BB0F-37C0355EB28D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{D2DDD991-9127-406D-8B4C-CD06238B5244}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugin.Common", "Core\Plugin.Common\Plugin.Common.csproj", "{7B8866CB-B7E0-4AD9-8598-D111B30D3EC0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plugin.Common", "Core\Plugin.Common\Plugin.Common.csproj", "{7B8866CB-B7E0-4AD9-8598-D111B30D3EC0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugin.Dialog", "Core\Plugin.Dialog\Plugin.Dialog.csproj", "{D07CA419-5C41-458D-92A4-9D5327770090}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plugin.Dialog", "Core\Plugin.Dialog\Plugin.Dialog.csproj", "{D07CA419-5C41-458D-92A4-9D5327770090}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugin.IOTextbox", "Core\Plugin.IOTextbox\Plugin.IOTextbox.csproj", "{50EBA8D1-7B2B-4996-8E59-B3EF3AD5A5C2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plugin.IOTextbox", "Core\Plugin.IOTextbox\Plugin.IOTextbox.csproj", "{50EBA8D1-7B2B-4996-8E59-B3EF3AD5A5C2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UncategorizedPlugin", "Plugin\UncategorizedPlugin\UncategorizedPlugin.csproj", "{4BF616DE-8AA5-4BB9-B5F4-291BC5D86B25}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UncategorizedPlugin", "Plugin\UncategorizedPlugin\UncategorizedPlugin.csproj", "{4BF616DE-8AA5-4BB9-B5F4-291BC5D86B25}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Puru", "Core\Puru\Puru.csproj", "{DC040309-DFA1-498E-885B-C901AFB76BC8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Puru.Wpf", "Core\Puru.Wpf\Puru.Wpf.csproj", "{5538F236-1DC7-463A-874C-E3199CF9A85E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Puru.Wpf", "Core\Puru.Wpf\Puru.Wpf.csproj", "{5538F236-1DC7-463A-874C-E3199CF9A85E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DirectoryProcessingPlugin", "Plugin\DirectoryProcessingPlugin\DirectoryProcessingPlugin.csproj", "{6C116017-6A1A-4AFC-8D95-558A741F6E70}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DirectoryProcessingPlugin", "Plugin\DirectoryProcessingPlugin\DirectoryProcessingPlugin.csproj", "{6C116017-6A1A-4AFC-8D95-558A741F6E70}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileProcessingPlugin", "Plugin\FileProcessingPlugin\FileProcessingPlugin.csproj", "{F4A8097E-85EE-4CD1-9CE0-4F8FAA1CAA29}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileProcessingPlugin", "Plugin\FileProcessingPlugin\FileProcessingPlugin.csproj", "{F4A8097E-85EE-4CD1-9CE0-4F8FAA1CAA29}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DyanaPlugin", "Plugin\DyanaPlugin\DyanaPlugin.csproj", "{3BA73763-19A8-4161-BB69-DE1E13E1B872}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DyanaPlugin", "Plugin\DyanaPlugin\DyanaPlugin.csproj", "{3BA73763-19A8-4161-BB69-DE1E13E1B872}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenerateRandomPlugin", "Plugin\GenerateRandomPlugin\GenerateRandomPlugin.csproj", "{661A5065-84A7-456A-9249-0EF4D774FBCD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenerateRandomPlugin", "Plugin\GenerateRandomPlugin\GenerateRandomPlugin.csproj", "{661A5065-84A7-456A-9249-0EF4D774FBCD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TextProcessingPlugin", "Plugin\TextProcessingPlugin\TextProcessingPlugin.csproj", "{C8D423D0-756A-466C-904E-873D5BDD65A0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextProcessingPlugin", "Plugin\TextProcessingPlugin\TextProcessingPlugin.csproj", "{C8D423D0-756A-466C-904E-873D5BDD65A0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DyandraPlugin", "Plugin\DyandraPlugin\DyandraPlugin.csproj", "{3F63D727-8431-4DBB-B780-65EC5E8B0429}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DyandraPlugin", "Plugin\DyandraPlugin\DyandraPlugin.csproj", "{3F63D727-8431-4DBB-B780-65EC5E8B0429}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OokiPlugin", "Plugin\OokiPlugin\OokiPlugin.csproj", "{A4783F98-DBAC-41AB-AE2A-44890F800D6E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OokiPlugin", "Plugin\OokiPlugin\OokiPlugin.csproj", "{A4783F98-DBAC-41AB-AE2A-44890F800D6E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ayumi", "Ayumi\Ayumi.csproj", "{1C0101B2-6DCE-4938-A01A-E6BEF2CD3F2F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -61,10 +61,6 @@ Global
 		{4BF616DE-8AA5-4BB9-B5F4-291BC5D86B25}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4BF616DE-8AA5-4BB9-B5F4-291BC5D86B25}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4BF616DE-8AA5-4BB9-B5F4-291BC5D86B25}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DC040309-DFA1-498E-885B-C901AFB76BC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DC040309-DFA1-498E-885B-C901AFB76BC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DC040309-DFA1-498E-885B-C901AFB76BC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DC040309-DFA1-498E-885B-C901AFB76BC8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5538F236-1DC7-463A-874C-E3199CF9A85E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5538F236-1DC7-463A-874C-E3199CF9A85E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5538F236-1DC7-463A-874C-E3199CF9A85E}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -97,6 +93,10 @@ Global
 		{A4783F98-DBAC-41AB-AE2A-44890F800D6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A4783F98-DBAC-41AB-AE2A-44890F800D6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A4783F98-DBAC-41AB-AE2A-44890F800D6E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C0101B2-6DCE-4938-A01A-E6BEF2CD3F2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C0101B2-6DCE-4938-A01A-E6BEF2CD3F2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C0101B2-6DCE-4938-A01A-E6BEF2CD3F2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C0101B2-6DCE-4938-A01A-E6BEF2CD3F2F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -106,7 +106,6 @@ Global
 		{D07CA419-5C41-458D-92A4-9D5327770090} = {D2DDD991-9127-406D-8B4C-CD06238B5244}
 		{50EBA8D1-7B2B-4996-8E59-B3EF3AD5A5C2} = {D2DDD991-9127-406D-8B4C-CD06238B5244}
 		{4BF616DE-8AA5-4BB9-B5F4-291BC5D86B25} = {7F4CDCE7-53E2-45F9-BB0F-37C0355EB28D}
-		{DC040309-DFA1-498E-885B-C901AFB76BC8} = {D2DDD991-9127-406D-8B4C-CD06238B5244}
 		{5538F236-1DC7-463A-874C-E3199CF9A85E} = {D2DDD991-9127-406D-8B4C-CD06238B5244}
 		{6C116017-6A1A-4AFC-8D95-558A741F6E70} = {7F4CDCE7-53E2-45F9-BB0F-37C0355EB28D}
 		{F4A8097E-85EE-4CD1-9CE0-4F8FAA1CAA29} = {7F4CDCE7-53E2-45F9-BB0F-37C0355EB28D}
@@ -115,6 +114,7 @@ Global
 		{C8D423D0-756A-466C-904E-873D5BDD65A0} = {7F4CDCE7-53E2-45F9-BB0F-37C0355EB28D}
 		{3F63D727-8431-4DBB-B780-65EC5E8B0429} = {7F4CDCE7-53E2-45F9-BB0F-37C0355EB28D}
 		{A4783F98-DBAC-41AB-AE2A-44890F800D6E} = {7F4CDCE7-53E2-45F9-BB0F-37C0355EB28D}
+		{1C0101B2-6DCE-4938-A01A-E6BEF2CD3F2F} = {D2DDD991-9127-406D-8B4C-CD06238B5244}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {21C40BD6-B02A-4DE8-B906-D209DA55E475}

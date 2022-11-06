@@ -5,7 +5,7 @@
             "name": "Run Chiisanairoiro",
             "type": "coreclr",
             "request": "launch",
-            "preLaunchTask": "build",
+            "preLaunchTask": "Rebuild All",
             "program": "${workspaceFolder}\\ShinChiisanairoiro\\bin\\Debug\\net6.0-windows\\Chiisanairoiro.dll",
             "args": [],
             "cwd": "${workspaceFolder}",

@@ -7,11 +7,13 @@
             "type": "shell",
             "args": [
                 "build",
+                "${workspaceFolder}\\Plugin\\DirectoryProcessingPlugin\\DirectoryProcessingPlugin.csproj",
                 "--nologo",
                 "--no-incremental",
                 "--verbosity",
                 "minimal",
-                "${workspaceFolder}\\Plugin\\DirectoryProcessingPlugin\\DirectoryProcessingPlugin.csproj",
+                "--output",
+                "${workspaceFolder}\\ShinChiisanairoiro\\bin\\Debug\\net6.0-windows\\Plugins\\DirectoryProcessingPlugin",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -27,11 +29,13 @@
             "type": "shell",
             "args": [
                 "build",
+                "${workspaceFolder}\\Plugin\\DyanaPlugin\\DyanaPlugin.csproj",
                 "--nologo",
                 "--no-incremental",
                 "--verbosity",
                 "minimal",
-                "${workspaceFolder}\\Plugin\\DyanaPlugin\\DyanaPlugin.csproj",
+                "--output",
+                "${workspaceFolder}\\ShinChiisanairoiro\\bin\\Debug\\net6.0-windows\\Plugins\\DyanaPlugin",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -47,11 +51,13 @@
             "type": "shell",
             "args": [
                 "build",
+                "${workspaceFolder}\\Plugin\\DyandraPlugin\\DyandraPlugin.csproj",
                 "--nologo",
                 "--no-incremental",
                 "--verbosity",
                 "minimal",
-                "${workspaceFolder}\\Plugin\\DyandraPlugin\\DyandraPlugin.csproj",
+                "--output",
+                "${workspaceFolder}\\ShinChiisanairoiro\\bin\\Debug\\net6.0-windows\\Plugins\\DyandraPlugin",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -67,11 +73,13 @@
             "type": "shell",
             "args": [
                 "build",
+                "${workspaceFolder}\\Plugin\\FileProcessingPlugin\\FileProcessingPlugin.csproj",
                 "--nologo",
                 "--no-incremental",
                 "--verbosity",
                 "minimal",
-                "${workspaceFolder}\\Plugin\\FileProcessingPlugin\\FileProcessingPlugin.csproj",
+                "--output",
+                "${workspaceFolder}\\ShinChiisanairoiro\\bin\\Debug\\net6.0-windows\\Plugins\\FileProcessingPlugin",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -87,11 +95,13 @@
             "type": "shell",
             "args": [
                 "build",
+                "${workspaceFolder}\\Plugin\\GenerateRandomPlugin\\GenerateRandomPlugin.csproj",
                 "--nologo",
                 "--no-incremental",
                 "--verbosity",
                 "minimal",
-                "${workspaceFolder}\\Plugin\\GenerateRandomPlugin\\GenerateRandomPlugin.csproj",
+                "--output",
+                "${workspaceFolder}\\ShinChiisanairoiro\\bin\\Debug\\net6.0-windows\\Plugins\\GenerateRandomPlugin",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -107,11 +117,13 @@
             "type": "shell",
             "args": [
                 "build",
+                "${workspaceFolder}\\Plugin\\OokiPlugin\\OokiPlugin.csproj",
                 "--nologo",
                 "--no-incremental",
                 "--verbosity",
                 "minimal",
-                "${workspaceFolder}\\Plugin\\OokiPlugin\\OokiPlugin.csproj",
+                "--output",
+                "${workspaceFolder}\\ShinChiisanairoiro\\bin\\Debug\\net6.0-windows\\Plugins\\OokiPlugin",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -127,11 +139,13 @@
             "type": "shell",
             "args": [
                 "build",
+                "${workspaceFolder}\\Plugin\\TextProcessingPlugin\\TextProcessingPlugin.csproj",
                 "--nologo",
                 "--no-incremental",
                 "--verbosity",
                 "minimal",
-                "${workspaceFolder}\\Plugin\\TextProcessingPlugin\\TextProcessingPlugin.csproj",
+                "--output",
+                "${workspaceFolder}\\ShinChiisanairoiro\\bin\\Debug\\net6.0-windows\\Plugins\\TextProcessingPlugin",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -147,11 +161,13 @@
             "type": "shell",
             "args": [
                 "build",
+                "${workspaceFolder}\\Plugin\\UncategorizedPlugin\\UncategorizedPlugin.csproj",
                 "--nologo",
                 "--no-incremental",
                 "--verbosity",
                 "minimal",
-                "${workspaceFolder}\\Plugin\\UncategorizedPlugin\\UncategorizedPlugin.csproj",
+                "--output",
+                "${workspaceFolder}\\ShinChiisanairoiro\\bin\\Debug\\net6.0-windows\\Plugins\\UncategorizedPlugin",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -167,11 +183,11 @@
             "type": "shell",
             "args": [
                 "build",
+                "${workspaceFolder}\\ShinChiisanairoiro\\ShinChiisanairoiro.csproj",
                 "--nologo",
                 "--no-incremental",
                 "--verbosity",
                 "minimal",
-                "${workspaceFolder}\\ShinChiisanairoiro\\ShinChiisanairoiro.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -182,7 +198,7 @@
             "problemMatcher": "$msCompile"
         },
         {
-            "label": "Rebuild All",
+            "label": "Rebuild Plugins",
             "dependsOrder": "sequence",
             "dependsOn": [
                 "Rebuild DirectoryProcessingPlugin",
@@ -192,9 +208,34 @@
                 "Rebuild GenerateRandomPlugin",
                 "Rebuild OokiPlugin",
                 "Rebuild TextProcessingPlugin",
-                "Rebuild UncategorizedPlugin",
-                "Rebuild Chiisanairoiro"
+                "Rebuild UncategorizedPlugin"
+            ],
+            "problemMatcher": [
+                "$msCompile"
             ]
         },
+        {
+            "label": "Rebuild All",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "Rebuild Plugins",
+                "Rebuild Chiisanairoiro"
+            ],
+            "problemMatcher": [
+                "$msCompile"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
     ]
 }
+/*
+dotnet build ".\Core\Puru.Wpf\Puru.Wpf.csproj" --nologo --no-incremental --verbosity minimal /property:GenerateFullPaths=true /consoleloggerparameters:NoSummary
+dotnet build ".\Core\Plugin.Common\Plugin.Common.csproj" --nologo --no-incremental --verbosity minimal /property:GenerateFullPaths=true /consoleloggerparameters:NoSummary
+dotnet build ".\Core\Plugin.Dialog\Plugin.Dialog.csproj" --nologo --no-incremental --verbosity minimal /property:GenerateFullPaths=true /consoleloggerparameters:NoSummary
+dotnet build ".\Core\Plugin.IOTextbox\Plugin.IOTextbox.csproj" --nologo --no-incremental --verbosity minimal /property:GenerateFullPaths=true /consoleloggerparameters:NoSummary
+dotnet build ".\Plugin\TextProcessingPlugin\TextProcessingPlugin.csproj" --nologo --no-incremental --verbosity minimal /property:GenerateFullPaths=true /consoleloggerparameters:NoSummary
+dotnet build ".\ShinChiisanairoiro\ShinChiisanairoiro.csproj" --nologo --no-incremental --verbosity minimal /property:GenerateFullPaths=true /consoleloggerparameters:NoSummary
+*/

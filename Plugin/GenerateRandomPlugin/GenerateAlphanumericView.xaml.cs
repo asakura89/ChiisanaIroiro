@@ -2,7 +2,7 @@ using System;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using KeywielderCore;
+using Keywielder;
 using Puru.Wpf;
 
 namespace GenerateRandomPlugin {
