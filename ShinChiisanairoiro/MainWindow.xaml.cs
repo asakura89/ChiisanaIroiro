@@ -1,5 +1,6 @@
 using System.IO;
 using System.Reflection;
+using System.Runtime.Loader;
 using System.Windows;
 using System.Windows.Controls;
 using Puru.Wpf;
@@ -15,21 +16,51 @@ namespace Chiisanairoiro {
         }
 
         void InitializePlugins() {
-            AppDomain.CurrentDomain.AssemblyResolve += Resolve;
-
             String pluginsRootDir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Plugins");
             IList<String> pluginDirs = Directory.EnumerateDirectories(pluginsRootDir).ToList();
             IAssemblyLoader asmLoader = new AssemblyLoader();
             foreach (String dir in pluginDirs)
                 asmLoader.LoadFromPath(dir);
 
-            IList<FeatureDropdownItem> infos = new AssemblyHelper(new TypeHelper())
-                .GetTypesInheritedBy<IViewablePlugin>(
-                    AppDomain
-                        .CurrentDomain
-                        .GetAssemblies())
-                .Where(type => !type.IsAbstract && !type.IsInterface)
-                .Select(pluginType => (IViewablePlugin) Activator.CreateInstance(pluginType))
+            IAssemblyHelper asmHelper = new AssemblyHelper(new TypeHelper());
+            IEnumerable<IViewablePlugin> plugins = AssemblyLoadContext.All
+                .SelectMany(ctx => asmHelper
+                    .GetTypesInheritedBy<IViewablePlugin>(ctx.Assemblies)
+                    .Where(type => !type.IsAbstract && !type.IsInterface)
+                    .Select(pluginType => (IViewablePlugin) Activator.CreateInstance(pluginType)))
+                    .ToList();
+
+            // ^ always empty because of IViewablePlugin is in Default LoadContext while the plugin is in theirs 😔
+            /*
+            AssemblyLoadContext.All.Take(2).Skip(1).First().Assemblies.Take(2).Skip(1).First()
+            {DirectoryProcessingPlugin, Version=2.0.2021.7522, Culture=neutral, PublicKeyToken=null}
+
+            a.ExportedTypes.First().GetType()
+            {System.RuntimeType}
+
+            a.ExportedTypes.First()
+            {DirectoryProcessingPlugin.DirListView}
+
+            AssemblyLoadContext.GetLoadContext(a.ExportedTypes.First().Assembly)
+            {"DirectoryProcessingPlugin" Reflx.DynamicAssemblyLoadContext #1}
+
+            AssemblyLoadContext.GetLoadContext(typeof(IViewablePlugin).Assembly)
+            {"Default" System.Runtime.Loader.DefaultAssemblyLoadContext #0}
+
+            typeof(IViewablePlugin).IsAssignableFrom(a.ExportedTypes.First())
+            false
+
+            a.ExportedTypes.First() as IViewablePlugin
+            null
+
+            AssemblyLoadContext.All.Take(2).Skip(1).First().Assemblies
+            {System.Runtime.Loader.AssemblyLoadContext.<get_Assemblies>d__57}
+
+            AssemblyLoadContext.All.Take(2).Skip(1).First().Assemblies.Last().ExportedTypes.First().IsAssignableFrom(a.ExportedTypes.First())
+            true
+            */
+
+            IList<FeatureDropdownItem> infos = plugins
                 .Select(plugin => new FeatureDropdownItem {
                     Name = $"[{plugin.ComponentName}]{(String.IsNullOrEmpty(plugin.ComponentDesc) ? String.Empty : " " + plugin.ComponentDesc)}",
                     Value = plugin
@@ -41,39 +72,6 @@ namespace Chiisanairoiro {
 
             AvailableFeaturesDropdownList.ItemsSource = features;
             AvailableFeaturesDropdownList.DisplayMemberPath = "Name";
-        }
-
-        Assembly Resolve(Object sender, ResolveEventArgs args) {
-            try {
-                if (args.Name.Contains(".resources"))
-                    return null;
-
-                Assembly asm = AppDomain
-                    .CurrentDomain
-                    .GetAssemblies()
-                    .FirstOrDefault(a => a.FullName == args.Name);
-
-                System.Diagnostics.Debug.WriteLine(asm == null ? $"'{args.Name}' is not found." : $"'{args.Name}' is found.");
-
-                if (asm != null)
-                    return asm;
-            }
-            catch {
-                return null;
-            }
-
-            String[] parts = args.Name.Split(',');
-            String fileName = parts[0].Trim().Replace(".dll", String.Empty) + ".dll";
-            String fileDir = Path.GetDirectoryName(args.RequestingAssembly.Location) ?? "\\";
-            // ^ in .NET 6, Assembly.Location is always empty string if the assembly loaded dynamically 😔
-            String fullFilePath = Path.Combine(fileDir, fileName);
-            System.Diagnostics.Debug.WriteLine($"Loading '{args.Name}' from '{fullFilePath}'.");
-            if (!File.Exists(fullFilePath)) {
-                System.Diagnostics.Debug.WriteLine($"'{args.Name}' still not found in '{fullFilePath}'.");
-                return null;
-            }
-
-            return Assembly.Load(fullFilePath);
         }
 
         void AvailableFeaturesDropdownList_SelectionChanged(Object sender, SelectionChangedEventArgs e) {
