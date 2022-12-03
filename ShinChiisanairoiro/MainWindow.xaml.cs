@@ -14,11 +14,15 @@ namespace Chiisanairoiro {
         }
 
         void InitializePlugins() {
+            IDefaultAssemblyResolver asmResolver = new DefaultAssemblyResolver();
+            AppDomain.CurrentDomain.AssemblyResolve += asmResolver.Resolve;
+            // ^ there is an error here because it uses Assembly.Location internally which is not reliable in .NET 6 😔
+
             String pluginsRootDir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Plugins");
             IList<String> pluginDirs = Directory.EnumerateDirectories(pluginsRootDir).ToList();
+            IAssemblyLoader asmLoader = new AssemblyLoader();
             foreach (String dir in pluginDirs)
-                new AssemblyLoader()
-                        .LoadFromPath(dir, new[] { "*" });
+                asmLoader.LoadFromPath(dir);
 
             IList<FeatureDropdownItem> infos = new AssemblyHelper(new TypeHelper())
                 .GetTypesInheritedBy<IViewablePlugin>(
@@ -27,7 +31,6 @@ namespace Chiisanairoiro {
                         .GetAssemblies())
                 .Where(type => !type.IsAbstract && !type.IsInterface)
                 .Select(pluginType => (IViewablePlugin) Activator.CreateInstance(pluginType))
-                // ^ don't know why this is always returns null IEnumerable 😔
                 .Select(plugin => new FeatureDropdownItem {
                     Name = $"[{plugin.ComponentName}]{(String.IsNullOrEmpty(plugin.ComponentDesc) ? String.Empty : " " + plugin.ComponentDesc)}",
                     Value = plugin
