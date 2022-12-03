@@ -1,11 +1,6 @@
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
-using Puru;
 using Puru.Wpf;
 using Reflx;
 
@@ -32,6 +27,7 @@ namespace Chiisanairoiro {
                         .GetAssemblies())
                 .Where(type => !type.IsAbstract && !type.IsInterface)
                 .Select(pluginType => (IViewablePlugin) Activator.CreateInstance(pluginType))
+                // ^ don't know why this is always returns null IEnumerable 😔
                 .Select(plugin => new FeatureDropdownItem {
                     Name = $"[{plugin.ComponentName}]{(String.IsNullOrEmpty(plugin.ComponentDesc) ? String.Empty : " " + plugin.ComponentDesc)}",
                     Value = plugin
