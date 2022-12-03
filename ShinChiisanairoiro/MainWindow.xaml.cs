@@ -1,4 +1,5 @@
 using System.IO;
+using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using Puru.Wpf;
@@ -14,9 +15,7 @@ namespace Chiisanairoiro {
         }
 
         void InitializePlugins() {
-            IDefaultAssemblyResolver asmResolver = new DefaultAssemblyResolver();
-            AppDomain.CurrentDomain.AssemblyResolve += asmResolver.Resolve;
-            // ^ there is an error here because it uses Assembly.Location internally which is not reliable in .NET 6 😔
+            AppDomain.CurrentDomain.AssemblyResolve += Resolve;
 
             String pluginsRootDir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Plugins");
             IList<String> pluginDirs = Directory.EnumerateDirectories(pluginsRootDir).ToList();
@@ -42,6 +41,39 @@ namespace Chiisanairoiro {
 
             AvailableFeaturesDropdownList.ItemsSource = features;
             AvailableFeaturesDropdownList.DisplayMemberPath = "Name";
+        }
+
+        Assembly Resolve(Object sender, ResolveEventArgs args) {
+            try {
+                if (args.Name.Contains(".resources"))
+                    return null;
+
+                Assembly asm = AppDomain
+                    .CurrentDomain
+                    .GetAssemblies()
+                    .FirstOrDefault(a => a.FullName == args.Name);
+
+                System.Diagnostics.Debug.WriteLine(asm == null ? $"'{args.Name}' is not found." : $"'{args.Name}' is found.");
+
+                if (asm != null)
+                    return asm;
+            }
+            catch {
+                return null;
+            }
+
+            String[] parts = args.Name.Split(',');
+            String fileName = parts[0].Trim().Replace(".dll", String.Empty) + ".dll";
+            String fileDir = Path.GetDirectoryName(args.RequestingAssembly.Location) ?? "\\";
+            // ^ in .NET 6, Assembly.Location is always empty string if the assembly loaded dynamically 😔
+            String fullFilePath = Path.Combine(fileDir, fileName);
+            System.Diagnostics.Debug.WriteLine($"Loading '{args.Name}' from '{fullFilePath}'.");
+            if (!File.Exists(fullFilePath)) {
+                System.Diagnostics.Debug.WriteLine($"'{args.Name}' still not found in '{fullFilePath}'.");
+                return null;
+            }
+
+            return Assembly.Load(fullFilePath);
         }
 
         void AvailableFeaturesDropdownList_SelectionChanged(Object sender, SelectionChangedEventArgs e) {
