@@ -33,7 +33,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DyandraPlugin", "Plugin\Dya
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OokiPlugin", "Plugin\OokiPlugin\OokiPlugin.csproj", "{A4783F98-DBAC-41AB-AE2A-44890F800D6E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ayumi", "Ayumi\Ayumi.csproj", "{1C0101B2-6DCE-4938-A01A-E6BEF2CD3F2F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ayumi", "Ayumi\Ayumi\Ayumi.csproj", "{1C0101B2-6DCE-4938-A01A-E6BEF2CD3F2F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

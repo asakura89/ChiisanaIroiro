@@ -5,6 +5,7 @@ using System.Windows;
 using System.Windows.Controls;
 using Puru.Wpf;
 using Reflx;
+using Scratch;
 
 namespace Chiisanairoiro {
     public partial class MainWindow : Window {
@@ -22,13 +23,44 @@ namespace Chiisanairoiro {
             foreach (String dir in pluginDirs)
                 asmLoader.LoadFromPath(dir);
 
-            IAssemblyHelper asmHelper = new AssemblyHelper(new TypeHelper());
-            IEnumerable<IViewablePlugin> plugins = AssemblyLoadContext.All
-                .SelectMany(ctx => asmHelper
-                    .GetTypesInheritedBy<IViewablePlugin>(ctx.Assemblies)
+            // IAssemblyHelper asmHelper = new AssemblyHelper(new TypeHelper());
+            // IEnumerable<IViewablePlugin> plugins = AssemblyLoadContext.All
+            //     .SelectMany(ctx => asmHelper
+            //         .GetTypesInheritedBy<IViewablePlugin>(ctx.Assemblies)
+            //         .Where(type => !type.IsAbstract && !type.IsInterface)
+            //         .Select(pluginType => (IViewablePlugin) Activator.CreateInstance(pluginType)))
+            //         .ToList();
+
+
+            System.Diagnostics.Debug.WriteLine(
+                new AssemblyHelper(new TypeHelper())
+                    .GetTypesInheritedBy<IViewablePlugin>(
+                        AppDomain.CurrentDomain
+                            .GetAssemblies())
                     .Where(type => !type.IsAbstract && !type.IsInterface)
-                    .Select(pluginType => (IViewablePlugin) Activator.CreateInstance(pluginType)))
-                    .ToList();
+                    .Select(type => type.FullName)
+                    .ToList()
+                    .AsIndentedJson());
+
+            /* IEnumerable<IViewablePlugin> plugins = AssemblyLoadContext.All
+                .SelectMany(ctx => ctx.Assemblies
+                    .SelectMany(asm => asm.GetTypes()
+                        .Where(
+                            type => !type.IsAbstract &&
+                            !type.IsInterface &&
+                            type.GetInterfaces().Any(intf => intf.Name == nameof(IViewablePlugin)))
+                        .Select(pluginType => (IViewablePlugin) Activator.CreateInstance(pluginType)))
+                    .ToList()); */
+
+            IEnumerable<IViewablePlugin> plugins =
+                new AssemblyHelper(new TypeHelper())
+                    .GetTypesInheritedBy<IViewablePlugin>(
+                        AppDomain.CurrentDomain
+                            .GetAssemblies())
+                    .Where(type => !type.IsAbstract && !type.IsInterface)
+                    .Select(pluginType => (IViewablePlugin) Activator.CreateInstance(pluginType));
+
+            // not sure why always file not found
 
             // ^ always empty because of IViewablePlugin is in Default LoadContext while the plugin is in theirs 😔
             /*
@@ -58,6 +90,18 @@ namespace Chiisanairoiro {
 
             AssemblyLoadContext.All.Take(2).Skip(1).First().Assemblies.Last().ExportedTypes.First().IsAssignableFrom(a.ExportedTypes.First())
             true
+
+            System.Diagnostics.Debug.WriteLine(
+                AssemblyLoadContext.All
+                    .SelectMany(ctx => ctx.Assemblies
+                        .Select(asm => asm.FullName))
+                    .AsIndentedJson());
+
+            System.Diagnostics.Debug.WriteLine(
+                AppDomain.CurrentDomain
+                    .GetAssemblies()
+                    .Select(asm => asm.FullName)
+                    .AsIndentedJson());
             */
 
             IList<FeatureDropdownItem> infos = plugins

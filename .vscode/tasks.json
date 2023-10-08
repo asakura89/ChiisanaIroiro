@@ -12,7 +12,7 @@
                 "--verbosity",
                 "minimal",
                 "--output",
-                "${workspaceFolder}\\ShinChiisanairoiro\\bin\\Debug\\net6.0-windows\\Plugins\\DirectoryProcessingPlugin",
+                "${workspaceFolder}\\ShinChiisanairoiro\\bin\\Debug\\net7.0-windows\\Plugins\\DirectoryProcessingPlugin",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -33,7 +33,7 @@
                 "--verbosity",
                 "minimal",
                 "--output",
-                "${workspaceFolder}\\ShinChiisanairoiro\\bin\\Debug\\net6.0-windows\\Plugins\\DyanaPlugin",
+                "${workspaceFolder}\\ShinChiisanairoiro\\bin\\Debug\\net7.0-windows\\Plugins\\DyanaPlugin",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -54,7 +54,7 @@
                 "--verbosity",
                 "minimal",
                 "--output",
-                "${workspaceFolder}\\ShinChiisanairoiro\\bin\\Debug\\net6.0-windows\\Plugins\\DyandraPlugin",
+                "${workspaceFolder}\\ShinChiisanairoiro\\bin\\Debug\\net7.0-windows\\Plugins\\DyandraPlugin",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -75,7 +75,7 @@
                 "--verbosity",
                 "minimal",
                 "--output",
-                "${workspaceFolder}\\ShinChiisanairoiro\\bin\\Debug\\net6.0-windows\\Plugins\\FileProcessingPlugin",
+                "${workspaceFolder}\\ShinChiisanairoiro\\bin\\Debug\\net7.0-windows\\Plugins\\FileProcessingPlugin",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -96,7 +96,7 @@
                 "--verbosity",
                 "minimal",
                 "--output",
-                "${workspaceFolder}\\ShinChiisanairoiro\\bin\\Debug\\net6.0-windows\\Plugins\\GenerateRandomPlugin",
+                "${workspaceFolder}\\ShinChiisanairoiro\\bin\\Debug\\net7.0-windows\\Plugins\\GenerateRandomPlugin",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -117,7 +117,7 @@
                 "--verbosity",
                 "minimal",
                 "--output",
-                "${workspaceFolder}\\ShinChiisanairoiro\\bin\\Debug\\net6.0-windows\\Plugins\\OokiPlugin",
+                "${workspaceFolder}\\ShinChiisanairoiro\\bin\\Debug\\net7.0-windows\\Plugins\\OokiPlugin",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -138,7 +138,7 @@
                 "--verbosity",
                 "minimal",
                 "--output",
-                "${workspaceFolder}\\ShinChiisanairoiro\\bin\\Debug\\net6.0-windows\\Plugins\\TextProcessingPlugin",
+                "${workspaceFolder}\\ShinChiisanairoiro\\bin\\Debug\\net7.0-windows\\Plugins\\TextProcessingPlugin",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -159,7 +159,7 @@
                 "--verbosity",
                 "minimal",
                 "--output",
-                "${workspaceFolder}\\ShinChiisanairoiro\\bin\\Debug\\net6.0-windows\\Plugins\\UncategorizedPlugin",
+                "${workspaceFolder}\\ShinChiisanairoiro\\bin\\Debug\\net7.0-windows\\Plugins\\UncategorizedPlugin",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -182,7 +182,10 @@
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
-            "group": "build",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
             "presentation": {
                 "reveal": "silent"
             },
@@ -215,10 +218,7 @@
             "problemMatcher": [
                 "$msCompile"
             ],
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            }
+            "group": "build"
         }
     ]
 }

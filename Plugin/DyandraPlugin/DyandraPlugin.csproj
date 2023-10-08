@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net6.0-windows</TargetFramework>
+    <TargetFramework>net7.0-windows</TargetFramework>
     <LangVersion>10</LangVersion>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
@@ -31,6 +31,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Core\Puru.Wpf\Puru.Wpf.csproj" />
-    <ProjectReference Include="..\..\Ayumi\Ayumi.csproj" />
+    <ProjectReference Include="..\..\Ayumi\Ayumi\Ayumi.csproj" />
   </ItemGroup>
 </Project>

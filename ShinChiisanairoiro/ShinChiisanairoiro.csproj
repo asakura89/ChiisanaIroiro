@@ -1,15 +1,17 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net6.0-windows</TargetFramework>
+    <TargetFramework>net7.0-windows</TargetFramework>
     <LangVersion>10</LangVersion>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
+    <Nullable>disable</Nullable>
+    <IsTrimmable>false</IsTrimmable>
     <OutputType>WinExe</OutputType>
     <RootNamespace>Chiisanairoiro</RootNamespace>
     <AssemblyName>Chiisanairoiro</AssemblyName>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <UseWPF>true</UseWPF>
     <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
+    <!-- <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies> -->
   </PropertyGroup>
   <ItemGroup>
     <Compile Update="Properties\AssemblyVersion.cs">
@@ -20,7 +22,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Core\Puru.Wpf\Puru.Wpf.csproj" />
-    <ProjectReference Include="..\Ayumi\Ayumi.csproj" />
+    <ProjectReference Include="..\Ayumi\Ayumi\Ayumi.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\AssemblyVersion.tt">
