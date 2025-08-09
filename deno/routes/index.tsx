@@ -3,7 +3,7 @@ import { useSignal } from "@preact/signals";
 import Counter from "../islands/Counter.tsx";
 
 import type { PageProps } from "$fresh/server.ts";
-import HtmlHead from "../components/HtmlHead.tsx";
+import HtmlHead from "../components/server/HtmlHead.tsx";
 
 export default function Dashboard(props: PageProps) {
     const COMPONENT_NAME = "Dashboard";

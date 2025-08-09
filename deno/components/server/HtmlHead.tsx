@@ -1,5 +1,5 @@
 import { Head } from "$fresh/runtime.ts";
-import APP_CONSTANTS from "../core/app_constants.ts";
+import APP_CONSTANTS from "../../app/app_constants.ts";
 import ClientContext from "./ClientContext.tsx";
 
 interface HtmlHeadProps {

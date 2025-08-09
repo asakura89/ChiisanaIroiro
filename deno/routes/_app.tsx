@@ -1,8 +1,8 @@
 import * as React from "@preact/compat" // https://github.com/denoland/fresh/issues/785
 import { type PageProps } from "$fresh/server.ts";
 import { asset } from "$fresh/runtime.ts";
-import APP_CONSTANTS from "../core/app_constants.ts";
-import { sidebarMenu, type MenuItem } from "../core/menu_data.ts";
+import APP_CONSTANTS from "../app/app_constants.ts";
+import { sidebarMenu, type MenuItem } from "../app/menu_data.ts";
 
 export default function App({Component}: PageProps) {
     return (
