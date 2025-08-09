@@ -80,6 +80,10 @@ dlldata.c
 project.lock.json
 artifacts/
 
+# > Jetbrains
+.idea/
+
+# > Other langs
 *_i.c
 *_p.c
 *_i.h
@@ -95,9 +99,7 @@ artifacts/
 *.tlb
 *.tli
 *.tlh
-*.tmp
 *.tmp_proj
-*.log
 *.vspscc
 *.vssscc
 .builds
@@ -105,6 +107,17 @@ artifacts/
 *.svclog
 *.log
 *.scc
+sql/
+*.Cache
+ClientBin/
+[Ss]tyle[Cc]op.*
+~$*
+*~
+*.dbmdl
+*.pfx
+*.publishsettings
+*.dbproj.schemaview
+orleans.codegen.cs
 
 # > Chutzpah Test files
 _Chutzpah*
@@ -202,22 +215,6 @@ csx/
 # > Windows Store app package directory
 AppPackages/
 
-# > Others
-sql/
-*.Cache
-ClientBin/
-[Ss]tyle[Cc]op.*
-~$*
-*~
-*.dbmdl
-*.[Pp]ublish.xml
-*.pfx
-*.publishsettings
-*.dbproj.schemaview
-node_modules/
-bower_components/
-orleans.codegen.cs
-
 # > RIA/Silverlight projects
 Generated_Code/
 
@@ -283,7 +280,6 @@ $RECYCLE.BIN/
 *.egg
 *.egg-info
 dist/
-build/
 eggs/
 parts/
 var/
@@ -300,3 +296,29 @@ pip-log.txt
 
 # > Translations
 *.mo
+
+# > Custom
+tools/
+cakebuild-log.txt
+build-log.txt
+*-log.txt
+*log.txt
+
+# > dotenv environment variable files
+.env
+.env.development.local
+.env.test.local
+.env.production.local
+.env.local
+
+# > sqlite db files
+*.db
+*.db-shm
+*.db-wal
+
+# > npm dependencies and js assets
+node_modules/
+bower_components/
+
+# > Fresh build directory
+_fresh/
