@@ -6,9 +6,11 @@ import * as $_404 from "./routes/_404.tsx";
 import * as $_app from "./routes/_app.tsx";
 import * as $_error from "./routes/_error.tsx";
 import * as $_middleware from "./routes/_middleware.ts";
+import * as $dyana from "./routes/dyana.tsx";
 import * as $index from "./routes/index.tsx";
 import * as $timespan_explainer from "./routes/timespan-explainer.tsx";
 import * as $Counter from "./islands/Counter.tsx";
+import * as $dyana_1 from "./islands/dyana.tsx";
 import type { Manifest } from "$fresh/server.ts";
 
 const manifest = {
@@ -17,11 +19,13 @@ const manifest = {
     "./routes/_app.tsx": $_app,
     "./routes/_error.tsx": $_error,
     "./routes/_middleware.ts": $_middleware,
+    "./routes/dyana.tsx": $dyana,
     "./routes/index.tsx": $index,
     "./routes/timespan-explainer.tsx": $timespan_explainer,
   },
   islands: {
     "./islands/Counter.tsx": $Counter,
+    "./islands/dyana.tsx": $dyana_1,
   },
   baseUrl: import.meta.url,
 } satisfies Manifest;
