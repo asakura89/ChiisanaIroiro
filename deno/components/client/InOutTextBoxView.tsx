@@ -1,10 +1,19 @@
 import * as React from "@preact/compat" // https://github.com/denoland/fresh/issues/785
+import { ComponentChildren } from "preact";
 import { InputTextBox, type InputTextBoxProps } from "./InputTextBox.tsx";
 import { OutputTextBox, type OutputTextBoxProps } from "./OutputTextBox.tsx";
+
+export interface InOutTextBoxGeneralProps {
+    inputText: string;
+    outputText: string;
+    error: string;
+}
 
 export interface InOutTextBoxViewProps {
     toolLabel: string;
     toolDescription: string;
+    additionalControls?: ComponentChildren;
+    processIdentifier: string;
     inputTextBoxProps: InputTextBoxProps;
     outputTextBoxProps: OutputTextBoxProps;
 }
@@ -18,11 +27,21 @@ export function InOutTextBoxView(props: InOutTextBoxViewProps) {
                     {props.toolDescription}
                 </p>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <InputTextBox {...props.inputTextBoxProps} />
+                <form method="post" action={`/${props.processIdentifier}`}>
+                    {
+                        props.additionalControls && (
+                            <div className="mb-4">
+                                {props.additionalControls}
+                            </div>
+                        )
+                    }
 
-                    <OutputTextBox {...props.outputTextBoxProps} />
-                </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <InputTextBox {...props.inputTextBoxProps} />
+
+                        <OutputTextBox {...props.outputTextBoxProps} />
+                    </div>
+                </form>
 
                 {/*{error && (
                     <div className="alert alert-error mt-3">

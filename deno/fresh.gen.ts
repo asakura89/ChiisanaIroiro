@@ -7,6 +7,9 @@ import * as $_app from "./routes/_app.tsx";
 import * as $_error from "./routes/_error.tsx";
 import * as $_middleware from "./routes/_middleware.ts";
 import * as $dyana from "./routes/dyana.tsx";
+import * as $generate_guid from "./routes/generate-guid.tsx";
+import * as $generate_hex from "./routes/generate-hex.tsx";
+import * as $generate_processid from "./routes/generate-processid.tsx";
 import * as $index from "./routes/index.tsx";
 import * as $timespan_explainer from "./routes/timespan-explainer.tsx";
 import * as $Counter from "./islands/Counter.tsx";
@@ -20,6 +23,9 @@ const manifest = {
     "./routes/_error.tsx": $_error,
     "./routes/_middleware.ts": $_middleware,
     "./routes/dyana.tsx": $dyana,
+    "./routes/generate-guid.tsx": $generate_guid,
+    "./routes/generate-hex.tsx": $generate_hex,
+    "./routes/generate-processid.tsx": $generate_processid,
     "./routes/index.tsx": $index,
     "./routes/timespan-explainer.tsx": $timespan_explainer,
   },

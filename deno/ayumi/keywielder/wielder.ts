@@ -7,10 +7,14 @@ export enum AlphaType {
     UpperLower,
     UpperNumeric,
     UpperSymbol,
+    UpperHex,
     Upper,
+
     LowerNumeric,
     LowerSymbol,
+    LowerHex,
     Lower,
+
     NumericSymbol,
     Numeric,
     Symbol,
@@ -18,21 +22,27 @@ export enum AlphaType {
 
 const UppercaseAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 const LowercaseAlphabet = "abcdefghijklmnopqrstuvwxyz";
+const UppercaseHexAlphabet = "ABCDEF";
+const LowercaseHexAlphabet = "abcdef";
 const Numeric = "0123456789";
 const Symbol = "~!@#$%^&*_\-+=`|\\(){}[]:;<>,.?/";
 
 const alphaTypeDict: Record<AlphaType, string[]> = {
-    [AlphaType.UpperLowerNumericSymbol]: `${UppercaseAlphabet} ${LowercaseAlphabet} ${Numeric} ${Symbol}`.split(""),
-    [AlphaType.UpperLowerNumeric]: `${UppercaseAlphabet} ${LowercaseAlphabet} ${Numeric}`.split(""),
-    [AlphaType.UpperLowerSymbol]: `${UppercaseAlphabet} ${LowercaseAlphabet} ${Symbol}`.split(""),
-    [AlphaType.UpperLower]: `${UppercaseAlphabet} ${LowercaseAlphabet}`.split(""),
-    [AlphaType.UpperNumeric]: `${UppercaseAlphabet} ${Numeric}`.split(""),
-    [AlphaType.UpperSymbol]: `${UppercaseAlphabet} ${Symbol}`.split(""),
+    [AlphaType.UpperLowerNumericSymbol]: `${UppercaseAlphabet}${LowercaseAlphabet}${Numeric}${Symbol}`.split(""),
+    [AlphaType.UpperLowerNumeric]: `${UppercaseAlphabet}${LowercaseAlphabet}${Numeric}`.split(""),
+    [AlphaType.UpperLowerSymbol]: `${UppercaseAlphabet}${LowercaseAlphabet}${Symbol}`.split(""),
+    [AlphaType.UpperLower]: `${UppercaseAlphabet}${LowercaseAlphabet}`.split(""),
+    [AlphaType.UpperNumeric]: `${UppercaseAlphabet}${Numeric}`.split(""),
+    [AlphaType.UpperSymbol]: `${UppercaseAlphabet}${Symbol}`.split(""),
+    [AlphaType.UpperHex]: `${UppercaseHexAlphabet}${Numeric}`.split(""),
     [AlphaType.Upper]: UppercaseAlphabet.split(""),
-    [AlphaType.LowerNumeric]: `${LowercaseAlphabet} ${Numeric}`.split(""),
-    [AlphaType.LowerSymbol]: `${LowercaseAlphabet} ${Symbol}`.split(""),
+
+    [AlphaType.LowerNumeric]: `${LowercaseAlphabet}${Numeric}`.split(""),
+    [AlphaType.LowerSymbol]: `${LowercaseAlphabet}${Symbol}`.split(""),
+    [AlphaType.LowerHex]: `${LowercaseHexAlphabet}${Numeric}`.split(""),
     [AlphaType.Lower]: LowercaseAlphabet.split(""),
-    [AlphaType.NumericSymbol]: `${Numeric} ${Symbol}`.split(""),
+
+    [AlphaType.NumericSymbol]: `${Numeric}${Symbol}`.split(""),
     [AlphaType.Numeric]: Numeric.split(""),
     [AlphaType.Symbol]: Symbol.split(""),
 };
@@ -49,7 +59,7 @@ export class Wielder {
     addRandomString(valueLength: number, type: AlphaType = AlphaType.Upper): this {
         const charCombination = alphaTypeDict[type];
         for (let i = 0; i < valueLength; i++) {
-            const randomIdx = RyandomNumberGenerator.ryandomizeSingle(charCombination.length);
+            const randomIdx = RyandomNumberGenerator.ryandomizeSingle(charCombination.length -1);
             this.keyBuilder.push(charCombination[randomIdx]);
         }
 
@@ -64,6 +74,12 @@ export class Wielder {
         return uppercase ?
             this.addRandomString(valueLength, AlphaType.Upper) :
             this.addRandomString(valueLength, AlphaType.Lower);
+    }
+
+    addRandomHex(valueLength: number, uppercase = true): this {
+        return uppercase ?
+            this.addRandomString(valueLength, AlphaType.UpperHex) :
+            this.addRandomString(valueLength, AlphaType.LowerHex);
     }
 
     addGuidString(): this {

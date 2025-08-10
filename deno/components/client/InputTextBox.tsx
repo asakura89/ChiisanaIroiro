@@ -6,7 +6,6 @@ export interface InputTextBoxProps {
     //input: Signal<string>;
     inputText: string;
     placeholder?: string;
-    processIdentifier: string;
     processButtonLabel?: string;
 }
 
@@ -45,32 +44,30 @@ export function InputTextBox(props: InputTextBoxProps) {
 
     return (
         <div className="flex flex-col gap-2">
-            <form method="post" action={`/${props.processIdentifier}`}>
-                <label className="text-sm opacity-80">
-                    {label}
-                </label>
-                <textarea
-                    name="input"
-                    value={props.inputText}
-                    /* onInput={(e: any) => (input.value = e.currentTarget.value)} */
-                    placeholder={props.placeholder}
-                    className="textarea textarea-bordered textarea-lg w-full min-h-[260px] font-mono"
-                />
-                <div className="flex gap-2 mt-2">
-                    <button
-                        type="submit"
-                        className="btn btn-primary"
-                        /*onClick={onProcess}*/>
-                        {buttonLabel}
-                    </button>
-                    <button
-                        type="button"
-                        className="btn btn-ghost"
-                        onClick={onClearInput}>
-                        Clear
-                    </button>
-                </div>
-            </form>
+            <label className="text-sm opacity-80">
+                {label}
+            </label>
+            <textarea
+                name="input"
+                value={props.inputText}
+                /* onInput={(e: any) => (input.value = e.currentTarget.value)} */
+                placeholder={props.placeholder}
+                className="textarea textarea-bordered textarea-lg w-full min-h-[260px] font-mono"
+            />
+            <div className="flex gap-2 mt-2">
+                <button
+                    type="submit"
+                    className="btn btn-primary"
+                    /*onClick={onProcess}*/>
+                    {buttonLabel}
+                </button>
+                <button
+                    type="button"
+                    className="btn btn-ghost"
+                    onClick={onClearInput}>
+                    Clear
+                </button>
+            </div>
         </div>
     );
 }
