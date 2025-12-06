@@ -60,7 +60,7 @@ export default function App({Component}: PageProps) {
                                 <li>
                                     <details>
                                         <summary class="btn btn-ghost rounded">Mini Apps</summary>
-                                        <ul class="bg-neutral p-2 rounded-box w-52">
+                                        <ul class="bg-neutral p-2 rounded-box w-52 z-1">
                                             {sidebarMenu.filter(item => item.href !== "/").map((item: MenuItem) => (
                                                 <li key={item.href}>
                                                     <a class={item.class} href={item.href}>

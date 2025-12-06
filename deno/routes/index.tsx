@@ -1,6 +1,5 @@
 import * as React from "@preact/compat" // https://github.com/denoland/fresh/issues/785
 import { useSignal } from "@preact/signals";
-import Counter from "../islands/Counter.tsx";
 
 import type { PageProps } from "$fresh/server.ts";
 import HtmlHead from "../components/server/HtmlHead.tsx";
@@ -32,7 +31,6 @@ export default function Dashboard(props: PageProps) {
                             Try updating this message in the
                             <code class="mx-2">./routes/index.tsx</code> file, and refresh.
                         </p>
-                        <Counter count={count} />
                     </div>
                 </div>
             </div>

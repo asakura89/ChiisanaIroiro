@@ -12,7 +12,6 @@ import * as $generate_hex from "./routes/generate-hex.tsx";
 import * as $generate_processid from "./routes/generate-processid.tsx";
 import * as $index from "./routes/index.tsx";
 import * as $timespan_explainer from "./routes/timespan-explainer.tsx";
-import * as $Counter from "./islands/Counter.tsx";
 import * as $dyana_1 from "./islands/dyana.tsx";
 import type { Manifest } from "$fresh/server.ts";
 
@@ -30,7 +29,6 @@ const manifest = {
     "./routes/timespan-explainer.tsx": $timespan_explainer,
   },
   islands: {
-    "./islands/Counter.tsx": $Counter,
     "./islands/dyana.tsx": $dyana_1,
   },
   baseUrl: import.meta.url,

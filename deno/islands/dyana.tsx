@@ -99,7 +99,7 @@ export const DyanaWindow = (props: DyanaWindowProps) => {
 
             if (totalDuration.totalMilliseconds > responsibilityHours.totalMilliseconds &&
                 totalDuration.totalHours > responsibilityHours.totalHours + 1)
-                message.push(`Overtimeeee by ${totalDuration.toString()} Waaaaaaattttt...`);
+                message.push(`Overtimeeee by ${totalDuration.subtract(responsibilityHours).toString()} Waaaaaaattttt...`);
 
             else if (totalDuration.totalMilliseconds < responsibilityHours.totalMilliseconds) {
                 message.push(`Oy! Work more! should be at ${endOfResponsibility.toTimeString().slice(0, 5)}.`);
@@ -144,7 +144,10 @@ export const DyanaWindow = (props: DyanaWindowProps) => {
                 <input
                     type="text"
                     value={props.startAt}
-                    onInput={(e) => props.startAt.value = (e.target as HTMLInputElement).value}
+                    onInput={(e) => {
+                        props.startAt.value = (e.target as HTMLInputElement).value;
+                        handleCalculate();
+                    }}
                     placeholder="HH:mm"
                     style={{ marginLeft: "10px" }}
                 />
@@ -154,7 +157,10 @@ export const DyanaWindow = (props: DyanaWindowProps) => {
                 <input
                     type="text"
                     value={props.endAt}
-                    onInput={(e) => props.endAt.value = (e.target as HTMLInputElement).value}
+                    onInput={(e) => {
+                        props.endAt.value = (e.target as HTMLInputElement).value;
+                        handleCalculate();
+                    }}
                     placeholder="HH:mm"
                     style={{ marginLeft: "10px" }}
                 />
@@ -164,7 +170,10 @@ export const DyanaWindow = (props: DyanaWindowProps) => {
                 <input
                     type="text"
                     value={props.workHour}
-                    onInput={(e) => props.workHour.value = (e.target as HTMLInputElement).value}
+                    onInput={(e) => {
+                        props.workHour.value = (e.target as HTMLInputElement).value;
+                        handleCalculate();
+                    }}
                     placeholder="Hours"
                     style={{ marginLeft: "10px" }}
                 />
@@ -174,7 +183,10 @@ export const DyanaWindow = (props: DyanaWindowProps) => {
                 <input
                     type="text"
                     value={props.breakHour}
-                    onInput={(e) => props.breakHour.value = (e.target as HTMLInputElement).value}
+                    onInput={(e) => {
+                        props.breakHour.value = (e.target as HTMLInputElement).value;
+                        handleCalculate();
+                    }}
                     placeholder="Hours"
                     style={{ marginLeft: "10px" }}
                 />

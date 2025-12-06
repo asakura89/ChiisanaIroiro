@@ -42,13 +42,6 @@ export function InOutTextBoxView(props: InOutTextBoxViewProps) {
                         <OutputTextBox {...props.outputTextBoxProps} />
                     </div>
                 </form>
-
-                {/*{error && (
-                    <div className="alert alert-error mt-3">
-                        <span>There was an error.</span>
-                    </div>
-                )}*/}
-                {/* {toastMsg && <div className="toast">...</div>} */}
             </div>
         </div>
     );

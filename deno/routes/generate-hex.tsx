@@ -1,8 +1,6 @@
 import * as React from "@preact/compat" // https://github.com/denoland/fresh/issues/785
-import { Signal, useSignal } from "@preact/signals";
 import { FreshContext, Handlers, PageProps } from "$fresh/server.ts";
 import { InOutTextBoxGeneralProps, InOutTextBoxView } from "../components/client/InOutTextBoxView.tsx";
-import { Duration } from "../ayumi/itsu/duration.ts";
 import { Wielder } from "../ayumi/keywielder/wielder.ts";
 
 function clampInt(n: number, min: number, max: number) {
@@ -120,11 +118,6 @@ interface AdditionalControlsProps {
 }
 
 function AdditionalControl(props: AdditionalControlsProps) {
-    /*const count = useSignal(1);
-    const length = useSignal(16);
-    const uppercase = useSignal(false);
-    const output = useSignal("");*/
-
     return (
         <>
             <label class="form-control w-28">
@@ -172,7 +165,7 @@ interface GenerateHexProps {
     InOutTextBoxGeneralProps: InOutTextBoxGeneralProps;
 }
 
-export default function GenerateHex(props: PageProps<GenerateHexProps>/*: TimespanExplainerProps*/) {
+export default function GenerateHex(props: PageProps<GenerateHexProps>) {
     return (
         <InOutTextBoxView
             toolLabel="Generate Hex"
