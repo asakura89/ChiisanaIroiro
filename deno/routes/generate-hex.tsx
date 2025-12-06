@@ -1,7 +1,7 @@
-import * as React from "@preact/compat" // https://github.com/denoland/fresh/issues/785
+import { useSignal } from "@preact/signals";
 import { FreshContext, Handlers, PageProps } from "$fresh/server.ts";
 import { Wielder } from "../ayumi/keywielder/wielder.ts";
-import { OutTextBoxView, OutTextBoxGeneralProps } from "../components/client/OutTextBoxView.tsx";
+import { OutTextBoxView, OutTextBoxGeneralProps } from "../islands/OutTextBoxView.tsx";
 
 function clampInt(n: number, min: number, max: number) {
     return Math.max(min, Math.min(max, Math.floor(n)));
@@ -61,7 +61,7 @@ export function readBoolean(form: FormData, name: string, opts: { default?: bool
 
 export const handler: Handlers = {
     async GET(_req, ctx: FreshContext) {
-        return await ctx.render({
+        const dataProps = {
             AdditionalControlsProps: {
                 count: 1,
                 length: 16,
@@ -72,7 +72,9 @@ export const handler: Handlers = {
                 outputText: "",
                 error: ""
             }
-        });
+        };
+
+        return await ctx.render(dataProps);
     },
 
     async POST(req: Request, ctx: FreshContext) {
@@ -93,7 +95,7 @@ export const handler: Handlers = {
             counter++;
         }
 
-        return await ctx.render({
+        const dataProps = {
             AdditionalControlsProps: {
                 count: count,
                 length: length,
@@ -104,7 +106,9 @@ export const handler: Handlers = {
                 outputText: output.join("\n"),
                 error: ""
             }
-        });
+        };
+
+        return await ctx.render(dataProps);
     }
 }
 
@@ -118,40 +122,42 @@ interface AdditionalControlsProps {
 function AdditionalControl(props: AdditionalControlsProps) {
     return (
         <>
-            <label className="input">
-                <span className="label">Count</span>
-                <input
-                    name="count-textbox"
-                    type="number"
-                    min={1}
-                    step={1}
-                    value={props.count}
-                    onInput={(e) => props.count = clampInt(Number((e.currentTarget as HTMLInputElement).value || 0), 0, 10000)}
-                />
-            </label>
+            <fieldset className="fieldset">
+                <label className="input">
+                    <span className="label">Count</span>
+                    <input
+                        name="count-textbox"
+                        type="number"
+                        min={1}
+                        step={1}
+                        value={props.count}
+                        onInput={(e) => props.count = clampInt(Number((e.currentTarget as HTMLInputElement).value || 0), 0, 10000)}
+                    />
+                </label>
 
-            <label className="input">
-                <span className="label">Length</span>
-                <input
-                    name="length-textbox"
-                    type="number"
-                    min={1}
-                    step={1}
-                    value={props.length}
-                    onInput={(e) => props.length = clampInt(Number((e.currentTarget as HTMLInputElement).value || 0), 0, 8192)}
-                />
-            </label>
+                <label className="input">
+                    <span className="label">Length</span>
+                    <input
+                        name="length-textbox"
+                        type="number"
+                        min={1}
+                        step={1}
+                        value={props.length}
+                        onInput={(e) => props.length = clampInt(Number((e.currentTarget as HTMLInputElement).value || 0), 0, 8192)}
+                    />
+                </label>
 
-            <label className="input">
-                <input
-                    name="upper-checkbox"
-                    type="checkbox"
-                    class="checkbox"
-                    checked={props.uppercase}
-                    onChange={(e) => props.uppercase = (e.currentTarget as HTMLInputElement).checked}
-                />
-                <span className="label">Uppercase</span>
-            </label>
+                <label className="input">
+                    <input
+                        name="upper-checkbox"
+                        type="checkbox"
+                        class="checkbox"
+                        checked={props.uppercase}
+                        onChange={(e) => props.uppercase = (e.currentTarget as HTMLInputElement).checked}
+                    />
+                    <span className="label">Uppercase</span>
+                </label>
+            </fieldset>
         </>
     );
 }
@@ -166,18 +172,20 @@ export default function GenerateHex(props: PageProps<GenerateHexProps>) {
         <OutTextBoxView
             toolLabel="Generate Hex"
             toolDescription="Generate a random hex string."
-            additionalControls={
+            children={
                 <AdditionalControl
-                    count={props.data.AdditionalControlsProps.count}
-                    length={props.data.AdditionalControlsProps.length}
+                    count={props.data.AdditionalControlsProps.count!}
+                    length={props.data.AdditionalControlsProps.length!}
                     uppercase={props.data.AdditionalControlsProps.uppercase}
                     output={props.data.AdditionalControlsProps.output}
-                />}
+                />
+            }
             processIdentifier="generate-hex"
             outputTextBoxProps={{
-                fullLabel: "Generated hex will appear here",
-                outputText: props.data.OutTextBoxGeneralProps.outputText,
-                processButtonLabel: "Generate"
+                fullLabel: "",
+                outputText: useSignal(props.data.OutTextBoxGeneralProps.outputText),
+                processButtonLabel: "Generate",
+                placeholder: "Generated hex will appear here..."
             }}
         />
     );

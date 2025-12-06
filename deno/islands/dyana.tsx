@@ -13,50 +13,6 @@ export function isValidTime(time: string): boolean {
     return testByRegex && testBySplit;
 }
 
-/**
-export function calculateWorkHours(arriveTime: string, departTime: string, workHour: string, breakHour: string): DyanaWorkHour {
-    if (!isValidTime(arriveTime)) throw new Error("Arrive hours is not valid.");
-    if (!isValidTime(departTime)) throw new Error("Depart hours is not valid.");
-    //if (!/^\d+$/.test(workHour)) throw new Error("Work hour is not valid.");
-    //if (!/^\d+$/.test(breakHour)) throw new Error("Break hour is not valid.");
-
-    const [arrHour, arrMinute] = arriveTime.split(":").map(Number);
-    const [depHour, depMinute] = departTime.split(":").map(Number);
-
-    const workhour = workHour; //parseInt(workHour, 10);
-    const breakhour = breakHour; //parseInt(breakHour, 10);
-    const responsibilityHours = workhour + breakhour;
-
-    const now = new Date();
-    const start = new Date(now.getFullYear(), now.getMonth(), now.getDate(), arrHour, arrMinute);
-    const end = new Date(now.getFullYear(), now.getMonth(), now.getDate(), depHour, depMinute);
-
-    const totalTime = (end.getTime() - start.getTime()) / (1000 * 60); // in minutes
-
-    return {
-        totalHours: Math.floor(totalTime / 60),
-        totalMinutes: totalTime % 60,
-        responsibilityHours,
-        endOfResponsibility: new Date(start.getTime() + responsibilityHours * 60 * 60 * 1000),
-    };
-}
-
-export function getAppropriateMessage(workHour: DyanaWorkHour): string {
-    const { totalHours, responsibilityHours, endOfResponsibility, totalMinutes } = workHour;
-
-    if (Math.abs(totalHours) === Math.abs(responsibilityHours)) {
-        return "It's time to go home :)";
-    }
-    if (totalHours < responsibilityHours) {
-        return `Oy! Work more! should be at ${endOfResponsibility.toTimeString().slice(0, 5)}`;
-    }
-    if (totalHours > responsibilityHours && totalHours > responsibilityHours + 1) {
-        return `Overtimeeee by ${totalHours - responsibilityHours}h ${totalMinutes}m Waaaaaaattttt...`;
-    }
-    return "Just go home already!";
-}
-*/
-
 interface DyanaWindowProps {
     startAt: Signal<string>;
     endAt: Signal<string>;
@@ -67,18 +23,13 @@ interface DyanaWindowProps {
     message: Signal<string>;
 }
 
-export interface DyanaWorkHour {
-    totalHours: number;
-    totalMinutes: number;
-    responsibilityHours: number;
-    endOfResponsibility: Date;
-}
-
 export const DyanaWindow = (props: DyanaWindowProps) => {
     const handleCalculate = () => {
         try {
-            if (!isValidTime(props.startAt.value)) throw new Error("Arrive hours is not valid.");
-            if (!isValidTime(props.endAt.value)) throw new Error("Depart hours is not valid.");
+            if (!isValidTime(props.startAt.value))
+                throw new Error("Arrive hours is not valid.");
+            if (!isValidTime(props.endAt.value))
+                throw new Error("Depart hours is not valid.");
 
             const [arrHour, arrMinute] = props.startAt.value.split(":").map(Number);
             const [depHour, depMinute] = props.endAt.value.split(":").map(Number);
@@ -115,11 +66,6 @@ export const DyanaWindow = (props: DyanaWindowProps) => {
             props.message.value = message.join("\n");
             props.total.value = totalDuration.toString();
             props.responsibility.value = responsibilityHours.toString();
-
-            /*const workHours: DyanaWorkHour = calculateWorkHours(props.startAt.value, props.endAt.value, props.workHour.value, props.breakHour.value);
-            const appropriateMessage = getAppropriateMessage(workHours);
-            props.total.value = `${workHours.totalHours}h ${String(workHours.totalMinutes).padStart(2, '0')}m`;
-            props.message.value = appropriateMessage;*/
         }
         catch (err: any) {
             props.message.value = err.message;
@@ -195,7 +141,6 @@ export const DyanaWindow = (props: DyanaWindowProps) => {
                 <button onClick={handleCalculate} style={{ marginRight: "10px" }}>Calculate</button>
                 <button onClick={handleReset}>Reset</button>
             </div>
-            {/**{error && <p style={{ color: "red", marginTop: "20px" }}>{error}</p>}*/}
             {props.total.value && (
                 <div style={{ marginTop: "20px" }}>
                     <h3>Worked for: {props.total}</h3>

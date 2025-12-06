@@ -1,7 +1,6 @@
-import * as React from "@preact/compat" // https://github.com/denoland/fresh/issues/785
-import { Signal, useSignal } from "@preact/signals";
+import { useSignal } from "@preact/signals";
 import { FreshContext, Handlers, PageProps } from "$fresh/server.ts";
-import {InOutTextBoxGeneralProps, InOutTextBoxView} from "../components/client/InOutTextBoxView.tsx";
+import { InOutTextBoxGeneralProps, InOutTextBoxView } from "../islands/InOutTextBoxView.tsx";
 import { Duration } from "../ayumi/itsu/duration.ts";
 
 const styles: Record<string, any> = {
@@ -138,20 +137,14 @@ export default function TimespanExplainer(props: PageProps<InOutTextBoxGeneralPr
             toolDescription="This tool explains a timespan in a human-readable format."
             processIdentifier="timespan-explainer"
             inputTextBoxProps={{
-                shortLabel: "Timespan",
                 fullLabel: "Timespan",
                 inputText: props.data.inputText,
                 placeholder: "Enter a timespan (e.g., 2d, 3h, 422s, 457872ms)",
                 processButtonLabel: "Explain"
             }}
             outputTextBoxProps={{
-                shortLabel: "Explanation",
                 fullLabel: "Explanation",
-                /*partialOutputTextBoxProps: {
-                    output: props.output,
-                    placeholder: "The explanation will appear here..."
-                }*/
-                outputText: props.data.outputText,
+                outputText: useSignal(props.data.outputText),
                 placeholder: "The explanation will appear here..."
             }}
         />

@@ -67,12 +67,6 @@ export function OutputTextBox(props: OutputTextBoxProps) {
     }
 
     function onClearOutput() {
-        /**
-        props.outputText = "";
-        const outputTextbox = document.getElementById("output-textbox")! as HTMLTextAreaElement;
-        outputTextbox.setAttribute("value", "");
-        outputTextbox.value = "";
-        */
         props.outputText.value = "";
     }
 

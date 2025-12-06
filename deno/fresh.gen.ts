@@ -12,7 +12,9 @@ import * as $generate_hex from "./routes/generate-hex.tsx";
 import * as $generate_processid from "./routes/generate-processid.tsx";
 import * as $index from "./routes/index.tsx";
 import * as $timespan_explainer from "./routes/timespan-explainer.tsx";
-import * as $dyana_1 from "./islands/dyana.tsx";
+import * as $DyanaWindow from "./islands/DyanaWindow.tsx";
+import * as $InOutTextBoxView from "./islands/InOutTextBoxView.tsx";
+import * as $OutTextBoxView from "./islands/OutTextBoxView.tsx";
 import type { Manifest } from "$fresh/server.ts";
 
 const manifest = {
@@ -29,7 +31,9 @@ const manifest = {
     "./routes/timespan-explainer.tsx": $timespan_explainer,
   },
   islands: {
-    "./islands/dyana.tsx": $dyana_1,
+    "./islands/DyanaWindow.tsx": $DyanaWindow,
+    "./islands/InOutTextBoxView.tsx": $InOutTextBoxView,
+    "./islands/OutTextBoxView.tsx": $OutTextBoxView,
   },
   baseUrl: import.meta.url,
 } satisfies Manifest;
