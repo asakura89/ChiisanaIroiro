@@ -23,6 +23,16 @@ export const sidebarMenu: MenuItem[] = [{
         icon: "ph-duotone ph-hourglass-medium",
         class: "hover:bg-primary hover:text-primary-content rounded"
     }, {
+        href: "/generate-guid",
+        title: "Guid Generator",
+        icon: "ph-duotone ph-hourglass-medium",
+        class: "hover:bg-primary hover:text-primary-content rounded"
+    }, {
+        href: "/generate-taskid",
+        title: "Task Id Generator",
+        icon: "ph-duotone ph-hourglass-medium",
+        class: "hover:bg-primary hover:text-primary-content rounded"
+    }, {
         href: "/timespan-explainer",
         title: "Timespan Explainer",
         icon: "ph-duotone ph-hourglass-medium",

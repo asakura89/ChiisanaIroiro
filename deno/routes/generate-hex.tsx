@@ -121,44 +121,42 @@ interface AdditionalControlsProps {
 
 function AdditionalControl(props: AdditionalControlsProps) {
     return (
-        <>
-            <fieldset className="fieldset">
-                <label className="input">
-                    <span className="label">Count</span>
-                    <input
-                        name="count-textbox"
-                        type="number"
-                        min={1}
-                        step={1}
-                        value={props.count}
-                        onInput={(e) => props.count = clampInt(Number((e.currentTarget as HTMLInputElement).value || 0), 0, 10000)}
-                    />
-                </label>
+        <fieldset className="fieldset">
+            <label className="input">
+                <span className="label">Count</span>
+                <input
+                    name="count-textbox"
+                    type="number"
+                    min={1}
+                    step={1}
+                    value={props.count}
+                    onInput={(e) => props.count = clampInt(Number((e.currentTarget as HTMLInputElement).value || 0), 0, 10000)}
+                />
+            </label>
 
-                <label className="input">
-                    <span className="label">Length</span>
-                    <input
-                        name="length-textbox"
-                        type="number"
-                        min={1}
-                        step={1}
-                        value={props.length}
-                        onInput={(e) => props.length = clampInt(Number((e.currentTarget as HTMLInputElement).value || 0), 0, 8192)}
-                    />
-                </label>
+            <label className="input">
+                <span className="label">Length</span>
+                <input
+                    name="length-textbox"
+                    type="number"
+                    min={1}
+                    step={1}
+                    value={props.length}
+                    onInput={(e) => props.length = clampInt(Number((e.currentTarget as HTMLInputElement).value || 0), 0, 8192)}
+                />
+            </label>
 
-                <label className="input">
-                    <input
-                        name="upper-checkbox"
-                        type="checkbox"
-                        class="checkbox"
-                        checked={props.uppercase}
-                        onChange={(e) => props.uppercase = (e.currentTarget as HTMLInputElement).checked}
-                    />
-                    <span className="label">Uppercase</span>
-                </label>
-            </fieldset>
-        </>
+            <label className="input">
+                <input
+                    name="upper-checkbox"
+                    type="checkbox"
+                    class="checkbox"
+                    checked={props.uppercase}
+                    onChange={(e) => props.uppercase = (e.currentTarget as HTMLInputElement).checked}
+                />
+                <span className="label">Uppercase</span>
+            </label>
+        </fieldset>
     );
 }
 
@@ -182,7 +180,7 @@ export default function GenerateHex(props: PageProps<GenerateHexProps>) {
             }
             processIdentifier="generate-hex"
             outputTextBoxProps={{
-                fullLabel: "",
+                fullLabel: "Output",
                 outputText: useSignal(props.data.OutTextBoxGeneralProps.outputText),
                 processButtonLabel: "Generate",
                 placeholder: "Generated hex will appear here..."

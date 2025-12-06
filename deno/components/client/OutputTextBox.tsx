@@ -1,5 +1,5 @@
 import type { Signal } from "@preact/signals";
-import { Wielder } from "../../ayumi/keywielder/wielder.ts";
+import { generateCurrentDateTimeString } from "../../app/current_datetime.ts";
 
 export interface OutputTextBoxProps {
     fullLabel: string;
@@ -30,29 +30,7 @@ export function OutputTextBox(props: OutputTextBoxProps) {
     function onToTxt() {
         const blob = new Blob([props.outputText.value], { type: "text/plain;charset=utf-8" });
         const url = URL.createObjectURL(blob);
-        const currentTime =
-            Wielder.new()
-                .addLongYear()
-                .addLeftPadded(
-                    Wielder.new()
-                        .addNumericMonth()
-                        .buildKey(),
-                    2, "0")
-                .addLeftPadded(
-                    Wielder.new()
-                        .addDate()
-                        .buildKey(),
-                    2, "0")
-                .addLeftPadded(
-                    new Date().getHours().toString(),
-                    2, "0")
-                .addLeftPadded(
-                    new Date().getMinutes().toString(),
-                    2, "0")
-                .addLeftPadded(
-                    new Date().getSeconds().toString(),
-                    2, "0")
-                .buildKey();
+        const currentTime = generateCurrentDateTimeString();
         const filename = `output_${currentTime}.txt`;
 
         const a = document.createElement("a");

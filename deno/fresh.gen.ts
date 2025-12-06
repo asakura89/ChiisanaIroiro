@@ -9,12 +9,12 @@ import * as $_middleware from "./routes/_middleware.ts";
 import * as $dyana from "./routes/dyana.tsx";
 import * as $generate_guid from "./routes/generate-guid.tsx";
 import * as $generate_hex from "./routes/generate-hex.tsx";
-import * as $generate_processid from "./routes/generate-processid.tsx";
+import * as $generate_taskid from "./routes/generate-taskid.tsx";
 import * as $index from "./routes/index.tsx";
 import * as $timespan_explainer from "./routes/timespan-explainer.tsx";
-import * as $DyanaWindow from "./islands/DyanaWindow.tsx";
 import * as $InOutTextBoxView from "./islands/InOutTextBoxView.tsx";
 import * as $OutTextBoxView from "./islands/OutTextBoxView.tsx";
+import * as $dyana_1 from "./islands/dyana.tsx";
 import type { Manifest } from "$fresh/server.ts";
 
 const manifest = {
@@ -26,14 +26,14 @@ const manifest = {
     "./routes/dyana.tsx": $dyana,
     "./routes/generate-guid.tsx": $generate_guid,
     "./routes/generate-hex.tsx": $generate_hex,
-    "./routes/generate-processid.tsx": $generate_processid,
+    "./routes/generate-taskid.tsx": $generate_taskid,
     "./routes/index.tsx": $index,
     "./routes/timespan-explainer.tsx": $timespan_explainer,
   },
   islands: {
-    "./islands/DyanaWindow.tsx": $DyanaWindow,
     "./islands/InOutTextBoxView.tsx": $InOutTextBoxView,
     "./islands/OutTextBoxView.tsx": $OutTextBoxView,
+    "./islands/dyana.tsx": $dyana_1,
   },
   baseUrl: import.meta.url,
 } satisfies Manifest;
