@@ -139,11 +139,12 @@ export class Wielder {
     }
 
     private addMonth(valueLength: number): this {
-        const month = new Date().toLocaleString("default", {
-            month: valueLength === 3 ?
-                "short" :
-                "long"
-        });
+        const monthOpt =
+            valueLength === 2 ?
+                "numeric" :
+                    valueLength === 3 ?
+                        "short" : "long"
+        const month = new Date().toLocaleString("default", { month: monthOpt });
         this.keyBuilder.push(month);
 
         return this;

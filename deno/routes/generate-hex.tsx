@@ -1,7 +1,7 @@
 import * as React from "@preact/compat" // https://github.com/denoland/fresh/issues/785
 import { FreshContext, Handlers, PageProps } from "$fresh/server.ts";
-import { InOutTextBoxGeneralProps, InOutTextBoxView } from "../components/client/InOutTextBoxView.tsx";
 import { Wielder } from "../ayumi/keywielder/wielder.ts";
+import { OutTextBoxView, OutTextBoxGeneralProps } from "../components/client/OutTextBoxView.tsx";
 
 function clampInt(n: number, min: number, max: number) {
     return Math.max(min, Math.min(max, Math.floor(n)));
@@ -68,8 +68,7 @@ export const handler: Handlers = {
                 uppercase: false,
                 output: ""
             },
-            InOutTextBoxGeneralProps: {
-                inputText: "",
+            OutTextBoxGeneralProps: {
                 outputText: "",
                 error: ""
             }
@@ -101,8 +100,7 @@ export const handler: Handlers = {
                 uppercase: uppercase,
                 output: ""
             },
-            InOutTextBoxGeneralProps: {
-                inputText: "",
+            OutTextBoxGeneralProps: {
                 outputText: output.join("\n"),
                 error: ""
             }
@@ -120,33 +118,31 @@ interface AdditionalControlsProps {
 function AdditionalControl(props: AdditionalControlsProps) {
     return (
         <>
-            <label class="form-control w-28">
-                <div class="label p-0 pb-1"><span class="label-text text-error">Count</span></div>
+            <label className="input">
+                <span className="label">Count</span>
                 <input
                     name="count-textbox"
                     type="number"
                     min={1}
                     step={1}
-                    class="input input-bordered"
                     value={props.count}
                     onInput={(e) => props.count = clampInt(Number((e.currentTarget as HTMLInputElement).value || 0), 0, 10000)}
                 />
             </label>
 
-            <label class="form-control w-28">
-                <div class="label p-0 pb-1"><span class="label-text text-error">Length</span></div>
+            <label className="input">
+                <span className="label">Length</span>
                 <input
                     name="length-textbox"
                     type="number"
                     min={1}
                     step={1}
-                    class="input input-bordered"
                     value={props.length}
                     onInput={(e) => props.length = clampInt(Number((e.currentTarget as HTMLInputElement).value || 0), 0, 8192)}
                 />
             </label>
 
-            <label class="label cursor-pointer gap-2 ml-1">
+            <label className="input">
                 <input
                     name="upper-checkbox"
                     type="checkbox"
@@ -154,7 +150,7 @@ function AdditionalControl(props: AdditionalControlsProps) {
                     checked={props.uppercase}
                     onChange={(e) => props.uppercase = (e.currentTarget as HTMLInputElement).checked}
                 />
-                <span class="label-text text-error">Uppercase</span>
+                <span className="label">Uppercase</span>
             </label>
         </>
     );
@@ -162,12 +158,12 @@ function AdditionalControl(props: AdditionalControlsProps) {
 
 interface GenerateHexProps {
     AdditionalControlsProps: AdditionalControlsProps;
-    InOutTextBoxGeneralProps: InOutTextBoxGeneralProps;
+    OutTextBoxGeneralProps: OutTextBoxGeneralProps;
 }
 
 export default function GenerateHex(props: PageProps<GenerateHexProps>) {
     return (
-        <InOutTextBoxView
+        <OutTextBoxView
             toolLabel="Generate Hex"
             toolDescription="Generate a random hex string."
             additionalControls={
@@ -178,22 +174,10 @@ export default function GenerateHex(props: PageProps<GenerateHexProps>) {
                     output={props.data.AdditionalControlsProps.output}
                 />}
             processIdentifier="generate-hex"
-            inputTextBoxProps={{
-                shortLabel: "No Input",
-                fullLabel: "No Input",
-                inputText: props.data.InOutTextBoxGeneralProps.inputText,
-                placeholder: "Enter a count and length, then click Generate",
-                processButtonLabel: "Generate",
-            }}
             outputTextBoxProps={{
-                shortLabel: "Explanation",
-                fullLabel: "Explanation",
-                /*partialOutputTextBoxProps: {
-                    output: props.output,
-                    placeholder: "The explanation will appear here..."
-                }*/
-                outputText: props.data.InOutTextBoxGeneralProps.outputText,
-                placeholder: "Generated hex will appear here..."
+                fullLabel: "Generated hex will appear here",
+                outputText: props.data.OutTextBoxGeneralProps.outputText,
+                processButtonLabel: "Generate"
             }}
         />
     );
