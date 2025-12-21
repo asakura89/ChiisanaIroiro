@@ -83,71 +83,102 @@ export const DyanaWindow = (props: DyanaWindowProps) => {
     };
 
     return (
-        <div style={{ backgroundColor: "#1a1a1a", color: "#fff", padding: "20px", borderRadius: "8px" }}>
-            <h1>Dyana Work Hours Calculator</h1>
-            <div style={{ marginBottom: "10px" }}>
-                <label>Start At:</label>
-                <input
-                    type="text"
-                    value={props.startAt}
-                    onInput={(e) => {
-                        props.startAt.value = (e.target as HTMLInputElement).value;
-                        handleCalculate();
-                    }}
-                    placeholder="HH:mm"
-                    style={{ marginLeft: "10px" }}
-                />
-            </div>
-            <div style={{ marginBottom: "10px" }}>
-                <label>End At:</label>
-                <input
-                    type="text"
-                    value={props.endAt}
-                    onInput={(e) => {
-                        props.endAt.value = (e.target as HTMLInputElement).value;
-                        handleCalculate();
-                    }}
-                    placeholder="HH:mm"
-                    style={{ marginLeft: "10px" }}
-                />
-            </div>
-            <div style={{ marginBottom: "10px" }}>
-                <label>Work Hours:</label>
-                <input
-                    type="text"
-                    value={props.workHour}
-                    onInput={(e) => {
-                        props.workHour.value = (e.target as HTMLInputElement).value;
-                        handleCalculate();
-                    }}
-                    placeholder="Hours"
-                    style={{ marginLeft: "10px" }}
-                />
-            </div>
-            <div style={{ marginBottom: "10px" }}>
-                <label>Break Hours:</label>
-                <input
-                    type="text"
-                    value={props.breakHour}
-                    onInput={(e) => {
-                        props.breakHour.value = (e.target as HTMLInputElement).value;
-                        handleCalculate();
-                    }}
-                    placeholder="Hours"
-                    style={{ marginLeft: "10px" }}
-                />
-            </div>
-            <div style={{ marginTop: "20px" }}>
-                <button onClick={handleCalculate} style={{ marginRight: "10px" }}>Calculate</button>
-                <button onClick={handleReset}>Reset</button>
-            </div>
-            {props.total.value && (
-                <div style={{ marginTop: "20px" }}>
-                    <h3>Worked for: {props.total}</h3>
-                    <h3>Responsibility hours: {props.responsibility}</h3>
-                    <h3>{props.message}</h3>
+        <div class="card bg-base-100 shadow-sm border border-base-300">
+            <div class="card-body">
+                <div class="flex flex-wrap items-center justify-between gap-3">
+                    <div>
+                        <div class="text-xs uppercase tracking-widest text-base-content/60">Calculator</div>
+                        <h2 class="text-2xl font-semibold">Work hours calculator</h2>
+                    </div>
+                    <div class="flex gap-2">
+                        <button class="btn btn-outline btn-sm" onClick={handleReset}>Reset</button>
+                        <button class="btn btn-primary btn-sm" onClick={handleCalculate}>Calculate</button>
+                    </div>
                 </div>
-            )}
+
+                <div class="mt-6 grid gap-4 md:grid-cols-2">
+                    <label class="form-control">
+                        <div class="label">
+                            <span class="label-text">Start at</span>
+                        </div>
+                        <input
+                            class="input input-bordered"
+                            type="text"
+                            value={props.startAt}
+                            onInput={(e) => {
+                                props.startAt.value = (e.target as HTMLInputElement).value;
+                                handleCalculate();
+                            }}
+                            placeholder="HH:mm (24 h, e.g. 09:00)"
+                        />
+                    </label>
+
+                    <label class="form-control">
+                        <div class="label">
+                            <span class="label-text">End at</span>
+                        </div>
+                        <input
+                            class="input input-bordered"
+                            type="text"
+                            value={props.endAt}
+                            onInput={(e) => {
+                                props.endAt.value = (e.target as HTMLInputElement).value;
+                                handleCalculate();
+                            }}
+                            placeholder="HH:mm (24 h, e.g. 18:00)"
+                        />
+                    </label>
+
+                    <label class="form-control">
+                        <div class="label">
+                            <span class="label-text">Work hours</span>
+                        </div>
+                        <input
+                            class="input input-bordered"
+                            type="text"
+                            value={props.workHour}
+                            onInput={(e) => {
+                                props.workHour.value = (e.target as HTMLInputElement).value;
+                                handleCalculate();
+                            }}
+                            placeholder="Hours, e.g. 8h"
+                        />
+                    </label>
+
+                    <label class="form-control">
+                        <div class="label">
+                            <span class="label-text">Break hours</span>
+                        </div>
+                        <input
+                            class="input input-bordered"
+                            type="text"
+                            value={props.breakHour}
+                            onInput={(e) => {
+                                props.breakHour.value = (e.target as HTMLInputElement).value;
+                                handleCalculate();
+                            }}
+                            placeholder="Hours, e.g. 1h"
+                        />
+                    </label>
+                </div>
+
+                <div class="mt-6 grid gap-4 md:grid-cols-2">
+                    <div class="stat bg-base-200 rounded-box">
+                        <div class="stat-title">Worked for</div>
+                        <div class="stat-value text-primary">{props.total}</div>
+                    </div>
+                    <div class="stat bg-base-200 rounded-box">
+                        <div class="stat-title">Responsibility hours</div>
+                        <div class="stat-value text-accent">{props.responsibility}</div>
+                    </div>
+                </div>
+
+                {props.message.value ? (
+                    <div class="mt-6 alert alert-info">
+                        <span class="whitespace-pre-line">{props.message}</span>
+                    </div>
+                ) : null}
+            </div>
         </div>
     );
 };
