@@ -1,0 +1,16 @@
+[
+  {
+    "originalTotal": 163000,
+    "appliedVouchers": [
+      {
+        "id": "v2",
+        "name": "SEASONAL 40%",
+        "discount": 60000,
+        "category": "SEASONAL"
+      }
+    ],
+    "fixedDiscount": 0,
+    "finalTotal": 103000,
+    "timestamp": "2026-01-25T21:17:59.740Z"
+  }
+]
