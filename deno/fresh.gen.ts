@@ -6,11 +6,13 @@ import * as $_404 from "./routes/_404.tsx";
 import * as $_app from "./routes/_app.tsx";
 import * as $_error from "./routes/_error.tsx";
 import * as $_middleware from "./routes/_middleware.ts";
+import * as $api_calendar_events from "./routes/api/calendar/events.ts";
 import * as $api_discount_calculate from "./routes/api/discount/calculate.ts";
 import * as $api_discount_engine from "./routes/api/discount/engine.ts";
 import * as $api_discount_history from "./routes/api/discount/history.ts";
 import * as $api_discount_templates from "./routes/api/discount/templates.ts";
 import * as $api_discount_vouchers from "./routes/api/discount/vouchers.ts";
+import * as $calendar_index from "./routes/calendar/index.tsx";
 import * as $discount_voucher from "./routes/discount-voucher.tsx";
 import * as $dyana from "./routes/dyana.tsx";
 import * as $generate_guid from "./routes/generate-guid.tsx";
@@ -18,6 +20,7 @@ import * as $generate_hex from "./routes/generate-hex.tsx";
 import * as $generate_taskid from "./routes/generate-taskid.tsx";
 import * as $index from "./routes/index.tsx";
 import * as $timespan_explainer from "./routes/timespan-explainer.tsx";
+import * as $CalendarApp from "./islands/CalendarApp.tsx";
 import * as $DiscountVoucher from "./islands/DiscountVoucher.tsx";
 import * as $InOutTextBoxView from "./islands/InOutTextBoxView.tsx";
 import * as $OutTextBoxView from "./islands/OutTextBoxView.tsx";
@@ -30,11 +33,13 @@ const manifest = {
     "./routes/_app.tsx": $_app,
     "./routes/_error.tsx": $_error,
     "./routes/_middleware.ts": $_middleware,
+    "./routes/api/calendar/events.ts": $api_calendar_events,
     "./routes/api/discount/calculate.ts": $api_discount_calculate,
     "./routes/api/discount/engine.ts": $api_discount_engine,
     "./routes/api/discount/history.ts": $api_discount_history,
     "./routes/api/discount/templates.ts": $api_discount_templates,
     "./routes/api/discount/vouchers.ts": $api_discount_vouchers,
+    "./routes/calendar/index.tsx": $calendar_index,
     "./routes/discount-voucher.tsx": $discount_voucher,
     "./routes/dyana.tsx": $dyana,
     "./routes/generate-guid.tsx": $generate_guid,
@@ -44,6 +49,7 @@ const manifest = {
     "./routes/timespan-explainer.tsx": $timespan_explainer,
   },
   islands: {
+    "./islands/CalendarApp.tsx": $CalendarApp,
     "./islands/DiscountVoucher.tsx": $DiscountVoucher,
     "./islands/InOutTextBoxView.tsx": $InOutTextBoxView,
     "./islands/OutTextBoxView.tsx": $OutTextBoxView,

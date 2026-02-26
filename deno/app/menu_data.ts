@@ -13,6 +13,11 @@ export const sidebarMenu: MenuItem[] = [{
         icon: "ph-duotone ph-squares-four",
         class: "hover:bg-primary hover:text-primary-content rounded"
     }, {
+        href: "/calendar",
+        title: "Calendar",
+        icon: "ph-duotone ph-calendar",
+        class: "hover:bg-primary hover:text-primary-content rounded"
+    }, {
         href: "/dyana",
         title: "Dyana - Work hours calculator", // t("work_hours"),
         icon: "ph-duotone ph-hourglass-medium",
