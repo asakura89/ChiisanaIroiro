@@ -167,7 +167,7 @@
 
 .calendar-list-item {
     display: grid;
-    grid-template-columns: 1fr auto auto;
+    grid-template-columns: 1fr auto auto auto;
     align-items: center;
     gap: 6px;
     margin-bottom: 6px;
@@ -194,6 +194,7 @@
 .calendar-text-button {
     font-size: 12px;
     color: #2c4e82;
+    padding: 0 2px;
 }
 
 .calendar-text-button.danger {
@@ -440,4 +441,50 @@
     margin-top: 14px;
     justify-content: flex-end;
     gap: 8px;
+}
+
+.calendar-export-actions {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 10px;
+}
+
+.calendar-export-actions .calendar-button-secondary {
+    height: 30px;
+    padding: 0 8px;
+    font-size: 12px;
+}
+
+.calendar-export-list {
+    max-height: 220px;
+    overflow-y: auto;
+    border: 1px solid #e1e4ea;
+    border-radius: 8px;
+    padding: 6px;
+    background: #fbfcff;
+}
+
+.calendar-export-item {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 2px;
+    border-bottom: 1px solid #f0f2f5;
+}
+
+.calendar-export-item:last-child {
+    border-bottom: none;
+}
+
+.calendar-export-title {
+    font-size: 12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.calendar-export-time {
+    font-size: 11px;
+    color: #69707a;
 }

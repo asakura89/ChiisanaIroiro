@@ -173,6 +173,7 @@ export default function CalendarApp({initialData}: CalendarAppProps) {
     const [errorMessage, setErrorMessage] = useState("");
     const [eventDialogOpen, setEventDialogOpen] = useState(false);
     const [calendarDialogOpen, setCalendarDialogOpen] = useState(false);
+    const [selectedExportEventIds, setSelectedExportEventIds] = useState<string[]>([]);
     const [eventForm, setEventForm] = useState<EventFormState>(
         defaultEventForm(initialData.calendars[0]?.id || "", new Date())
     );
@@ -215,6 +216,76 @@ export default function CalendarApp({initialData}: CalendarAppProps) {
             return itemStart >= dayStart && itemStart < dayEnd;
         });
     }, [selectedDate, filteredOccurrences]);
+
+    const exportCandidates = useMemo(() => {
+        const query = searchTerm.trim().toLowerCase();
+        return events
+            .filter((event) => activeCalendarIds.includes(event.calendarId))
+            .filter((event) => {
+                if (!query) {
+                    return true;
+                }
+                const combined = `${event.title} ${event.location} ${event.description}`.toLowerCase();
+                return combined.includes(query);
+            })
+            .sort((left, right) => new Date(left.startIso).getTime() - new Date(right.startIso).getTime());
+    }, [events, activeCalendarIds, searchTerm]);
+
+    function downloadIcsFile(params: URLSearchParams) {
+        const anchor = document.createElement("a");
+        anchor.href = `/api/calendar/events?${params.toString()}`;
+        anchor.style.display = "none";
+        document.body.appendChild(anchor);
+        anchor.click();
+        anchor.remove();
+    }
+
+    function exportAllEvents() {
+        const params = new URLSearchParams();
+        params.set("kind", "export");
+        params.set("scope", "all");
+        downloadIcsFile(params);
+    }
+
+    function exportCalendarProfile(calendarId: string) {
+        const params = new URLSearchParams();
+        params.set("kind", "export");
+        params.set("scope", "calendar");
+        params.set("calendarId", calendarId);
+        downloadIcsFile(params);
+    }
+
+    function exportSingleEvent(eventId: string) {
+        const params = new URLSearchParams();
+        params.set("kind", "export");
+        params.set("scope", "event");
+        params.set("eventId", eventId);
+        downloadIcsFile(params);
+    }
+
+    function exportSelectedEvents() {
+        const candidateIdSet = new Set(exportCandidates.map((event) => event.id));
+        const targetIds = selectedExportEventIds.filter((id) => candidateIdSet.has(id));
+        if (targetIds.length === 0) {
+            setErrorMessage("Select at least one event to export");
+            return;
+        }
+        const params = new URLSearchParams();
+        params.set("kind", "export");
+        params.set("scope", "selected");
+        for (const id of targetIds) {
+            params.append("eventId", id);
+        }
+        downloadIcsFile(params);
+    }
+
+    function toggleExportEventSelection(eventId: string) {
+        setSelectedExportEventIds((prev) =>
+            prev.includes(eventId)
+                ? prev.filter((id) => id !== eventId)
+                : [...prev, eventId]
+        );
+    }
 
     async function reloadInRange(fromIso: string, toIso: string) {
         const params = new URLSearchParams();
@@ -521,6 +592,7 @@ export default function CalendarApp({initialData}: CalendarAppProps) {
                         <option value="month">Month</option>
                         <option value="agenda">Agenda</option>
                     </select>
+                    <button class="calendar-button-secondary" onClick={exportAllEvents}>Export all</button>
                     <button class="calendar-button-primary" onClick={() => openCreateEventDialog(selectedDate)}>New event</button>
                 </div>
             </div>
@@ -598,10 +670,46 @@ export default function CalendarApp({initialData}: CalendarAppProps) {
                                         <span>{calendar.name}</span>
                                         {calendar.tag && <small class="calendar-tag-pill">{calendar.tag}</small>}
                                     </label>
+                                    <button class="calendar-text-button" onClick={() => exportCalendarProfile(calendar.id)}>Export</button>
                                     <button class="calendar-text-button" onClick={() => openEditCalendarDialog(calendar)}>Edit</button>
                                     <button class="calendar-text-button danger" onClick={() => deleteCalendar(calendar.id)}>Delete</button>
                                 </div>
                             ))}
+                        </div>
+                    </div>
+
+                    <div class="calendar-list-panel">
+                        <div class="calendar-list-header">Export selected events</div>
+                        <div class="calendar-export-actions">
+                            <button class="calendar-button-secondary" onClick={exportSelectedEvents}>Export selected</button>
+                            <button
+                                class="calendar-button-secondary"
+                                onClick={() => setSelectedExportEventIds(exportCandidates.map((event) => event.id))}
+                            >
+                                Select all
+                            </button>
+                            <button class="calendar-button-secondary" onClick={() => setSelectedExportEventIds([])}>Clear</button>
+                        </div>
+                        <div class="calendar-export-list">
+                            {exportCandidates.slice(0, 24).map((event) => (
+                                <label class="calendar-export-item">
+                                    <input
+                                        type="checkbox"
+                                        checked={selectedExportEventIds.includes(event.id)}
+                                        onChange={() => toggleExportEventSelection(event.id)}
+                                    />
+                                    <span class="calendar-export-title">{event.title}</span>
+                                    <span class="calendar-export-time">
+                                        {new Intl.DateTimeFormat("en-US", {
+                                            month: "short",
+                                            day: "numeric",
+                                            hour: "numeric",
+                                            minute: "2-digit"
+                                        }).format(new Date(event.startIso))}
+                                    </span>
+                                </label>
+                            ))}
+                            {exportCandidates.length === 0 && <div class="calendar-empty-state">No events in current filter</div>}
                         </div>
                     </div>
                 </aside>
@@ -874,6 +982,15 @@ export default function CalendarApp({initialData}: CalendarAppProps) {
                             </div>
                         )}
                         <div class="calendar-dialog-actions">
+                            {eventForm.id && (
+                                <button
+                                    type="button"
+                                    class="calendar-button-secondary"
+                                    onClick={() => exportSingleEvent(eventForm.id)}
+                                >
+                                    Export
+                                </button>
+                            )}
                             {eventForm.id && (
                                 <button
                                     type="button"

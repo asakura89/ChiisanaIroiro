@@ -11,6 +11,7 @@ import {
     updateCalendarProfile
 } from "../../../app/calendar/kv_repository.ts";
 import { CalendarEvent, RecurrenceRule } from "../../../app/calendar/types.ts";
+import { buildCalendarIcs } from "../../../app/calendar/ics.ts";
 
 function jsonResponse(payload: unknown, status = 200): Response {
     return new Response(JSON.stringify(payload), {
@@ -27,6 +28,12 @@ function parseCalendarIds(params: URLSearchParams): string[] | null {
         return null;
     }
     return ids;
+}
+
+function parseEventIds(params: URLSearchParams): string[] {
+    return params.getAll("eventId").flatMap((item) => item.split(",")).map((item) =>
+        item.trim()
+    ).filter((item) => item.length > 0);
 }
 
 function normalizeRecurrence(input: unknown): RecurrenceRule | null {
@@ -94,6 +101,53 @@ export const handler: Handlers = {
         if (kind === "calendars") {
             const calendars = await listCalendarProfiles();
             return jsonResponse({calendars});
+        }
+        if (kind === "export") {
+            const scope = url.searchParams.get("scope") || "all";
+            const [calendars, allEvents] = await Promise.all([
+                listCalendarProfiles(),
+                listCalendarEvents()
+            ]);
+            let targetEvents: CalendarEvent[] = [];
+            let fileName = "calendar-export.ics";
+            let calendarName = "Calendar Export";
+
+            if (scope === "event") {
+                const eventId = String(url.searchParams.get("eventId") || "");
+                targetEvents = allEvents.filter((item) => item.id === eventId);
+                fileName = eventId ? `event-${eventId}.ics` : fileName;
+                calendarName = "Event Export";
+            } else if (scope === "selected") {
+                const eventIds = parseEventIds(url.searchParams);
+                const idSet = new Set(eventIds);
+                targetEvents = allEvents.filter((item) => idSet.has(item.id));
+                fileName = "selected-events.ics";
+                calendarName = "Selected Events";
+            } else if (scope === "calendar") {
+                const calendarId = String(url.searchParams.get("calendarId") || "");
+                targetEvents = allEvents.filter((item) => item.calendarId === calendarId);
+                const profile = calendars.find((item) => item.id === calendarId);
+                if (profile) {
+                    fileName = `${profile.name.toLowerCase().replaceAll(/[^a-z0-9]+/g, "-")}.ics`;
+                    calendarName = profile.name;
+                } else {
+                    fileName = "calendar-profile.ics";
+                    calendarName = "Calendar Profile";
+                }
+            } else {
+                targetEvents = allEvents;
+                fileName = "all-events.ics";
+                calendarName = "All Events";
+            }
+
+            const ics = buildCalendarIcs(targetEvents, calendars, calendarName);
+            return new Response(ics, {
+                status: 200,
+                headers: {
+                    "content-type": "text/calendar; charset=utf-8",
+                    "content-disposition": `attachment; filename="${fileName}"`
+                }
+            });
         }
         const fromIso = url.searchParams.get("from");
         const toIso = url.searchParams.get("to");
