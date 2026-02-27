@@ -1,11 +1,8 @@
 using System.IO;
-using System.Reflection;
-using System.Runtime.Loader;
 using System.Windows;
 using System.Windows.Controls;
 using Puru.Wpf;
 using Reflx;
-using Scratch;
 
 namespace Chiisanairoiro {
     public partial class MainWindow : Window {
@@ -18,39 +15,12 @@ namespace Chiisanairoiro {
 
         void InitializePlugins() {
             String pluginsRootDir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Plugins");
-            IList<String> pluginDirs = Directory.EnumerateDirectories(pluginsRootDir).ToList();
+            IList<String> pluginDirs = Directory.Exists(pluginsRootDir)
+                ? Directory.EnumerateDirectories(pluginsRootDir).ToList()
+                : new List<String>();
             IAssemblyLoader asmLoader = new AssemblyLoader();
             foreach (String dir in pluginDirs)
                 asmLoader.LoadFromPath(dir);
-
-            // IAssemblyHelper asmHelper = new AssemblyHelper(new TypeHelper());
-            // IEnumerable<IViewablePlugin> plugins = AssemblyLoadContext.All
-            //     .SelectMany(ctx => asmHelper
-            //         .GetTypesInheritedBy<IViewablePlugin>(ctx.Assemblies)
-            //         .Where(type => !type.IsAbstract && !type.IsInterface)
-            //         .Select(pluginType => (IViewablePlugin) Activator.CreateInstance(pluginType)))
-            //         .ToList();
-
-
-            System.Diagnostics.Debug.WriteLine(
-                new AssemblyHelper(new TypeHelper())
-                    .GetTypesInheritedBy<IViewablePlugin>(
-                        AppDomain.CurrentDomain
-                            .GetAssemblies())
-                    .Where(type => !type.IsAbstract && !type.IsInterface)
-                    .Select(type => type.FullName)
-                    .ToList()
-                    .AsIndentedJson());
-
-            /* IEnumerable<IViewablePlugin> plugins = AssemblyLoadContext.All
-                .SelectMany(ctx => ctx.Assemblies
-                    .SelectMany(asm => asm.GetTypes()
-                        .Where(
-                            type => !type.IsAbstract &&
-                            !type.IsInterface &&
-                            type.GetInterfaces().Any(intf => intf.Name == nameof(IViewablePlugin)))
-                        .Select(pluginType => (IViewablePlugin) Activator.CreateInstance(pluginType)))
-                    .ToList()); */
 
             IEnumerable<IViewablePlugin> plugins =
                 new AssemblyHelper(new TypeHelper())
@@ -59,50 +29,6 @@ namespace Chiisanairoiro {
                             .GetAssemblies())
                     .Where(type => !type.IsAbstract && !type.IsInterface)
                     .Select(pluginType => (IViewablePlugin) Activator.CreateInstance(pluginType));
-
-            // not sure why always file not found
-
-            // ^ always empty because of IViewablePlugin is in Default LoadContext while the plugin is in theirs 😔
-            /*
-            AssemblyLoadContext.All.Take(2).Skip(1).First().Assemblies.Take(2).Skip(1).First()
-            {DirectoryProcessingPlugin, Version=2.0.2021.7522, Culture=neutral, PublicKeyToken=null}
-
-            a.ExportedTypes.First().GetType()
-            {System.RuntimeType}
-
-            a.ExportedTypes.First()
-            {DirectoryProcessingPlugin.DirListView}
-
-            AssemblyLoadContext.GetLoadContext(a.ExportedTypes.First().Assembly)
-            {"DirectoryProcessingPlugin" Reflx.DynamicAssemblyLoadContext #1}
-
-            AssemblyLoadContext.GetLoadContext(typeof(IViewablePlugin).Assembly)
-            {"Default" System.Runtime.Loader.DefaultAssemblyLoadContext #0}
-
-            typeof(IViewablePlugin).IsAssignableFrom(a.ExportedTypes.First())
-            false
-
-            a.ExportedTypes.First() as IViewablePlugin
-            null
-
-            AssemblyLoadContext.All.Take(2).Skip(1).First().Assemblies
-            {System.Runtime.Loader.AssemblyLoadContext.<get_Assemblies>d__57}
-
-            AssemblyLoadContext.All.Take(2).Skip(1).First().Assemblies.Last().ExportedTypes.First().IsAssignableFrom(a.ExportedTypes.First())
-            true
-
-            System.Diagnostics.Debug.WriteLine(
-                AssemblyLoadContext.All
-                    .SelectMany(ctx => ctx.Assemblies
-                        .Select(asm => asm.FullName))
-                    .AsIndentedJson());
-
-            System.Diagnostics.Debug.WriteLine(
-                AppDomain.CurrentDomain
-                    .GetAssemblies()
-                    .Select(asm => asm.FullName)
-                    .AsIndentedJson());
-            */
 
             IList<FeatureDropdownItem> infos = plugins
                 .Select(plugin => new FeatureDropdownItem {

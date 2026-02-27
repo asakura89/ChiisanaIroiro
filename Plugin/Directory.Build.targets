@@ -1,0 +1,5 @@
+<Project>
+  <PropertyGroup>
+    <OutputPath>$(MSBuildThisFileDirectory)..\ShinChiisanairoiro\bin\$(Configuration)\$(TargetFramework)\Plugins\$(MSBuildProjectName)\</OutputPath>
+  </PropertyGroup>
+</Project>
