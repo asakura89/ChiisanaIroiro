@@ -1,5 +1,7 @@
-namespace Plugin.Common {
-    public static class ExcMessageExt {
-        public static InvalidOperationException AsNaiseuErrorMessage(this String message) => new($"{message} ヽ(ﾟДﾟ; )ﾉ");
+namespace Plugin.Common;
+
+public static class ExcMessageExt {
+    public static InvalidOperationException AsNaiseuErrorMessage(this string message) {
+        return new InvalidOperationException($"{message} ヽ(ﾟДﾟ; )ﾉ");
     }
 }
