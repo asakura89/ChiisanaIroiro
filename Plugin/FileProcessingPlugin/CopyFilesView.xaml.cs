@@ -21,7 +21,7 @@ namespace FileProcessingPlugin {
 
         Boolean Zip => ZipCheckBox.IsChecked ?? false;
 
-        Boolean Complain => ComplainCheckBox.IsChecked ?? false;
+        Boolean OverwriteExisting => OverwriteExistingCheckBox.IsChecked ?? false;
 
         String SourceDir {
             get {
@@ -71,7 +71,7 @@ namespace FileProcessingPlugin {
                         .Select(ConvertPathToFileOpInfo);
 
                     Boolean anyNonExistent = pathInfos.Any(info => !info.ExistsOnSource);
-                    if (Complain && anyNonExistent) {
+                    if (anyNonExistent) {
                         String nonExistentPaths = String.Join(Environment.NewLine,
                             pathInfos
                                 .Where(info => !info.ExistsOnSource)
@@ -82,7 +82,8 @@ namespace FileProcessingPlugin {
 
                     foreach (FileOpInfo info in pathInfos) {
                         RecurseCreateDirectory(new DirectoryInfo(TargetDirectoryTextBox.Text), info.OriginalSourceDir);
-                        if (!File.Exists(info.TargetPath))
+                        Boolean exists = File.Exists(info.TargetPath);
+                        if (!exists || (exists && OverwriteExisting))
                             File.Copy(info.SourcePath, info.TargetPath);
                     }
                 }
