@@ -1,3 +1,5 @@
+# Created by http://www.gitignore.io
+
 # > Eclipse
 *.pydevproject
 .project
@@ -106,6 +108,7 @@ artifacts/
 *.pidb
 *.svclog
 *.log
+logs/
 *.scc
 sql/
 *.Cache
@@ -293,6 +296,7 @@ pip-log.txt
 # > Unit test / coverage reports
 .coverage
 .tox
+coverage/
 
 # > Translations
 *.mo
@@ -303,6 +307,9 @@ cakebuild-log.txt
 build-log.txt
 *-log.txt
 *log.txt
+wwwroot/
+!**/Data/*
+!**/**/Data/*
 
 # > dotenv environment variable files
 .env
@@ -310,6 +317,10 @@ build-log.txt
 .env.test.local
 .env.production.local
 .env.local
+.env.*
+!.env.example
+!.env.test
+# Note: .env.*.local (from Next.js) is covered by .env.*
 
 # > sqlite db files
 *.db
@@ -322,3 +333,32 @@ bower_components/
 
 # > Fresh build directory
 _fresh/
+
+# > certificates
+certificates/
+
+# > front-end tools cache
+.eslintcache
+.stylelintcache
+
+# > front-end tools logs
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# > Build Output (General)
+# Framework specific build outputs (like .next/, .nuxt/, dist/, .output/, .svelte-kit/, build/) should be in their respective framework .gitignore files.
+
+# > deployment platforms
+.netlify/
+.vercel/
+.wrangler/
+
+# > directus specific
+directus/data/
+directus/uploads/
+directus/extensions/.registry
+data/
+uploads/
+extensions/.registry

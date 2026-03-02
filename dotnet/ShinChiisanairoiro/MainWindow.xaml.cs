@@ -1,11 +1,8 @@
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using Puru;
 using Puru.Wpf;
+using Reflx;
 
 namespace Chiisanairoiro {
     public partial class MainWindow : Window {
@@ -18,15 +15,22 @@ namespace Chiisanairoiro {
 
         void InitializePlugins() {
             String pluginsRootDir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Plugins");
-            IList<String> pluginDirs = Directory.EnumerateDirectories(pluginsRootDir).ToList();
-            IList<FeatureDropdownItem> infos = pluginDirs
-                .SelectMany(dir =>
-                    new DynamicTypeLoader(dir)
-                        .LoadAssemblies()
-                        .GetTypesInheritedBy<IViewablePlugin>()
-                        .Where(type => !type.IsAbstract && !type.IsInterface)
-                        .Select(pluginType => (IViewablePlugin) Activator.CreateInstance(pluginType))
-                )
+            IList<String> pluginDirs = Directory.Exists(pluginsRootDir)
+                ? Directory.EnumerateDirectories(pluginsRootDir).ToList()
+                : new List<String>();
+            IAssemblyLoader asmLoader = new AssemblyLoader();
+            foreach (String dir in pluginDirs)
+                asmLoader.LoadFromPath(dir);
+
+            IEnumerable<IViewablePlugin> plugins =
+                new AssemblyHelper(new TypeHelper())
+                    .GetTypesInheritedBy<IViewablePlugin>(
+                        AppDomain.CurrentDomain
+                            .GetAssemblies())
+                    .Where(type => !type.IsAbstract && !type.IsInterface)
+                    .Select(pluginType => (IViewablePlugin) Activator.CreateInstance(pluginType));
+
+            IList<FeatureDropdownItem> infos = plugins
                 .Select(plugin => new FeatureDropdownItem {
                     Name = $"[{plugin.ComponentName}]{(String.IsNullOrEmpty(plugin.ComponentDesc) ? String.Empty : " " + plugin.ComponentDesc)}",
                     Value = plugin

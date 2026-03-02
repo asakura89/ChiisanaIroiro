@@ -1,79 +1,62 @@
-using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using Plugin.Common;
 
-namespace Plugin.IOTextbox {
-    public partial class InOutTextboxView : UserControl {
-        public String Input {
-            get {
-                return InputTextBox.Text;
-            }
-            set {
-                InputTextBox.Text = value;
-            }
-        }
+namespace Plugin.IOTextbox;
 
-        public String Output {
-            get {
-                return OutputTextBox.Text;
-            }
-            set {
-                OutputTextBox.Text = value;
-            }
-        }
+public partial class InOutTextboxView : UserControl {
+    public InOutTextboxView() {
+        InitializeComponent();
+        InitializeInternalComponent();
+        IsVisibleChanged += OnIsVisibleChanged;
+    }
 
-        public Boolean ReadOnlyInput {
-            get {
-                return OutputTextBox.IsReadOnly;
-            }
-            set {
-                OutputTextBox.IsReadOnly = value;
-            }
-        }
+    public string Input {
+        get => InputTextBox.Text;
+        set => InputTextBox.Text = value;
+    }
 
-        public Boolean ReadOnlyOutput {
-            get {
-                return OutputTextBox.IsReadOnly;
-            }
-            set {
-                OutputTextBox.IsReadOnly = value;
-            }
-        }
+    public string Output {
+        get => OutputTextBox.Text;
+        set => OutputTextBox.Text = value;
+    }
 
-        public void HideAllButton() {
-            ConfigButton.Visibility = Visibility.Collapsed;
-            ClipboardButton.Visibility = Visibility.Collapsed;
-            ProcessButton.Visibility = Visibility.Collapsed;
-            ButtonPanel.Visibility = Visibility.Collapsed;
-        }
+    public bool ReadOnlyInput {
+        get => OutputTextBox.IsReadOnly;
+        set => OutputTextBox.IsReadOnly = value;
+    }
 
-        public Button ConfigButtonAccesssor => ConfigButton;
-        public Button ClipboardButtonAccesssor => ClipboardButton;
-        public Button ProcessButtonAccesssor => ProcessButton;
+    public bool ReadOnlyOutput {
+        get => OutputTextBox.IsReadOnly;
+        set => OutputTextBox.IsReadOnly = value;
+    }
 
-        public InOutTextboxView() {
-            InitializeComponent();
-            InitializeInternalComponent();
-            IsVisibleChanged += OnIsVisibleChanged;
-        }
+    public Button ConfigButtonAccesssor => ConfigButton;
+    public Button ClipboardButtonAccesssor => ClipboardButton;
+    public Button ProcessButtonAccesssor => ProcessButton;
 
-        void OnIsVisibleChanged(Object sender, DependencyPropertyChangedEventArgs e) {
-            InputBorder.BorderBrush = new SolidColorBrush(ColorGenerator.GetColor());
-            OutputBorder.BorderBrush = new SolidColorBrush(ColorGenerator.GetColor());
-        }
+    public void HideAllButton() {
+        ConfigButton.Visibility = Visibility.Collapsed;
+        ClipboardButton.Visibility = Visibility.Collapsed;
+        ProcessButton.Visibility = Visibility.Collapsed;
+        ButtonPanel.Visibility = Visibility.Collapsed;
+    }
 
-        void InitializeInternalComponent() {
-            TextEditorHelper.Initialize(InputTextBox);
-            TextEditorHelper.Initialize(OutputTextBox);
-        }
+    void OnIsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e) {
+        InputBorder.BorderBrush = new SolidColorBrush(ColorGenerator.GetColor());
+        OutputBorder.BorderBrush = new SolidColorBrush(ColorGenerator.GetColor());
+    }
 
-        void ClipboardButton_Click(Object sender, RoutedEventArgs e) {
-            if (Output != String.Empty) {
-                Clipboard.Clear();
-                Clipboard.SetText(Output);
-            }
+    void InitializeInternalComponent() {
+        TextEditorHelper.Initialize(InputTextBox);
+        TextEditorHelper.Initialize(OutputTextBox);
+    }
+
+    void ClipboardButton_Click(object sender, RoutedEventArgs e) {
+        if (Output != string.Empty) {
+            Clipboard.Clear();
+            Clipboard.SetText(Output);
         }
     }
 }

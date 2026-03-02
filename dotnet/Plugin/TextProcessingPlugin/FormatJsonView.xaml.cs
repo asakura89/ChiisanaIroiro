@@ -1,9 +1,9 @@
 using System;
 using System.Windows;
 using System.Windows.Controls;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using System.Text.Json;
 using Puru.Wpf;
+using System.IO;
 
 namespace TextProcessingPlugin {
     public partial class FormatJsonView : UserControl, IViewablePlugin {
@@ -22,7 +22,24 @@ namespace TextProcessingPlugin {
         }
 
         void ProcessButton_Click(Object sender, RoutedEventArgs e) {
-            String output = JToken.Parse(CommonView.Input).ToString(Formatting.Indented);
+            String output = "";
+            var jsonWriterOpt = new JsonWriterOptions {
+                Encoder = null,
+                Indented = true,
+                SkipValidation = false
+            };
+
+            using (var jsonWriter = new Utf8JsonWriter(new MemoryStream(), jsonWriterOpt)) {
+                JsonDocument
+                    .Parse(CommonView.Input, new JsonDocumentOptions {
+                        AllowTrailingCommas = true,
+                        CommentHandling = JsonCommentHandling.Allow
+                    })
+                    .WriteTo(jsonWriter);
+
+                output = jsonWriter.ToString();
+            }
+
             CommonView.Output = output;
         }
     }

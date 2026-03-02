@@ -1,56 +1,50 @@
-using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using Plugin.Common;
 
-namespace Plugin.IOTextbox {
-    public partial class OutTextboxView : UserControl {
-        public String Output {
-            get {
-                return OutputTextBox.Text;
-            }
-            set {
-                OutputTextBox.Text = value;
-            }
-        }
+namespace Plugin.IOTextbox;
 
-        public Boolean ReadOnlyOutput {
-            get {
-                return OutputTextBox.IsReadOnly;
-            }
-            set {
-                OutputTextBox.IsReadOnly = value;
-            }
-        }
+public partial class OutTextboxView : UserControl {
+    public OutTextboxView() {
+        InitializeComponent();
+        InitializeInternalComponent();
+        IsVisibleChanged += OnIsVisibleChanged;
+    }
 
-        public Button ConfigButtonAccesssor => ConfigButton;
-        public Button ClipboardButtonAccesssor => ClipboardButton;
-        public Button ProcessButtonAccesssor => ProcessButton;
+    public string Output {
+        get => OutputTextBox.Text;
+        set => OutputTextBox.Text = value;
+    }
 
-        public void HideAllButton() {
-            ConfigButton.Visibility = Visibility.Collapsed;
-            ClipboardButton.Visibility = Visibility.Collapsed;
-            ProcessButton.Visibility = Visibility.Collapsed;
-            ButtonPanel.Visibility = Visibility.Collapsed;
-        }
+    public bool ReadOnlyOutput {
+        get => OutputTextBox.IsReadOnly;
+        set => OutputTextBox.IsReadOnly = value;
+    }
 
-        public OutTextboxView() {
-            InitializeComponent();
-            InitializeInternalComponent();
-            IsVisibleChanged += OnIsVisibleChanged;
-        }
+    public Button ConfigButtonAccesssor => ConfigButton;
+    public Button ClipboardButtonAccesssor => ClipboardButton;
+    public Button ProcessButtonAccesssor => ProcessButton;
 
-        void OnIsVisibleChanged(Object sender, DependencyPropertyChangedEventArgs e) =>
-            OutputBorder.BorderBrush = new SolidColorBrush(ColorGenerator.GetColor());
+    public void HideAllButton() {
+        ConfigButton.Visibility = Visibility.Collapsed;
+        ClipboardButton.Visibility = Visibility.Collapsed;
+        ProcessButton.Visibility = Visibility.Collapsed;
+        ButtonPanel.Visibility = Visibility.Collapsed;
+    }
 
-        void InitializeInternalComponent() => TextEditorHelper.Initialize(OutputTextBox);
+    void OnIsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e) {
+        OutputBorder.BorderBrush = new SolidColorBrush(ColorGenerator.GetColor());
+    }
 
-        void ClipboardButton_Click(Object sender, RoutedEventArgs e) {
-            if (Output != String.Empty) {
-                Clipboard.Clear();
-                Clipboard.SetText(Output);
-            }
+    void InitializeInternalComponent() {
+        TextEditorHelper.Initialize(OutputTextBox);
+    }
+
+    void ClipboardButton_Click(object sender, RoutedEventArgs e) {
+        if (Output != string.Empty) {
+            Clipboard.Clear();
+            Clipboard.SetText(Output);
         }
     }
 }
