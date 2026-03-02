@@ -1,0 +1,3 @@
+[submodule "Ayumi"]
+	path = dotnet/Ayumi
+	url = https://github.com/asakura89/Ayumi.git

@@ -1,0 +1,66 @@
+[
+  {
+    "id": "v1",
+    "name": "SEASONAL 55%",
+    "category": "SEASONAL",
+    "description": "55% off up to 20000 IDR, min 25000 IDR",
+    "type": "percent",
+    "percent": 55,
+    "cap": 20000,
+    "minSpend": 25000,
+    "stackableWithSameCategory": false,
+    "stackableWithOtherCategories": true,
+    "priority": 10
+  },
+  {
+    "id": "v2",
+    "name": "SEASONAL 40%",
+    "category": "SEASONAL",
+    "description": "40% off up to 60000 IDR, min 70000 IDR",
+    "type": "percent",
+    "percent": 40,
+    "cap": 60000,
+    "minSpend": 70000,
+    "stackableWithSameCategory": false,
+    "stackableWithOtherCategories": true,
+    "priority": 20
+  },
+  {
+    "id": "v3",
+    "name": "BNI CARD 70000",
+    "category": "PAYMENT_PROMO",
+    "description": "70000 IDR off with BNI card on min 130000 IDR",
+    "type": "fixed",
+    "amount": 70000,
+    "minSpend": 130000,
+    "paymentMethod": "card:BNI",
+    "stackableWithSameCategory": false,
+    "stackableWithOtherCategories": false,
+    "priority": 5
+  },
+  {
+    "id": "v4",
+    "name": "BSI CARD 15000",
+    "category": "PAYMENT_PROMO",
+    "description": "15000 IDR off with BSI card",
+    "type": "fixed",
+    "amount": 15000,
+    "paymentMethod": "card:BSI",
+    "stackableWithSameCategory": true,
+    "stackableWithOtherCategories": true,
+    "priority": 8
+  },
+  {
+    "id": "v5",
+    "name": "CASH+SAVER 10000",
+    "category": "GENERAL",
+    "description": "10000 IDR off when using cash and delivery saver",
+    "type": "fixed",
+    "amount": 10000,
+    "paymentMethod": "cash",
+    "deliveryMethod": "saver",
+    "stackableWithSameCategory": true,
+    "stackableWithOtherCategories": true,
+    "priority": 15
+  }
+]
